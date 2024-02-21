@@ -1,0 +1,16 @@
+org\Tests\InteractionsPageTest.class
+org\Tests\BookStorePageTest.class
+org\Tests\PracticeFormPageTest.class
+org\Tests\LinksPageTest.class
+org\Tests\BSProfileTest.class
+org\Tests\BSRegisterTest.class
+org\Tests\FormsPageTest.class
+org\Tests\RadioButtonPageTest.class
+org\Tests\ElementsPageTest.class
+org\Tests\ButtonsPageTest.class
+org\Tests\CheckBoxPageTest.class
+org\Tests\FramesPageTest.class
+org\Tests\TextBoxPageTest.class
+org\Tests\WidgetsPageTest.class
+org\Tests\BSAPITest.class
+org\Tests\WebTablesPageTest.class

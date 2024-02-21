@@ -1,0 +1,437 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name = "Suite1" parallel="methods" thread-count="3">
+    
+    <listeners>
+        <listener class-name="Resources.Listeners"/>
+        <listener class-name="Resources.MyTransformer"/>
+    </listeners>
+
+    <test name = "home">
+        <parameter name="uRL" value="https://demoqa.com/"/>
+
+        <classes>
+            <class name = "org.Tests.HomePageTest" />
+        </classes>
+    </test>
+
+    <test name = "elements">
+        <parameter name="uRL" value="https://demoqa.com/elements"/>
+        <parameter name="pageTitle" value="Elements"/>
+        <parameter name="elementsSize" value="9"/>
+
+        <classes>
+            <class name = "org.Tests.ElementsPageTest" />
+        </classes>
+    </test>
+
+    <test name = "forms">
+        <parameter name="uRL" value="https://demoqa.com/forms"/>
+        <parameter name="pageTitle" value="Forms"/>
+
+        <classes>
+            <class name = "org.Tests.FormsPageTest" />
+        </classes>
+    </test>
+
+    <test name = "alerts,frame and windows">
+        <parameter name="uRL" value="https://demoqa.com/alertsWindows"/>
+        <parameter name="elementsSize" value="5"/>
+
+        <classes>
+            <class name = "org.Tests.AlertsPageFrameWindowsPageTest" />
+        </classes>
+    </test>
+
+    <test name = "widgets">
+        <parameter name="uRL" value="https://demoqa.com/widgets"/>
+        <parameter name="elementsSize" value="9"/>
+
+        <classes>
+            <class name = "org.Tests.WidgetsPageTest" />
+        </classes>
+    </test>
+
+    <test name = "interactions">
+        <parameter name="uRL" value="https://demoqa.com/interaction"/>
+        <parameter name="elementsSize" value="5"/>
+
+        <classes>
+            <class name = "org.Tests.InteractionsPageTest" />
+        </classes>
+    </test>
+
+    <test name = "Book Store Application">
+        <parameter name="uRL" value="https://demoqa.com/books"/>
+        <parameter name="firstTitleTable" value="Image"/>
+        <parameter name="secondTitleTable" value="Title"/>
+        <parameter name="thirdTitleTable" value="Author"/>
+        <parameter name="fourthTitleTable" value="Publisher"/>
+        <parameter name="titleOfFirstBook" value="Git Pocket Guide"/>
+        <parameter name="titleOfSecondBook" value="Learning JavaScript Design Patterns"/>
+        <parameter name="titleOfThirdBook" value="Designing Evolvable Web APIs with ASP.NET"/>
+        <parameter name="titleOfFourthBook" value="Speaking JavaScript"/>
+        <parameter name="titleOfFifthBook" value="You Don't Know JS"/>
+        <parameter name="titleOfSixthBook" value="Programming JavaScript Applications"/>
+        <parameter name="titleOfSeventhBook" value="Eloquent JavaScript, Second Edition"/>
+        <parameter name="titleOfEighthBook" value="Understanding ECMAScript 6"/>
+        <parameter name="authorOfGitPocketGuideBook" value="Richard E. Silverman"/>
+        <parameter name="authorOfLearningJavaScriptDesignPatternsBook" value="Addy Osmani"/>
+        <parameter name="authorOfDesigningEvolvableWebAPIswithASPNETBook" value="Glenn Block et al."/>
+        <parameter name="authorOfSpeakingJavaScriptBook" value="Axel Rauschmayer"/>
+        <parameter name="authorOfYouDontKnowJSBook" value="Kyle Simpson"/>
+        <parameter name="authorOfProgrammingJavaScriptApplicationsBook" value="Eric Elliott"/>
+        <parameter name="authorOfEloquentJavaScriptSecondEditionBook" value="Marijn Haverbeke"/>
+        <parameter name="authorOfUnderstandingECMAScript6Book" value="Nicholas C. Zakas"/>
+        <parameter name="publisherOfBooks" value="O'Reilly Media"/>
+        <parameter name="SecondPublisherOfBooks" value="No Starch Press"/>
+        <parameter name="searchBarPlaceholder" value="Type to search"/>
+        <parameter name="searchBar" value="GIT"/>
+        <parameter name="titleExpected" value="Git"/>
+        <parameter name="elementsSize" value="4"/>
+
+        <classes>
+            <class name = "org.Tests.BookStorePageTest" />
+        </classes>
+    </test>
+
+    <test name = "Text Box">
+        <parameter name="pageTitle" value="Text Box"/>
+        <parameter name="username" value="desconocido1"/>
+        <parameter name="email" value="example@12.gov"/>
+        <parameter name="address" value="Street unknown"/>
+        <parameter name="permanentAddress" value="Permanent street unknown"/>
+        <parameter name="userNameMessage" value="Name:"/>
+        <parameter name="emailMessage" value="Email:"/>
+        <parameter name="addressMessage" value="Current Address :"/>
+        <parameter name="permanentAddressMessage" value="Permananet Address :"/>
+
+        <classes>
+            <class name = "org.Tests.TextBoxPageTest" />
+        </classes>
+    </test>
+
+    <test name = "Check Box">
+        <parameter name="pageTitle" value="Check Box"/>
+
+        <classes>
+            <class name = "org.Tests.CheckBoxPageTest" />
+        </classes>
+    </test>
+
+    <test name = "Radio Button">
+        <parameter name="pageTitle" value="Radio Button"/>
+        <parameter name="yesRadioButtonMessage" value="Yes"/>
+        <parameter name="ImpressiveRadioButtonMessage" value="Impressive"/>
+
+        <classes>
+            <class name = "org.Tests.RadioButtonPageTest" />
+        </classes>
+    </test>
+
+    <test name = "Web Tables">
+        <parameter name="pageTitle" value="Web Tables"/>
+        <parameter name="searchBox" value="Kierra"/>
+        <parameter name="messageNoRowsFound" value="No rows found"/>
+        <parameter name="name" value="Aleatorio"/>
+        <parameter name="lastName" value="apellido"/>
+        <parameter name="email" value="locosaurio@loco.com"/>
+        <parameter name="age" value="12"/>
+        <parameter name="salary" value="1000000"/>
+        <parameter name="department" value="IT"/>
+
+
+        <classes>
+            <class name = "org.Tests.WebTablesPageTest" />
+        </classes>
+    </test>
+
+    <test name = "Buttons">
+        <parameter name="pageTitle" value="Buttons"/>
+        <parameter name="DoubleClickMessage" value="You have done a double click"/>
+        <parameter name="RightClickMessage" value="You have done a right click"/>
+        <parameter name="ClickMeMessage" value="You have done a dynamic click"/>
+
+        <classes>
+            <class name = "org.Tests.ButtonsPageTest" />
+        </classes>
+    </test>
+
+    <test name = "Links">
+        <parameter name="pageTitle" value="Links"/>
+        <parameter name="uRLHome" value="https://demoqa.com/"/>
+        <parameter name="hTTPTwoZeroOne" value="201"/>
+        <parameter name="hTTPTwoZeroFour" value="204"/>
+        <parameter name="hTTPThreeZeroOne" value="301"/>
+        <parameter name="hTTPFourHundred" value="400"/>
+        <parameter name="hTTPFourZeroOne" value="401"/>
+        <parameter name="hTTPFourZeroThree" value="403"/>
+        <parameter name="hTPPFourZeroFour" value="404"/>
+        <parameter name="messageTwoZeroOne" value="Created"/>
+        <parameter name="messageTwoZeroFour" value="No Content"/>
+        <parameter name="messageThreeZeroOne" value="Moved Permanently"/>
+        <parameter name="messageFourHundred" value="Bad Request"/>
+        <parameter name="messageFourZeroOne" value="Unauthorized"/>
+        <parameter name="messageFourZeroThree" value="Forbidden"/>
+        <parameter name="messageFourZeroFour" value="Not Found"/>
+        <classes>
+            <class name = "org.Tests.LinksPageTest" />
+        </classes>
+    </test>
+
+    <test name = "Broken Links - Images">
+        <parameter name="pageTitle" value="Broken Links - Images"/>
+
+        <classes>
+            <class name = "org.Tests.BrokenLinksPageTest" />
+        </classes>
+    </test>
+
+    <test name = "Upload and Download">
+        <parameter name="pageTitle" value="Upload and Download"/>
+
+        <classes>
+            <class name = "org.Tests.UploadDownloadPageTest" />
+        </classes>
+    </test>
+
+    <test name = "Dynamic Properties">
+        <parameter name="pageTitle" value="Dynamic Properties"/>
+
+        <classes>
+            <class name = "org.Tests.DynamicPropertiesPageTest" />
+        </classes>
+    </test>
+    
+    <test name="Browser Windows">
+        <parameter name="pageTitle" value="Browser Windows"/>
+        <parameter name="messageOfNewWindow" value="Knowledge increases by sharing but not by saving. Please share this website with your friends and in your organization."/>
+
+        <classes>
+            <class name="org.Tests.BrowserWindowsPageTest"/>
+        </classes>
+    </test>
+
+    <test name = "Alerts">
+        <parameter name="pageTitle" value="Alerts"/>
+        <parameter name="acceptAlertMessage" value="You selected Ok"/>
+        <parameter name="dismissAlertMessage" value="You selected Cancel"/>
+        <parameter name="inputAlert" value="lolada"/>
+        <parameter name="inputAlertMessage" value="You entered "/>
+
+
+        <classes>
+            <class name = "org.Tests.AlertsPageTest" />
+        </classes>
+    </test>
+
+    <test name = "Frames">
+        <parameter name="pageTitle" value="Frames"/>
+
+        <classes>
+            <class name = "org.Tests.FramesPageTest" />
+        </classes>
+    </test>
+
+    <test name = "Nested Frames">
+        <parameter name="pageTitle" value="Nested Frames"/>
+        <parameter name="parentFrame" value="Parent frame"/>
+        <parameter name="childIframe" value="Child Iframe"/>
+
+        <classes>
+            <class name = "org.Tests.NestedFramesPageTest" />
+        </classes>
+    </test>
+
+    <test name = "Modal Dialogs">
+        <parameter name="pageTitle" value="Modal Dialogs"/>
+        <parameter name="smallModal" value="This is a small modal. It has very less content"/>
+        <parameter name="largeModal" value="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."/>
+
+        <classes>
+            <class name = "org.Tests.ModalDialogsPageTest" />
+        </classes>
+    </test>
+
+    <test name = "Accordian">
+        <parameter name="pageTitle" value="Accordian"/>
+        <parameter name="firstTopicTitle" value="What is Lorem Ipsum?"/>
+        <parameter name="secondTopicTitle" value="Where does it come from?"/>
+        <parameter name="thirdTopicTitle" value="Why do we use it?"/>
+
+        <classes>
+            <class name = "org.Tests.AccordianPageTest" />
+        </classes>
+    </test>
+
+    <test name = "Auto Complete">
+        <parameter name="pageTitle" value="Auto Complete"/>
+        <parameter name="firstLabel" value="Type multiple color names"/>
+        <parameter name="secondLabel" value="Type single color name"/>
+        <parameter name="firstColor" value="Bla"/>
+        <parameter name="secondColor" value="Whit"/>
+        <parameter name="firstColorExpected" value="Black"/>
+        <parameter name="secondColorExpected" value="White"/>
+        <parameter name="color" value="Voil"/>
+        <parameter name="colorExpected" value="Voilet"/>
+
+        <classes>
+            <class name = "org.Tests.AutoCompletePageTest" />
+        </classes>
+    </test>
+
+    <test name = "Date Picker">
+        <parameter name="pageTitle" value="Date Picker"/>
+        <parameter name="firstLabel" value="Select Date"/>
+        <parameter name="secondLabel" value="Date And Time"/>
+        <parameter name="month" value="May"/>
+        <parameter name="day" value="30"/>
+        <parameter name="year" value="2022"/>
+        <parameter name="dateExpected" value="05/30/2022"/>
+        <parameter name="time" value="20:00"/>
+        <parameter name="dateTimeExpected" value="May 30, 2022 8:00 PM"/>
+
+        <classes>
+            <class name = "org.Tests.DatePickerPageTest" />
+        </classes>
+    </test>
+
+    <test name = "Slider">
+        <parameter name="pageTitle" value="Slider"/>
+
+        <classes>
+            <class name = "org.Tests.SliderPageTest" />
+        </classes>
+    </test>
+
+    <test name = "Progress Bar">
+        <parameter name="pageTitle" value="Progress Bar"/>
+        <parameter name="firstLabel" value="Progress Bar"/>
+        <parameter name="fullBarPercentage" value="100%"/>
+        <parameter name="emptyBarPercentage" value="0%"/>
+
+        <classes>
+            <class name = "org.Tests.ProgressBarPageTest" />
+        </classes>
+    </test>
+
+    <test name = "Tabs">
+        <parameter name="pageTitle" value="Tabs"/>
+        <parameter name="firstTabTitle" value="What"/>
+        <parameter name="secondTabTitle" value="Origin"/>
+        <parameter name="thirdTabTitle" value="Use"/>
+        <parameter name="whatTabText" value="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."/>
+        <parameter name="firstParagraphOfOriginTabText" value='Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.'/>
+        <parameter name="secondParaGraphOfOriginTabText" value='The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.'/>
+        <parameter name="useTabText" value="It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."/>
+
+        <classes>
+            <class name = "org.Tests.TabsPageTest"/>
+        </classes>
+    </test>
+
+    <test name = "Tool tips">
+        <parameter name="pageTitle" value="Tool Tips"/>
+        <parameter name="subTitle" value="Practice Tool Tips"/>
+
+        <classes>
+            <class name = "org.Tests.ToolTipsPageTest"/>
+        </classes>
+    </test>
+
+    <test name = "Menu">
+        <parameter name="pageTitle" value="Menu"/>
+
+        <classes>
+            <class name = "org.Tests.MenuPageTest"/>
+        </classes>
+    </test>
+
+    <test name = "Select Menu">
+        <parameter name="pageTitle" value="Select Menu"/>
+        <parameter name="firstLabel" value="Select Value"/>
+        <parameter name="expectedValue" value=" option Group 1, option 2, selected. Group 1, option 2"/>
+        <parameter name="secondLabel" value="Select One"/>
+        <parameter name="expectedOne" value=" option Mr., selected.  Mr."/>
+        <parameter name="thirdLabel" value="Old Style Select Menu"/>
+        <parameter name="expectedOldValue" value="6"/>
+        <parameter name="fourthLabel" value="Multiselect drop down"/>
+        <parameter name="firstExpectedMultiValue" value="Green"/>
+        <parameter name="secondExpectedMultiValue" value="Blue"/>
+        <parameter name="thirdExpectedMultiValue" value="Black"/>
+        <parameter name="fourthExpectedMultiValue" value="Red"/>
+        <parameter name="fifthLabel" value="Standard multi select"/>
+        <parameter name="selectFirstValueOnStandardMultiSelect" value="Volvo"/>
+        <parameter name="selectSecondValueOnStandardMultiSelect" value="Saab"/>
+        <parameter name="selectThirdValueOnStandardMultiSelect" value="Opel"/>
+        <parameter name="selectFourthValueOnStandardMultiSelect" value="Audi"/>
+
+        <classes>
+            <class name = "org.Tests.SelectMenuPageTest" />
+        </classes>
+    </test>
+
+    <test name = "Sortable">
+        <parameter name="pageTitle" value="Sortable" />
+        <parameter name="numberOne" value="One" />
+        <parameter name="numberTwo" value="Two" />
+        <parameter name="numberThree" value="Three" />
+        <parameter name="numberFour" value="Four" />
+
+        <classes>
+            <class name = "org.Tests.SortablePageTest" />
+        </classes>
+    </test>
+
+    <test name = "Selectable">
+        <parameter name="pageTitle" value="Selectable" />
+
+        <classes>
+            <class name = "org.Tests.SelectablePageTest" />
+        </classes>
+    </test>
+
+    <test name = "Resizable">
+        <parameter name="pageTitle" value="Resizable" />
+        <parameter name="WeightOfBoxRestricted" value="500px" />
+        <parameter name="HeightOfBoxRestricted" value="300px" />
+        <parameter name="WeightOfResizeBox" value="500px" />
+        <parameter name="HeightOfResizeBox" value="300px" />
+
+        <classes>
+            <class name = "org.Tests.ResizablePageTest" />
+        </classes>
+    </test>
+
+    <test name = "Droppable">
+        <parameter name="pageTitle" value="Droppable"/>
+
+        <classes>
+            <class name = "org.Tests.DroppablePageTest" />
+        </classes>
+    </test>
+
+    <test name = "Draggable">
+        <parameter name="pageTitle" value="Dragabble"/>
+        <parameter name="simpleBoxXPositionExpected" value="10"/>
+        <parameter name="simpleBoxYPositionExpected" value="10"/>
+        <parameter name="restrictedXBoxPositionExpected" value="50"/>
+        <parameter name="restrictedYBoxPositionExpected" value="50"/>
+        <parameter name="containedBoxXPositionExpected" value="100"/>
+        <parameter name="containedBoxYPositionExpected" value="50"/>
+        <parameter name="containedTextXPositionExpected" value="2"/>
+        <parameter name="containedTextYPositionExpected" value="10"/>
+        <parameter name="elementOfCenterCursorXPositionExpected" value="43.0156"/>
+        <parameter name="elementOfCenterCursorYPositionExpected" value="44"/>
+        <parameter name="elementOfTopCursorXPositionExpected" value="154.016"/>
+        <parameter name="elementOfTopCursorYPositionExpected" value="105"/>
+        <parameter name="elementOfBottomCursorXPositionExpected" value="150"/>
+        <parameter name="elementOfBottomCursorYPositionExpected" value="0"/>
+
+        <classes>
+            <class name = "org.Tests.DraggablePageTest" />
+        </classes>
+    </test>
+</suite>
+

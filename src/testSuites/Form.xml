@@ -1,0 +1,52 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name = "Suite2" parallel="methods" thread-count="3">
+
+    <listeners>
+        <listener class-name="Resources.Listeners"/>
+        <listener class-name="Resources.MyTransformer"/>
+    </listeners>
+
+    <test name = "Form">
+        <parameter name="pageTitle" value="Practice Form"/>
+        <parameter name="formTitle" value="Student Registration Form"/>
+        <parameter name="labelName" value="Name"/>
+        <parameter name="labelEmail" value="Email"/>
+        <parameter name="labelGender" value="Gender"/>
+        <parameter name="labelMobile" value="Mobile(10 Digits)"/>
+        <parameter name="labelBirthDate" value="Date of Birth"/>
+        <parameter name="labelSubjects" value="Subjects"/>
+        <parameter name="labelHobbies" value="Hobbies"/>
+        <parameter name="labelPicture" value="Picture"/>
+        <parameter name="labelCurrentAddress" value="Current Address"/>
+        <parameter name="labelStateCity" value="State and City"/>
+        <parameter name="placeholderFirstNameField" value="First Name"/>
+        <parameter name="placeholderLastNameField" value="Last Name"/>
+        <parameter name="placeholderEmailField" value="name@example.com"/>
+        <parameter name="placeholderMobileField" value="Mobile Number"/>
+        <parameter name="placeholderCurrentAddressField" value="Current Address"/>
+        <parameter name="placeholderStatesListBox" value="Select State"/>
+        <parameter name="placeholderCitiesListBox" value="Select City"/>
+
+
+
+        <parameter name="browser" value="chrome"/>
+        <parameter name="nameValue" value="name"/>
+        <parameter name="lastnameValue" value="lastname"/>
+        <parameter name="emailValue" value="email@test.qaz"/>
+        <parameter name="genderValue" value="Other"/>
+        <parameter name="phoneValue" value="1234567891"/>
+        <parameter name="monthValue" value="February"/>
+        <parameter name="dayValue" value="11"/>
+        <parameter name="yearValue" value="2004"/>
+        <parameter name="subjectValue" value="Maths"/>
+        <parameter name="textValue"
+                   value="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."/>
+        <parameter name="stateValue" value="Haryana"/>
+        <parameter name="cityValue" value="Karnal"/>
+        <classes>
+            <class name = "org.Tests.PracticeFormPageTest" />
+        </classes>
+    </test>
+</suite>
