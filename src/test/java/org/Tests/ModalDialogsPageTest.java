@@ -48,5 +48,4 @@ public class ModalDialogsPageTest extends TestBase {
         modalDialogsPage.clickOnLargeModalButton();
         Assert.assertTrue(modalDialogsPage.isCloseLargeModalVisible());
     }
-        
 }

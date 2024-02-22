@@ -93,6 +93,4 @@ public class BSRegisterTest extends TestBase {
         Assert.assertNotEquals(bsRegisterPage.getCurrentUrl(), bsRegisterPage.clickOnBackToLogin().getCurrentUrl());
         bsRegisterPage.backToPage();
     }
-
-
 }

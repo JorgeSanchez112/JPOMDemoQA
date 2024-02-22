@@ -25,16 +25,18 @@ public class ResizablePage extends BasePages {
         PageFactory.initElements(driver,this);
     }
 
-    public void resizeBoxRestrictedToMax() throws InterruptedException {
+    public void resizeBoxRestrictedToMax(int sizeX, int sizeY) throws InterruptedException {
         scroll(resizableBoxRestricted);
+        hidePublicity(rightSidePublicity);
         Thread.sleep(1000);
-        resizeElement(resizeIconOfBoxRestricted, 300, 100);
+        resizeElement(resizeIconOfBoxRestricted, sizeX, sizeY);
     }
 
-    public void resizeBoxTo500() throws InterruptedException {
+    public void resizeBoxTo500(int sizeX, int sizeY) throws InterruptedException {
         scroll(resizableBox);
+        hidePublicity(rightSidePublicity);
         Thread.sleep(1000);
-        resizeElement(resizeIcon, 300, 100);
+        resizeElement(resizeIcon, sizeX, sizeY);
     }
 
     public String getPageTitleText(){

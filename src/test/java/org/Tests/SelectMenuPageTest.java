@@ -103,5 +103,4 @@ public class SelectMenuPageTest extends TestBase {
         Assert.assertTrue(selectMenuPage.isOpelSelectedOfStandardMultiSelect());
         Assert.assertTrue(selectMenuPage.isAudiSelectedOfStandardMultiSelect());
     }
-
 }

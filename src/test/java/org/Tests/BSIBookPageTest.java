@@ -8,7 +8,6 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class BSIBookPageTest extends TestBase {
-
     @Parameters("bookTitle")
     @BeforeMethod
     public void initializeClass(String bookTitle){

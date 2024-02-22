@@ -7,12 +7,11 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class ButtonsPageTest extends TestBase {
-
     @BeforeMethod
     public void initializeClass(){
        buttonsPage = homePage.clickOnSectionElements().clickOnButtonsSection();
     }
-    //CHANGE ALL
+
     @Parameters("pageTitle")
     @Test
     public void validateCorrectPageTitle(String pageTitle){
@@ -39,5 +38,4 @@ public class ButtonsPageTest extends TestBase {
         buttonsPage.clickOnClickMe();
         Assert.assertEquals(buttonsPage.getClickMeMessageText(),clickMeMessage);
     }
-
 }

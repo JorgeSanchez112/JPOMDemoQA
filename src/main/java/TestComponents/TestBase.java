@@ -65,6 +65,12 @@ public class TestBase {
     protected BSIBookPage bsiBookPage;
     protected BSAPIPage bsapiPage;
 
+//    BsProfileTest -Laking Do the Delete Account method
+//    ResizablePageT
+//    SelectMenuPageT
+//    SortablePageT
+//    BookStorePageT
+
     public TestBase() {
         try {
             prop = new Properties();

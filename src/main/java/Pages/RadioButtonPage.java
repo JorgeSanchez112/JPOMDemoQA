@@ -42,6 +42,18 @@ public class RadioButtonPage extends BasePages {
         return pageTitle.getText();
     }
 
+    public String getYesLabelText(){
+        return yesRadioButton.getText();
+    }
+
+    public String getImpressiveLabelText(){
+        return impressiveRadioButton.getText();
+    }
+
+    public String getNoLabelText(){
+        return disabledRadioButton.getText();
+    }
+
     public String response(){
         return responseText.getText();
     }

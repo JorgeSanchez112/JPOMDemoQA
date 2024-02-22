@@ -186,7 +186,7 @@ public class PracticeFormPageTest extends TestBase {
         Assert.assertEquals(practiceFormPage.getCssAttributeCurrentAddressField(), prop.getProperty("RGBGreenColor"));
     }
 
-    @Test //separate this test are much asserts that can be tested for separate
+    @Test
     @Parameters({"nameValue","lastnameValue","emailValue","labelGender","genderValue","phoneValue","labelBirthDate","monthValue","dayValue","yearValue","labelSubjects","subjectValue","labelHobbies","labelPicture","textValue","labelStateCity","stateValue","cityValue"})
     public void validateCorrectRegisterValues(String nameValue, String lastnameValue, String emailValue, String labelGender, String genderValue, String phoneValue, String labelBirthDate, String monthValue, String dayValue, String yearValue, String labelSubjects, String subjectValue, String labelHobbies, String labelPicture, String textValue, String labelStateCity, String stateValue, String cityValue) {
 
@@ -216,5 +216,4 @@ public class PracticeFormPageTest extends TestBase {
         Assert.assertEquals(practiceFormPage.getStateCityText(),labelStateCity);
         Assert.assertEquals(practiceFormPage.getValueOfStateCityRow(), stateValue + " " + cityValue);
     }
-
 }

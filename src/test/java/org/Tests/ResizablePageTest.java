@@ -7,7 +7,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class ResizablePageTest extends TestBase {
-    @BeforeMethod //change all the way of tests, those can be used more dinamycally.
+    @BeforeMethod
     public void initializeClass(){
         resizablePage = homePage.clickOnSectionInteractions().clickOnResizable();
     }
@@ -26,9 +26,9 @@ public class ResizablePageTest extends TestBase {
     @Parameters({"WeightOfBoxRestricted","HeightOfBoxRestricted"})
     @Test
     public void isResizableRestrictedToMax(String WeightOfBoxRestricted, String HeightOfBoxRestricted) throws InterruptedException {
-        resizablePage.resizeBoxRestrictedToMax();
-        Assert.assertEquals(resizablePage.getWeightOfBoxRestricted(),WeightOfBoxRestricted);
-        Assert.assertEquals(resizablePage.getHeightOfBoxRestricted(),HeightOfBoxRestricted);
+        resizablePage.resizeBoxRestrictedToMax((Integer.parseInt(WeightOfBoxRestricted) - 200),(Integer.parseInt(HeightOfBoxRestricted) - 200));
+        Assert.assertEquals(resizablePage.getWeightOfBoxRestricted(),WeightOfBoxRestricted + prop.getProperty("pxMeasurer"));
+        Assert.assertEquals(resizablePage.getHeightOfBoxRestricted(),HeightOfBoxRestricted + prop.getProperty("pxMeasurer"));
     }
 
     @Test
@@ -39,8 +39,8 @@ public class ResizablePageTest extends TestBase {
     @Parameters({"WeightOfResizeBox","HeightOfResizeBox"})
     @Test
     public void isResizableBoxTo500px(String WeightOfResizeBox, String HeightOfResizeBox) throws InterruptedException {
-        resizablePage.resizeBoxTo500();
-        Assert.assertEquals(resizablePage.getWeightOfResizeBox(),WeightOfResizeBox);
-        Assert.assertEquals(resizablePage.getHeightOfResizeBox(),HeightOfResizeBox);
+        resizablePage.resizeBoxTo500((Integer.parseInt(WeightOfResizeBox) - 200),(Integer.parseInt(HeightOfResizeBox) - 200));
+        Assert.assertEquals(resizablePage.getWeightOfResizeBox(),WeightOfResizeBox + prop.getProperty("pxMeasurer"));
+        Assert.assertEquals(resizablePage.getHeightOfResizeBox(),HeightOfResizeBox + prop.getProperty("pxMeasurer"));
     }
 }

@@ -123,7 +123,8 @@
     <test name = "Radio Button">
         <parameter name="pageTitle" value="Radio Button"/>
         <parameter name="yesRadioButtonMessage" value="Yes"/>
-        <parameter name="ImpressiveRadioButtonMessage" value="Impressive"/>
+        <parameter name="impressiveRadioButtonMessage" value="Impressive"/>
+        <parameter name="thirdLabel" value="No"/>
 
         <classes>
             <class name = "org.Tests.RadioButtonPageTest" />
@@ -394,10 +395,10 @@
 
     <test name = "Resizable">
         <parameter name="pageTitle" value="Resizable" />
-        <parameter name="WeightOfBoxRestricted" value="500px" />
-        <parameter name="HeightOfBoxRestricted" value="300px" />
-        <parameter name="WeightOfResizeBox" value="500px" />
-        <parameter name="HeightOfResizeBox" value="300px" />
+        <parameter name="WeightOfBoxRestricted" value="500" />
+        <parameter name="HeightOfBoxRestricted" value="300" />
+        <parameter name="WeightOfResizeBox" value="500" />
+        <parameter name="HeightOfResizeBox" value="300" />
 
         <classes>
             <class name = "org.Tests.ResizablePageTest" />

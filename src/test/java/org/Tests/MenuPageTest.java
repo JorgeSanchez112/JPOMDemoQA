@@ -64,5 +64,4 @@ public class MenuPageTest extends TestBase {
         menuPage.moveClickerToSubSubList();
         Assert.assertTrue(menuPage.isSubSubItem2Displayed());
     }
-
 }

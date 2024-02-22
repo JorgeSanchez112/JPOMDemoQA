@@ -85,9 +85,25 @@ public class BSProfilePage extends BasePages {
         clickWithWait(deleteAccountButton);
     }
 
+    public void tryToDeleteAccount(){
+        clickOnDeleteAccountButton();
+        cancelDeleteAccountOrBooks();
+    }
+
     public void clickOnDeleteAllBooksButton(){
         scroll(deleteAllBooksButton);
         clickWithWait(deleteAllBooksButton);
+    }
+
+    public void tryToDeleteAllBooks(){
+        clickOnDeleteAllBooksButton();
+        cancelDeleteAccountOrBooks();
+    }
+
+    public void deleteAllBooks(){
+        clickOnDeleteAllBooksButton();
+        acceptDeleteAccountOrBooks();
+        acceptAlert();
     }
 
     public void clickOnIconTrash(String titleBook){

@@ -23,5 +23,4 @@ public class FormsPageTest extends TestBase {
     public void validateCorrectMenuListVisible(String menuListText){
         Assert.assertEquals(formsPage.getMenuListText(),menuListText);
     }
-
 }

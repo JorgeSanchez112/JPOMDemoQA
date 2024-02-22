@@ -102,9 +102,8 @@ public class BSLoginPage extends BasePages {
         return new BSRegisterPage(driver);
     }
 
-    public void userLogin(String username,String password) throws InterruptedException {
-        hidePublicity(advertisement);
-        Thread.sleep(2000);
+    public void userLogin(String username,String password){
+        waitForVisibleElement(loginButton);
         typeOnUsernameInput(username);
         typeOnPasswordInput(password);
         clickOnLoginButton();

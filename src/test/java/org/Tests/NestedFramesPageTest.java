@@ -38,5 +38,4 @@ public class NestedFramesPageTest extends TestBase {
         nestedFramesPage.switchToChildFrame();
         Assert.assertEquals(nestedFramesPage.getChildText(),childIframe);
     }
-
 }

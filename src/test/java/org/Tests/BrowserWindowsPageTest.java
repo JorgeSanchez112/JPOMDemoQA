@@ -17,7 +17,6 @@ public class BrowserWindowsPageTest extends TestBase {
     @Test
     public void validateCorrectPageTitle(String pageTitle){
         Assert.assertEquals(browserWindows.getPageTitleText(), pageTitle);
-
     }
 
     @Test
@@ -43,5 +42,4 @@ public class BrowserWindowsPageTest extends TestBase {
         browserWindows.switchToTab();
         Assert.assertEquals(browserWindows.getMessageOfNewWindow(), messageOfNewWindow);
     }
-
 }

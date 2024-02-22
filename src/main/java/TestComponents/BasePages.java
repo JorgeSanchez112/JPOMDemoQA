@@ -20,7 +20,12 @@ public class BasePages {
 
     @FindBy(className = "text-center")
     protected WebElement pageTitle;
+    @FindBy(id = "RightSide_Advertisement")
+    protected WebElement rightSidePublicity;
     protected WebDriver driver;
+
+
+
 
     public BasePages(WebDriver driver) {
         this.driver = driver;
@@ -37,7 +42,6 @@ public class BasePages {
         }catch (TimeoutException e){
             e.printStackTrace();
         }
-
     }
 
     public void hidePublicity(WebElement element){
@@ -146,21 +150,12 @@ public class BasePages {
     public void clickWithWait(WebElement element){
         try {
             try {
-                try{
-                    try{
-                        waitForClick(element);
-                        element.click();
-                    }catch (TimeoutException e){
-                        e.printStackTrace();
-                    }
-                }catch (NoSuchElementException e){
-                    e.printStackTrace();
-                }
-
+                waitForClick(element);
+                element.click();
             }catch (ElementClickInterceptedException e){
                 e.printStackTrace();
             }
-        }catch (StaleElementReferenceException e){
+        }catch (WebDriverException e){
             e.printStackTrace();
         }
     }
@@ -242,7 +237,7 @@ public class BasePages {
                 } else if (x == sizeList) {
                     System.out.println("value does not available");
                 }
-            }catch (StaleElementReferenceException e){
+            }catch (WebDriverException e){
                 e.printStackTrace();
             }
         }
@@ -262,7 +257,7 @@ public class BasePages {
                 }else if (x == sizeList){
                     System.out.println("day does not exist");
                 }
-            }catch (StaleElementReferenceException e){
+            }catch (WebDriverException e){
                 System.out.println(e.getMessage());
             }
 
