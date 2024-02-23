@@ -23,11 +23,11 @@ public class ResizablePageTest extends TestBase {
         Assert.assertTrue(resizablePage.isResizableRestrictedTextVisible());
     }
 
-    @Parameters({"WeightOfBoxRestricted","HeightOfBoxRestricted"})
+    @Parameters({"WidthOfBoxRestricted","HeightOfBoxRestricted"})
     @Test
-    public void isResizableRestrictedToMax(String WeightOfBoxRestricted, String HeightOfBoxRestricted) throws InterruptedException {
-        resizablePage.resizeBoxRestrictedToMax((Integer.parseInt(WeightOfBoxRestricted) - 200),(Integer.parseInt(HeightOfBoxRestricted) - 200));
-        Assert.assertEquals(resizablePage.getWeightOfBoxRestricted(),WeightOfBoxRestricted + prop.getProperty("pxMeasurer"));
+    public void isResizableRestrictedToMax(String WidthOfBoxRestricted, String HeightOfBoxRestricted) {
+        resizablePage.resizeBoxRestrictedToMax(Integer.parseInt(WidthOfBoxRestricted),Integer.parseInt(HeightOfBoxRestricted));
+        Assert.assertEquals(resizablePage.getWidthOfBoxRestricted(),WidthOfBoxRestricted + prop.getProperty("pxMeasurer"));
         Assert.assertEquals(resizablePage.getHeightOfBoxRestricted(),HeightOfBoxRestricted + prop.getProperty("pxMeasurer"));
     }
 
@@ -36,11 +36,11 @@ public class ResizablePageTest extends TestBase {
         Assert.assertTrue(resizablePage.isResizableTextVisible());
     }
 
-    @Parameters({"WeightOfResizeBox","HeightOfResizeBox"})
+    @Parameters({"WidthOfResizeBox","HeightOfResizeBox"})
     @Test
-    public void isResizableBoxTo500px(String WeightOfResizeBox, String HeightOfResizeBox) throws InterruptedException {
-        resizablePage.resizeBoxTo500((Integer.parseInt(WeightOfResizeBox) - 200),(Integer.parseInt(HeightOfResizeBox) - 200));
-        Assert.assertEquals(resizablePage.getWeightOfResizeBox(),WeightOfResizeBox + prop.getProperty("pxMeasurer"));
+    public void isResizableBoxTo500px(String WidthOfResizeBox, String HeightOfResizeBox) {
+        resizablePage.resizeFreeBox(Integer.parseInt(WidthOfResizeBox),Integer.parseInt(HeightOfResizeBox));
+        Assert.assertEquals(resizablePage.getWidthOfResizeBox(),WidthOfResizeBox + prop.getProperty("pxMeasurer"));
         Assert.assertEquals(resizablePage.getHeightOfResizeBox(),HeightOfResizeBox + prop.getProperty("pxMeasurer"));
     }
 }

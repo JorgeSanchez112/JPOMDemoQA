@@ -3,15 +3,14 @@ package Resources;
 import TestComponents.TestBase;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.model.Log;
+import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 
 public class Listeners extends TestBase implements ITestListener {
     ExtentTest test;
@@ -33,18 +32,29 @@ public class Listeners extends TestBase implements ITestListener {
     public void onTestFailure(ITestResult result) {
         extentTest.get().fail(result.getThrowable());
 
-        Object testClass = result.getInstance();
-        try {
-            driver = ((TestBase) testClass).initialization();
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
+        String filePath = null;
+        WebDriver driver = webDriverThreadLocal.get();
+        if (driver != null) {
+            try {
+                System.out.println(driver);
+                filePath = getScreenShot(result.getTestClass().getTestName(), driver);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("WebDriver instance is null. Skipping screenshot capture.");
         }
+        extentTest.get().addScreenCaptureFromPath(filePath, result.getMethod().getMethodName());
 
+
+       /* String filePath = null;
         try {
-            test.fail(MediaEntityBuilder.createScreenCaptureFromBase64String(getScreenShot(driver), result.getMethod().getMethodName()).build());
+            System.out.println(webDriverThreadLocal.get());
+            filePath = getScreenShot(result.getTestClass().getTestName(),webDriverThreadLocal.get());
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
+        extentTest.get().addScreenCaptureFromPath(filePath, result.getMethod().getMethodName());*/
     }
 
     @Override

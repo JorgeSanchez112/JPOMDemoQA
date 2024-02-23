@@ -20,22 +20,27 @@ public class ResizablePage extends BasePages {
     @FindBy(css = "#resizable > .react-resizable-handle")
     private WebElement resizeIcon;
 
+    private int sizeX = 0;
+    private int sizeY = 0;
+
     public ResizablePage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver,this);
     }
 
-    public void resizeBoxRestrictedToMax(int sizeX, int sizeY) throws InterruptedException {
+    public void resizeBoxRestrictedToMax(int width, int height){
+        sizeX = subtractBaseSize(Integer.parseInt(getWidthOfBoxRestricted()),width);
+        sizeY = subtractBaseSize(Integer.parseInt(getHeightOfBoxRestricted()),height);
         scroll(resizableBoxRestricted);
         hidePublicity(rightSidePublicity);
-        Thread.sleep(1000);
         resizeElement(resizeIconOfBoxRestricted, sizeX, sizeY);
     }
 
-    public void resizeBoxTo500(int sizeX, int sizeY) throws InterruptedException {
+    public void resizeFreeBox(int width, int height){
+        sizeX = subtractBaseSize(Integer.parseInt(getHeightOfResizeBox()),width);
+        sizeY = subtractBaseSize(Integer.parseInt(getWidthOfResizeBox()),height);
         scroll(resizableBox);
         hidePublicity(rightSidePublicity);
-        Thread.sleep(1000);
         resizeElement(resizeIcon, sizeX, sizeY);
     }
 
@@ -43,11 +48,11 @@ public class ResizablePage extends BasePages {
         return pageTitle.getText();
     }
 
-    public String getWeightOfBoxRestricted(){
+    public String getWidthOfBoxRestricted(){
         return resizableBoxRestricted.getCssValue("width");
     }
 
-    public String getWeightOfResizeBox(){
+    public String getWidthOfResizeBox(){
         return resizableBox.getCssValue("width");
     }
 
@@ -57,6 +62,10 @@ public class ResizablePage extends BasePages {
 
     public String getHeightOfResizeBox(){
         return resizableBox.getCssValue("height");
+    }
+
+    public int subtractBaseSize(int BaseSize, int value){
+        return BaseSize - value;
     }
 
     public boolean isResizableRestrictedTextVisible(){

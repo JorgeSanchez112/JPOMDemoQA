@@ -1,7 +1,7 @@
 package TestComponents;
 
 import Pages.*;
-import org.apache.hc.client5.http.utils.Base64;
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeOptions;
@@ -10,6 +10,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.*;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -20,7 +21,7 @@ import java.util.Properties;
 
 public class TestBase {
 
-    protected final ThreadLocal<WebDriver> webDriverThreadLocal = new ThreadLocal<>();
+    protected ThreadLocal<WebDriver> webDriverThreadLocal = new ThreadLocal<>();
     protected WebDriver driver;
     protected Properties prop;
     protected HomePage homePage;
@@ -66,10 +67,26 @@ public class TestBase {
     protected BSAPIPage bsapiPage;
 
 //    BsProfileTest -Laking Do the Delete Account method
-//    ResizablePageT
 //    SelectMenuPageT
 //    SortablePageT
-//    BookStorePageT
+//    BookStorePageTProgress Bar
+//Tabs
+//Draggable
+//
+//
+
+///////
+//elements
+//Text Box
+//Check Box
+//Radio Button
+//Browser Windows
+//Alerts
+//Frames
+//Nested Frames
+//Menu
+//Select Menu
+//Droppable
 
     public TestBase() {
         try {
@@ -81,15 +98,13 @@ public class TestBase {
         }
     }
 
-    public String getScreenShot(WebDriver driver) throws IOException {
-        TakesScreenshot ts = (TakesScreenshot) driver;
-        byte[] screenshotBytes = ts.getScreenshotAs(OutputType.BYTES);
-
-        // Convert the byte array to Base64
-        byte[] base64Bytes = Base64.encodeBase64(screenshotBytes);
-
-        // Return the Base64 encoded string
-        return "data:image/png;base64," + new String(base64Bytes);
+    public String getScreenShot(String testCaseName,WebDriver driver) throws IOException {
+        System.out.println(driver);
+        TakesScreenshot ts = (TakesScreenshot)driver;
+        File source = ts.getScreenshotAs(OutputType.FILE);
+        File file = new File(System.getProperty("user.dir") + "\\reports\\" + testCaseName + ".png");
+        FileUtils.copyFile(source, file);
+        return System.getProperty("user.dir") + "//reports//" + testCaseName + ".png";
     }
 
 

@@ -123,12 +123,16 @@ public class BasePages {
     }
 
     public void waitForChargedElementsOfAWebElementList(List<WebElement> elementsList){
-        FluentWait wait = new FluentWait(driver);
         try {
             try {
-                wait.withTimeout(Duration.ofSeconds(10));
-                wait.pollingEvery(Duration.ofMillis(250));
-                wait.until(ExpectedConditions.visibilityOfAllElements(elementsList));
+                try{
+                    FluentWait wait = new FluentWait(driver);
+                    wait.withTimeout(Duration.ofSeconds(10));
+                    wait.pollingEvery(Duration.ofMillis(250));
+                    wait.until(ExpectedConditions.visibilityOfAllElements(elementsList));
+                }catch (NoSuchElementException e){
+                    e.printStackTrace();
+                }
             }catch (NoSuchElementException e){
                 e.printStackTrace();
             }

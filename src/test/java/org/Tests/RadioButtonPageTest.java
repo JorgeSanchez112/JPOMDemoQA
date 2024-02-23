@@ -32,13 +32,13 @@ public class RadioButtonPageTest extends TestBase {
     @Parameters("impressiveRadioButtonMessage")
     @Test
     public void validateImpressiveLabelIsCorrect(String impressiveRadioButtonMessage){
-        Assert.assertEquals(radioButtonPage.getYesLabelText(),impressiveRadioButtonMessage);
+        Assert.assertEquals(radioButtonPage.getImpressiveLabelText(),impressiveRadioButtonMessage);
     }
 
     @Parameters("thirdLabel")
     @Test
     public void validateNoLabelIsCorrect(String thirdLabel){
-        Assert.assertEquals(radioButtonPage.getYesLabelText(),thirdLabel);
+        Assert.assertEquals(radioButtonPage.getNoLabelText(),thirdLabel);
     }
 
     @Parameters("yesRadioButtonMessage")
@@ -48,11 +48,11 @@ public class RadioButtonPageTest extends TestBase {
         Assert.assertEquals(radioButtonPage.response(),yesRadioButtonMessage);
     }
 
-    @Parameters("ImpressiveRadioButtonMessage")
+    @Parameters("impressiveRadioButtonMessage")
     @Test
-    public void validateImpressiveRadioButton(String ImpressiveRadioButtonMessage){
+    public void validateImpressiveRadioButton(String impressiveRadioButtonMessage){
         radioButtonPage.clickOnImpressiveRB();
-        Assert.assertEquals(radioButtonPage.response(),ImpressiveRadioButtonMessage);
+        Assert.assertEquals(radioButtonPage.response(),impressiveRadioButtonMessage);
     }
 
     @Test

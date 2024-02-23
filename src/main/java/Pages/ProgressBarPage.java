@@ -22,10 +22,12 @@ public class ProgressBarPage extends BasePages {
     }
 
     public void clickOnStartButton(){
+        scroll(startButton);
         clickWithWait(startButton);
     }
 
     public void clickOnResetButton(){
+        scroll(resetButton);
         clickWithWait(resetButton);
     }
 
