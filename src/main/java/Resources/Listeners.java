@@ -4,8 +4,13 @@ import TestComponents.TestBase;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.markuputils.ExtentColor;
+import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.model.Log;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -16,6 +21,16 @@ public class Listeners extends TestBase implements ITestListener {
     ExtentTest test;
     ExtentReports extent = ExtentReporterNG.getReportObject();
     ThreadLocal<ExtentTest> extentTest = new ThreadLocal<>();
+
+    public String takeScreenshot(WebDriver driver) throws IOException {
+        try {
+            TakesScreenshot screenshot = (TakesScreenshot) driver;
+            return screenshot.getScreenshotAs(OutputType.BASE64);
+        } catch (WebDriverException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     @Override
     public void onTestStart(ITestResult result) {
@@ -30,31 +45,18 @@ public class Listeners extends TestBase implements ITestListener {
 
     @Override
     public void onTestFailure(ITestResult result) {
+        extentTest.get().log(Status.FAIL, MarkupHelper.createLabel(result.getName() + " - Test Case Failed", ExtentColor.RED));
         extentTest.get().fail(result.getThrowable());
 
-        String filePath = null;
-        WebDriver driver = webDriverThreadLocal.get();
+        WebDriver driver = ((TestBase) result.getInstance()).getDriver();
         if (driver != null) {
             try {
-                System.out.println(driver);
-                filePath = getScreenShot(result.getTestClass().getTestName(), driver);
+                String base64Screenshot = takeScreenshot(driver);
+                extentTest.get().addScreenCaptureFromBase64String(base64Screenshot);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        } else {
-            System.out.println("WebDriver instance is null. Skipping screenshot capture.");
         }
-        extentTest.get().addScreenCaptureFromPath(filePath, result.getMethod().getMethodName());
-
-
-       /* String filePath = null;
-        try {
-            System.out.println(webDriverThreadLocal.get());
-            filePath = getScreenShot(result.getTestClass().getTestName(),webDriverThreadLocal.get());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        extentTest.get().addScreenCaptureFromPath(filePath, result.getMethod().getMethodName());*/
     }
 
     @Override
@@ -76,4 +78,5 @@ public class Listeners extends TestBase implements ITestListener {
     public void onFinish(ITestContext context){
         extent.flush();
     }
+
 }

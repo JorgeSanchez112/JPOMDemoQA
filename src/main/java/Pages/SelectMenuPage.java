@@ -2,6 +2,7 @@ package Pages;
 
 import TestComponents.BasePages;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,25 +12,29 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.List;
 
 public class SelectMenuPage extends BasePages {
-    @FindBy(css = "#selectMenuContainer > div:nth-child(1) > div")
+    @FindBy(css = "#selectMenuContainer > div:nth-child(2) > div")
     private WebElement valueLabel;
-    @FindBy(id = "withOptGroup")
-    private WebElement selectValueContainer;
+    @FindBy(className = "css-1uccc91-singleValue")
+    private WebElement valueOfSelectValueContainer;
     @FindBy(id = "react-select-2-input")
     private WebElement selectValueInput;
-    @FindBy(css = "#selectMenuContainer > div:nth-child(3) > div")
+    @FindBy(css = "#selectMenuContainer > div:nth-child(4) > div")
     private WebElement oneLabel;
     @FindBy(id = "selectOne")
     private WebElement selectOneContainer;
+    @FindBy(css = "#selectOne >* .css-1uccc91-singleValue")
+    private WebElement valueOfSelectOneContainer;
     @FindBy(id = "react-select-3-input")
     private WebElement selectOneInput;
-    @FindBy(css = "#selectMenuContainer > div:nth-child(5) > div")
+    @FindBy(css = "#selectMenuContainer > div:nth-child(6) > div")
     private WebElement oldStyleSelectLabel;
     @FindBy(id = "oldSelectMenu")
     private WebElement oldStyleSelectMenu;
+    @FindBy(css = "#oldSelectMenu >*")
+    private List<WebElement> optionsOFOldStyleMenu;
     @FindBy(css = ".col-md-6.col-sm-12 > p")
     private List<WebElement> fourthAndFifthLabels;
-    @FindBy(css = "#selectMenuContainer > .row:nth-child(7) > .col-sm-12 > .css-2b097c-container")
+    @FindBy(css = "#selectMenuContainer > .row:nth-child(8) >*  .css-2b097c-container")
     private WebElement multiSelectDropDownContainer;
     @FindBy(css = "#react-select-4-input")
     private WebElement multiSelectDropDownInput;
@@ -45,9 +50,6 @@ public class SelectMenuPage extends BasePages {
         PageFactory.initElements(driver,this);
     }
 
-    public void clickOnSelectValueContainer(){
-        selectValueContainer.click();
-    }
     public void clickOnSelectOneContainer(){
         scroll(selectOneContainer);
         clickWithWait(selectOneContainer);
@@ -58,16 +60,17 @@ public class SelectMenuPage extends BasePages {
         clickWithWait(multiSelectDropDownContainer);
     }
 
-    public void downOneOptionInSelectValueDropDown(){
-       selectValueInput.sendKeys(Keys.DOWN);
+    public void typeInSelectValueDropDown(String value){
+        selectValueInput.sendKeys(value);
     }
 
-    public void downOneOptionInSelectOneDropDown(){
-        selectOneInput.sendKeys(Keys.DOWN);
+    public void typeOptionInSelectOneDropDown(String title){
+        selectOneInput.sendKeys(title);
     }
 
-    public void downOneOptionInMultiSelectDropDown(){
-        multiSelectDropDownInput.sendKeys("Green");
+    public void typeAndSelectOptionInMultiSelectDropDown(String value){
+        multiSelectDropDownInput.sendKeys(value);
+        enterActionInMultiSelectDropDown();
     }
 
     public void enterActionInSelectValueDropDown(){
@@ -82,15 +85,19 @@ public class SelectMenuPage extends BasePages {
         multiSelectDropDownInput.sendKeys(Keys.ENTER);
     }
 
-    public void selectValueOnOldStyleSelectMenu(){
-        Select select = new Select(oldStyleSelectMenu);
-        select.selectByVisibleText("White");
+    public void selectAllOptionsInMultiSelectDropDown(){
+        typeAndSelectOptionInMultiSelectDropDown("Green");
+        typeAndSelectOptionInMultiSelectDropDown("Blue");
+        typeAndSelectOptionInMultiSelectDropDown("Black");
+        typeAndSelectOptionInMultiSelectDropDown("Red");
+    }
+
+    public void selectValueOnOldStyleSelectMenu(String color){
+        selectOneElementAccordingToText(oldStyleSelectMenu,color);
     }
 
     public void scrollAndSelectValueOnStandardMultiSelect(String value){
-        scroll(standardMultiSelect);
-        Select select = new Select(standardMultiSelect);
-        select.selectByVisibleText(value);
+        selectOneElementAccordingToText(standardMultiSelect,value);
     }
 
     public String getPageTitleText(){
@@ -102,7 +109,7 @@ public class SelectMenuPage extends BasePages {
     }
 
     public String getSelectValueContainerText(){
-        return selectValueContainer.getText();
+        return valueOfSelectValueContainer.getText();
     }
 
     public String getOneLabelText(){
@@ -110,7 +117,7 @@ public class SelectMenuPage extends BasePages {
     }
 
     public String getSelectOneContainerText() {
-        return selectOneContainer.getText();
+        return valueOfSelectOneContainer.getText();
     }
 
     public String getOldStyleSelectLabelText(){
@@ -118,7 +125,13 @@ public class SelectMenuPage extends BasePages {
     }
 
     public String getSelectValueOnOldStyleSelectMenuText(){
-        return oldStyleSelectMenu.getAttribute("value");
+        return oldStyleSelectMenu.getAttribute("value");//this obtains the value of the selected option that is numeryc
+    }
+
+    public String RetrieveTextofSelectedOptionFromOldStyleMenu(){
+        waitForChargedElementsOfAWebElementList(optionsOFOldStyleMenu);//assure all element of list are charged
+        WebElement positionOfValue = optionsOFOldStyleMenu.get(Integer.parseInt(getSelectValueOnOldStyleSelectMenuText()));//the value of the option is according to the position so is first envelope the option in a list for then get the value so get the text.
+        return positionOfValue.getText();
     }
 
     public String getMultiSelectDropdownLabelText(){
@@ -126,18 +139,22 @@ public class SelectMenuPage extends BasePages {
     }
 
     public String getGreenValueTextOfMultiplyDropdown(){
+        waitForChargedElementsOfAWebElementList(multiSelectDropDownValues);
         return multiSelectDropDownValues.get(0).getText();
     }
 
     public String getBlueValueTextOfMultiplyDropdown(){
+        waitForChargedElementsOfAWebElementList(multiSelectDropDownValues);
         return multiSelectDropDownValues.get(1).getText();
     }
 
     public String getBlackValueTextOfMultiplyDropdown(){
+        waitForChargedElementsOfAWebElementList(multiSelectDropDownValues);
         return multiSelectDropDownValues.get(2).getText();
     }
 
     public String getRedValueTextOfMultiplyDropdown(){
+        waitForChargedElementsOfAWebElementList(multiSelectDropDownValues);
         return multiSelectDropDownValues.get(3).getText();
     }
 

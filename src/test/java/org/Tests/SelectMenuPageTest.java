@@ -24,14 +24,12 @@ public class SelectMenuPageTest extends TestBase {
         Assert.assertEquals(selectMenuPage.getValueLabelText(),firstLabel);
     }
 
-    @Parameters("expectedValue")
+    @Parameters("typeOption")
     @Test
-    public void selectValueByDropdown(String expectedValue){ //need change, I need find a way where I can choose an option just write the value.
-        selectMenuPage.clickOnSelectValueContainer();
-        selectMenuPage.downOneOptionInSelectValueDropDown();
+    public void selectValueByDropdown(String typeOption){ //this could stay in a file of Data-Driven testing
+        selectMenuPage.typeInSelectValueDropDown(typeOption);
         selectMenuPage.enterActionInSelectValueDropDown();
-        Assert.assertEquals(selectMenuPage.getSelectValueContainerText()," option Group 1, option 2, selected.\n" +
-                "Group 1, option 2");
+        Assert.assertEquals(selectMenuPage.getSelectValueContainerText(),typeOption);
     }
 
     @Parameters("secondLabel")
@@ -43,11 +41,9 @@ public class SelectMenuPageTest extends TestBase {
     @Parameters("expectedOne")
     @Test
     public void selectOneByDropdown(String expectedOne){
-        selectMenuPage.clickOnSelectOneContainer();
-        selectMenuPage.downOneOptionInSelectOneDropDown();
+        selectMenuPage.typeOptionInSelectOneDropDown(expectedOne);
         selectMenuPage.enterActionInSelectOneDropDown();
-        Assert.assertEquals(selectMenuPage.getSelectOneContainerText(), " option Mr., selected.\n" +
-                "Mr.");
+        Assert.assertEquals(selectMenuPage.getSelectOneContainerText(),expectedOne);
     }
 
     @Parameters("thirdLabel")
@@ -56,11 +52,11 @@ public class SelectMenuPageTest extends TestBase {
         Assert.assertEquals(selectMenuPage.getOldStyleSelectLabelText(),thirdLabel);
     }
 
-    @Parameters("expectedOldValue")
+    @Parameters("optionOfColor")
     @Test //this need a change
-    public void selectValueInOldSelectMenu(String expectedOldValue){
-        selectMenuPage.selectValueOnOldStyleSelectMenu();
-        Assert.assertEquals(selectMenuPage.getSelectValueOnOldStyleSelectMenuText(),"6");
+    public void selectValueInOldSelectMenu(String optionOfColor){
+        selectMenuPage.selectValueOnOldStyleSelectMenu(optionOfColor);
+        Assert.assertEquals(selectMenuPage.RetrieveTextofSelectedOptionFromOldStyleMenu(),optionOfColor);
     }
 
     @Parameters("fourthLabel")
@@ -72,17 +68,12 @@ public class SelectMenuPageTest extends TestBase {
 
     @Parameters({"firstExpectedMultiValue","secondExpectedMultiValue","thirdExpectedMultiValue","fourthExpectedMultiValue"})
     @Test
-    public void selectMultiplyValuesInDropdown(String firstExpectedMultiValue, String secondExpectedMultiValue, String thirdExpectedMultiValue, String fourthExpectedMultiValue){ //need changes
-        selectMenuPage.clickOnMultiSelectDropdownContainer();
-        selectMenuPage.downOneOptionInMultiSelectDropDown();
-        selectMenuPage.enterActionInMultiSelectDropDown();
-        selectMenuPage.enterActionInMultiSelectDropDown();
-        selectMenuPage.enterActionInMultiSelectDropDown();
-        selectMenuPage.enterActionInMultiSelectDropDown();
-        Assert.assertEquals(selectMenuPage.getGreenValueTextOfMultiplyDropdown(),"Green");
-        Assert.assertEquals(selectMenuPage.getBlueValueTextOfMultiplyDropdown(),"Blue");
-        Assert.assertEquals(selectMenuPage.getBlackValueTextOfMultiplyDropdown(),"Black");
-        Assert.assertEquals(selectMenuPage.getRedValueTextOfMultiplyDropdown(),"Red");
+    public void selectMultiplyValuesInDropdown(String firstExpectedMultiValue, String secondExpectedMultiValue, String thirdExpectedMultiValue, String fourthExpectedMultiValue){
+        selectMenuPage.selectAllOptionsInMultiSelectDropDown();
+        Assert.assertEquals(selectMenuPage.getGreenValueTextOfMultiplyDropdown(),firstExpectedMultiValue);
+        Assert.assertEquals(selectMenuPage.getBlueValueTextOfMultiplyDropdown(),secondExpectedMultiValue);
+        Assert.assertEquals(selectMenuPage.getBlackValueTextOfMultiplyDropdown(),thirdExpectedMultiValue);
+        Assert.assertEquals(selectMenuPage.getRedValueTextOfMultiplyDropdown(),fourthExpectedMultiValue);
     }
 
     @Parameters("fifthLabel")

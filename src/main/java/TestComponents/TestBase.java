@@ -1,7 +1,6 @@
 package TestComponents;
 
 import Pages.*;
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeOptions;
@@ -10,7 +9,6 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.*;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -67,10 +65,8 @@ public class TestBase {
     protected BSAPIPage bsapiPage;
 
 //    BsProfileTest -Laking Do the Delete Account method
-//    SelectMenuPageT
 //    SortablePageT
 //    BookStorePageTProgress Bar
-//Tabs
 //Draggable
 //
 //
@@ -98,15 +94,9 @@ public class TestBase {
         }
     }
 
-    public String getScreenShot(String testCaseName,WebDriver driver) throws IOException {
-        System.out.println(driver);
-        TakesScreenshot ts = (TakesScreenshot)driver;
-        File source = ts.getScreenshotAs(OutputType.FILE);
-        File file = new File(System.getProperty("user.dir") + "\\reports\\" + testCaseName + ".png");
-        FileUtils.copyFile(source, file);
-        return System.getProperty("user.dir") + "//reports//" + testCaseName + ".png";
+    public WebDriver getDriver() {
+        return webDriverThreadLocal.get();
     }
-
 
     public MutableCapabilities chooseBrowser(){
         String browserName = prop.getProperty("browser");
@@ -140,11 +130,10 @@ public class TestBase {
         try{
             driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
             driver.get(prop.getProperty("url"));
+            driver.manage().deleteAllCookies();
         }catch (TimeoutException e){
             e.printStackTrace();
         }
-        driver.manage().deleteAllCookies();
-
         webDriverThreadLocal.set(driver); // Set the driver in ThreadLocal
 
         return driver;

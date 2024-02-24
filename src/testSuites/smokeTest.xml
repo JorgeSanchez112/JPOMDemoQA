@@ -352,11 +352,11 @@
     <test name = "Select Menu">
         <parameter name="pageTitle" value="Select Menu"/>
         <parameter name="firstLabel" value="Select Value"/>
-        <parameter name="expectedValue" value=" option Group 1, option 2, selected. Group 1, option 2"/>
+        <parameter name="typeOption" value="Group 1, option 2"/>
         <parameter name="secondLabel" value="Select One"/>
-        <parameter name="expectedOne" value=" option Mr., selected.  Mr."/>
+        <parameter name="expectedOne" value="Mr."/>
         <parameter name="thirdLabel" value="Old Style Select Menu"/>
-        <parameter name="expectedOldValue" value="6"/>
+        <parameter name="optionOfColor" value="Yellow"/>
         <parameter name="fourthLabel" value="Multiselect drop down"/>
         <parameter name="firstExpectedMultiValue" value="Green"/>
         <parameter name="secondExpectedMultiValue" value="Blue"/>

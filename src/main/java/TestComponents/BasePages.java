@@ -6,6 +6,7 @@ import org.openqa.selenium.interactions.MoveTargetOutOfBoundsException;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.IOException;
@@ -23,9 +24,6 @@ public class BasePages {
     @FindBy(id = "RightSide_Advertisement")
     protected WebElement rightSidePublicity;
     protected WebDriver driver;
-
-
-
 
     public BasePages(WebDriver driver) {
         this.driver = driver;
@@ -95,6 +93,16 @@ public class BasePages {
             wait.until(ExpectedConditions.visibilityOf(element));
         }catch (TimeoutException e){
             e.printStackTrace();
+        }
+    }
+
+    public void selectOneElementAccordingToText(WebElement options,String elementText){
+        Select select = new Select(options);
+        try{
+            select.selectByVisibleText(elementText);
+        }catch (NoSuchElementException e){
+            e.printStackTrace();
+            System.out.println("The element Text should contain the same value that the option");
         }
     }
 
@@ -300,9 +308,14 @@ public class BasePages {
 
     public void dragDropMoveElementToTarget(WebElement sourceElement, WebElement targetElement){
         Actions actions = new Actions(driver);
-        actions.dragAndDrop(sourceElement, targetElement)
-                .build()
-                .perform();
+        try {
+            actions.dragAndDrop(sourceElement, targetElement)
+                    .build()
+                    .perform();
+        }catch (ElementNotInteractableException e){
+            e.printStackTrace();
+        }
+
     }
 
     public void resizeElement(WebElement element, int sizeX, int sizeY){

@@ -44,7 +44,6 @@ public class TabsPageTest extends TestBase {
     @Parameters("whatTabText")
     @Test
     public void tabWhatParagraphIsDisplayed(String whatTabText){
-        tabsPage.clickOnTabWhat();
         Assert.assertEquals(tabsPage.getParagraphOfWhatText(), whatTabText);
     }
 

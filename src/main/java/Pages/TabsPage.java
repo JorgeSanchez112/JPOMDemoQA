@@ -31,15 +31,13 @@ public class TabsPage extends BasePages {
         PageFactory.initElements(driver,this);
     }
 
-    public void clickOnTabWhat(){
-        clickWithWait(tabWhat);
-    }
-
     public void clickOnTabOrigin(){
+        scroll(tabOrigin);
         clickWithWait(tabOrigin);
     }
 
     public void clickOnTabUse(){
+        scroll(tabUse);
         clickWithWait(tabUse);
     }
 
@@ -64,14 +62,17 @@ public class TabsPage extends BasePages {
     }
 
     public String getFirstParagraphsOfOriginText(){
+        waitForVisibleElement(paragraphOfUse);
         return paragraphsOfOrigin.get(0).getText();
     }
 
     public String getSecondParagraphsOfOriginText(){
+        waitForVisibleElement(paragraphsOfOrigin.get(1));
         return paragraphsOfOrigin.get(1).getText();
     }
 
     public String getParagraphOfUseText(){
+        waitForVisibleElement(paragraphOfUse);
         return paragraphOfUse.getText();
     }
 
