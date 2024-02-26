@@ -156,5 +156,4 @@ public class SortablePage extends BasePages {
         waitForChargedElementsOfAWebElementList(elementsGrid);
         return elementsGrid.get(8).getText();
     }
-
 }

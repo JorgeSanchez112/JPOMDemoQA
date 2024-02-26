@@ -35,6 +35,17 @@ public class ProgressBarPage extends BasePages {
         waitForVisibleElement(resetButton);
     }
 
+    public void startProgressBarAndWaitTo100Percent(){
+        clickOnStartButton();
+        waitForResetButton();
+    }
+
+    public void startProgressBarTillEndAndRestartBar(){
+        clickOnStartButton();
+        waitForResetButton();
+        clickOnResetButton();
+    }
+
     public String getPageTitleText(){
         return pageTitle.getText();
     }

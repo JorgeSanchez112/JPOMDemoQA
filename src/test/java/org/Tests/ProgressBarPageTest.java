@@ -27,17 +27,14 @@ public class ProgressBarPageTest extends TestBase {
     @Parameters("fullBarPercentage")
     @Test
     public void validateProgressBar(String fullBarPercentage){
-        progressBarPage.clickOnStartButton();
-        progressBarPage.waitForResetButton();
+        progressBarPage.startProgressBarAndWaitTo100Percent();
         Assert.assertEquals(progressBarPage.getPercentText(), fullBarPercentage);
     }
 
     @Parameters("emptyBarPercentage")
     @Test
     public void validateReturnToBasePage(String emptyBarPercentage){
-        progressBarPage.clickOnStartButton();
-        progressBarPage.waitForResetButton();
-        progressBarPage.clickOnResetButton();
+        progressBarPage.startProgressBarTillEndAndRestartBar();
         Assert.assertEquals(progressBarPage.getPercentText(), emptyBarPercentage);
     }
 }

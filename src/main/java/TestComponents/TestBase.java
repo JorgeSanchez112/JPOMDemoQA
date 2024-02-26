@@ -65,9 +65,7 @@ public class TestBase {
     protected BSAPIPage bsapiPage;
 
 //    BsProfileTest -Laking Do the Delete Account method
-//    SortablePageT
-//    BookStorePageTProgress Bar
-//Draggable
+//      Draggable
 //
 //
 
@@ -83,6 +81,7 @@ public class TestBase {
 //Menu
 //Select Menu
 //Droppable
+//Accordian
 
     public TestBase() {
         try {

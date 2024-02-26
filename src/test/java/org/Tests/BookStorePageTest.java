@@ -205,7 +205,6 @@ public class BookStorePageTest extends TestBase {
 
     @Test
     public void isEighthBookImageVisible() {
-        bookStorePage.scrollToSeventhRow();
         Assert.assertTrue(bookStorePage.isVisibleEighthImage());
     }
 

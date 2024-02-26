@@ -7,7 +7,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class SortablePageTest extends TestBase {
-    @BeforeMethod //review all this page, I think that could improve it.
+    @BeforeMethod
     public void initializeClassAndHidePublicity(){
         sortablePage = homePage.clickOnSectionInteractions().clickOnSortable();
     }
