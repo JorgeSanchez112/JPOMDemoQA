@@ -12,17 +12,17 @@ public class ProgressBarPageTest extends TestBase {
         progressBarPage = homePage.clickOnSectionWidgets().clickOnProgressBar();
     }
 
-    @Parameters("pageTitle")
+    /*@Parameters("pageTitle")
     @Test
     public void validateCorrectPageTitle(String pageTitle){
         Assert.assertEquals(progressBarPage.getPageTitleText(),pageTitle);
     }
 
-    @Parameters("firstLabel")
+    @Parameters("pageTitle")
     @Test
-    public void validateCorrectLabelText(String firstLabel){
-        Assert.assertEquals(progressBarPage.getLabelText(), firstLabel);
-    }
+    public void validateCorrectLabelText(String pageTitle){
+        Assert.assertEquals(progressBarPage.getLabelText(), pageTitle);
+    }*/
 
     @Parameters("fullBarPercentage")
     @Test

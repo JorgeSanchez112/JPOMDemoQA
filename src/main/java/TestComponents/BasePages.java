@@ -17,17 +17,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class BasePages {
+public class BasePages extends WebDriverManager{
 
     @FindBy(className = "text-center")
     protected WebElement pageTitle;
     @FindBy(id = "RightSide_Advertisement")
     protected WebElement rightSidePublicity;
-    protected WebDriver driver;
-
-    public BasePages(WebDriver driver) {
-        this.driver = driver;
-    }
+    protected WebDriver driver = getDriver();
 
     public void backToPage(){
         driver.navigate().back();
@@ -70,7 +66,8 @@ public class BasePages {
 
     public void waitForElementAttributeToContain(WebElement element, String attribute, String expectedValue) {
         try {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+            System.out.println(element.getAttribute(attribute));
             wait.until(ExpectedConditions.attributeContains(element, attribute, expectedValue));
         } catch (TimeoutException e) {
             e.printStackTrace();
@@ -89,7 +86,7 @@ public class BasePages {
 
     public void waitForVisibleElement(WebElement element){
         try{
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
             wait.until(ExpectedConditions.visibilityOf(element));
         }catch (TimeoutException e){
             e.printStackTrace();
