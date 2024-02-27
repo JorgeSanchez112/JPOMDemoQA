@@ -1,7 +1,7 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name = "Suite1" parallel="methods" thread-count="3">
+<suite name = "Suite1" parallel="methods" thread-count="4">
     
     <listeners>
         <listener class-name="Resources.Listeners"/>
@@ -308,7 +308,6 @@
 
     <test name = "Progress Bar">
         <parameter name="pageTitle" value="Progress Bar"/>
-        <parameter name="firstLabel" value="Progress Bar"/>
         <parameter name="fullBarPercentage" value="100%"/>
         <parameter name="emptyBarPercentage" value="0%"/>
 

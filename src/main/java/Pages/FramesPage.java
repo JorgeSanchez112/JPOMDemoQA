@@ -17,16 +17,15 @@ public class FramesPage extends BasePages {
     private WebElement text;
 
     public FramesPage(WebDriver driver) {
-        super(driver);
         PageFactory.initElements(driver,this);
     }
 
     public void switchToBigFrame(){
-        driver.switchTo().frame(bigFrame);
+        getDriver().switchTo().frame(bigFrame);
     }
 
     public void switchToShortFrame(){
-        driver.switchTo().frame(shortFrame);
+        getDriver().switchTo().frame(shortFrame);
     }
 
     public String getPageTitleText(){

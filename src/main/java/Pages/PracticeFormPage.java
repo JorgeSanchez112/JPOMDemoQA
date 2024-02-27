@@ -90,7 +90,6 @@ public class PracticeFormPage extends BasePages {
     private List<WebElement> tenthRowOfFormTable;
 
     public PracticeFormPage(WebDriver driver) {
-        super(driver);
         PageFactory.initElements(driver,this);
     }
 

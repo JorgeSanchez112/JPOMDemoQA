@@ -16,7 +16,6 @@ public class BrokenLinksPage extends BasePages {
     private List<WebElement> links;
 
     public BrokenLinksPage(WebDriver driver) {
-        super(driver);
         PageFactory.initElements(driver,this);
     }
 

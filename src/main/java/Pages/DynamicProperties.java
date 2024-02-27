@@ -17,7 +17,6 @@ public class DynamicProperties extends BasePages {
     private WebElement visibleAfterButton;
 
     public DynamicProperties(WebDriver driver) {
-        super(driver);
         PageFactory.initElements(driver,this);
     }
 

@@ -17,16 +17,15 @@ public class NestedFramesPage extends BasePages {
     private WebElement textChild;
 
     public NestedFramesPage(WebDriver driver) {
-        super(driver);
         PageFactory.initElements(driver,this);
     }
 
     public void switchToParentFrame(){
-        driver.switchTo().frame(parentFrame);
+        getDriver().switchTo().frame(parentFrame);
     }
 
     public void switchToChildFrame(){
-        driver.switchTo().frame(0);
+        getDriver().switchTo().frame(0);
     }
 
     public String getPageTitleText(){

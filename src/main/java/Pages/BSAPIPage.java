@@ -15,7 +15,6 @@ public class BSAPIPage extends BasePages {
     WebElement bookStoreSubtitle;
 
     public BSAPIPage(WebDriver driver) {
-        super(driver);
         PageFactory.initElements(driver,this);
     }
 

@@ -13,7 +13,7 @@ public class WebDriverManager {
         webDriverThreadLocal.set(driver);
     }
 
-    public static void quitDriver() {
+    public static void quitDriver(){
         WebDriver driver = webDriverThreadLocal.get();
         if (driver != null) {
             driver.quit();

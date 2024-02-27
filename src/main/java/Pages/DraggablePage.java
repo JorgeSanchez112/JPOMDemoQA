@@ -34,7 +34,6 @@ public class DraggablePage extends BasePages {
     private WebElement bottomStyleCursor;
 
     public DraggablePage(WebDriver driver) {
-        super(driver);
         PageFactory.initElements(driver,this);
     }
 

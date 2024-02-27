@@ -17,7 +17,6 @@ public class SelectablePage extends BasePages {
     private List<WebElement> elementsGrid;
 
     public SelectablePage(WebDriver driver) {
-        super(driver);
         PageFactory.initElements(driver,this);
     }
 

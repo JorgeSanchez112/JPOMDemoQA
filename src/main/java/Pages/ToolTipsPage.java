@@ -19,7 +19,6 @@ public class ToolTipsPage extends BasePages {
     private List<WebElement> hoverLink;
 
     public ToolTipsPage(WebDriver driver) {
-        super(driver);
         PageFactory.initElements(driver,this);
     }
 

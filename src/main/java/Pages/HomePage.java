@@ -13,12 +13,11 @@ public class HomePage extends BasePages {
     private List<WebElement> sections;
 
     public HomePage(WebDriver driver) {
-        super(driver);
         PageFactory.initElements(driver, this);
     }
 
     public String getHomePageUrlText(){
-        return driver.getCurrentUrl();
+        return getDriver().getCurrentUrl();
     }
 
     public ElementsPage clickOnSectionElements(){
@@ -26,11 +25,11 @@ public class HomePage extends BasePages {
         try {
             scroll(sections.get(0));
             clickWithWait(sections.get(0));
-            return new ElementsPage(driver);
+            return new ElementsPage(getDriver());
         }catch (IndexOutOfBoundsException e){
             e.printStackTrace();
         }
-        return new ElementsPage(driver);
+        return new ElementsPage(getDriver());
     }
 
     public FormsPage clickOnSectionForms(){
@@ -38,11 +37,11 @@ public class HomePage extends BasePages {
         try {
             scroll(sections.get(1));
             clickWithWait(sections.get(1));
-            return new FormsPage(driver);
+            return new FormsPage(getDriver());
         }catch (IndexOutOfBoundsException e){
             e.printStackTrace();
         }
-        return new FormsPage(driver);
+        return new FormsPage(getDriver());
     }
 
     public AlertsFrameWindowsPage clickOnSectionAlerts_Frame_Windows(){
@@ -50,11 +49,11 @@ public class HomePage extends BasePages {
             waitForChargedElementsOfAWebElementList(sections);
             scroll(sections.get(2));
             clickWithWait(sections.get(2));
-            return new AlertsFrameWindowsPage(driver);
+            return new AlertsFrameWindowsPage(getDriver());
         }catch (IndexOutOfBoundsException e){
             e.printStackTrace();
         }
-        return new AlertsFrameWindowsPage(driver);
+        return new AlertsFrameWindowsPage(getDriver());
     }
 
     public WidgetsPage clickOnSectionWidgets(){
@@ -62,11 +61,11 @@ public class HomePage extends BasePages {
         try {
             scroll(sections.get(3));
             clickWithWait(sections.get(3));
-            return new WidgetsPage(driver);
+            return new WidgetsPage(getDriver());
         }catch (IndexOutOfBoundsException e){
             e.printStackTrace();
         }
-        return new WidgetsPage(driver);
+        return new WidgetsPage(getDriver());
     }
 
     public InteractionsPage clickOnSectionInteractions(){
@@ -74,11 +73,11 @@ public class HomePage extends BasePages {
         try {
             scroll(sections.get(4));
             clickWithWait(sections.get(4));
-            return new InteractionsPage(driver);
+            return new InteractionsPage(getDriver());
         }catch (IndexOutOfBoundsException e){
             e.printStackTrace();
         }
-        return new InteractionsPage(driver);
+        return new InteractionsPage(getDriver());
     }
 
     public BookStorePage clickOnSectionBookStoreApplication(){
@@ -89,7 +88,7 @@ public class HomePage extends BasePages {
         }catch (IndexOutOfBoundsException e){
             e.printStackTrace();
         }
-        return new BookStorePage(driver);
+        return new BookStorePage(getDriver());
     }
 
 }

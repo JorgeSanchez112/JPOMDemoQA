@@ -29,7 +29,6 @@ public class BSLoginPage extends BasePages {
     private WebElement advertisement;
 
     public BSLoginPage(WebDriver driver) {
-        super(driver);
         PageFactory.initElements(driver,this);
     }
 
@@ -84,7 +83,7 @@ public class BSLoginPage extends BasePages {
     }
 
     public String getCurrentUrl(){
-        return driver.getCurrentUrl();
+        return getDriver().getCurrentUrl();
     }
 
     public boolean isTitleVisible(){
@@ -99,7 +98,7 @@ public class BSLoginPage extends BasePages {
     public BSRegisterPage clickOnNewUserButton(){
         scroll(newUserButton);
         clickWithWait(newUserButton);
-        return new BSRegisterPage(driver);
+        return new BSRegisterPage(getDriver());
     }
 
     public void userLogin(String username,String password){

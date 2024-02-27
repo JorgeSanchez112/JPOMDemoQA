@@ -46,7 +46,6 @@ public class SelectMenuPage extends BasePages {
     private List<WebElement> standardMultiSelectValues;
 
     public SelectMenuPage(WebDriver driver) {
-        super(driver);
         PageFactory.initElements(driver,this);
     }
 

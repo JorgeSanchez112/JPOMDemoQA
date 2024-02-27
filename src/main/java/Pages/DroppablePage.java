@@ -45,7 +45,6 @@ public class DroppablePage extends BasePages {
     private WebElement revertTarget;
 
     public DroppablePage(WebDriver driver) {
-        super(driver);
         PageFactory.initElements(driver,this);
     }
 

@@ -22,7 +22,6 @@ public class ButtonsPage extends BasePages {
     private WebElement clickMeMessage;
 
     public ButtonsPage(WebDriver driver) {
-        super(driver);
         PageFactory.initElements(driver, this);
     }
 

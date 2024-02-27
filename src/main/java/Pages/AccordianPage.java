@@ -21,7 +21,6 @@ public class AccordianPage extends BasePages {
     private WebElement thirdCardContent;
 
     public AccordianPage(WebDriver driver) {
-        super(driver);
         PageFactory.initElements(driver,this);
     }
 

@@ -13,12 +13,11 @@ public class InteractionsPage extends BasePages {
     private List<WebElement> deployed_form_exercise;
 
     public InteractionsPage(WebDriver driver) {
-        super(driver);
         PageFactory.initElements(driver,this);
     }
 
     public String getInteractionsUrlText(){
-        return driver.getCurrentUrl();
+        return getDriver().getCurrentUrl();
     }
 
     public int getSizeSections(){
@@ -29,35 +28,35 @@ public class InteractionsPage extends BasePages {
         waitForChargedElementsOfAWebElementList(deployed_form_exercise);
         scroll(deployed_form_exercise.get(0));
         clickWithWait(deployed_form_exercise.get(0));
-        return new SortablePage(driver);
+        return new SortablePage(getDriver());
     }
 
     public SelectablePage clickOnSelectable(){
         waitForChargedElementsOfAWebElementList(deployed_form_exercise);
         scroll(deployed_form_exercise.get(1));
         clickWithWait(deployed_form_exercise.get(1));
-        return new SelectablePage(driver);
+        return new SelectablePage(getDriver());
     }
 
     public ResizablePage clickOnResizable(){
         waitForChargedElementsOfAWebElementList(deployed_form_exercise);
         scroll(deployed_form_exercise.get(2));
         clickWithWait(deployed_form_exercise.get(2));
-        return new ResizablePage(driver);
+        return new ResizablePage(getDriver());
     }
 
     public DroppablePage clickOnDroppable(){
         waitForChargedElementsOfAWebElementList(deployed_form_exercise);
         scroll(deployed_form_exercise.get(3));
         clickWithWait(deployed_form_exercise.get(3));
-        return new DroppablePage(driver);
+        return new DroppablePage(getDriver());
     }
 
     public DraggablePage clickOnDragabble(){
         waitForChargedElementsOfAWebElementList(deployed_form_exercise);
         scroll(deployed_form_exercise.get(4));
         clickWithWait(deployed_form_exercise.get(4));
-        return new DraggablePage(driver);
+        return new DraggablePage(getDriver());
     }
 
 }

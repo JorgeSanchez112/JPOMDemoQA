@@ -15,7 +15,6 @@ public class MenuPage extends BasePages {
     private List<WebElement> subMenus;
 
     public MenuPage(WebDriver driver) {
-        super(driver);
         PageFactory.initElements(driver,this);
     }
 

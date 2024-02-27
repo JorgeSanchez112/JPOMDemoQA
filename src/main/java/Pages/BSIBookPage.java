@@ -54,12 +54,11 @@ public class BSIBookPage extends BasePages {
     private WebElement addToYourCollectionButton;
 
     public BSIBookPage(WebDriver driver) {
-        super(driver);
         PageFactory.initElements(driver,this);
     }
 
     public void acceptAlertMessage(){
-        driver.switchTo().alert().accept();
+        getDriver().switchTo().alert().accept();
     }
 
     public void clickOnAddToYourCollectionButton(){
@@ -189,18 +188,18 @@ public class BSIBookPage extends BasePages {
     public BSLoginPage clickOnLogin(){
         scroll(loginButton);
         clickWithWait(loginButton);
-        return new BSLoginPage(driver);
+        return new BSLoginPage(getDriver());
     }
 
     public BSLoginPage clickOnLogOutButton(){
         clickWithWait(logOutButton);
-        return new BSLoginPage(driver);
+        return new BSLoginPage(getDriver());
     }
 
     public BookStorePage clickOnBackToBookStoreBookButton(){
         scroll(backToBookStoreButton);
         clickWithWait(backToBookStoreButton);
-        return new BookStorePage(driver);
+        return new BookStorePage(getDriver());
     }
 
     public BookStorePage addBookAndReturnToBookStore(){

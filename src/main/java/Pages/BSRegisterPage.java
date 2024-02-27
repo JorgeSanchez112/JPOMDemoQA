@@ -36,7 +36,6 @@ public class BSRegisterPage extends BasePages {
     private WebElement loginButton;
 
     public BSRegisterPage(WebDriver driver) {
-        super(driver);
         PageFactory.initElements(driver,this);
     }
 
@@ -99,7 +98,7 @@ public class BSRegisterPage extends BasePages {
     }
 
     public String getCurrentUrl(){
-        return driver.getCurrentUrl();
+        return getDriver().getCurrentUrl();
     }
 
     public void typeOnFirstnameInput(String firstname){
@@ -123,7 +122,7 @@ public class BSRegisterPage extends BasePages {
     public void clickOnRecaptcha(){
         waitForVisibleElement(registerButton);
         scroll(registerButton);
-        driver.switchTo().frame(driver.findElement(By.cssSelector("#g-recaptcha > div > div > iframe")));
+        getDriver().switchTo().frame(getDriver().findElement(By.cssSelector("#g-recaptcha > div > div > iframe")));
         waitForVisibleElement(recaptcha);
         recaptcha.click();
     }
@@ -137,7 +136,6 @@ public class BSRegisterPage extends BasePages {
     public BSLoginPage clickOnBackToLogin(){
         scroll(loginButton);
         loginButton.click();
-        return new BSLoginPage(driver);
+        return new BSLoginPage(getDriver());
     }
-
 }

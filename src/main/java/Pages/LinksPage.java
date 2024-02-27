@@ -31,7 +31,6 @@ public class LinksPage extends BasePages {
     private WebElement linkMessage;
 
     public LinksPage(WebDriver driver) {
-        super(driver);
         PageFactory.initElements(driver,this);
     }
 

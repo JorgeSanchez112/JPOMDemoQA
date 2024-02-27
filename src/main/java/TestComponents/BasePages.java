@@ -23,17 +23,20 @@ public class BasePages extends WebDriverManager{
     protected WebElement pageTitle;
     @FindBy(id = "RightSide_Advertisement")
     protected WebElement rightSidePublicity;
-    protected WebDriver driver = getDriver();
 
     public void backToPage(){
-        driver.navigate().back();
+        getDriver().navigate().back();
     }
 
     public void scroll(WebElement element){
         try{
-            waitForVisibleElement(element);
-            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-        }catch (TimeoutException e){
+            try{
+                waitForVisibleElement(element);
+                ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
+            }catch (IndexOutOfBoundsException e){
+                e.printStackTrace();
+            }
+        }catch (WebDriverException e){
             e.printStackTrace();
         }
     }
@@ -41,7 +44,7 @@ public class BasePages extends WebDriverManager{
     public void hidePublicity(WebElement element){
         waitForVisibleElement(element);
         try {
-            ((JavascriptExecutor) driver).executeScript("arguments[0].style.display = 'none';", element);
+            ((JavascriptExecutor) getDriver()).executeScript("arguments[0].style.display = 'none';", element);
         }catch (WebDriverException e){
             e.printStackTrace();
         }
@@ -57,7 +60,7 @@ public class BasePages extends WebDriverManager{
 
     public void waitForClick(WebElement element){
         try{
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
             wait.until(ExpectedConditions.elementToBeClickable(element));
         }catch (WebDriverException e){
             e.printStackTrace();
@@ -66,7 +69,7 @@ public class BasePages extends WebDriverManager{
 
     public void waitForElementAttributeToContain(WebElement element, String attribute, String expectedValue) {
         try {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+            WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(15));
             System.out.println(element.getAttribute(attribute));
             wait.until(ExpectedConditions.attributeContains(element, attribute, expectedValue));
         } catch (TimeoutException e) {
@@ -75,18 +78,18 @@ public class BasePages extends WebDriverManager{
     }
 
     public void waitForAttributeAriaDescribedByEqualToValue(WebElement element, String value){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
         wait.until(ExpectedConditions.attributeContains(element,"aria-describedby", value));
     }
 
     public void waitForEnableElement(WebElement element){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
     public void waitForVisibleElement(WebElement element){
         try{
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+            WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(15));
             wait.until(ExpectedConditions.visibilityOf(element));
         }catch (TimeoutException e){
             e.printStackTrace();
@@ -130,17 +133,13 @@ public class BasePages extends WebDriverManager{
     public void waitForChargedElementsOfAWebElementList(List<WebElement> elementsList){
         try {
             try {
-                try{
-                    FluentWait wait = new FluentWait(driver);
-                    wait.withTimeout(Duration.ofSeconds(10));
-                    wait.pollingEvery(Duration.ofMillis(250));
-                    wait.until(ExpectedConditions.visibilityOfAllElements(elementsList));
+                FluentWait wait = new FluentWait(getDriver());
+                wait.withTimeout(Duration.ofSeconds(10));
+                wait.pollingEvery(Duration.ofMillis(250));
+                wait.until(ExpectedConditions.visibilityOfAllElements(elementsList));
                 }catch (NoSuchElementException e){
                     e.printStackTrace();
                 }
-            }catch (NoSuchElementException e){
-                e.printStackTrace();
-            }
         }catch (WebDriverException e){
             e.printStackTrace();
         }
@@ -148,7 +147,7 @@ public class BasePages extends WebDriverManager{
 
     public void waitAlert(){
         try {
-            WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(6));
+            WebDriverWait wait = new WebDriverWait(getDriver(),Duration.ofSeconds(6));
             wait.until(ExpectedConditions.alertIsPresent());
         }catch (TimeoutException e){
             e.printStackTrace();
@@ -159,8 +158,12 @@ public class BasePages extends WebDriverManager{
     public void clickWithWait(WebElement element){
         try {
             try {
-                waitForClick(element);
-                element.click();
+                try {
+                    waitForClick(element);
+                    element.click();
+                }catch (IndexOutOfBoundsException e){
+                    e.printStackTrace();
+                }
             }catch (ElementClickInterceptedException e){
                 e.printStackTrace();
             }
@@ -170,10 +173,10 @@ public class BasePages extends WebDriverManager{
     }
 
     public void switchToTab(){
-        String mainWindowHandle = driver.getWindowHandle();
-        for (String windowHandle : driver.getWindowHandles()) {
+        String mainWindowHandle = getDriver().getWindowHandle();
+        for (String windowHandle : getDriver().getWindowHandles()) {
             if (!windowHandle.equals(mainWindowHandle)) {
-                driver.switchTo().window(windowHandle);
+                getDriver().switchTo().window(windowHandle);
                 break;
             }
         }
@@ -274,7 +277,7 @@ public class BasePages extends WebDriverManager{
     }
 
     public void doubleClick(WebElement element){
-        Actions actions = new Actions(driver);
+        Actions actions = new Actions(getDriver());
         actions.moveToElement(element)
                 .doubleClick()
                 .build()
@@ -282,7 +285,7 @@ public class BasePages extends WebDriverManager{
     }
 
     public void rightClick(WebElement element){
-        Actions actions = new Actions(driver);
+        Actions actions = new Actions(getDriver());
         actions.moveToElement(element)
                 .contextClick()
                 .build()
@@ -290,21 +293,21 @@ public class BasePages extends WebDriverManager{
     }
 
     public void moveElementToCoordinates(WebElement element, int xCoordinate, int yCoordinate){
-        Actions actions = new Actions(driver);
+        Actions actions = new Actions(getDriver());
         actions.dragAndDropBy(element, xCoordinate, yCoordinate)
                 .build()
                 .perform();
     }
 
     public void moveClickerToElement(WebElement element){
-        Actions actions = new Actions(driver);
+        Actions actions = new Actions(getDriver());
         actions.moveToElement(element)
                 .build()
                 .perform();
     }
 
     public void dragDropMoveElementToTarget(WebElement sourceElement, WebElement targetElement){
-        Actions actions = new Actions(driver);
+        Actions actions = new Actions(getDriver());
         try {
             actions.dragAndDrop(sourceElement, targetElement)
                     .build()
@@ -316,7 +319,7 @@ public class BasePages extends WebDriverManager{
     }
 
     public void resizeElement(WebElement element, int sizeX, int sizeY){
-        Actions actions = new Actions(driver);
+        Actions actions = new Actions(getDriver());
         try {
             actions.clickAndHold(element)
                     .moveByOffset(sizeX, sizeY)

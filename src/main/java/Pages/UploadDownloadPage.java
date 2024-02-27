@@ -17,7 +17,6 @@ public class UploadDownloadPage extends BasePages {
     private WebElement FilePathText;
 
     public UploadDownloadPage(WebDriver driver) {
-        super(driver);
         PageFactory.initElements(driver,this);
     }
 

@@ -149,7 +149,6 @@ public class TestBase extends WebDriverManager{
     @AfterMethod
     public void tearDown(){
         try {
-            getDriver();
             quitDriver();
         } catch (WebDriverException e) {
             e.getMessage();

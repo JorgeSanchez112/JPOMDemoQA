@@ -13,12 +13,11 @@ public class ElementsPage extends BasePages {
     private List<WebElement> deployed_element_exercises;
 
     public ElementsPage(WebDriver driver) {
-        super(driver);
         PageFactory.initElements(driver, this);
     }
 
     public String getElementUrlText(){
-        return driver.getCurrentUrl();
+        return getDriver().getCurrentUrl();
     }
 
     public String getPageTitleText(){
@@ -32,61 +31,61 @@ public class ElementsPage extends BasePages {
     public TextBoxPage clickOnTextBoxSection(){
         waitForChargedElementsOfAWebElementList(deployed_element_exercises);
         clickWithWait(deployed_element_exercises.get(0));
-        return new TextBoxPage(driver);
+        return new TextBoxPage(getDriver());
     }
 
     public CheckBoxPage clickOnCheckBoxSection(){
         waitForChargedElementsOfAWebElementList(deployed_element_exercises);
         clickWithWait(deployed_element_exercises.get(1));
-        return new CheckBoxPage(driver);
+        return new CheckBoxPage(getDriver());
     }
 
     public RadioButtonPage clickOnRadioButtonSection(){
         waitForChargedElementsOfAWebElementList(deployed_element_exercises);
         clickWithWait(deployed_element_exercises.get(2));
-        return new RadioButtonPage(driver);
+        return new RadioButtonPage(getDriver());
     }
 
     public WebTablesPage clickOnWebTablesSection(){
         waitForChargedElementsOfAWebElementList(deployed_element_exercises);
         scroll(deployed_element_exercises.get(3));
         clickWithWait(deployed_element_exercises.get(3));
-        return new WebTablesPage(driver);
+        return new WebTablesPage(getDriver());
     }
 
     public ButtonsPage clickOnButtonsSection(){
         waitForChargedElementsOfAWebElementList(deployed_element_exercises);
         scroll(deployed_element_exercises.get(4));
         clickWithWait(deployed_element_exercises.get(4));
-        return new ButtonsPage(driver);
+        return new ButtonsPage(getDriver());
     }
 
     public LinksPage clickOnLinksSection(){
         waitForChargedElementsOfAWebElementList(deployed_element_exercises);
         scroll(deployed_element_exercises.get(5));
         clickWithWait(deployed_element_exercises.get(5));
-        return new LinksPage(driver);
+        return new LinksPage(getDriver());
     }
 
     public BrokenLinksPage clickOnBrokenLinksImageSection(){
         waitForChargedElementsOfAWebElementList(deployed_element_exercises);
         scroll(deployed_element_exercises.get(6));
         clickWithWait(deployed_element_exercises.get(6));
-        return new BrokenLinksPage(driver);
+        return new BrokenLinksPage(getDriver());
     }
 
     public UploadDownloadPage clickOnUploadDownloadSection(){
         waitForChargedElementsOfAWebElementList(deployed_element_exercises);
         scroll(deployed_element_exercises.get(7));
         clickWithWait(deployed_element_exercises.get(7));
-        return new UploadDownloadPage(driver);
+        return new UploadDownloadPage(getDriver());
     }
 
     public DynamicProperties clickOnDynamicPropertiesSection(){
         waitForChargedElementsOfAWebElementList(deployed_element_exercises);
         scroll(deployed_element_exercises.get(8));
         clickWithWait(deployed_element_exercises.get(8));
-        return new DynamicProperties(driver);
+        return new DynamicProperties(getDriver());
     }
 
 }

@@ -27,7 +27,6 @@ public class TabsPage extends BasePages {
     private WebElement tabMore;
 
     public TabsPage(WebDriver driver) {
-        super(driver);
         PageFactory.initElements(driver,this);
     }
 

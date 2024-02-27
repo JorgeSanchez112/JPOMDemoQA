@@ -28,7 +28,6 @@ public class TextBoxPage extends BasePages {
     private WebElement permanentAddressTextAnswer;
 
     public TextBoxPage(WebDriver driver) {
-        super(driver);
         PageFactory.initElements(driver, this);
     }
 

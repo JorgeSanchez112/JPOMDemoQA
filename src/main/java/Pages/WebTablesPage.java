@@ -41,7 +41,6 @@ public class WebTablesPage extends BasePages {
     private WebElement submitButton;
 
     public WebTablesPage(WebDriver driver) {
-        super(driver);
         PageFactory.initElements(driver,this);
     }
 

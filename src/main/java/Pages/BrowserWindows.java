@@ -19,7 +19,6 @@ public class BrowserWindows extends BasePages {
     private WebElement newMessageText;
 
     public BrowserWindows(WebDriver driver) {
-        super(driver);
         PageFactory.initElements(driver,this);
     }
 
@@ -49,7 +48,7 @@ public class BrowserWindows extends BasePages {
     }
 
     public String getBrowserWindowsUrlText(){
-        return driver.getCurrentUrl();
+        return getDriver().getCurrentUrl();
     }
 
     public String getUrlOfNewTabAndWindow(){

@@ -35,7 +35,6 @@ public class BookStorePage extends BasePages {
     final int SEVEN = 7;
 
     public BookStorePage(WebDriver driver) {
-        super(driver);
         PageFactory.initElements(driver,this);
     }
 
@@ -226,7 +225,7 @@ public class BookStorePage extends BasePages {
     }
 
     public String getBookStoreUrlText(){
-        return driver.getCurrentUrl();
+        return getDriver().getCurrentUrl();
     }
 
     public boolean isVisibleFirstImage() {
@@ -294,10 +293,10 @@ public class BookStorePage extends BasePages {
     public BSIBookPage searchAndClickOnATitle(String bookTitle){
         waitForChargedElementsOfAWebElementList(columnTitle);
         try {
-            WebElement tryOne = driver.findElement(By.linkText(bookTitle));
+            WebElement tryOne = getDriver().findElement(By.linkText(bookTitle));
             scroll(tryOne);
             clickWithWait(tryOne);
-            return new BSIBookPage(driver);
+            return new BSIBookPage(getDriver());
         }catch (NoSuchElementException e){
             e.printStackTrace();
             System.out.println("Error on line 303 BookstorePage" + e.getMessage());
@@ -308,18 +307,18 @@ public class BookStorePage extends BasePages {
     public BSLoginPage clickOnLoginTab(){
         scroll(deployed_form_exercise.get(ZERO));
         clickWithWait(deployed_form_exercise.get(ZERO));
-        return new BSLoginPage(driver);
+        return new BSLoginPage(getDriver());
     }
 
     public BSProfilePage clickOnProfile(){
         scroll(deployed_form_exercise.get(TWO));
         clickWithWait(deployed_form_exercise.get(TWO));
-        return new BSProfilePage(driver);
+        return new BSProfilePage(getDriver());
     }
 
     public BSAPIPage clickOnBookstoreApi(){
         scroll(deployed_form_exercise.get(3));
         clickWithWait(deployed_form_exercise.get(3));
-        return new BSAPIPage(driver);
+        return new BSAPIPage(getDriver());
     }
 }

@@ -19,7 +19,6 @@ public class RadioButtonPage extends BasePages {
     private WebElement responseText;
 
     public RadioButtonPage(WebDriver driver) {
-        super(driver);
         PageFactory.initElements(driver, this);
     }
 

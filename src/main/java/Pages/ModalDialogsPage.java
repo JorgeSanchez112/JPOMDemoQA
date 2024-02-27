@@ -23,7 +23,6 @@ public class ModalDialogsPage extends BasePages {
     private WebElement closeLargeModalButton;
 
     public ModalDialogsPage(WebDriver driver) {
-        super(driver);
         PageFactory.initElements(driver,this);
     }
 

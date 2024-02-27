@@ -33,7 +33,6 @@ public class DatePickerPage extends BasePages {
     private List<WebElement> timeOfDateTimeInput;
 
     public DatePickerPage(WebDriver driver) {
-        super(driver);
         PageFactory.initElements(driver,this);
     }
 

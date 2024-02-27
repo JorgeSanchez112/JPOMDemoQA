@@ -17,7 +17,6 @@ public class SortablePage extends BasePages {
     private List<WebElement> elementsGrid;
 
     public SortablePage(WebDriver driver) {
-        super(driver);
         PageFactory.initElements(driver,this);
     }
 

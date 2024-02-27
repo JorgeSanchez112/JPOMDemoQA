@@ -14,7 +14,6 @@ public class SliderPage extends BasePages {
     private WebElement containerValue;
 
     public SliderPage(WebDriver driver) {
-        super(driver);
         PageFactory.initElements(driver,this);
     }
 

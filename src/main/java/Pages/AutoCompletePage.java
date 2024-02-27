@@ -24,7 +24,6 @@ public class AutoCompletePage extends BasePages {
     private WebElement valueOfSingleContainer;
 
     public AutoCompletePage(WebDriver driver) {
-        super(driver);
         PageFactory.initElements(driver,this);
     }
 

@@ -26,7 +26,6 @@ public class AlertsPage extends BasePages {
     private WebElement inputAlertButtonText;
 
     public AlertsPage(WebDriver driver) {
-        super(driver);
         PageFactory.initElements(driver,this);
     }
 
@@ -50,16 +49,16 @@ public class AlertsPage extends BasePages {
 
     public void acceptAlert(){
         waitAlert();
-        driver.switchTo().alert().accept();
+        getDriver().switchTo().alert().accept();
     }
 
     public void dismissAlert(){
         waitAlert();
-        driver.switchTo().alert().dismiss();
+        getDriver().switchTo().alert().dismiss();
     }
 
     public void typeInAlert(String text){
-        Alert alert = driver.switchTo().alert();
+        Alert alert = getDriver().switchTo().alert();
         alert.sendKeys(text);
         alert.accept();
 

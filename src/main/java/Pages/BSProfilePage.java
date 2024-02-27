@@ -61,7 +61,6 @@ public class BSProfilePage extends BasePages {
     private WebElement cancelButtonOfAlertDeleteAccountAndBooks;
 
     public BSProfilePage(WebDriver driver) {
-        super(driver);
         PageFactory.initElements(driver,this);
     }
 
@@ -122,7 +121,7 @@ public class BSProfilePage extends BasePages {
 
     public void acceptAlert(){
         waitAlert();
-        driver.switchTo().alert().accept();
+        getDriver().switchTo().alert().accept();
     }
 
     public void addBookToTableOfBooksCollection(String bookTitle){
@@ -280,34 +279,34 @@ public class BSProfilePage extends BasePages {
         waitForChargedElementsOfAWebElementList(linkRegisterAndLogin);
         scroll(linkRegisterAndLogin.get(0));
         clickWithWait(linkRegisterAndLogin.get(0));
-        return new BSLoginPage(driver);
+        return new BSLoginPage(getDriver());
     }
 
     public BSRegisterPage clickOnRegisterLink(){
         waitForChargedElementsOfAWebElementList(linkRegisterAndLogin);
         scroll(linkRegisterAndLogin.get(1));
         clickWithWait(linkRegisterAndLogin.get(1));
-        return new BSRegisterPage(driver);
+        return new BSRegisterPage(getDriver());
     }
 
     public BSLoginPage clickOnLogOutButton(){
         waitForVisibleElement(logOutButton);
         scroll(logOutButton);
         clickWithWait(logOutButton);
-        return new BSLoginPage(driver);
+        return new BSLoginPage(getDriver());
     }
 
     public BookStorePage clickOnGoToBookStoreButton(){
         waitForVisibleElement(goToBookStoreButton);
         scroll(goToBookStoreButton);
         clickWithWait(goToBookStoreButton);
-        return new BookStorePage(driver);
+        return new BookStorePage(getDriver());
     }
 
     public BSLoginPage deleteAccount(){
         clickOnDeleteAccountButton();
         acceptAlert();
-        return new BSLoginPage(driver);
+        return new BSLoginPage(getDriver());
     }
 
 }

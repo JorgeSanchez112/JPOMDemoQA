@@ -24,7 +24,6 @@ public class ResizablePage extends BasePages {
     private int sizeY = 0;
 
     public ResizablePage(WebDriver driver) {
-        super(driver);
         PageFactory.initElements(driver,this);
     }
 

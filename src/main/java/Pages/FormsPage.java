@@ -11,12 +11,11 @@ public class FormsPage extends BasePages {
     private WebElement deployed_form_exercise;
 
     public FormsPage(WebDriver driver) {
-        super(driver);
         PageFactory.initElements(driver,this);
     }
 
     public String getFormsUrlText(){
-        return driver.getCurrentUrl();
+        return getDriver().getCurrentUrl();
     }
 
     public String getMenuListText(){
@@ -26,7 +25,7 @@ public class FormsPage extends BasePages {
     public PracticeFormPage clickOnPracticeFormSection(){
         scroll(deployed_form_exercise);
         clickWithWait(deployed_form_exercise);
-        return new PracticeFormPage(driver);
+        return new PracticeFormPage(getDriver());
     }
 
 }

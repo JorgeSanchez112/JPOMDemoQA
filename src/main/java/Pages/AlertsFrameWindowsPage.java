@@ -13,7 +13,6 @@ public class AlertsFrameWindowsPage extends BasePages {
     private List<WebElement> deployed_form_exercise;
 
     public AlertsFrameWindowsPage(WebDriver driver) {
-        super(driver);
         PageFactory.initElements(driver,this);
     }
 
@@ -22,28 +21,28 @@ public class AlertsFrameWindowsPage extends BasePages {
     }
 
     public String getAlertFrameWindowsUrl(){
-        return driver.getCurrentUrl();
+        return getDriver().getCurrentUrl();
     }
 
     public BrowserWindows clickOnBrowserWindows(){
         waitForChargedElementsOfAWebElementList(deployed_form_exercise);
         scroll(deployed_form_exercise.get(0));
         clickWithWait(deployed_form_exercise.get(0));
-        return new BrowserWindows(driver);
+        return new BrowserWindows(getDriver());
     }
 
     public AlertsPage clickOnAlerts(){
         waitForChargedElementsOfAWebElementList(deployed_form_exercise);
         scroll(deployed_form_exercise.get(1));
         clickWithWait(deployed_form_exercise.get(1));
-        return new AlertsPage(driver);
+        return new AlertsPage(getDriver());
     }
 
     public FramesPage clickOnFrames(){
         waitForChargedElementsOfAWebElementList(deployed_form_exercise);
         scroll(deployed_form_exercise.get(2));
         clickWithWait(deployed_form_exercise.get(2));
-        return new FramesPage(driver);
+        return new FramesPage(getDriver());
     }
 
     public NestedFramesPage clickOnNestedFrames(){
@@ -54,14 +53,14 @@ public class AlertsFrameWindowsPage extends BasePages {
         }catch (IndexOutOfBoundsException e){
             e.printStackTrace();
         }
-        return new NestedFramesPage(driver);
+        return new NestedFramesPage(getDriver());
     }
 
     public ModalDialogsPage clickOnModalDialogs(){
         waitForChargedElementsOfAWebElementList(deployed_form_exercise);
         scroll(deployed_form_exercise.get(4));
         clickWithWait(deployed_form_exercise.get(4));
-        return new ModalDialogsPage(driver);
+        return new ModalDialogsPage(getDriver());
     }
 
 }
