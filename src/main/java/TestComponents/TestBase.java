@@ -17,10 +17,13 @@ import java.time.Duration;
 import java.util.Objects;
 import java.util.Properties;
 
-public class TestBase {
+public class TestBase{
+
 
     protected static final ThreadLocal<WebDriver> webDriverThreadLocal = new ThreadLocal<>();
     protected WebDriver driver;
+
+
     protected Properties prop;
     protected HomePage homePage;
     protected ElementsPage elementsPage;
@@ -93,9 +96,12 @@ public class TestBase {
         }
     }
 
+
     public WebDriver getDriver(){
        return webDriverThreadLocal.get();
     }
+
+
 
     public MutableCapabilities chooseBrowser(){
         String browserName = prop.getProperty("browser");
@@ -133,17 +139,20 @@ public class TestBase {
         }catch (TimeoutException e){
             e.printStackTrace();
         }
-        webDriverThreadLocal.set(driver);// Set the driver in ThreadLocal
 
+        webDriverThreadLocal.set(driver);// Set the driver in ThreadLocal
         return driver;
     }
 
     @BeforeMethod
     public void setUp() throws MalformedURLException {
-        WebDriver driver = webDriverThreadLocal.get();
+        WebDriver driver = getDriver();
         if (driver == null) {
+
             webDriverThreadLocal.set(initialization());
             driver = webDriverThreadLocal.get();
+            driver = getDriver();
+
         }
         System.out.println(driver);
 
@@ -154,7 +163,7 @@ public class TestBase {
     @AfterMethod
     public void tearDown(){
         try {
-            WebDriver driver = webDriverThreadLocal.get();
+            WebDriver driver = getDriver();
             System.out.println(driver);
             if (driver != null) {
                 driver.quit();

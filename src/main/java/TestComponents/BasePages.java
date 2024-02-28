@@ -23,7 +23,7 @@ public class BasePages {
     protected WebElement pageTitle;
     @FindBy(id = "RightSide_Advertisement")
     protected WebElement rightSidePublicity;
-    protected WebDriver driver;
+    protected WebDriver driver ;
 
     public BasePages(WebDriver driver) {
         this.driver = driver;
