@@ -19,7 +19,7 @@ import java.util.Properties;
 
 public class TestBase {
 
-    protected ThreadLocal<WebDriver> webDriverThreadLocal = new ThreadLocal<>();
+    protected static final ThreadLocal<WebDriver> webDriverThreadLocal = new ThreadLocal<>();
     protected WebDriver driver;
     protected Properties prop;
     protected HomePage homePage;
@@ -93,8 +93,8 @@ public class TestBase {
         }
     }
 
-    public WebDriver getDriver() {
-        return webDriverThreadLocal.get();
+    public WebDriver getDriver(){
+       return webDriverThreadLocal.get();
     }
 
     public MutableCapabilities chooseBrowser(){
@@ -133,7 +133,7 @@ public class TestBase {
         }catch (TimeoutException e){
             e.printStackTrace();
         }
-        webDriverThreadLocal.set(driver); // Set the driver in ThreadLocal
+        webDriverThreadLocal.set(driver);// Set the driver in ThreadLocal
 
         return driver;
     }
@@ -143,8 +143,8 @@ public class TestBase {
         WebDriver driver = webDriverThreadLocal.get();
         if (driver == null) {
             webDriverThreadLocal.set(initialization());
+            driver = webDriverThreadLocal.get();
         }
-        driver = webDriverThreadLocal.get();
         System.out.println(driver);
 
         homePage = new HomePage(driver);
@@ -155,13 +155,13 @@ public class TestBase {
     public void tearDown(){
         try {
             WebDriver driver = webDriverThreadLocal.get();
+            System.out.println(driver);
             if (driver != null) {
                 driver.quit();
+                webDriverThreadLocal.remove();
             }
         } catch (WebDriverException e) {
             e.getMessage();
-        } finally {
-            webDriverThreadLocal.remove();
         }
     }
 }

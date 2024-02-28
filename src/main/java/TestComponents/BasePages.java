@@ -70,7 +70,8 @@ public class BasePages {
 
     public void waitForElementAttributeToContain(WebElement element, String attribute, String expectedValue) {
         try {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+            System.out.println(element.getAttribute(attribute));
             wait.until(ExpectedConditions.attributeContains(element, attribute, expectedValue));
         } catch (TimeoutException e) {
             e.printStackTrace();
@@ -89,7 +90,7 @@ public class BasePages {
 
     public void waitForVisibleElement(WebElement element){
         try{
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
             wait.until(ExpectedConditions.visibilityOf(element));
         }catch (TimeoutException e){
             e.printStackTrace();

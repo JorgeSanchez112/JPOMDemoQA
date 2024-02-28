@@ -35,15 +35,18 @@ public class ProgressBarPage extends BasePages {
         waitForVisibleElement(resetButton);
     }
 
-    public void startProgressBarAndWaitTo100Percent(){
+    public void startProgressBarAndWaitTo100Percent() throws InterruptedException {
         clickOnStartButton();
         waitForResetButton();
+        Thread.sleep(9000);
     }
 
-    public void startProgressBarTillEndAndRestartBar(){
+    public void startProgressBarTillEndAndRestartBar() throws InterruptedException {
         clickOnStartButton();
         waitForResetButton();
+        Thread.sleep(5000);
         clickOnResetButton();
+        System.out.println(getPercentText());
     }
 
     public String getPageTitleText(){

@@ -308,7 +308,6 @@
 
     <test name = "Progress Bar">
         <parameter name="pageTitle" value="Progress Bar"/>
-        <parameter name="firstLabel" value="Progress Bar"/>
         <parameter name="fullBarPercentage" value="100%"/>
         <parameter name="emptyBarPercentage" value="0%"/>
 
