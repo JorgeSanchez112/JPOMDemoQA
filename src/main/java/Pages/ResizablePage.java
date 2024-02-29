@@ -45,7 +45,7 @@ public class ResizablePage extends BasePages {
     }
 
     public String getPageTitleText(){
-        return pageTitle.getText();
+        return getElementTextWithWait(pageTitle);
     }
 
     public String getWidthOfBoxRestricted(){
@@ -69,10 +69,10 @@ public class ResizablePage extends BasePages {
     }
 
     public boolean isResizableRestrictedTextVisible(){
-        return resizableRestrictedText.isDisplayed();
+        return isElementDisplayedWithWait(resizableRestrictedText);
     }
 
     public boolean isResizableTextVisible(){
-        return resizableText.isDisplayed();
+        return isElementDisplayedWithWait(resizableText);
     }
 }

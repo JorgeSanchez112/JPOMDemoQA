@@ -29,12 +29,12 @@ public class AutoCompletePage extends BasePages {
     }
 
     public void typeInMultipleContainer(String text){
-        multipleContainer.sendKeys(text);
+        sendKeysToElement(multipleContainer,text);
         multipleContainer.sendKeys(Keys.ENTER);
     }
 
     public void typeInSingleContainer(String color){
-        singleContainer.sendKeys(color);
+        sendKeysToElement(singleContainer,color);
         singleContainer.sendKeys(Keys.ENTER);
     }
 
@@ -62,5 +62,4 @@ public class AutoCompletePage extends BasePages {
     public String getTextOfSingleContainerValue(){
         return valueOfSingleContainer.getText();
     }
-
 }

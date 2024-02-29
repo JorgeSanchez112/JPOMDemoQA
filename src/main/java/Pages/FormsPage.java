@@ -20,7 +20,7 @@ public class FormsPage extends BasePages {
     }
 
     public String getMenuListText(){
-        return deployed_form_exercise.getText();
+        return getElementTextWithWait(deployed_form_exercise);
     }
 
     public PracticeFormPage clickOnPracticeFormSection(){

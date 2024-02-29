@@ -95,15 +95,15 @@ public class PracticeFormPage extends BasePages {
     }
 
     public void typeInFirstNameField(String firstName){
-        firstNameField.sendKeys(firstName);
+        sendKeysToElement(firstNameField,firstName);
     }
 
     public void typeInLastNameField(String lastName){
-        lastNameField.sendKeys(lastName);
+        sendKeysToElement(lastNameField,lastName);
     }
 
     public void typeInEmailField(String email){
-        emailField.sendKeys(email);
+        sendKeysToElement(emailField,email);
     }
 
     public void selectOneGender(String nameRadioButton){
@@ -111,7 +111,7 @@ public class PracticeFormPage extends BasePages {
     }
 
     public void typeInMobileField(String phoneNumber){
-        mobileField.sendKeys(phoneNumber);
+        sendKeysToElement(mobileField,phoneNumber);
     }
 
     public void selectDate( String month, String day, String year){
@@ -124,7 +124,7 @@ public class PracticeFormPage extends BasePages {
 
     public void typeInSubjectField(String subject){
         clickWithWait(subjectField);
-        subjectField.sendKeys(subject);
+        sendKeysToElement(subjectField,subject);
         subjectField.sendKeys(Keys.ENTER);
     }
 
@@ -134,11 +134,11 @@ public class PracticeFormPage extends BasePages {
     }
 
     public void selectAPicture(String picturePath){
-        selectFieldButton.sendKeys(picturePath);
+        sendKeysToElement(selectFieldButton,picturePath);
     }
 
     public void typeInCurrentAddressField(String text){
-        currentAddressField.sendKeys(text);
+        sendKeysToElement(currentAddressField,text);
     }
 
     public void typeInStateListBox(String state){
@@ -172,16 +172,16 @@ public class PracticeFormPage extends BasePages {
     }
 
     public String  getPageTitleText(){
-        return pageTitle.getText();
+        return getElementTextWithWait(pageTitle);
     }
 
     public String getTextFormTitle(){
-        return titleForm.getText();
+        return getElementTextWithWait(titleForm);
     }
 
     public String getTextOfLabelName(){
         scroll(nameLabel);
-        return nameLabel.getText();
+        return getElementTextWithWait(nameLabel);
     }
 
     public String getPlaceholderFirstNameField(){
@@ -204,7 +204,7 @@ public class PracticeFormPage extends BasePages {
 
     public String getTextOfLabelEmail(){
         scroll(emailLabel);
-        return emailLabel.getText();
+        return getElementTextWithWait(emailLabel);
     }
 
     public String getPlaceholderEmailField(){
@@ -217,7 +217,7 @@ public class PracticeFormPage extends BasePages {
     }
 
     public String getTextOfLabelGender(){
-        return genderLabel.getText();
+        return getElementTextWithWait(genderLabel);
     }
 
     public String getCssAttributeGenderRadioButtons(){
@@ -226,7 +226,7 @@ public class PracticeFormPage extends BasePages {
     }
 
     public String getTextOfLabelMobile(){
-        return mobileLabel.getText();
+        return getElementTextWithWait(mobileLabel);
     }
 
     public String getPlaceholderMobileField(){
@@ -239,7 +239,7 @@ public class PracticeFormPage extends BasePages {
     }
 
     public String getTextOfLabelDateOfBirth(){
-        return birthDateLabel.getText();
+        return getElementTextWithWait(birthDateLabel);
     }
 
     public String getCssAttributeBirthDateField(){
@@ -248,11 +248,11 @@ public class PracticeFormPage extends BasePages {
     }
 
     public String getTextOfLabelSubjects(){
-        return threeLabelsBeforeCurrentAddressLabel.get(0).getText();
+        return getElementTextWithWait(threeLabelsBeforeCurrentAddressLabel.get(0));
     }
 
     public String getTextOfLabelHobbies(){
-        return threeLabelsBeforeCurrentAddressLabel.get(1).getText();
+        return getElementTextWithWait(threeLabelsBeforeCurrentAddressLabel.get(1));
     }
 
     public String getCssAttributeSportsCheckboxButton(){
@@ -271,11 +271,11 @@ public class PracticeFormPage extends BasePages {
     }
 
     public String getTextOfLabelPicture(){
-        return threeLabelsBeforeCurrentAddressLabel.get(2).getText();
+        return getElementTextWithWait(threeLabelsBeforeCurrentAddressLabel.get(2));
     }
 
     public String getTextOfLabelCurrentAddress(){
-        return currentAddressLabel.getText();
+        return getElementTextWithWait(currentAddressLabel);
     }
 
     public String getPlaceholderCurrentAddressField(){
@@ -288,107 +288,106 @@ public class PracticeFormPage extends BasePages {
     }
 
     public String getTextOfLabelStateCity(){
-        return stateCityLabel.getText();
+        return getElementTextWithWait(stateCityLabel);
     }
 
     public String getPlaceholderStatesListBox(){
-        return placeholdersStateAndCity.get(1).getText();
+        return getElementTextWithWait(placeholdersStateAndCity.get(1));
     }
 
     public String getPlaceholderCitiesListBox(){
-        return placeholdersStateAndCity.get(2).getText();
+        return getElementTextWithWait(placeholdersStateAndCity.get(2));
     }
 
     public boolean isVisibleTitleSubmitForm(){
-        return titleOfSubmitForm.isDisplayed();
+        return isElementDisplayedWithWait(titleOfSubmitForm);
     }
 
     public String getTitleLabelFieldsText(){
-        return tableTitles.get(0).getText();
+        return getElementTextWithWait(tableTitles.get(0));
     }
 
     public String getTitleValueFieldsText(){
-        return tableTitles.get(1).getText();
+        return getElementTextWithWait(tableTitles.get(1));
     }
 
     public String getStudentNameText(){
-        return firstRowOfFormTable.get(0).getText();
+        return getElementTextWithWait(firstRowOfFormTable.get(0));
     }
 
     public String getValueOfStudentNameRow(){
-        return firstRowOfFormTable.get(1).getText();
+        return getElementTextWithWait(firstRowOfFormTable.get(1));
     }
 
     public String getStudentEmailText(){
-        return secondRowOfFormTable.get(0).getText();
+        return getElementTextWithWait(secondRowOfFormTable.get(0));
     }
 
     public String getValueOfStudentEmailRow(){
-        return secondRowOfFormTable.get(1).getText();
+        return getElementTextWithWait(secondRowOfFormTable.get(1));
     }
 
     public String getGenderText(){
-        return thirdRowOfFormTable.get(0).getText();
+        return getElementTextWithWait(thirdRowOfFormTable.get(0));
     }
 
     public String getValueOfGenderRow(){
-        return thirdRowOfFormTable.get(1).getText();
+        return getElementTextWithWait(thirdRowOfFormTable.get(1));
     }
 
     public String getMobileText(){
-        return fourthRowOfFormTable.get(0).getText();
+        return getElementTextWithWait(fourthRowOfFormTable.get(0));
     }
 
     public String getValueOfMobileRow(){
-        return fourthRowOfFormTable.get(1).getText();
+        return getElementTextWithWait(fourthRowOfFormTable.get(1));
     }
 
     public String getDateBirthText(){
-        return fifthRowOfFormTable.get(0).getText();
+        return getElementTextWithWait(fifthRowOfFormTable.get(0));
     }
 
     public String getValueOfDateBirthRow(){
-        return fifthRowOfFormTable.get(1).getText();
+        return getElementTextWithWait(fifthRowOfFormTable.get(1));
     }
 
     public String getSubjectsText(){
-        return sixthRowOfFormTable.get(0).getText();
+        return getElementTextWithWait(sixthRowOfFormTable.get(0));
     }
 
     public String getValueOfSubjectsRow(){
-        return sixthRowOfFormTable.get(1).getText();
+        return getElementTextWithWait(sixthRowOfFormTable.get(1));
     }
 
     public String getHobbiesText(){
-        return seventhRowOfFormTable.get(0).getText();
+        return getElementTextWithWait(seventhRowOfFormTable.get(0));
     }
 
     public String getValueOfHobbiesRow(){
-        return seventhRowOfFormTable.get(1).getText();
+        return getElementTextWithWait(seventhRowOfFormTable.get(1));
     }
 
     public String getPictureText(){
-        return eighthRowOfFormTable.get(0).getText();
+        return getElementTextWithWait(eighthRowOfFormTable.get(0));
     }
 
     public String getValueOfPictureRow(){
-        return eighthRowOfFormTable.get(1).getText();
+        return getElementTextWithWait(eighthRowOfFormTable.get(1));
     }
 
     public String getAddressText(){
-        return ninthRowOfFormTable.get(0).getText();
+        return getElementTextWithWait(ninthRowOfFormTable.get(0));
     }
 
     public String getValueOfAddressRow(){
-        return ninthRowOfFormTable.get(1).getText();
+        return getElementTextWithWait(ninthRowOfFormTable.get(1));
     }
 
     public String getStateCityText(){
-        return tenthRowOfFormTable.get(0).getText();
+        return getElementTextWithWait(tenthRowOfFormTable.get(0));
     }
 
     public String getValueOfStateCityRow(){
-        return tenthRowOfFormTable.get(1).getText();
+        return getElementTextWithWait(tenthRowOfFormTable.get(1));
     }
-
 }

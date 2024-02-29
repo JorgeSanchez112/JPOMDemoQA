@@ -20,8 +20,6 @@ public class SelectMenuPage extends BasePages {
     private WebElement selectValueInput;
     @FindBy(css = "#selectMenuContainer > div:nth-child(4) > div")
     private WebElement oneLabel;
-    @FindBy(id = "selectOne")
-    private WebElement selectOneContainer;
     @FindBy(css = "#selectOne >* .css-1uccc91-singleValue")
     private WebElement valueOfSelectOneContainer;
     @FindBy(id = "react-select-3-input")
@@ -34,8 +32,6 @@ public class SelectMenuPage extends BasePages {
     private List<WebElement> optionsOFOldStyleMenu;
     @FindBy(css = ".col-md-6.col-sm-12 > p")
     private List<WebElement> fourthAndFifthLabels;
-    @FindBy(css = "#selectMenuContainer > .row:nth-child(8) >*  .css-2b097c-container")
-    private WebElement multiSelectDropDownContainer;
     @FindBy(css = "#react-select-4-input")
     private WebElement multiSelectDropDownInput;
     @FindBy(css = ".css-1rhbuit-multiValue > .css-12jo7m5")
@@ -50,26 +46,16 @@ public class SelectMenuPage extends BasePages {
         PageFactory.initElements(driver,this);
     }
 
-    public void clickOnSelectOneContainer(){
-        scroll(selectOneContainer);
-        clickWithWait(selectOneContainer);
-    }
-
-    public void clickOnMultiSelectDropdownContainer(){
-        scroll(multiSelectDropDownContainer);
-        clickWithWait(multiSelectDropDownContainer);
-    }
-
     public void typeInSelectValueDropDown(String value){
-        selectValueInput.sendKeys(value);
+        sendKeysToElement(selectValueInput,value);
     }
 
     public void typeOptionInSelectOneDropDown(String title){
-        selectOneInput.sendKeys(title);
+        sendKeysToElement(selectOneInput,title);
     }
 
     public void typeAndSelectOptionInMultiSelectDropDown(String value){
-        multiSelectDropDownInput.sendKeys(value);
+        sendKeysToElement(multiSelectDropDownInput,value);
         enterActionInMultiSelectDropDown();
     }
 
@@ -101,65 +87,65 @@ public class SelectMenuPage extends BasePages {
     }
 
     public String getPageTitleText(){
-        return pageTitle.getText();
+        return getElementTextWithWait(pageTitle);
     }
 
     public String getValueLabelText(){
-        return valueLabel.getText();
+        return getElementTextWithWait(valueLabel);
     }
 
     public String getSelectValueContainerText(){
-        return valueOfSelectValueContainer.getText();
+        return getElementTextWithWait(valueOfSelectValueContainer);
     }
 
     public String getOneLabelText(){
-        return oneLabel.getText();
+        return getElementTextWithWait(oneLabel);
     }
 
     public String getSelectOneContainerText() {
-        return valueOfSelectOneContainer.getText();
+        return getElementTextWithWait(valueOfSelectOneContainer);
     }
 
     public String getOldStyleSelectLabelText(){
-        return oldStyleSelectLabel.getText();
+        return getElementTextWithWait(oldStyleSelectLabel);
     }
 
     public String getSelectValueOnOldStyleSelectMenuText(){
         return oldStyleSelectMenu.getAttribute("value");//this obtains the value of the selected option that is numeryc
     }
 
-    public String RetrieveTextofSelectedOptionFromOldStyleMenu(){
+    public String RetrieveTextOfSelectedOptionFromOldStyleMenu(){
         waitForChargedElementsOfAWebElementList(optionsOFOldStyleMenu);//assure all element of list are charged
-        WebElement positionOfValue = optionsOFOldStyleMenu.get(Integer.parseInt(getSelectValueOnOldStyleSelectMenuText()));//the value of the option is according to the position so is first envelope the option in a list for then get the value so get the text.
-        return positionOfValue.getText();
+        WebElement valueOfPosition = optionsOFOldStyleMenu.get(Integer.parseInt(getSelectValueOnOldStyleSelectMenuText()));//the value of the option is according to the position so is first envelope the option in a list for then get the value so get the text.
+        return getElementTextWithWait(valueOfPosition);
     }
 
     public String getMultiSelectDropdownLabelText(){
-        return fourthAndFifthLabels.get(0).getText();
+        return getElementTextWithWait(fourthAndFifthLabels.get(0));
     }
 
     public String getGreenValueTextOfMultiplyDropdown(){
         waitForChargedElementsOfAWebElementList(multiSelectDropDownValues);
-        return multiSelectDropDownValues.get(0).getText();
+        return getElementTextWithWait(multiSelectDropDownValues.get(0));
     }
 
     public String getBlueValueTextOfMultiplyDropdown(){
         waitForChargedElementsOfAWebElementList(multiSelectDropDownValues);
-        return multiSelectDropDownValues.get(1).getText();
+        return getElementTextWithWait(multiSelectDropDownValues.get(1));
     }
 
     public String getBlackValueTextOfMultiplyDropdown(){
         waitForChargedElementsOfAWebElementList(multiSelectDropDownValues);
-        return multiSelectDropDownValues.get(2).getText();
+        return getElementTextWithWait(multiSelectDropDownValues.get(2));
     }
 
     public String getRedValueTextOfMultiplyDropdown(){
         waitForChargedElementsOfAWebElementList(multiSelectDropDownValues);
-        return multiSelectDropDownValues.get(3).getText();
+        return getElementTextWithWait(multiSelectDropDownValues.get(3));
     }
 
     public String getStandardMultiSelectLabelText(){
-        return fourthAndFifthLabels.get(1).getText();
+        return getElementTextWithWait(fourthAndFifthLabels.get(1));
     }
 
     public boolean isVolvoSelectedOfStandardMultiSelect(){

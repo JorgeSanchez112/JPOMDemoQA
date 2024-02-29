@@ -33,19 +33,19 @@ public class TextBoxPage extends BasePages {
     }
 
     public void typeOnUsernameField(String name){
-        fullNameField.sendKeys(name);
+        sendKeysToElement(fullNameField,name);
     }
 
     public void typeOnEmailField(String email){
-        emailField.sendKeys(email);
+        sendKeysToElement(emailField,email);
     }
 
     public void typeOnAddressField(String address){
-        addressField.sendKeys(address);
+        sendKeysToElement(addressField,address);
     }
 
     public void typeOnPermanentAddressField(String pAddress){
-        permanentAddressField.sendKeys(pAddress);
+        sendKeysToElement(permanentAddressField,pAddress);
     }
 
     public void clickOnSubmitButton(){
@@ -62,27 +62,27 @@ public class TextBoxPage extends BasePages {
     }
 
     public String getPageTitleText(){
-        return pageTitle.getText();
+        return getElementTextWithWait(pageTitle);
     }
 
     public String getTextNameAnswer(){
         scroll(nameTextAnswer);
-        return nameTextAnswer.getText();
+        return getElementTextWithWait(nameTextAnswer);
     }
 
     public String getTextEmailAnswer(){
         scroll(emailTextAnswer);
-        return emailTextAnswer.getText();
+        return getElementTextWithWait(emailTextAnswer);
     }
 
     public String getTextAddressAnswer(){
         scroll(addressTextAnswer);
-        return addressTextAnswer.getText();
+        return getElementTextWithWait(addressTextAnswer);
     }
 
     public String getTextPermanentAddressAnswer(){
         scroll(permanentAddressTextAnswer);
-        return permanentAddressTextAnswer.getText();
+        return getElementTextWithWait(permanentAddressTextAnswer);
     }
 
 }

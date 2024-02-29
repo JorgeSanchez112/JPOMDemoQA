@@ -1,7 +1,7 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="crazy things" parallel="methods" thread-count="2">
+<suite name="crazy things" parallel="methods" thread-count="4">
     <listeners>
         <listener class-name="Resources.Listeners"/>
     </listeners>
@@ -18,7 +18,7 @@
         <parameter name="descriptionValue" value="This pocket guide is the perfect on-the-job companion to Git, the distributed version control system. It provides a compact, readable introduction to Git for new users, as well as a reference to common commands and procedures for those of you with Git exp"/>
         <parameter name="uRLBooks" value="https://demoqa.com/books"/>
         <parameter name="userName" value="lola12"/>
-        <parameter name="Password" value="P@ssw0rd"/>
+        <parameter name="password" value="P@ssw0rd"/>
 
         <classes>
             <class name="org.Tests.BSIBookPageTest"/>

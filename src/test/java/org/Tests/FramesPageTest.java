@@ -23,15 +23,17 @@ public class FramesPageTest extends TestBase {
         Assert.assertTrue(framesPage.isUseAdvicesTextVisible());
     }
 
+    @Parameters("frameText")
     @Test
-    public void validateChangeToBigFrame(){
+    public void validateChangeToBigFrame(String frameText){
         framesPage.switchToBigFrame();
-        Assert.assertTrue(framesPage.validateTextFrames());
+        Assert.assertEquals(framesPage.getFrameText(),frameText);
     }
 
+    @Parameters("frameText")
     @Test
-    public void validateChangeToShortFrame(){
+    public void validateChangeToShortFrame(String frameText){
         framesPage.switchToShortFrame();
-        Assert.assertTrue(framesPage.validateTextFrames());
+        Assert.assertEquals(framesPage.getFrameText(),frameText);
     }
 }

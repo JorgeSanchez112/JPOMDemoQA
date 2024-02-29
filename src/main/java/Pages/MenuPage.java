@@ -30,47 +30,47 @@ public class MenuPage extends BasePages {
     }
 
     public String getPageTitleText(){
-        return pageTitle.getText();
+        return getElementTextWithWait(pageTitle);
     }
 
     public boolean isMainItem1Displayed(){
         waitForChargedElementsOfAWebElementList(mainMenus);
-        return mainMenus.get(0).isDisplayed();
+        return isElementDisplayedWithWait(mainMenus.get(0));
     }
 
     public boolean isMainItem2Displayed(){
         waitForChargedElementsOfAWebElementList(mainMenus);
-        return mainMenus.get(1).isDisplayed();
+        return isElementDisplayedWithWait(mainMenus.get(1));
     }
 
     public boolean isMainItem3Displayed(){
         waitForChargedElementsOfAWebElementList(mainMenus);
-        return mainMenus.get(2).isDisplayed();
+        return isElementDisplayedWithWait(mainMenus.get(2));
     }
 
     public boolean isSubItem1Displayed(){
         waitForChargedElementsOfAWebElementList(subMenus);
-        return subMenus.get(0).isDisplayed();
+        return isElementDisplayedWithWait(subMenus.get(0));
     }
 
     public boolean isSubItem2Displayed(){
         waitForChargedElementsOfAWebElementList(subMenus);
-        return subMenus.get(1).isDisplayed();
+        return isElementDisplayedWithWait(subMenus.get(1));
     }
 
     public boolean isSubSubListDisplayed(){
         waitForChargedElementsOfAWebElementList(subMenus);
-        return subMenus.get(2).isDisplayed();
+        return isElementDisplayedWithWait(subMenus.get(2));
     }
 
     public boolean isSubSubItem1Displayed(){
         waitForChargedElementsOfAWebElementList(subMenus);
-        return subMenus.get(3).isDisplayed();
+        return isElementDisplayedWithWait(subMenus.get(3));
     }
 
     public boolean isSubSubItem2Displayed(){
         waitForChargedElementsOfAWebElementList(subMenus);
-        return subMenus.get(4).isDisplayed();
+        return isElementDisplayedWithWait(subMenus.get(4));
     }
 
 }

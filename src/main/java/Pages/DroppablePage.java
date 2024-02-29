@@ -105,23 +105,23 @@ public class DroppablePage extends BasePages {
     }
 
     public String getPageTitleText(){
-        return pageTitle.getText();
+        return getElementTextWithWait(pageTitle);
     }
 
     public boolean isSimpleTabVisible(){
-        return tabSimple.isDisplayed();
+        return isElementDisplayedWithWait(tabSimple);
     }
 
     public boolean isAcceptTabVisible(){
-        return tabAccept.isDisplayed();
+        return isElementDisplayedWithWait(tabAccept);
     }
 
     public boolean isPreventTabVisible(){
-        return tabPreventPropogation.isDisplayed();
+        return isElementDisplayedWithWait(tabPreventPropogation);
     }
 
     public boolean isRevertTabVisible(){
-        return tabRevert.isDisplayed();
+        return isElementDisplayedWithWait(tabRevert);
     }
 
     public boolean isSimpleDraggableDropped(){

@@ -42,38 +42,35 @@ public class TabsPage extends BasePages {
     }
 
     public String getPageTitleText(){
-        return pageTitle.getText();
+        return getElementTextWithWait(pageTitle);
     }
 
     public String getFirstTitleTab(){
-        return tabWhat.getText();
+        return getElementTextWithWait(tabWhat);
     }
 
     public String getSecondTitleTab(){
-        return tabOrigin.getText();
+        return getElementTextWithWait(tabOrigin);
     }
 
     public String getThirdTitleTab(){
-        return tabUse.getText();
+        return getElementTextWithWait(tabUse);
     }
 
     public String getParagraphOfWhatText(){
-        return paragraphOfWhat.getText();
+        return getElementTextWithWait(paragraphOfWhat);
     }
 
     public String getFirstParagraphsOfOriginText(){
-        waitForVisibleElement(paragraphOfUse);
-        return paragraphsOfOrigin.get(0).getText();
+        return getElementTextWithWait(paragraphsOfOrigin.get(0));
     }
 
     public String getSecondParagraphsOfOriginText(){
-        waitForVisibleElement(paragraphsOfOrigin.get(1));
-        return paragraphsOfOrigin.get(1).getText();
+        return getElementTextWithWait(paragraphsOfOrigin.get(1));
     }
 
     public String getParagraphOfUseText(){
-        waitForVisibleElement(paragraphOfUse);
-        return paragraphOfUse.getText();
+        return getElementTextWithWait(paragraphOfUse);
     }
 
     public boolean isMoreTabEnabled(){
@@ -81,6 +78,6 @@ public class TabsPage extends BasePages {
     }
 
     public boolean isSubTitleDisplayed(){
-        return subTitle.isDisplayed();
+        return isElementDisplayedWithWait(subTitle);
     }
 }

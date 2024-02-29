@@ -39,19 +39,19 @@ public class ButtonsPage extends BasePages {
     }
 
     public String getPageTitleText(){
-        return pageTitle.getText();
+        return getElementTextWithWait(pageTitle);
     }
 
     public String getDoubleClickMessageText(){
-        return doubleClickMessage.getText();
+        return getElementTextWithWait(doubleClickMessage);
     }
 
     public String getRightClickMessageText(){
-        return rightClickMessage.getText();
+        return getElementTextWithWait(rightClickMessage);
     }
 
     public String getClickMeMessageText(){
-        return clickMeMessage.getText();
+        return getElementTextWithWait(clickMeMessage);
     }
 
 }

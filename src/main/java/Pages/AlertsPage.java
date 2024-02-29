@@ -96,5 +96,4 @@ public class AlertsPage extends BasePages {
         waitForChargedElementsOfAWebElementList(labels);
         return labels.get(3).isDisplayed();
     }
-
 }

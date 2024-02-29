@@ -1,7 +1,7 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name = "Suite1" parallel="methods" thread-count="3">
+<suite name = "Suite1" parallel="methods" thread-count="4">
     
     <listeners>
         <listener class-name="Resources.Listeners"/>
@@ -207,10 +207,11 @@
     
     <test name="Browser Windows">
         <parameter name="pageTitle" value="Browser Windows"/>
+        <parameter name="uRLOfSamplePage" value="https://demoqa.com/sample"/>
         <parameter name="messageOfNewWindow" value="Knowledge increases by sharing but not by saving. Please share this website with your friends and in your organization."/>
 
         <classes>
-            <class name="org.Tests.BrowserWindowsPageTest"/>
+            <class name="org.Tests.BrowserWindowsPagePageTest"/>
         </classes>
     </test>
 
@@ -229,6 +230,7 @@
 
     <test name = "Frames">
         <parameter name="pageTitle" value="Frames"/>
+        <parameter name="frameText" value="This is a sample page"/>
 
         <classes>
             <class name = "org.Tests.FramesPageTest" />

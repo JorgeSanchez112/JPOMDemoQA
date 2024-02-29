@@ -83,13 +83,10 @@ public class LinksPage extends BasePages {
     }
 
     public String getHttpMessage() {
-        waitForVisibleElement(httpMessage);
-        return httpMessage.getText();
+        return getElementTextWithWait(httpMessage);
     }
 
     public String getNameLinkMessage(){
-        waitForVisibleElement(linkMessage);
-        return linkMessage.getText();
+        return getElementTextWithWait(linkMessage);
     }
-
 }

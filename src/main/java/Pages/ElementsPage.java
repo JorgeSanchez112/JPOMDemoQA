@@ -22,7 +22,7 @@ public class ElementsPage extends BasePages {
     }
 
     public String getPageTitleText(){
-        return pageTitle.getText();
+        return getElementTextWithWait(pageTitle);
     }
 
     public int deployedElementsSize(){

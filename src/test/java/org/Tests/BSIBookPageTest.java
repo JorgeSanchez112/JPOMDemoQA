@@ -8,7 +8,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class BSIBookPageTest extends TestBase {
-    @Parameters("bookTitle")
+    @Parameters("bookTitleExpected")
     @BeforeMethod
     public void initializeClass(String bookTitle){
         try{
@@ -46,7 +46,7 @@ public class BSIBookPageTest extends TestBase {
         Assert.assertTrue(bsiBookPage.isbnLabelIsVisible());
     }
 
-    @Parameters("bookTitle")
+    @Parameters("bookTitleExpected")
     @Test
     public void validateTitleValueIsCorrect(String bookTitle){
         Assert.assertEquals(bsiBookPage.getTitleValueText(),bookTitle);
@@ -135,14 +135,14 @@ public class BSIBookPageTest extends TestBase {
 
     @Parameters({"userName","password"})
     @Test
-    public void validateUserNameValue(String userName, String password) throws InterruptedException {
+    public void validateUserNameValue(String userName, String password) {
         bsiBookPage.clickOnLogin().userLogin(userName,password);
         Assert.assertEquals(bsiBookPage.getUsernameValueText(),userName);
     }
 
     @Parameters({"userName","password","uRLLogin"})
     @Test
-    public void validateLogOutButtonIsFunctional(String userName, String password, String uRLLogin) throws InterruptedException {
+    public void validateLogOutButtonIsFunctional(String userName, String password, String uRLLogin) {
         bsiBookPage.clickOnLogin().userLogin(userName,password);
         Assert.assertEquals(bsiBookPage.clickOnLogOutButton().getCurrentUrl(),uRLLogin);
     }

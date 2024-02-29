@@ -115,7 +115,7 @@ public class CheckBoxPage extends BasePages {
     }
 
     public String getPageTitleText(){
-        return pageTitle.getText();
+        return getElementTextWithWait(pageTitle);
     }
 
     public boolean checkBoxDesktopIsClicked(){
@@ -132,5 +132,4 @@ public class CheckBoxPage extends BasePages {
         waitForChargedElementsOfAWebElementList(listMainCheckbox);
         return listMainCheckbox.get(13).isSelected();
     }
-
 }

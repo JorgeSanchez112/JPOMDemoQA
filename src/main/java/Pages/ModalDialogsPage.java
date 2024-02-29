@@ -36,25 +36,24 @@ public class ModalDialogsPage extends BasePages {
     }
 
     public String getPageTitleText(){
-        return pageTitle.getText();
+        return getElementTextWithWait(pageTitle);
     }
     public String getSmallModalText(){
-        return smallModalText.getText();
+        return getElementTextWithWait(smallModalText);
     }
 
     public String getLargeModalText(){
-        return largeModalText.getText();
+        return getElementTextWithWait(largeModalText);
     }
 
     public boolean isInstructionsTextVisible(){
-        return instructionText.isDisplayed();
+        return isElementDisplayedWithWait(instructionText);
     }
     public boolean isCloseSmallModalVisible(){
-        return closeSmallModalButton.isDisplayed();
+        return isElementDisplayedWithWait(closeSmallModalButton);
     }
 
     public boolean isCloseLargeModalVisible(){
-        return closeLargeModalButton.isDisplayed();
+        return isElementDisplayedWithWait(closeLargeModalButton);
     }
-
 }

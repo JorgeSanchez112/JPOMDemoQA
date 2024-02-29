@@ -41,11 +41,11 @@ public class BSRegisterPage extends BasePages {
     }
 
     public boolean isTitleVisible(){
-        return pageTitle.isDisplayed();
+        return isElementDisplayedWithWait(pageTitle);
     }
 
     public boolean isRecaptchaMessageVisible(){
-        return messageOfCaptcha.isDisplayed();
+        return isElementDisplayedWithWait(messageOfCaptcha);
     }
     
     public boolean isRecaptchaClicked(){
@@ -53,29 +53,26 @@ public class BSRegisterPage extends BasePages {
     }
     
     public String getSubtitleText(){
-        waitForVisibleElement(subTitle);
         scroll(subTitle);
-        return subTitle.getText();
+        return getElementTextWithWait(subTitle);
     }
 
     public String getFirstNameLabelText(){
-        waitForVisibleElement(firstNameLabel);
         scroll(firstNameLabel);
-        return firstNameLabel.getText();
+        return getElementTextWithWait(firstNameLabel);
     }
 
     public String getLastNameLabelText(){
-        waitForVisibleElement(lastNameLabel);
         scroll(lastNameLabel);
-        return lastNameLabel.getText();
+        return getElementTextWithWait(lastNameLabel);
     }
 
     public String getUsernameLabelText(){
-        return usernameLabel.getText();
+        return getElementTextWithWait(usernameLabel);
     }
 
     public String getPasswordLabelText(){
-        return passwordLabel.getText();
+        return getElementTextWithWait(passwordLabel);
     }
 
     public String getFirstNameInputBorderColor(){
@@ -105,38 +102,37 @@ public class BSRegisterPage extends BasePages {
     public void typeOnFirstnameInput(String firstname){
         waitForVisibleElement(firstNameInput);
         scroll(firstNameInput);
-        firstNameInput.sendKeys(firstname);
+        sendKeysToElement(firstNameInput,firstname);
     }
 
     public void typeOnLastNameInput(String lastName){
-        lastNameInput.sendKeys(lastName);
+        sendKeysToElement(lastNameInput,lastName);
     }
 
     public void typeOnUsernameInput(String username){
-        usernameInput.sendKeys(username);
+        sendKeysToElement(usernameInput,username);
     }
 
     public void typeOnPasswordInput(String password){
-        passwordInput.sendKeys(password);
+         sendKeysToElement(passwordInput,password);
     }
 
     public void clickOnRecaptcha(){
         waitForVisibleElement(registerButton);
         scroll(registerButton);
         driver.switchTo().frame(driver.findElement(By.cssSelector("#g-recaptcha > div > div > iframe")));
-        waitForVisibleElement(recaptcha);
-        recaptcha.click();
+        clickWithWait(recaptcha);
     }
 
     public void clickOnRegisterButton(){
         waitForVisibleElement(registerButton);
         scroll(registerButton);
-        registerButton.click();
+        clickWithWait(registerButton);
     }
 
     public BSLoginPage clickOnBackToLogin(){
         scroll(loginButton);
-        loginButton.click();
+        clickWithWait(loginButton);
         return new BSLoginPage(driver);
     }
 

@@ -51,15 +51,15 @@ public class BSLoginPage extends BasePages {
     }
 
     public String getSubTitleText(){
-        return subtitle.getText();
+        return getElementTextWithWait(subtitle);
     }
 
     public String getSubSubTitleText(){
-        return subSubtitle.getText();
+        return getElementTextWithWait(subSubtitle);
     }
 
-    public String getUsernameLabelText(){
-        return usernameLabel.getText();
+    public String getUsernameLabelText() {
+        return getElementTextWithWait(usernameLabel);
     }
 
     public String getUsernameInputValue(){
@@ -67,7 +67,7 @@ public class BSLoginPage extends BasePages {
     }
 
     public String getPasswordLabelText(){
-        return passwordLabel.getText();
+        return getElementTextWithWait(passwordLabel);
     }
 
     public String getPasswordInputValue(){
@@ -88,12 +88,12 @@ public class BSLoginPage extends BasePages {
     }
 
     public boolean isTitleVisible(){
-        return pageTitle.isDisplayed();
+        return isElementDisplayedWithWait(pageTitle);
     }
 
     public boolean isErrorMessageVisible(){
         waitForVisibleElement(errorCredentialsMessage);
-        return errorCredentialsMessage.isDisplayed();
+        return isElementDisplayedWithWait(errorCredentialsMessage);
     }
 
     public BSRegisterPage clickOnNewUserButton(){

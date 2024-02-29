@@ -61,15 +61,15 @@ public class DatePickerPage extends BasePages {
     }
 
     public String getPageTitleText(){
-        return pageTitle.getText();
+        return getElementTextWithWait(pageTitle);
     }
 
     public String getDateLabelText(){
-        return labels.get(0).getText();
+        return getElementTextWithWait(labels.get(0));
     }
 
     public String getDateTimeLabelText(){
-        return labels.get(1).getText();
+        return getElementTextWithWait(labels.get(1));
     }
 
     public String getDateValueText(){

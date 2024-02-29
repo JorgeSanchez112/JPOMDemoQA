@@ -50,43 +50,43 @@ public class DraggablePage extends BasePages {
         clickWithWait(tabCursorStyle);
     }
 
-    public void moveSimpleElement(){
-        moveElementToCoordinates(simpleBox,10, 10);
+    public void moveSimpleElement(int width, int height){
+        moveElementToCoordinates(simpleBox,width, height);
     }
 
-    public void moveXElement(){
-        moveElementToCoordinates(restrictedXBox,50, 0);
+    public void moveXElement(int width, int height){
+        moveElementToCoordinates(restrictedXBox,width, height);
     }
 
-    public void moveYElement(){
-        moveElementToCoordinates(restrictedYBox,0,50);
+    public void moveYElement(int width, int height){
+        moveElementToCoordinates(restrictedYBox,width,height);
     }
 
-    public void moveContainedBox(){
-        moveElementToCoordinates(containedBox, 100, 50);
+    public void moveContainedBox(int width, int height){
+        moveElementToCoordinates(containedBox, width, height);
     }
 
-    public void moveContainedText(){
+    public void moveContainedText(int width, int height){
         scroll(containedText);
-        moveElementToCoordinates(containedText, 2,10);
+        moveElementToCoordinates(containedText, width,height);
     }
 
-    public void moveCenterCursorOfCursorStyle(){
-        moveElementToCoordinates(centerStyleCursor, 50, 50);
+    public void moveCenterCursorOfCursorStyle(int width, int height){
+        moveElementToCoordinates(centerStyleCursor, width, height);
     }
 
-    public void moveTopCursorOfCursorStyle(){
+    public void moveTopCursorOfCursorStyle(int width, int height){
         scroll(topLeftStyleCursor);
-        moveElementToCoordinates(topLeftStyleCursor, 100, 50);
+        moveElementToCoordinates(topLeftStyleCursor, width, height);
     }
 
-    public void moveBottomCursorOfCursorStyle(){
+    public void moveBottomCursorOfCursorStyle(int width, int height){
         scroll(bottomStyleCursor);
-        moveElementToCoordinates(bottomStyleCursor, 150, 50);
+        moveElementToCoordinates(bottomStyleCursor, width, height);
     }
 
     public String getPageTitleText(){
-        return pageTitle.getText();
+        return getElementTextWithWait(pageTitle);
     }
 
     public String getSimpleBoxXPosition(){
@@ -146,18 +146,18 @@ public class DraggablePage extends BasePages {
     }
 
     public boolean isSimpleTabVisible(){
-        return tabSimple.isDisplayed();
+        return isElementDisplayedWithWait(tabSimple);
     }
 
     public boolean isAxisTabVisible(){
-        return tabAxisRestricted.isDisplayed();
+        return isElementDisplayedWithWait(tabAxisRestricted);
     }
 
     public boolean isContainerTabVisible(){
-        return tabContainerRestricted.isDisplayed();
+        return isElementDisplayedWithWait(tabContainerRestricted);
     }
 
     public boolean isCursorTabVisible(){
-        return tabCursorStyle.isDisplayed();
+        return isElementDisplayedWithWait(tabCursorStyle);
     }
 }

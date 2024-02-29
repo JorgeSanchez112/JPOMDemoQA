@@ -56,7 +56,7 @@ public class SelectMenuPageTest extends TestBase {
     @Test //this need a change
     public void selectValueInOldSelectMenu(String optionOfColor){
         selectMenuPage.selectValueOnOldStyleSelectMenu(optionOfColor);
-        Assert.assertEquals(selectMenuPage.RetrieveTextofSelectedOptionFromOldStyleMenu(),optionOfColor);
+        Assert.assertEquals(selectMenuPage.RetrieveTextOfSelectedOptionFromOldStyleMenu(),optionOfColor);
     }
 
     @Parameters("fourthLabel")

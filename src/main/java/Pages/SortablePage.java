@@ -79,81 +79,81 @@ public class SortablePage extends BasePages {
     }
 
     public String getPageTitleText(){
-        return pageTitle.getText();
+        return getElementTextWithWait(pageTitle);
     }
 
     public String getTextOfFirstElementValueOfElementsList(){
         waitForChargedElementsOfAWebElementList(elementsList);
-        return elementsList.get(0).getText();
+        return getElementTextWithWait(elementsList.get(0));
     }
 
     public String getTextOfSecondElementValueOfElementsList(){
         waitForChargedElementsOfAWebElementList(elementsList);
-        return elementsList.get(1).getText();
+        return getElementTextWithWait(elementsList.get(1));
     }
 
     public String getTextOfThirdElementValueOfElementsList(){
         waitForChargedElementsOfAWebElementList(elementsList);
-        return elementsList.get(2).getText();
+        return getElementTextWithWait(elementsList.get(2));
     }
 
     public String getTextOfFourthElementValueOfElementsList(){
         waitForChargedElementsOfAWebElementList(elementsList);
-        return elementsList.get(3).getText();
+        return getElementTextWithWait(elementsList.get(3));
     }
 
     public String getTextOfFifthElementValueOfElementsList(){
         waitForChargedElementsOfAWebElementList(elementsList);
-        return elementsList.get(4).getText();
+        return getElementTextWithWait(elementsList.get(4));
     }
 
     public String getTextOfSixthElementValueOfElementsList(){
         waitForChargedElementsOfAWebElementList(elementsList);
-        return elementsList.get(5).getText();
+        return getElementTextWithWait(elementsList.get(5));
     }
 
     public String getTextOfFirstElementValueOfElementsGrid(){
         waitForChargedElementsOfAWebElementList(elementsGrid);
-        return elementsGrid.get(0).getText();
+        return getElementTextWithWait(elementsGrid.get(0));
     }
 
     public String getTextOfSecondElementValueOfElementsGrid(){
         waitForChargedElementsOfAWebElementList(elementsGrid);
-        return elementsGrid.get(1).getText();
+        return getElementTextWithWait(elementsGrid.get(1));
     }
 
     public String getTextOfThirdElementValueOfElementsGrid(){
         waitForChargedElementsOfAWebElementList(elementsGrid);
-        return elementsGrid.get(2).getText();
+        return getElementTextWithWait(elementsGrid.get(2));
     }
 
     public String getTextOfFourthElementValueOfElementsGrid(){
         waitForChargedElementsOfAWebElementList(elementsGrid);
-        return elementsGrid.get(3).getText();
+        return getElementTextWithWait(elementsGrid.get(3));
     }
 
     public String getTextOfFifthElementValueOfElementsGrid(){
         waitForChargedElementsOfAWebElementList(elementsGrid);
-        return elementsGrid.get(4).getText();
+        return getElementTextWithWait(elementsGrid.get(4));
     }
 
     public String getTextOfSixthElementValueOfElementsGrid(){
         waitForChargedElementsOfAWebElementList(elementsGrid);
-        return elementsGrid.get(5).getText();
+        return getElementTextWithWait(elementsGrid.get(5));
     }
 
     public String getTextOfSeventhElementValueOfElementsGrid(){
         waitForChargedElementsOfAWebElementList(elementsGrid);
-        return elementsGrid.get(6).getText();
+        return getElementTextWithWait(elementsGrid.get(6));
     }
 
     public String getTextOfEighthElementValueOfElementsGrid(){
         waitForChargedElementsOfAWebElementList(elementsGrid);
-        return elementsGrid.get(7).getText();
+        return getElementTextWithWait(elementsGrid.get(7));
     }
 
     public String getTextOfNinethElementValueOfElementsGrid(){
         waitForChargedElementsOfAWebElementList(elementsGrid);
-        return elementsGrid.get(8).getText();
+        return getElementTextWithWait(elementsGrid.get(8));
     }
 }

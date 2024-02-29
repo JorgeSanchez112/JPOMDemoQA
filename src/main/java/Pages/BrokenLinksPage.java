@@ -21,7 +21,7 @@ public class BrokenLinksPage extends BasePages {
     }
 
     public String getPageTitleText(){
-        return pageTitle.getText();
+        return getElementTextWithWait(pageTitle);
     }
 
     public boolean isDisplayedValidImage() throws IOException {

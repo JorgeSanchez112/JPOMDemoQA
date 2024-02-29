@@ -27,7 +27,7 @@ public class SliderPage extends BasePages {
     }
 
     public String getPageTitleText(){
-        return pageTitle.getText();
+        return getElementTextWithWait(pageTitle);
     }
 
     public String getContainerValueText(){

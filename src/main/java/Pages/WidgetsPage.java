@@ -87,5 +87,4 @@ public class WidgetsPage extends BasePages {
         clickWithWait(deployed_form_exercise.get(8));
         return new SelectMenuPage(driver);
     }
-
 }

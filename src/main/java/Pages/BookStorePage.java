@@ -25,14 +25,14 @@ public class BookStorePage extends BasePages {
     @FindBy(css = ".rt-tr > .rt-td:nth-child(4)")
     private List<WebElement> columnPublisher;
 
-    final int ZERO = 0;
-    final int ONE = 1;
-    final int TWO = 2;
-    final int THREE = 3;
-    final int FOUR = 4;
-    final int FIVE = 5;
-    final int SIX = 6;
-    final int SEVEN = 7;
+    private final int ZERO = 0;
+    private final int ONE = 1;
+    private final int TWO = 2;
+    private final int THREE = 3;
+    private final int FOUR = 4;
+    private final int FIVE = 5;
+    private final int SIX = 6;
+    private final int SEVEN = 7;
 
     public BookStorePage(WebDriver driver) {
         super(driver);
@@ -306,18 +306,21 @@ public class BookStorePage extends BasePages {
     }
 
     public BSLoginPage clickOnLoginTab(){
+        waitForChargedElementsOfAWebElementList(deployed_form_exercise);
         scroll(deployed_form_exercise.get(ZERO));
         clickWithWait(deployed_form_exercise.get(ZERO));
         return new BSLoginPage(driver);
     }
 
     public BSProfilePage clickOnProfile(){
+        waitForChargedElementsOfAWebElementList(deployed_form_exercise);
         scroll(deployed_form_exercise.get(TWO));
         clickWithWait(deployed_form_exercise.get(TWO));
         return new BSProfilePage(driver);
     }
 
     public BSAPIPage clickOnBookstoreApi(){
+        waitForChargedElementsOfAWebElementList(deployed_form_exercise);
         scroll(deployed_form_exercise.get(3));
         clickWithWait(deployed_form_exercise.get(3));
         return new BSAPIPage(driver);

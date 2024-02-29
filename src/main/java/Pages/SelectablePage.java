@@ -104,7 +104,7 @@ public class SelectablePage extends BasePages {
     }
 
     public String getPageTitleText(){
-        return pageTitle.getText();
+        return getElementTextWithWait(pageTitle);
     }
 
     public boolean isCrasJustoOdioListElementSelected(){
@@ -171,5 +171,4 @@ public class SelectablePage extends BasePages {
         waitForChargedElementsOfAWebElementList(elementsGrid);
         return isListItemSelected(elementsGrid.get(8));
     }
-
 }

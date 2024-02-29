@@ -15,6 +15,8 @@ public class RadioButtonPage extends BasePages {
     private WebElement impressiveRadioButton;
     @FindBy (id = "noRadio")
     private WebElement disabledRadioButton;
+    @FindBy (css = "label[for='noRadio']")
+    private WebElement noRadioButtonLabel;
     @FindBy (css = "p.mt-3 >span")
     private WebElement responseText;
 
@@ -32,30 +34,29 @@ public class RadioButtonPage extends BasePages {
     }
 
     public boolean isSubtitleVisible(){
-        return subtitle.isDisplayed();
+        return isElementDisplayedWithWait(subtitle);
     }
     public boolean isRadioButtonEnabled(){
         return disabledRadioButton.isEnabled();
     }
 
     public String getPageTitleText(){
-        return pageTitle.getText();
+        return getElementTextWithWait(pageTitle);
     }
 
     public String getYesLabelText(){
-        return yesRadioButton.getText();
+        return getElementTextWithWait(yesRadioButton);
     }
 
     public String getImpressiveLabelText(){
-        return impressiveRadioButton.getText();
+        return getElementTextWithWait(impressiveRadioButton);
     }
 
     public String getNoLabelText(){
-        return disabledRadioButton.getText();
+        return getElementTextWithWait(noRadioButtonLabel);
     }
 
     public String response(){
-        return responseText.getText();
+        return getElementTextWithWait(responseText);
     }
-
 }

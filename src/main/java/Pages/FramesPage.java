@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class FramesPage extends BasePages {
-    @FindBy(css = "#framesWrapper > div:nth-child(1)")
+    @FindBy(css = "#framesWrapper > div:nth-child(2)")
     private WebElement useAdvices;
     @FindBy(id = "frame1")
     private WebElement bigFrame;
@@ -22,7 +22,7 @@ public class FramesPage extends BasePages {
     }
 
     public void switchToBigFrame(){
-        driver.switchTo().frame(bigFrame);
+         driver.switchTo().frame(bigFrame);
     }
 
     public void switchToShortFrame(){
@@ -30,14 +30,14 @@ public class FramesPage extends BasePages {
     }
 
     public String getPageTitleText(){
-        return pageTitle.getText();
+        return getElementTextWithWait(pageTitle);
     }
 
-    public boolean validateTextFrames(){
-        return text.getText().contains("This is a sample page");
+    public String getFrameText(){
+        return getElementTextWithWait(text);
     }
 
     public boolean isUseAdvicesTextVisible(){
-        return useAdvices.isDisplayed();
+        return isElementDisplayedWithWait(useAdvices);
     }
 }

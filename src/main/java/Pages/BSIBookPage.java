@@ -1,6 +1,7 @@
 package Pages;
 
 import TestComponents.BasePages;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -59,7 +60,11 @@ public class BSIBookPage extends BasePages {
     }
 
     public void acceptAlertMessage(){
-        driver.switchTo().alert().accept();
+        try{
+            driver.switchTo().alert().accept();
+        }catch (NoAlertPresentException e){
+            e.printStackTrace();
+        }
     }
 
     public void clickOnAddToYourCollectionButton(){
@@ -70,120 +75,104 @@ public class BSIBookPage extends BasePages {
     }
 
     public String getPageTitleText(){
-        return pageTitle.getText();
+        return getElementTextWithWait(pageTitle);
     }
 
     public String getUsernameValueText(){
-        waitForVisibleElement(userNameValue);
-        return userNameValue.getText();
+        return getElementTextWithWait(userNameValue);
     }
 
     public String getIsbnValueText(){
-        waitForVisibleElement(isbnValue);
-        return isbnValue.getText();
+        return getElementTextWithWait(isbnValue);
     }
 
     public String getTitleValueText(){
-        waitForVisibleElement(titleValue);
-        return titleValue.getText();
+        return getElementTextWithWait(titleValue);
     }
 
     public String getSubTitleValueText(){
-        waitForVisibleElement(subtitleValue);
         scroll(subtitleValue);
-        return subtitleValue.getText();
+        return getElementTextWithWait(subtitleValue);
     }
 
     public String getAuthorValueText(){
-        waitForVisibleElement(authorValue);
         scroll(authorValue);
-        return authorValue.getText();
+        return getElementTextWithWait(authorValue);
     }
 
     public String getPublisherValueText(){
-        waitForVisibleElement(publisherValue);
         scroll(publisherValue);
-        return publisherValue.getText();
+        return getElementTextWithWait(publisherValue);
     }
 
     public String getTotalPagesValueText(){
-        return totalPagesValue.getText();
+        return getElementTextWithWait(totalPagesValue);
     }
 
     public String getDescriptionValueText(){
-        return descriptionValue.getText();
+        return getElementTextWithWait(descriptionValue);
     }
 
     public boolean usernameLabelIsVisible(){
         waitForVisibleElement(userNameLabel);
-        try{
-            return userNameLabel.isDisplayed();
-        }catch (NoSuchElementException e){
-            e.printStackTrace();
-        }
-        return false;
+        return isElementDisplayedWithWait(userNameValue);
     }
 
     public boolean isbnLabelIsVisible(){
         waitForVisibleElement(isbnLabel);
-        return isbnLabel.isDisplayed();
+        return isElementDisplayedWithWait(isbnLabel);
     }
 
     public boolean titleLabelIsVisible(){
         waitForVisibleElement(titleLabel);
-        return titleLabel.isDisplayed();
+        return isElementDisplayedWithWait(titleLabel);
     }
 
     public boolean subtitleLabelIsVisible(){
         waitForVisibleElement(subtitleLabel);
         scroll(subtitleLabel);
-        return subtitleLabel.isDisplayed();
+        return isElementDisplayedWithWait(subtitleLabel);
     }
 
     public boolean authorLabelIsVisible(){
         waitForVisibleElement(authorLabel);
         scroll(authorLabel);
-        return authorLabel.isDisplayed();
+        return isElementDisplayedWithWait(authorLabel);
     }
 
     public boolean publisherLabelIsVisible(){
         waitForVisibleElement(publisherLabel);
         scroll(publisherLabel);
-        return publisherLabel.isDisplayed();
+        return isElementDisplayedWithWait(publisherLabel);
     }
 
     public boolean pagesLabelIsVisible(){
         waitForVisibleElement(pagesLabel);
         scroll(pagesLabel);
-        return pagesLabel.isDisplayed();
+        return isElementDisplayedWithWait(pagesLabel);
     }
 
     public boolean descriptionLabelIsVisible(){
         waitForVisibleElement(descriptionLabel);
         scroll(descriptionLabel);
-        return descriptionLabel.isDisplayed();
+        return isElementDisplayedWithWait(descriptionLabel);
     }
 
     public boolean websiteLabelIsVisible(){
         waitForVisibleElement(websiteLabel);
         scroll(websiteLabel);
-        return websiteLabel.isDisplayed();
+        return isElementDisplayedWithWait(websiteLabel);
     }
 
     public boolean logOutButtonIsVisible(){
         waitForVisibleElement(logOutButton);
-        try {
-            return logOutButton.isDisplayed();
-        }catch (NoSuchElementException e){
-            e.printStackTrace();
-        }
-        return false;
+        return isElementDisplayedWithWait(logOutButton);
     }
 
     public boolean websiteValueLinkIsVisible(){
         waitForVisibleElement(websiteLink);
         scroll(websiteLink);
-        return websiteLink.isDisplayed();
+        return isElementDisplayedWithWait(websiteLink);
     }
 
     public BSLoginPage clickOnLogin(){
@@ -207,5 +196,4 @@ public class BSIBookPage extends BasePages {
         clickOnAddToYourCollectionButton();
         return clickOnBackToBookStoreBookButton();
     }
-
 }

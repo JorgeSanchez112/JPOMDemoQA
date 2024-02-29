@@ -35,9 +35,13 @@ public class BasePages {
 
     public void scroll(WebElement element){
         try{
-            waitForVisibleElement(element);
-            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-        }catch (TimeoutException e){
+            try {
+                waitForVisibleElement(element);
+                ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+            }catch (IndexOutOfBoundsException e){
+                e.printStackTrace();
+            }
+        }catch (WebDriverException e){
             e.printStackTrace();
         }
     }
@@ -90,8 +94,12 @@ public class BasePages {
 
     public void waitForVisibleElement(WebElement element){
         try{
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-            wait.until(ExpectedConditions.visibilityOf(element));
+            try {
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+                wait.until(ExpectedConditions.visibilityOf(element));
+            }catch (NoSuchElementException e){
+                e.printStackTrace();
+            }
         }catch (TimeoutException e){
             e.printStackTrace();
         }
@@ -119,11 +127,32 @@ public class BasePages {
         return "Error in 'getElementTextAccordingToPositionReceived' method";
     }
 
+    public String getElementTextWithWait(WebElement element){
+        try {
+            waitForVisibleElement(element);
+            return element.getText();
+        }catch (WebDriverException e){
+            e.printStackTrace();
+            return e.getMessage();
+        }
+    }
+
+    public boolean isElementDisplayedWithWait(WebElement element){
+        try {
+            waitForVisibleElement(element);
+            return element.isDisplayed();
+        }catch (WebDriverException e){
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
     public boolean isElementVisibleAccordingToPositionReceivedOfList(List<WebElement> elements, int position){
         if (elements.size() != 0){
             try{
                 scroll(elements.get(position));
-                return elements.get(position).isDisplayed();
+                return isElementDisplayedWithWait(elements.get(position));
             }catch (IndexOutOfBoundsException e){
                 e.printStackTrace();
             }
@@ -134,14 +163,10 @@ public class BasePages {
     public void waitForChargedElementsOfAWebElementList(List<WebElement> elementsList){
         try {
             try {
-                try{
-                    FluentWait wait = new FluentWait(driver);
-                    wait.withTimeout(Duration.ofSeconds(10));
-                    wait.pollingEvery(Duration.ofMillis(250));
-                    wait.until(ExpectedConditions.visibilityOfAllElements(elementsList));
-                }catch (NoSuchElementException e){
-                    e.printStackTrace();
-                }
+                FluentWait wait = new FluentWait(driver);
+                wait.withTimeout(Duration.ofSeconds(10));
+                wait.pollingEvery(Duration.ofMillis(250));
+                wait.until(ExpectedConditions.visibilityOfAllElements(elementsList));
             }catch (NoSuchElementException e){
                 e.printStackTrace();
             }
@@ -152,8 +177,12 @@ public class BasePages {
 
     public void waitAlert(){
         try {
-            WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(6));
-            wait.until(ExpectedConditions.alertIsPresent());
+            try {
+                WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(6));
+                wait.until(ExpectedConditions.alertIsPresent());
+            }catch (NoSuchElementException e){
+                e.printStackTrace();
+            }
         }catch (TimeoutException e){
             e.printStackTrace();
         }
@@ -301,10 +330,14 @@ public class BasePages {
     }
 
     public void moveClickerToElement(WebElement element){
-        Actions actions = new Actions(driver);
-        actions.moveToElement(element)
-                .build()
-                .perform();
+        try {
+            Actions actions = new Actions(driver);
+            actions.moveToElement(element)
+                    .build()
+                    .perform();
+        }catch (IndexOutOfBoundsException e){
+            e.printStackTrace();
+        }
     }
 
     public void dragDropMoveElementToTarget(WebElement sourceElement, WebElement targetElement){

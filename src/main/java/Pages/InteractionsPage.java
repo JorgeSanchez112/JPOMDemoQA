@@ -59,5 +59,4 @@ public class InteractionsPage extends BasePages {
         clickWithWait(deployed_form_exercise.get(4));
         return new DraggablePage(driver);
     }
-
 }

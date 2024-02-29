@@ -25,11 +25,11 @@ public class AlertsFrameWindowsPage extends BasePages {
         return driver.getCurrentUrl();
     }
 
-    public BrowserWindows clickOnBrowserWindows(){
+    public BrowserWindowsPage clickOnBrowserWindows(){
         waitForChargedElementsOfAWebElementList(deployed_form_exercise);
         scroll(deployed_form_exercise.get(0));
         clickWithWait(deployed_form_exercise.get(0));
-        return new BrowserWindows(driver);
+        return new BrowserWindowsPage(driver);
     }
 
     public AlertsPage clickOnAlerts(){
@@ -48,12 +48,8 @@ public class AlertsFrameWindowsPage extends BasePages {
 
     public NestedFramesPage clickOnNestedFrames(){
         waitForChargedElementsOfAWebElementList(deployed_form_exercise);
-        try {
-            scroll(deployed_form_exercise.get(3));
-            clickWithWait(deployed_form_exercise.get(3));
-        }catch (IndexOutOfBoundsException e){
-            e.printStackTrace();
-        }
+        scroll(deployed_form_exercise.get(3));
+        clickWithWait(deployed_form_exercise.get(3));
         return new NestedFramesPage(driver);
     }
 

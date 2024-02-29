@@ -67,31 +67,31 @@ public class WebTablesPage extends BasePages {
     }
 
     public void typeOnSearchBox(String text){
-        searchBox.sendKeys(text);
+        sendKeysToElement(searchBox,text);
     }
 
     public void fillFirstName(String name){
-        firstNameForm.sendKeys(name);
+        sendKeysToElement(firstNameForm,name);
     }
 
     public void fillLastName(String lastName){
-        lastNameForm.sendKeys(lastName);
+        sendKeysToElement(lastNameForm,lastName);
     }
 
     public void fillEmail(String email){
-        emailForm.sendKeys(email);
+        sendKeysToElement(emailForm,email);
     }
 
     public void fillAge(String age){
-        ageForm.sendKeys(age);
+        sendKeysToElement(ageForm,age);
     }
 
     public void fillSalary(String salary){
-        salaryForm.sendKeys(salary);
+        sendKeysToElement(salaryForm,salary);
     }
 
     public void fillDepartment(String department){
-        departmentForm.sendKeys(department);
+        sendKeysToElement(departmentForm,department);
     }
 
     public void createRegistrationForm(String name, String lastName, String email, String age, String salary, String department){
@@ -106,39 +106,38 @@ public class WebTablesPage extends BasePages {
     }
 
     public String getPageTitleText(){
-        return pageTitle.getText();
+        return getElementTextWithWait(pageTitle);
     }
 
     public String getFirstNameOfFirstRow(){
-        return firstRowFields.get(0).getText();
+        return getElementTextWithWait(firstRowFields.get(0));
     }
 
     public String getTextOfMessageNoRowsFound(){
-        return noData.getText();
+        return getElementTextWithWait(noData);
     }
 
     public String getFirstNameOfFourthRow(){
-       return fourthRowFields.get(0).getText();
+       return getElementTextWithWait(fourthRowFields.get(0));
     }
 
     public String getLastNameOfFourthRow(){
-        return fourthRowFields.get(1).getText();
+        return getElementTextWithWait(fourthRowFields.get(1));
     }
 
     public String getAgeOfFourthRow(){
-        return fourthRowFields.get(2).getText();
+        return getElementTextWithWait(fourthRowFields.get(2));
     }
 
     public String getEmailOfFourthRow(){
-        return fourthRowFields.get(3).getText();
+        return getElementTextWithWait(fourthRowFields.get(3));
     }
 
     public String getSalaryOfFourthRow(){
-        return fourthRowFields.get(4).getText();
+        return getElementTextWithWait(fourthRowFields.get(4));
     }
 
     public String getDepartmentOfFourthRow(){
-        return fourthRowFields.get(5).getText();
+        return getElementTextWithWait(fourthRowFields.get(5));
     }
-
 }

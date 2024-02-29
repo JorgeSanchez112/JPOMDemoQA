@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class BrowserWindows extends BasePages {
+public class BrowserWindowsPage extends BasePages {
     @FindBy(id = "tabButton")
     private WebElement newTabButton;
     @FindBy(id = "windowButton")
@@ -18,13 +18,10 @@ public class BrowserWindows extends BasePages {
     @FindBy(tagName = "body")
     private WebElement newMessageText;
 
-    public BrowserWindows(WebDriver driver) {
+    public BrowserWindowsPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver,this);
     }
-
-    final String URLOFNEWTAB = "https://demoqa.com/sample";
-
 
     public void clickOnNewTabButton(){
         clickWithWait(newTabButton);
@@ -52,12 +49,7 @@ public class BrowserWindows extends BasePages {
         return driver.getCurrentUrl();
     }
 
-    public String getUrlOfNewTabAndWindow(){
-        return URLOFNEWTAB;
-    }
-
     public boolean newTabTextIsVisible(){
         return textTab.isDisplayed();
     }
-
 }

@@ -43,31 +43,30 @@ public class AccordianPage extends BasePages {
     }
 
     public String getPageTitleText(){
-        return pageTitle.getText();
+        return getElementTextWithWait(pageTitle);
     }
 
     public String getCard1TopicText(){
-        return card1.getText();
+        return getElementTextWithWait(card1);
     }
 
     public String getCard2TopicText(){
-        return card2.getText();
+        return getElementTextWithWait(card2);
     }
 
     public String getCard3TopicText(){
-        return card3.getText();
+        return getElementTextWithWait(card3);
     }
 
     public boolean firstContentIsVisible(){
-        return firstCardContent.isDisplayed();
+        return isElementDisplayedWithWait(firstCardContent);
     }
 
     public boolean secondContentIsVisible(){
-        return secondCardContent.isDisplayed();
+        return isElementDisplayedWithWait(secondCardContent);
     }
 
     public boolean thirdContentIsVisible(){
-        return thirdCardContent.isDisplayed();
+        return isElementDisplayedWithWait(thirdCardContent);
     }
-
 }

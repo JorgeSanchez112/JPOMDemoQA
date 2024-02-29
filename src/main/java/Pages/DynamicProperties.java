@@ -22,7 +22,7 @@ public class DynamicProperties extends BasePages {
     }
 
     public boolean isRandomIdVisible(){
-        return randomIdText.isDisplayed();
+        return isElementDisplayedWithWait(randomIdText);
     }
 
     public boolean isButtonEnable(){
@@ -31,7 +31,7 @@ public class DynamicProperties extends BasePages {
     }
 
     public String getPageTitleText(){
-        return pageTitle.getText();
+        return getElementTextWithWait(pageTitle);
     }
 
     public String getButtonTextColor(){
@@ -41,7 +41,7 @@ public class DynamicProperties extends BasePages {
 
     public boolean buttonIsVisible(){
         waitForVisibleElement(visibleAfterButton);
-        return visibleAfterButton.isDisplayed();
+        return isElementDisplayedWithWait(visibleAfterButton);
     }
 
 }

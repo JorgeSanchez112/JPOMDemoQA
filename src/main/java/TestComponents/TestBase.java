@@ -19,11 +19,8 @@ import java.util.Properties;
 
 public class TestBase{
 
-
     protected static final ThreadLocal<WebDriver> webDriverThreadLocal = new ThreadLocal<>();
     protected WebDriver driver;
-
-
     protected Properties prop;
     protected HomePage homePage;
     protected ElementsPage elementsPage;
@@ -42,7 +39,7 @@ public class TestBase{
     protected UploadDownloadPage uploadDownloadPage;
     protected DynamicProperties dynamicProperties;
     protected PracticeFormPage practiceFormPage;
-    protected BrowserWindows browserWindows;
+    protected BrowserWindowsPage browserWindowsPage;
     protected AlertsPage alertsPage;
     protected FramesPage framesPage;
     protected NestedFramesPage nestedFramesPage;
@@ -85,6 +82,7 @@ public class TestBase{
 //Select Menu
 //Droppable
 //Accordian
+// links
 
     public TestBase() {
         try {
@@ -148,11 +146,8 @@ public class TestBase{
     public void setUp() throws MalformedURLException {
         WebDriver driver = getDriver();
         if (driver == null) {
-
             webDriverThreadLocal.set(initialization());
-            driver = webDriverThreadLocal.get();
             driver = getDriver();
-
         }
         System.out.println(driver);
 

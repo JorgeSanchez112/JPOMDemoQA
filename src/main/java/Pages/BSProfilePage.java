@@ -1,7 +1,6 @@
 package Pages;
 
 import TestComponents.BasePages;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -67,7 +66,7 @@ public class BSProfilePage extends BasePages {
 
     public void typeOnSearchBox(String text){
         waitForVisibleElement(searchBox);
-        searchBox.sendKeys(text);
+        sendKeysToElement(searchBox,text);
     }
 
     public void clickOnPreviousButton(){
@@ -151,7 +150,7 @@ public class BSProfilePage extends BasePages {
 
     public String getBooksLabelText(){
         waitForVisibleElement(booksLabel);
-        return booksLabel.getText();
+        return getElementTextWithWait(booksLabel);
     }
 
     public String getSearchBoxPlaceholderText(){
@@ -161,53 +160,53 @@ public class BSProfilePage extends BasePages {
 
     public String getUserNameLabelText(){
         waitForVisibleElement(usernameLabel);
-        return usernameLabel.getText();
+        return getElementTextWithWait(usernameLabel);
     }
 
     public String getUserNameValueText(){
         waitForVisibleElement(usernameValue);
-        return usernameValue.getText();
+        return getElementTextWithWait(usernameValue);
     }
 
     public String getTableTitleImageText(){
         waitForChargedElementsOfAWebElementList(tableHeaderTitles);
         waitForVisibleElement(tableHeaderTitles.get(0));
         scroll(tableHeaderTitles.get(0));
-        return tableHeaderTitles.get(0).getText();
+        return getElementTextWithWait(tableHeaderTitles.get(0));
     }
 
     public String getTableTitleTitleText(){
         waitForChargedElementsOfAWebElementList(tableHeaderTitles);
         waitForVisibleElement(tableHeaderTitles.get(1));
         scroll(tableHeaderTitles.get(1));
-        return tableHeaderTitles.get(1).getText();
+        return getElementTextWithWait(tableHeaderTitles.get(1));
     }
 
     public String getTableTitleAuthorText(){
         waitForChargedElementsOfAWebElementList(tableHeaderTitles);
         waitForVisibleElement(tableHeaderTitles.get(2));
         scroll(tableHeaderTitles.get(2));
-        return tableHeaderTitles.get(2).getText();
+        return getElementTextWithWait(tableHeaderTitles.get(2));
     }
 
     public String getTableTitlePublisherText(){
         waitForChargedElementsOfAWebElementList(tableHeaderTitles);
         waitForVisibleElement(tableHeaderTitles.get(3));
         scroll(tableHeaderTitles.get(3));
-        return tableHeaderTitles.get(3).getText();
+        return getElementTextWithWait(tableHeaderTitles.get(3));
     }
 
     public String getTableTitleActionText(){
         waitForChargedElementsOfAWebElementList(tableHeaderTitles);
         waitForVisibleElement(tableHeaderTitles.get(4));
         scroll(tableHeaderTitles.get(4));
-        return tableHeaderTitles.get(4).getText();
+        return getElementTextWithWait(tableHeaderTitles.get(4));
     }
 
     public String getPageText(){
         waitForVisibleElement(pageTextOfCenterTable);
         scroll(pageTextOfCenterTable);
-        return pageTextOfCenterTable.getText();
+        return getElementTextWithWait(pageTextOfCenterTable);
     }
 
     public String getPageNumber(){
@@ -218,7 +217,7 @@ public class BSProfilePage extends BasePages {
     public String getTotalOfPagesText(){
         waitForVisibleElement(totalPagesNumber);
         scroll(totalPagesNumber);
-        return totalPagesNumber.getText();
+        return getElementTextWithWait(totalPagesNumber);
     }
 
     public int getPositionOfBookWithTheTitle(String titleBook){
@@ -227,8 +226,7 @@ public class BSProfilePage extends BasePages {
     }
 
     public boolean isTitleVisible(){
-        waitForVisibleElement(pageTitle);
-        return pageTitle.isDisplayed();
+        return isElementDisplayedWithWait(pageTitle);
     }
 
     public boolean isMessageDoNotLoginShowed(){
@@ -247,22 +245,16 @@ public class BSProfilePage extends BasePages {
 
     public String getAuthorRegardToTitleBookText(String title){
         waitForChargedElementsOfAWebElementList(columnAuthors);
-        return columnAuthors.get(getPositionOfBookWithTheTitle(title)).getText();
+        return getElementTextWithWait(columnAuthors.get(getPositionOfBookWithTheTitle(title)));
     }
 
     public String getPublisherRegardToTitleBookText(String title){
         waitForChargedElementsOfAWebElementList(columnPublishers);
-        return columnPublishers.get(getPositionOfBookWithTheTitle(title)).getText();
+        return getElementTextWithWait(columnPublishers.get(getPositionOfBookWithTheTitle(title)));
     }
 
     public boolean isMessageNoDataVisible(){
-        try {
-            waitForVisibleElement(messageNoData);
-            return messageNoData.isDisplayed();
-        }catch (TimeoutException e){
-            e.printStackTrace();
-        }
-        return false;
+        return isElementDisplayedWithWait(messageNoData);
     }
 
     public boolean isPreviousButtonEnabled(){

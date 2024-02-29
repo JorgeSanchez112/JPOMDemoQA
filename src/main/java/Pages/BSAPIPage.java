@@ -20,14 +20,14 @@ public class BSAPIPage extends BasePages {
     }
 
     public boolean isTitleVisible(){
-        return title.isDisplayed();
+        return isElementDisplayedWithWait(title);
     }
 
     public boolean isAccountSubtitleVisible(){
-        return accountSubtitle.isDisplayed();
+        return isElementDisplayedWithWait(accountSubtitle);
     }
 
     public boolean isBookstoreSubtitleVisible(){
-        return bookStoreSubtitle.isDisplayed();
+        return isElementDisplayedWithWait(bookStoreSubtitle);
     }
 }

@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class NestedFramesPage extends BasePages {
-    @FindBy(css = "#framesWrapper > div:nth-child(1)")
+    @FindBy(css = "#framesWrapper > div:nth-child(2)")
     private WebElement useAdvices;
     @FindBy(id = "frame1")
     private WebElement parentFrame;
@@ -30,18 +30,18 @@ public class NestedFramesPage extends BasePages {
     }
 
     public String getPageTitleText(){
-        return pageTitle.getText();
+        return getElementTextWithWait(pageTitle);
     }
 
     public String getParentText(){
-        return textParent.getText();
+        return getElementTextWithWait(textParent);
     }
 
     public String getChildText(){
-        return textChild.getText();
+        return getElementTextWithWait(textChild);
     }
 
     public boolean isUseAdvicesVisible(){
-        return useAdvices.isDisplayed();
+        return isElementDisplayedWithWait(useAdvices);
     }
 }

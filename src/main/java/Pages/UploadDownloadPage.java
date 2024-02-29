@@ -22,19 +22,19 @@ public class UploadDownloadPage extends BasePages {
     }
 
     public void clickOnDownloadButton(){
-        downloadButton.click();
+        clickWithWait(downloadButton);
     }
 
     public void searchFileInSelectFile(){
-        uploadFileButton.sendKeys("C:\\Users\\Jorge\\Downloads\\sampleFile.jpeg");
+        sendKeysToElement(uploadFileButton,"C:\\Users\\Jorge\\Downloads\\sampleFile.jpeg");
     }
 
     public String getPageTitleText(){
-        return pageTitle.getText();
+        return getElementTextWithWait(pageTitle);
     }
 
     public String getFilePathText(){
-        return FilePathText.getText();
+        return getElementTextWithWait(FilePathText);
     }
 
     public String getNameDownloadedFile(){
