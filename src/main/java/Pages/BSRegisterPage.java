@@ -49,7 +49,7 @@ public class BSRegisterPage extends BasePages {
     }
     
     public boolean isRecaptchaClicked(){
-        return recaptcha.isSelected();
+        return hasElementBeenSelected(recaptcha);
     }
     
     public String getSubtitleText(){
@@ -77,22 +77,22 @@ public class BSRegisterPage extends BasePages {
 
     public String getFirstNameInputBorderColor(){
         waitForElementAttributeToContain(firstNameInput,"border-color","rgb(220, 53, 69)");
-        return firstNameInput.getCssValue("border-color");
+        return getElementCssValue(firstNameInput,"border-color");
     }
 
     public String getLastNameInputBorderColor(){
         waitForElementAttributeToContain(lastNameInput,"border-color","rgb(220, 53, 69)");
-        return lastNameInput.getCssValue("border-color");
+        return getElementCssValue(lastNameInput,"border-color");
     }
 
     public String getUsernameInputBorderColor(){
         waitForElementAttributeToContain(usernameInput,"border-color","rgb(220, 53, 69)");
-        return usernameInput.getCssValue("border-color");
+        return getElementCssValue(usernameInput,"border-color");
     }
 
     public String getPasswordInputBorderColor(){
         waitForElementAttributeToContain(passwordInput,"border-color","rgb(220, 53, 69)");
-        return passwordInput.getCssValue("border-color");
+        return getElementCssValue(passwordInput,"border-color");
     }
 
     public String getCurrentUrl(){

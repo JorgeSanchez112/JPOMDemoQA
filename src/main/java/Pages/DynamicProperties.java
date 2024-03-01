@@ -27,7 +27,7 @@ public class DynamicProperties extends BasePages {
 
     public boolean isButtonEnable(){
         waitForEnableElement(willEnableButton);
-        return willEnableButton.isEnabled();
+        return isElementEnabledWithEnableWait(willEnableButton);
     }
 
     public String getPageTitleText(){
@@ -36,7 +36,7 @@ public class DynamicProperties extends BasePages {
 
     public String getButtonTextColor(){
         waitForElementAttributeToContain(colorChangeButton,"border-color","rgba(220, 53, 69, 1)");
-        return colorChangeButton.getCssValue("color");
+        return getElementCssValue(colorChangeButton,"color");
     }
 
     public boolean buttonIsVisible(){

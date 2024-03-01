@@ -125,7 +125,7 @@ public class PracticeFormPage extends BasePages {
     public void typeInSubjectField(String subject){
         clickWithWait(subjectField);
         sendKeysToElement(subjectField,subject);
-        subjectField.sendKeys(Keys.ENTER);
+        pressEnterKey(subjectField);
     }
 
     public void clickOnMusicCheckBoxButton(){
@@ -143,16 +143,16 @@ public class PracticeFormPage extends BasePages {
 
     public void typeInStateListBox(String state){
         sendKeysToElement(listStatesBox,state);
-        listStatesBox.sendKeys(Keys.ENTER);
+        pressEnterKey(listStatesBox);
     }
 
     public void typeInCityListBox(String city){
         sendKeysToElement(listCitiesBox,city);
-        listCitiesBox.sendKeys(Keys.ENTER);
+        pressEnterKey(listCitiesBox);
     }
 
     public void enterToSubmitButton(){
-        submitButton.sendKeys(Keys.ENTER);
+        pressEnterKey(submitButton);
     }
 
     public void fillAllFormFields(String name, String lastname,String email, String gender, String phone, String month, String day, String year, String subject, String picturePath, String text, String state, String city){
@@ -185,21 +185,21 @@ public class PracticeFormPage extends BasePages {
     }
 
     public String getPlaceholderFirstNameField(){
-        return firstNameField.getAttribute("placeholder");
+        return getElementAttribute(firstNameField,"placeholder");
     }
 
     public String getCssAttributeFirstNameField(){
         waitForElementAttributeToContain(firstNameField,"border-color","rgb(220, 53, 69)");
-        return firstNameField.getCssValue("border-color");
+        return getElementCssValue(firstNameField,"border-color");
     }
 
     public String getPlaceholderLastNameField(){
-        return lastNameField.getAttribute("placeholder");
+        return getElementAttribute(lastNameField,"placeholder");
     }
 
     public String getCssAttributeLastNameField(){
         waitForElementAttributeToContain(lastNameField,"border-color","rgb(220, 53, 69)");
-        return lastNameField.getCssValue("border-color");
+        return getElementCssValue(lastNameField,"border-color");
     }
 
     public String getTextOfLabelEmail(){
@@ -208,12 +208,12 @@ public class PracticeFormPage extends BasePages {
     }
 
     public String getPlaceholderEmailField(){
-        return emailField.getAttribute("placeholder");
+        return getElementAttribute(emailField,"placeholder");
     }
 
     public String getCssAttributeEmailField(){
         waitForElementAttributeToContain(emailField,"border-color","rgb(40, 167, 69)");
-        return emailField.getCssValue("border-color");
+        return getElementCssValue(emailField,"border-color");
     }
 
     public String getTextOfLabelGender(){
@@ -222,7 +222,7 @@ public class PracticeFormPage extends BasePages {
 
     public String getCssAttributeGenderRadioButtons(){
         waitForElementAttributeToContain(radioButtonGenders.get(0),"border-color","rgba(220, 53, 69, 1)");
-        return radioButtonGenders.get(0).getCssValue("color");
+        return getElementCssValue(radioButtonGenders.get(0),"color");
     }
 
     public String getTextOfLabelMobile(){
@@ -230,12 +230,12 @@ public class PracticeFormPage extends BasePages {
     }
 
     public String getPlaceholderMobileField(){
-        return mobileField.getAttribute("placeholder");
+        return getElementAttribute(mobileField,"placeholder");
     }
 
     public String getCssAttributeMobileField(){
         waitForElementAttributeToContain(mobileField,"border-color","rgb(220, 53, 69)");
-        return mobileField.getCssValue("border-color");
+        return getElementCssValue(mobileField,"border-color");
     }
 
     public String getTextOfLabelDateOfBirth(){
@@ -244,7 +244,7 @@ public class PracticeFormPage extends BasePages {
 
     public String getCssAttributeBirthDateField(){
         waitForElementAttributeToContain(emailField,"border-color","rgb(220, 53, 69)");
-        return emailField.getCssValue("border-color");
+        return getElementCssValue(emailField,"border-color");
     }
 
     public String getTextOfLabelSubjects(){
@@ -257,17 +257,17 @@ public class PracticeFormPage extends BasePages {
 
     public String getCssAttributeSportsCheckboxButton(){
         waitForElementAttributeToContain(checkboxes.get(0),"border-color","rgb(40, 167, 69)");
-        return checkboxes.get(0).getCssValue("border-color").intern();
+        return getElementCssValue(checkboxes.get(0),"border-color");//intern
     }
 
     public String getCssAttributeReadingCheckboxButton(){
         waitForElementAttributeToContain(checkboxes.get(1),"border-color","rgb(40, 167, 69)");
-        return checkboxes.get(1).getCssValue("border-color").intern();
+        return getElementCssValue(checkboxes.get(1),"border-color");//intern
     }
 
     public String getCssAttributeMusicCheckboxButton(){
         waitForElementAttributeToContain(checkboxes.get(2),"border-color","rgb(40, 167, 69)");
-        return checkboxes.get(2).getCssValue("border-color").intern();
+        return getElementCssValue(checkboxes.get(2),"border-color");//intern
     }
 
     public String getTextOfLabelPicture(){
@@ -279,12 +279,12 @@ public class PracticeFormPage extends BasePages {
     }
 
     public String getPlaceholderCurrentAddressField(){
-        return currentAddressField.getAttribute("placeholder");
+        return getElementAttribute(currentAddressField,"placeholder");
     }
 
     public String getCssAttributeCurrentAddressField(){
         waitForElementAttributeToContain(currentAddressField,"border-color","rgba(220, 53, 69, 1)");
-        return currentAddressField.getCssValue("border-color");
+        return getElementCssValue(currentAddressField,"border-color");
     }
 
     public String getTextOfLabelStateCity(){

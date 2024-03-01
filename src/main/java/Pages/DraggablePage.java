@@ -90,59 +90,59 @@ public class DraggablePage extends BasePages {
     }
 
     public String getSimpleBoxXPosition(){
-        return simpleBox.getCssValue("left");
+        return getElementCssValue(simpleBox,"left");
     }
 
     public String getSimpleBoxYPosition(){
-        return simpleBox.getCssValue("top");
+        return getElementCssValue(simpleBox,"top");
     }
 
     public String getRestrictedXBoxPosition(){
-        return restrictedXBox.getCssValue("left");
+        return getElementCssValue(restrictedXBox,"left");
     }
 
     public String getRestrictedYBoxPosition(){
-        return restrictedYBox.getCssValue("top");
+        return getElementCssValue(restrictedYBox,"top");
     }
 
     public String getContainedBoxXPosition(){
-        return containedBox.getCssValue("left");
+        return getElementCssValue(containedBox,"left");
     }
 
     public String getContainedBoxYPosition(){
-        return containedBox.getCssValue("top");
+        return getElementCssValue(containedBox,"top");
     }
 
     public String getContainedTextXPosition(){
-        return containedText.getCssValue("left");
+        return getElementCssValue(containedText,"left");
     }
 
     public String getContainedTextYPosition(){
-        return containedText.getCssValue("top");
+        return getElementCssValue(containedText,"top");
     }
 
     public String getElementOfCenterCursorXPosition(){
-        return centerStyleCursor.getCssValue("left");
+        return getElementCssValue(centerStyleCursor,"left");
     }
 
     public String getElementOfCenterCursorYPosition(){
-        return centerStyleCursor.getCssValue("top");
+        return getElementCssValue(centerStyleCursor,"top");
     }
 
     public String getElementOfTopCursorXPosition(){
-        return topLeftStyleCursor.getCssValue("left");
+        return getElementCssValue(topLeftStyleCursor,"left");
     }
 
     public String getElementOfTopCursorYPosition(){
-        return topLeftStyleCursor.getCssValue("top");
+        return getElementCssValue(topLeftStyleCursor,"top");
     }
 
     public String getElementOfBottomCursorXPosition(){
-        return bottomStyleCursor.getCssValue("left");
+        return getElementCssValue(bottomStyleCursor,"left");
     }
 
     public String getElementOfBottomCursorYPosition(){
-        return bottomStyleCursor.getCssValue("top");
+        return getElementCssValue(bottomStyleCursor,"top");
     }
 
     public boolean isSimpleTabVisible(){

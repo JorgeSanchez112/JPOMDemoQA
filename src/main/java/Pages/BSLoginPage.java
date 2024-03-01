@@ -63,7 +63,7 @@ public class BSLoginPage extends BasePages {
     }
 
     public String getUsernameInputValue(){
-        return usernameInput.getAttribute("value");
+        return getElementAttribute(usernameInput,"value");
     }
 
     public String getPasswordLabelText(){
@@ -71,16 +71,16 @@ public class BSLoginPage extends BasePages {
     }
 
     public String getPasswordInputValue(){
-        return passwordInput.getAttribute("value");
+        return getElementAttribute(passwordInput,"value");
     }
 
     public String getUsernameInputBorderColor(){
         waitForElementAttributeToContain(usernameInput,"border-color","rgb(220, 53, 69)");
-        return usernameInput.getCssValue("border-color");
+        return getElementAttribute(usernameInput,"border-color");
     }
 
     public String getPasswordInputBorderColor(){
-        return passwordInput.getCssValue("border-color");
+        return getElementAttribute(passwordInput,"border-color");
     }
 
     public String getCurrentUrl(){
@@ -108,5 +108,4 @@ public class BSLoginPage extends BasePages {
         typeOnPasswordInput(password);
         clickOnLoginButton();
     }
-
 }

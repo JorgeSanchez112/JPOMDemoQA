@@ -60,15 +60,15 @@ public class SelectMenuPage extends BasePages {
     }
 
     public void enterActionInSelectValueDropDown(){
-        selectValueInput.sendKeys(Keys.ENTER);
+        pressEnterKey(selectValueInput);
     }
 
     public void enterActionInSelectOneDropDown(){
-        selectOneInput.sendKeys(Keys.ENTER);
+        pressEnterKey(selectOneInput);
     }
 
     public void enterActionInMultiSelectDropDown(){
-        multiSelectDropDownInput.sendKeys(Keys.ENTER);
+        pressEnterKey(multiSelectDropDownInput);
     }
 
     public void selectAllOptionsInMultiSelectDropDown(){
@@ -111,7 +111,7 @@ public class SelectMenuPage extends BasePages {
     }
 
     public String getSelectValueOnOldStyleSelectMenuText(){
-        return oldStyleSelectMenu.getAttribute("value");//this obtains the value of the selected option that is numeryc
+        return getElementAttribute(oldStyleSelectMenu,"value");//this obtains the value of the selected option that is numeryc
     }
 
     public String RetrieveTextOfSelectedOptionFromOldStyleMenu(){
@@ -149,19 +149,19 @@ public class SelectMenuPage extends BasePages {
     }
 
     public boolean isVolvoSelectedOfStandardMultiSelect(){
-        return standardMultiSelectValues.get(0).isSelected();
+        return hasElementBeenSelected(standardMultiSelectValues.get(0));
     }
 
     public boolean isSaabSelectedOfStandardMultiSelect(){
-        return standardMultiSelectValues.get(1).isSelected();
+        return hasElementBeenSelected(standardMultiSelectValues.get(1));
     }
 
     public boolean isOpelSelectedOfStandardMultiSelect(){
-        return standardMultiSelectValues.get(2).isSelected();
+        return hasElementBeenSelected(standardMultiSelectValues.get(2));
     }
 
     public boolean isAudiSelectedOfStandardMultiSelect(){
-        return standardMultiSelectValues.get(3).isSelected();
+        return hasElementBeenSelected(standardMultiSelectValues.get(3));
     }
 
 }

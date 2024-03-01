@@ -120,16 +120,16 @@ public class CheckBoxPage extends BasePages {
 
     public boolean checkBoxDesktopIsClicked(){
         waitForChargedElementsOfAWebElementList(listMainCheckbox);
-        return listMainCheckbox.get(0).isSelected();
+        return hasElementBeenSelected(listMainCheckbox.get(0));
     }
 
     public boolean checkDocumentsClicked(){
         waitForChargedElementsOfAWebElementList(listMainCheckbox);
-        return listMainCheckbox.get(3).isSelected();
+        return hasElementBeenSelected(listMainCheckbox.get(3));
     }
 
     public boolean checkDownloadsClicked(){
         waitForChargedElementsOfAWebElementList(listMainCheckbox);
-        return listMainCheckbox.get(13).isSelected();
+        return hasElementBeenSelected(listMainCheckbox.get(13));
     }
 }

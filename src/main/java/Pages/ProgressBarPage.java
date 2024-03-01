@@ -47,15 +47,15 @@ public class ProgressBarPage extends BasePages {
     }
 
     public String getPageTitleText(){
-        return pageTitle.getText();
+        return getElementTextWithWait(pageTitle);
     }
 
     public String getLabelText(){
-        return label.getText();
+        return getElementTextWithWait(label);
     }
 
     public String getPercentText(){
-        return progressBar.getText();
+        return getElementTextWithWait(progressBar);
     }
 
 }

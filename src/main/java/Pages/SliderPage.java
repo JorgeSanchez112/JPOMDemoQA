@@ -31,11 +31,11 @@ public class SliderPage extends BasePages {
     }
 
     public String getContainerValueText(){
-        return containerValue.getAttribute("value");
+        return getElementAttribute(containerValue,"value");
     }
 
     public String getValueTextOfInputRange(){
-        return inputRange.getAttribute("value");
+        return getElementAttribute(inputRange,"value");
     }
 
 }

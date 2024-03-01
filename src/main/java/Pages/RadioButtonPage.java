@@ -33,13 +33,6 @@ public class RadioButtonPage extends BasePages {
         clickWithWait(impressiveRadioButton);
     }
 
-    public boolean isSubtitleVisible(){
-        return isElementDisplayedWithWait(subtitle);
-    }
-    public boolean isRadioButtonEnabled(){
-        return disabledRadioButton.isEnabled();
-    }
-
     public String getPageTitleText(){
         return getElementTextWithWait(pageTitle);
     }
@@ -58,5 +51,13 @@ public class RadioButtonPage extends BasePages {
 
     public String response(){
         return getElementTextWithWait(responseText);
+    }
+
+    public boolean isSubtitleVisible(){
+        return isElementDisplayedWithWait(subtitle);
+    }
+
+    public boolean isRadioButtonEnabled(){
+        return isElementEnabledWithEnableWait(disabledRadioButton);
     }
 }

@@ -37,12 +37,11 @@ public class BrowserWindowsPage extends BasePages {
     }
 
     public String getPageTitleText(){
-        return pageTitle.getText();
+        return getElementTextWithWait(pageTitle);
     }
 
     public String getMessageOfNewWindow(){
-            waitForVisibleElement(newMessageText);
-            return newMessageText.getText();
+            return getElementTextWithWait(newMessageText);
     }
 
     public String getBrowserWindowsUrlText(){
@@ -50,6 +49,6 @@ public class BrowserWindowsPage extends BasePages {
     }
 
     public boolean newTabTextIsVisible(){
-        return textTab.isDisplayed();
+        return isElementDisplayedWithWait(textTab);
     }
 }

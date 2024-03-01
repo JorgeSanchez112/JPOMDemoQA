@@ -83,7 +83,7 @@
         </classes>
     </test>
 
-    <test name="test">
+    <test name="BS API Page">
         <classes>
             <class name="org.Tests.BSAPITest"/>
         </classes>

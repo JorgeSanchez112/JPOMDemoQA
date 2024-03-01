@@ -48,14 +48,12 @@ public class AlertsPage extends BasePages {
         clickWithWait(inputAlertButton);
     }
 
-    public void acceptAlert(){
-        waitAlert();
-        driver.switchTo().alert().accept();
+    public void confirmAlert(){
+        acceptAlertWithWait();
     }
 
-    public void dismissAlert(){
-        waitAlert();
-        driver.switchTo().alert().dismiss();
+    public void cancelAlert(){
+        dismissAlertWithWait();
     }
 
     public void typeInAlert(String text){
@@ -66,34 +64,34 @@ public class AlertsPage extends BasePages {
     }
 
     public String getPageTitleText(){
-        return pageTitle.getText();
+        return getElementTextWithWait(pageTitle);
     }
 
     public String getConfirmResultText(){
-        return confirmAlertButtonResult.getText();
+        return getElementTextWithWait(confirmAlertButtonResult);
     }
 
     public String getInputAlertText(){
-        return inputAlertButtonText.getText();
+        return getElementTextWithWait(inputAlertButtonText);
     }
 
     public boolean isFirstLabelVisible(){
         waitForChargedElementsOfAWebElementList(labels);
-        return labels.get(0).isDisplayed();
+        return isElementDisplayedWithWait(labels.get(0));
     }
 
     public boolean isSecondLabelVisible(){
         waitForChargedElementsOfAWebElementList(labels);
-        return labels.get(1).isDisplayed();
+        return isElementDisplayedWithWait(labels.get(1));
     }
 
     public boolean isThirdLabelVisible(){
         waitForChargedElementsOfAWebElementList(labels);
-        return labels.get(2).isDisplayed();
+        return isElementDisplayedWithWait(labels.get(2));
     }
 
     public boolean isFourthLabelVisible(){
         waitForChargedElementsOfAWebElementList(labels);
-        return labels.get(3).isDisplayed();
+        return isElementDisplayedWithWait(labels.get(3));
     }
 }

@@ -190,28 +190,28 @@ public class BSProfileTest extends TestBase {
         Assert.assertEquals(bsProfilePage.getPageNumber(),pageNumberBase);
     }
 
-    @Parameters({"usernameValue","passwordValue","bookTitle","authorAccordingTitle"})
+    @Parameters({"usernameValue","passwordValue","bookTitleExpected","authorAccordingTitle"})
     @Test
     public void validateCorrectAuthorRegardToTitleBook(String usernameValue, String passwordValue, String bookTitle, String authorAccordingTitle) {
         bsProfilePage.clickOnLoginLink().userLogin(usernameValue,passwordValue);
         Assert.assertEquals(bsProfilePage.getAuthorRegardToTitleBookText(bookTitle),authorAccordingTitle);
     }
 
-    @Parameters({"usernameValue","passwordValue","bookTitle","publisherAccordingTitle"})
+    @Parameters({"usernameValue","passwordValue","bookTitleExpected","publisherAccordingTitle"})
     @Test
     public void validateCorrectPublisherRegardToTitleBook(String usernameValue, String passwordValue, String bookTitle, String publisherAccordingTitle) {
         bsProfilePage.clickOnLoginLink().userLogin(usernameValue,passwordValue);
         Assert.assertEquals(bsProfilePage.getPublisherRegardToTitleBookText(bookTitle),publisherAccordingTitle);
     }
 
-    @Parameters({"usernameValue","passwordValue","bookTitle"})
+    @Parameters({"usernameValue","passwordValue","bookTitleExpected"})
     @Test
     public void isNotImageWithBrokeLink(String usernameValue, String passwordValue, String bookTitle) throws IOException {
         bsProfilePage.clickOnLoginLink().userLogin(usernameValue,passwordValue);
         Assert.assertTrue(bsProfilePage.isLinkImageDoesNotBrokeInTableOfBooksCollection(bookTitle));
     }
 
-    @Parameters({"usernameValue","passwordValue","bookTitle"})
+    @Parameters({"usernameValue","passwordValue","bookTitleExpected"})
     @Test
     public void isABookDeleted(String usernameValue, String passwordValue, String bookTitle) {
         bsProfilePage.clickOnLoginLink().userLogin(usernameValue,passwordValue);

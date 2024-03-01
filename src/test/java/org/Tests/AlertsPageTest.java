@@ -41,20 +41,20 @@ public class AlertsPageTest extends TestBase {
     @Test
     public void validateAlert(){
         alertsPage.clickOnFirstButton();
-        alertsPage.acceptAlert();
+        alertsPage.confirmAlert();
     }
 
     @Test
     public void validateAlertAppear(){
         alertsPage.clickOnSecondButton();
-        alertsPage.acceptAlert();
+        alertsPage.confirmAlert();
     }
 
     @Parameters("acceptAlertMessage")
     @Test
     public void validateAcceptAlert(String acceptAlertMessage){
         alertsPage.clickOnThirdButton();
-        alertsPage.acceptAlert();
+        alertsPage.confirmAlert();
         Assert.assertEquals(alertsPage.getConfirmResultText(),acceptAlertMessage);
     }
 
@@ -62,7 +62,7 @@ public class AlertsPageTest extends TestBase {
     @Test
     public void validateDismissAlert(String dismissAlertMessage){
         alertsPage.clickOnThirdButton();
-        alertsPage.dismissAlert();
+        alertsPage.cancelAlert();
         Assert.assertEquals(alertsPage.getConfirmResultText(),dismissAlertMessage);
     }
 

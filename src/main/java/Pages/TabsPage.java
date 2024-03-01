@@ -74,7 +74,7 @@ public class TabsPage extends BasePages {
     }
 
     public boolean isMoreTabEnabled(){
-        return tabMore.isEnabled();
+        return isElementEnabledWithEnableWait(tabMore);
     }
 
     public boolean isSubTitleDisplayed(){

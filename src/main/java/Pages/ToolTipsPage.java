@@ -57,19 +57,19 @@ public class ToolTipsPage extends BasePages {
     }
 
     public String getTextFromButtonHoverAttribute(){
-        return hoverMeButton.getAttribute("aria-describedby");
+        return getElementAttribute(hoverMeButton,"aria-describedby");
     }
 
     public String getTextFromInputHoverAttribute(){
-        return hoverMeInput.getAttribute("aria-describedby");
+        return getElementAttribute(hoverMeInput,"aria-describedby");
     }
 
     public String getTextFromHoverContraryLinkAttribute(){
-        return hoverLink.get(0).getAttribute("aria-describedby");
+        return getElementAttribute(hoverLink.get(0),"aria-describedby");
     }
 
     public String getTextFromHoverVersionLinkAttribute(){
-        return hoverLink.get(1).getAttribute("aria-describedby");
+        return getElementAttribute(hoverLink.get(1),"aria-describedby");
     }
 
 }

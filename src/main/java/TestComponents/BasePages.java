@@ -29,6 +29,28 @@ public class BasePages {
         this.driver = driver;
     }
 
+    public void acceptAlertWithWait(){
+        waitAlert();
+        try {
+            driver.switchTo().alert().accept();
+        }catch (NoAlertPresentException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void dismissAlertWithWait(){
+        waitAlert();
+        try{
+            driver.switchTo().alert().dismiss();
+        }catch (NoAlertPresentException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void pressEnterKey(WebElement driver){
+        driver.sendKeys(Keys.ENTER);
+    }
+
     public void backToPage(){
         driver.navigate().back();
     }
@@ -88,8 +110,16 @@ public class BasePages {
     }
 
     public void waitForEnableElement(WebElement element){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.elementToBeClickable(element));
+        try {
+            try {
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+                wait.until(ExpectedConditions.elementToBeClickable(element));
+            }catch (TimeoutException e){
+                e.printStackTrace();
+            }
+        }catch (NoSuchElementException e){
+            e.printStackTrace();
+        }
     }
 
     public void waitForVisibleElement(WebElement element){
@@ -137,6 +167,43 @@ public class BasePages {
         }
     }
 
+    public String getElementAttribute(WebElement element, String attribute){
+        try {
+            return element.getAttribute(attribute);
+        }catch (WebDriverException e){
+            e.printStackTrace();
+            return e.getMessage();
+        }
+    }
+
+    public String getElementCssValue(WebElement element, String propertyName){
+        try {
+            return element.getCssValue(propertyName);
+        }catch (WebDriverException e){
+            e.printStackTrace();
+            return e.getMessage();
+        }
+    }
+
+    public boolean hasElementBeenSelected(WebElement element){
+        try {
+            element.isSelected();
+        }catch (WebDriverException e){
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean isElementEnabledWithEnableWait(WebElement element){
+        try {
+            waitForEnableElement(element);
+            return element.isEnabled();
+        }catch (WebDriverException e){
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     public boolean isElementDisplayedWithWait(WebElement element){
         try {
             waitForVisibleElement(element);
@@ -163,10 +230,14 @@ public class BasePages {
     public void waitForChargedElementsOfAWebElementList(List<WebElement> elementsList){
         try {
             try {
-                FluentWait wait = new FluentWait(driver);
-                wait.withTimeout(Duration.ofSeconds(10));
-                wait.pollingEvery(Duration.ofMillis(250));
-                wait.until(ExpectedConditions.visibilityOfAllElements(elementsList));
+                try {
+                    FluentWait wait = new FluentWait(driver);
+                    wait.withTimeout(Duration.ofSeconds(10));
+                    wait.pollingEvery(Duration.ofMillis(250));
+                    wait.until(ExpectedConditions.visibilityOfAllElements(elementsList));
+                }catch (IndexOutOfBoundsException e){
+                    e.printStackTrace();
+                }
             }catch (NoSuchElementException e){
                 e.printStackTrace();
             }
@@ -178,7 +249,7 @@ public class BasePages {
     public void waitAlert(){
         try {
             try {
-                WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(6));
+                WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
                 wait.until(ExpectedConditions.alertIsPresent());
             }catch (NoSuchElementException e){
                 e.printStackTrace();
@@ -331,10 +402,14 @@ public class BasePages {
 
     public void moveClickerToElement(WebElement element){
         try {
-            Actions actions = new Actions(driver);
-            actions.moveToElement(element)
-                    .build()
-                    .perform();
+            try {
+                Actions actions = new Actions(driver);
+                actions.moveToElement(element)
+                        .build()
+                        .perform();
+            }catch (ElementNotInteractableException e){
+                e.printStackTrace();
+            }
         }catch (IndexOutOfBoundsException e){
             e.printStackTrace();
         }

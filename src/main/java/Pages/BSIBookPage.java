@@ -59,19 +59,10 @@ public class BSIBookPage extends BasePages {
         PageFactory.initElements(driver,this);
     }
 
-    public void acceptAlertMessage(){
-        try{
-            driver.switchTo().alert().accept();
-        }catch (NoAlertPresentException e){
-            e.printStackTrace();
-        }
-    }
-
     public void clickOnAddToYourCollectionButton(){
         scroll(addToYourCollectionButton);
         clickWithWait(addToYourCollectionButton);
-        waitAlert();
-        acceptAlertMessage();
+        acceptAlertWithWait();
     }
 
     public String getPageTitleText(){

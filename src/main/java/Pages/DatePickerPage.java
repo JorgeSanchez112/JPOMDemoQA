@@ -38,11 +38,11 @@ public class DatePickerPage extends BasePages {
     }
 
     public void clickOnDateInput(){
-        dateInput.click();
+        clickWithWait(dateInput);
     }
 
     public void clickOnDateAndTimeInput(){
-        dateAndTimeInput.click();
+        clickWithWait(dateAndTimeInput);
     }
 
     public void selectDate(String month, String day, String year){
@@ -73,11 +73,11 @@ public class DatePickerPage extends BasePages {
     }
 
     public String getDateValueText(){
-        return dateInput.getAttribute("value");
+        return getElementAttribute(dateInput,"value");
     }
 
     public String getDateTimeValueText(){
-        return dateAndTimeInput.getAttribute("value");
+        return getElementAttribute(dateAndTimeInput,"value");
     }
 
 }

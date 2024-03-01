@@ -30,24 +30,24 @@ public class AutoCompletePage extends BasePages {
 
     public void typeInMultipleContainer(String text){
         sendKeysToElement(multipleContainer,text);
-        multipleContainer.sendKeys(Keys.ENTER);
+        pressEnterKey(multipleContainer);
     }
 
     public void typeInSingleContainer(String color){
         sendKeysToElement(singleContainer,color);
-        singleContainer.sendKeys(Keys.ENTER);
+        pressEnterKey(singleContainer);
     }
 
     public String getPageTitleText(){
-        return pageTitle.getText();
+        return getElementTextWithWait(pageTitle);
     }
 
     public String getMultipleContainerLabelText(){
-        return multipleContainerLabel.getText();
+        return getElementTextWithWait(multipleContainerLabel);
     }
 
     public String getSingleContainerLabelText(){
-        return singleContainerLabel.getText();
+        return getElementTextWithWait(singleContainerLabel);
     }
 
     public boolean isTheValueContained(String value){
@@ -60,6 +60,6 @@ public class AutoCompletePage extends BasePages {
     }
 
     public String getTextOfSingleContainerValue(){
-        return valueOfSingleContainer.getText();
+        return getElementTextWithWait(valueOfSingleContainer);
     }
 }

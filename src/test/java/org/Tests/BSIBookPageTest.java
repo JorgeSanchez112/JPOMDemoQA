@@ -4,12 +4,14 @@ import TestComponents.TestBase;
 import org.openqa.selenium.WebDriverException;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class BSIBookPageTest extends TestBase {
-    @Parameters("bookTitleExpected")
+
     @BeforeMethod
+    @Parameters("bookTitle")
     public void initializeClass(String bookTitle){
         try{
             bsiBookPage = homePage.clickOnSectionBookStoreApplication().searchAndClickOnATitle(bookTitle);
@@ -46,7 +48,7 @@ public class BSIBookPageTest extends TestBase {
         Assert.assertTrue(bsiBookPage.isbnLabelIsVisible());
     }
 
-    @Parameters("bookTitleExpected")
+    @Parameters("bookTitle")
     @Test
     public void validateTitleValueIsCorrect(String bookTitle){
         Assert.assertEquals(bsiBookPage.getTitleValueText(),bookTitle);

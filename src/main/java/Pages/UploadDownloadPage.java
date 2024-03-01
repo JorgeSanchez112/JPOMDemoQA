@@ -38,7 +38,7 @@ public class UploadDownloadPage extends BasePages {
     }
 
     public String getNameDownloadedFile(){
-        return "C:\\fakepath\\" + downloadButton.getAttribute("download");
+        return "C:\\fakepath\\" + getElementAttribute(downloadButton,"download");
     }
 
 }

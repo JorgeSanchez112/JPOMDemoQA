@@ -102,7 +102,7 @@ public class BSProfilePage extends BasePages {
     public void deleteAllBooks(){
         clickOnDeleteAllBooksButton();
         acceptDeleteAccountOrBooks();
-        acceptAlert();
+        acceptAlertWithWait();
     }
 
     public void clickOnIconTrash(String titleBook){
@@ -119,11 +119,6 @@ public class BSProfilePage extends BasePages {
         clickWithWait(cancelButtonOfAlertDeleteAccountAndBooks);
     }
 
-    public void acceptAlert(){
-        waitAlert();
-        driver.switchTo().alert().accept();
-    }
-
     public void addBookToTableOfBooksCollection(String bookTitle){
         clickOnGoToBookStoreButton().searchAndClickOnATitle(bookTitle).addBookAndReturnToBookStore().clickOnProfile();
     }
@@ -132,7 +127,7 @@ public class BSProfilePage extends BasePages {
         if (isTitleInTableOfBooksCollection(titleBook)){
             clickOnIconTrash(titleBook);
             acceptDeleteAccountOrBooks();
-            acceptAlert();
+            acceptAlertWithWait();
         }else{
             addBookToTableOfBooksCollection(titleBook);
             deleteABook(titleBook);//here the method is invoking again.
@@ -155,7 +150,7 @@ public class BSProfilePage extends BasePages {
 
     public String getSearchBoxPlaceholderText(){
         waitForVisibleElement(searchBox);
-        return searchBox.getAttribute("placeholder");
+        return getElementAttribute(searchBox,"placeholder");
     }
 
     public String getUserNameLabelText(){
@@ -211,7 +206,7 @@ public class BSProfilePage extends BasePages {
 
     public String getPageNumber(){
         waitForVisibleElement(pageValue);
-        return pageValue.getAttribute("value");
+        return getElementAttribute(pageValue,"value");
     }
 
     public String getTotalOfPagesText(){
@@ -230,12 +225,12 @@ public class BSProfilePage extends BasePages {
     }
 
     public boolean isMessageDoNotLoginShowed(){
-        return doNotLoginMessage.isDisplayed();
+        return isElementDisplayedWithWait(doNotLoginMessage);
     }
 
     public boolean isLinkImageDoesNotBrokeInTableOfBooksCollection(String titleBook) throws IOException {
         waitForChargedElementsOfAWebElementList(columnImages);
-        return validateHTTPS_Response(columnImages.get(getPositionOfBookWithTheTitle(titleBook)).getAttribute("src"));
+        return validateHTTPS_Response(getElementAttribute(columnImages.get(getPositionOfBookWithTheTitle(titleBook)),"src"));
     }
 
     public boolean isTitleInTableOfBooksCollection(String value){
@@ -259,13 +254,13 @@ public class BSProfilePage extends BasePages {
 
     public boolean isPreviousButtonEnabled(){
         scroll(previousButton);
-        return previousButton.isEnabled();
+        return isElementEnabledWithEnableWait(previousButton);
     }
 
     public boolean isNextButtonEnabled(){
         waitForVisibleElement(nextButton);
         scroll(nextButton);
-        return nextButton.isEnabled();
+        return isElementEnabledWithEnableWait(nextButton);
     }
 
     public BSLoginPage clickOnLoginLink(){
@@ -298,7 +293,7 @@ public class BSProfilePage extends BasePages {
 
     public BSLoginPage deleteAccount(){
         clickOnDeleteAccountButton();
-        acceptAlert();
+        acceptAlertWithWait();
         return new BSLoginPage(driver);
     }
 

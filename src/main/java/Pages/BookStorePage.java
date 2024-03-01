@@ -56,7 +56,7 @@ public class BookStorePage extends BasePages {
     }
 
     public void typeOnSearchBar(String text){
-        searchBox.sendKeys(text);
+        sendKeysToElement(searchBox,text);
     }
 
     public String getSearchBarPlaceholderText(){

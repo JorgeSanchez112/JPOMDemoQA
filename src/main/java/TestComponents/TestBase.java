@@ -152,7 +152,11 @@ public class TestBase{
         System.out.println(driver);
 
         homePage = new HomePage(driver);
-        homePage.hidePublicity(driver.findElement(By.cssSelector(prop.getProperty("publicityLocator"))));
+        try{
+            homePage.hidePublicity(driver.findElement(By.cssSelector(prop.getProperty("publicityLocator"))));
+        }catch (NoSuchElementException e){
+            e.printStackTrace();
+        }
     }
 
     @AfterMethod
