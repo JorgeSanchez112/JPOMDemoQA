@@ -9,12 +9,14 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
 public class CheckBoxPage extends BasePages {
-    @FindBy(css = ".rct-option-expand-all")
+    @FindBy(className = "rct-option-expand-all")
     private WebElement expandTree;
     @FindBy(css = ".rct-node-expanded > ol > li > span > label")
     private List<WebElement> listOfCheckboxes;
-    @FindBy(css = ".rct-node-expanded > ol > li > span > label > input")
+    @FindBy(css = ".rct-node-expanded >* input[type='checkbox']")
     private List<WebElement> listMainCheckbox;
+    @FindBy(id = "#tree-node-desktop")
+    private WebElement test;
 
     public CheckBoxPage(WebDriver driver) {
         super(driver);
@@ -22,6 +24,7 @@ public class CheckBoxPage extends BasePages {
     }
 
     public void clickOnExpandButton(){
+        scroll(expandTree);
         clickWithWait(expandTree);
     }
 
@@ -119,17 +122,14 @@ public class CheckBoxPage extends BasePages {
     }
 
     public boolean checkBoxDesktopIsClicked(){
-        waitForChargedElementsOfAWebElementList(listMainCheckbox);
-        return hasElementBeenSelected(listMainCheckbox.get(0));
+        return hasElementBeenSelected(listMainCheckbox.get(1));
     }
 
     public boolean checkDocumentsClicked(){
-        waitForChargedElementsOfAWebElementList(listMainCheckbox);
-        return hasElementBeenSelected(listMainCheckbox.get(3));
+        return hasElementBeenSelected(listMainCheckbox.get(4));
     }
 
     public boolean checkDownloadsClicked(){
-        waitForChargedElementsOfAWebElementList(listMainCheckbox);
-        return hasElementBeenSelected(listMainCheckbox.get(13));
+        return hasElementBeenSelected(listMainCheckbox.get(14));
     }
 }

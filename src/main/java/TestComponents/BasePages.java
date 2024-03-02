@@ -16,6 +16,7 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.RejectedExecutionException;
 
 public class BasePages {
 
@@ -187,7 +188,7 @@ public class BasePages {
 
     public boolean hasElementBeenSelected(WebElement element){
         try {
-            element.isSelected();
+            return element.isSelected();
         }catch (WebDriverException e){
             e.printStackTrace();
         }
@@ -231,10 +232,14 @@ public class BasePages {
         try {
             try {
                 try {
-                    FluentWait wait = new FluentWait(driver);
-                    wait.withTimeout(Duration.ofSeconds(10));
-                    wait.pollingEvery(Duration.ofMillis(250));
-                    wait.until(ExpectedConditions.visibilityOfAllElements(elementsList));
+                    try {
+                        FluentWait wait = new FluentWait(driver);
+                        wait.withTimeout(Duration.ofSeconds(10));
+                        wait.pollingEvery(Duration.ofMillis(250));
+                        wait.until(ExpectedConditions.visibilityOfAllElements(elementsList));
+                    }catch (RejectedExecutionException e){
+                        e.printStackTrace();
+                    }
                 }catch (IndexOutOfBoundsException e){
                     e.printStackTrace();
                 }
@@ -316,16 +321,21 @@ public class BasePages {
     }
 
     public int searchNumberOne(List<WebElement> dateOfDaysList){
-        for (int i = 0; i<= dateOfDaysList.size(); i++){
-            if (Objects.equals(dateOfDaysList.get(i).getText(), "1")){
-                return i;
+        try {
+            for (int i = 0; i<= dateOfDaysList.size(); i++){
+                if (Objects.equals(dateOfDaysList.get(i).getText(), "1")){
+                    return i;
+                }
             }
+        }catch (IndexOutOfBoundsException e){
+            e.printStackTrace();
         }
         return dateOfDaysList.size();
     }
 
     public List<WebElement> addElementsToList(List<WebElement> daysList){
         int index = searchNumberOne(daysList);
+
         ArrayList<WebElement> arrayNormalized = new ArrayList<>();
 
         for (int i = index; i < daysList.size(); i++) {

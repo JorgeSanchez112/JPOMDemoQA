@@ -48,8 +48,13 @@ public class AlertsFrameWindowsPage extends BasePages {
 
     public NestedFramesPage clickOnNestedFrames(){
         waitForChargedElementsOfAWebElementList(deployed_form_exercise);
-        scroll(deployed_form_exercise.get(3));
-        clickWithWait(deployed_form_exercise.get(3));
+        try {
+            scroll(deployed_form_exercise.get(3));
+            clickWithWait(deployed_form_exercise.get(3));
+            return new NestedFramesPage(driver);
+        }catch (IndexOutOfBoundsException e){
+            e.printStackTrace();
+        }
         return new NestedFramesPage(driver);
     }
 

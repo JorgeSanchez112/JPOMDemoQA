@@ -21,6 +21,7 @@ public class MenuPage extends BasePages {
 
     public void moveClickerToMainItem2(){
         waitForChargedElementsOfAWebElementList(mainMenus);
+        scroll(mainMenus.get(1));
         moveClickerToElement(mainMenus.get(1));
     }
 

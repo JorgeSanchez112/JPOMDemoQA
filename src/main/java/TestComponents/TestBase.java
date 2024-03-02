@@ -64,25 +64,8 @@ public class TestBase{
     protected BSIBookPage bsiBookPage;
     protected BSAPIPage bsapiPage;
 
-//    BsProfileTest -Laking Do the Delete Account method
-//      Draggable
-//
-//
-
-///////
-//elements
-//Text Box
-//Check Box
-//Radio Button
-//Browser Windows
-//Alerts
-//Frames
-//Nested Frames
-//Menu
-//Select Menu
-//Droppable
-//Accordian
-// links
+    //Droppable
+    //Draggable
 
     public TestBase() {
         try {
@@ -94,12 +77,9 @@ public class TestBase{
         }
     }
 
-
     public WebDriver getDriver(){
        return webDriverThreadLocal.get();
     }
-
-
 
     public MutableCapabilities chooseBrowser(){
         String browserName = prop.getProperty("browser");
@@ -108,6 +88,7 @@ public class TestBase{
 
         if (browserName == null){
             System.out.println("browser is: " + null);
+            return null;
         }
 
         switch (Objects.requireNonNull(browserName)){
@@ -122,9 +103,8 @@ public class TestBase{
                 return edgeOptions.merge(desiredCapabilities);
             default:
                 System.out.println("selected browser is not available");
-                break;
+                return null;
         }
-        return null;
     }
 
     public WebDriver initialization() throws MalformedURLException {

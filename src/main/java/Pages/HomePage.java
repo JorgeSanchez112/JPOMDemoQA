@@ -51,15 +51,25 @@ public class HomePage extends BasePages {
 
     public InteractionsPage clickOnSectionInteractions(){
         waitForChargedElementsOfAWebElementList(sections);
-        scroll(sections.get(4));
-        clickWithWait(sections.get(4));
+        try {
+            scroll(sections.get(4));
+            clickWithWait(sections.get(4));
+            return new InteractionsPage(driver);
+        }catch (IndexOutOfBoundsException e){
+            e.printStackTrace();
+        }
         return new InteractionsPage(driver);
     }
 
     public BookStorePage clickOnSectionBookStoreApplication(){
         waitForChargedElementsOfAWebElementList(sections);
-        scroll(sections.get(5));
-        clickWithWait(sections.get(5));
+        try{
+            scroll(sections.get(5));
+            clickWithWait(sections.get(5));
+            return new BookStorePage(driver);
+        }catch (IndexOutOfBoundsException e){
+            e.printStackTrace();
+        }
         return new BookStorePage(driver);
     }
 }

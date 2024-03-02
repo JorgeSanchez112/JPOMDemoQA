@@ -75,11 +75,11 @@ public class LinksPage extends BasePages {
     }
 
     public String getHrefOfHomeLink(){
-        return getElementTextWithWait(linkToHomePage);
+        return getElementAttribute(linkToHomePage,"href");
     }
 
     public String getHrefOfHomeETgEzLink(){
-        return getElementTextWithWait(secondLinkToHomePage);
+        return getElementAttribute(secondLinkToHomePage,"href");
     }
 
     public String getHttpMessage() {
