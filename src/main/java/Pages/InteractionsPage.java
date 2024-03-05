@@ -27,36 +27,58 @@ public class InteractionsPage extends BasePages {
 
     public SortablePage clickOnSortable(){
         waitForChargedElementsOfAWebElementList(deployed_form_exercise);
-        scroll(deployed_form_exercise.get(0));
-        clickWithWait(deployed_form_exercise.get(0));
+        try{
+            scroll(deployed_form_exercise.get(0));
+            clickWithWait(deployed_form_exercise.get(0));
+        }catch (IndexOutOfBoundsException e){
+            e.printStackTrace();
+        }
+
         return new SortablePage(driver);
     }
 
     public SelectablePage clickOnSelectable(){
         waitForChargedElementsOfAWebElementList(deployed_form_exercise);
-        scroll(deployed_form_exercise.get(1));
-        clickWithWait(deployed_form_exercise.get(1));
+        try{
+            scroll(deployed_form_exercise.get(1));
+            clickWithWait(deployed_form_exercise.get(1));
+        }catch (IndexOutOfBoundsException e){
+            e.printStackTrace();
+        }
+
         return new SelectablePage(driver);
     }
 
     public ResizablePage clickOnResizable(){
         waitForChargedElementsOfAWebElementList(deployed_form_exercise);
-        scroll(deployed_form_exercise.get(2));
-        clickWithWait(deployed_form_exercise.get(2));
+        try{
+            scroll(deployed_form_exercise.get(2));
+            clickWithWait(deployed_form_exercise.get(2));
+        }catch (IndexOutOfBoundsException e){
+            e.printStackTrace();
+        }
         return new ResizablePage(driver);
     }
 
     public DroppablePage clickOnDroppable(){
         waitForChargedElementsOfAWebElementList(deployed_form_exercise);
-        scroll(deployed_form_exercise.get(3));
-        clickWithWait(deployed_form_exercise.get(3));
+        try{
+            scroll(deployed_form_exercise.get(3));
+            clickWithWait(deployed_form_exercise.get(3));
+        }catch (IndexOutOfBoundsException e){
+            e.printStackTrace();
+        }
         return new DroppablePage(driver);
     }
 
     public DraggablePage clickOnDragabble(){
         waitForChargedElementsOfAWebElementList(deployed_form_exercise);
-        scroll(deployed_form_exercise.get(4));
-        clickWithWait(deployed_form_exercise.get(4));
+        try{
+            scroll(deployed_form_exercise.get(4));
+            clickWithWait(deployed_form_exercise.get(4));
+        }catch (IndexOutOfBoundsException e){
+            e.printStackTrace();
+        }
         return new DraggablePage(driver);
     }
 }

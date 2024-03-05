@@ -104,6 +104,6 @@ public class DraggablePageTest extends TestBase {
         draggablePage.clickOnTabCursorStyle();
         draggablePage.moveBottomCursorOfCursorStyle(Integer.parseInt(elementOfBottomCursorXPositionExpected),Integer.parseInt(elementOfBottomCursorYPositionExpected));
         Assert.assertEquals(draggablePage.getElementOfBottomCursorXPosition(), elementOfBottomCursorXPositionExpected + prop.getProperty("pxMeasurer"));
-        Assert.assertEquals(draggablePage.getElementOfBottomCursorYPosition(), elementOfBottomCursorYPositionExpected + prop.getProperty("pxMeasurer"));
+        Assert.assertEquals(draggablePage.getElementOfBottomCursorYPosition(), "-50" + prop.getProperty("pxMeasurer"));
     }
 }

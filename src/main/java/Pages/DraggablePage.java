@@ -50,37 +50,37 @@ public class DraggablePage extends BasePages {
         clickWithWait(tabCursorStyle);
     }
 
-    public void moveSimpleElement(int width, int height){
+    public void moveSimpleElement(float width, float height){
         moveElementToCoordinates(simpleBox,width, height);
     }
 
-    public void moveXElement(int width, int height){
+    public void moveXElement(float width, float height){
         moveElementToCoordinates(restrictedXBox,width, height);
     }
 
-    public void moveYElement(int width, int height){
+    public void moveYElement(float width, float height){
         moveElementToCoordinates(restrictedYBox,width,height);
     }
 
-    public void moveContainedBox(int width, int height){
+    public void moveContainedBox(float width, float height){
         moveElementToCoordinates(containedBox, width, height);
     }
 
-    public void moveContainedText(int width, int height){
+    public void moveContainedText(float width, float height){
         scroll(containedText);
         moveElementToCoordinates(containedText, width,height);
     }
 
-    public void moveCenterCursorOfCursorStyle(int width, int height){
+    public void moveCenterCursorOfCursorStyle(float width, float height){
         moveElementToCoordinates(centerStyleCursor, width, height);
     }
 
-    public void moveTopCursorOfCursorStyle(int width, int height){
+    public void moveTopCursorOfCursorStyle(float width, float height){
         scroll(topLeftStyleCursor);
         moveElementToCoordinates(topLeftStyleCursor, width, height);
     }
 
-    public void moveBottomCursorOfCursorStyle(int width, int height){
+    public void moveBottomCursorOfCursorStyle(float width, float height){
         scroll(bottomStyleCursor);
         moveElementToCoordinates(bottomStyleCursor, width, height);
     }
@@ -160,4 +160,5 @@ public class DraggablePage extends BasePages {
     public boolean isCursorTabVisible(){
         return isElementDisplayedWithWait(tabCursorStyle);
     }
+
 }

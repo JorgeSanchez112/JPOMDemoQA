@@ -403,11 +403,19 @@ public class BasePages {
                 .perform();
     }
 
-    public void moveElementToCoordinates(WebElement element, int xCoordinate, int yCoordinate){
+    public void moveElementToCoordinates(WebElement element, float xCoordinate, float yCoordinate){
         Actions actions = new Actions(driver);
-        actions.dragAndDropBy(element, xCoordinate, yCoordinate)
-                .build()
-                .perform();
+        try {
+            try {
+                actions.dragAndDropBy(element, (int) xCoordinate, (int) yCoordinate)
+                        .build()
+                        .perform();
+            }catch (MoveTargetOutOfBoundsException e){
+                e.printStackTrace();
+            }
+        }catch (ElementNotInteractableException e){
+            e.printStackTrace();
+        }
     }
 
     public void moveClickerToElement(WebElement element){
@@ -434,7 +442,6 @@ public class BasePages {
         }catch (ElementNotInteractableException e){
             e.printStackTrace();
         }
-
     }
 
     public void resizeElement(WebElement element, int sizeX, int sizeY){

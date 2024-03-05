@@ -62,36 +62,44 @@ public class DroppablePage extends BasePages {
     }
 
     public void moveSimpleDraggableToTarget(){
+        scroll(draggable);
+        waitForVisibleElement(draggable);
         dragDropMoveElementToTarget(draggable,simpleTarget);
     }
 
     public void moveDraggableAcceptableToTarget(){
         scroll(dragAcceptable);
+        waitForVisibleElement(dragAcceptable);
         dragDropMoveElementToTarget(dragAcceptable,acceptTarget);
     }
 
     public void moveDraggableNotAcceptableToTarget(){
         scroll(dragNotAcceptable);
+        waitForVisibleElement(dragNotAcceptable);
         dragDropMoveElementToTarget(dragNotAcceptable,acceptTarget);
     }
 
     public void movePreventDraggableToNotGreedyTarget(){
         scroll(notGreedyTarget);
+        waitForVisibleElement(notGreedyTarget);
         dragDropMoveElementToTarget(dragPrevent,notGreedyTarget);
     }
 
     public void movePreventDraggableToNotGreedyInnerTarget(){
         scroll(dragPrevent);
+        waitForVisibleElement(dragPrevent);
         dragDropMoveElementToTarget(dragPrevent,notGreedyInnerTarget);
     }
 
     public void movePreventDraggableToGreedyTarget(){
         scroll(greedyTarget);
+        waitForVisibleElement(greedyTarget);
         dragDropMoveElementToTarget(dragPrevent,greedyTargetSubtitle);
     }
 
     public void movePreventDraggableToGreedyInnerTarget(){
         scroll(greedyInnerTarget);
+        waitForVisibleElement(greedyInnerTarget);
         dragDropMoveElementToTarget(dragPrevent,greedyInnerTarget);
     }
 
