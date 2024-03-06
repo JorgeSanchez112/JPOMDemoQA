@@ -172,10 +172,12 @@ public class PracticeFormPage extends BasePages {
     }
 
     public String  getPageTitleText(){
+        scroll(pageTitle);
         return getElementTextWithWait(pageTitle);
     }
 
     public String getTextFormTitle(){
+        scroll(titleForm);
         return getElementTextWithWait(titleForm);
     }
 
@@ -185,6 +187,7 @@ public class PracticeFormPage extends BasePages {
     }
 
     public String getPlaceholderFirstNameField(){
+        scroll(firstNameField);
         return getElementAttribute(firstNameField,"placeholder");
     }
 
@@ -194,6 +197,7 @@ public class PracticeFormPage extends BasePages {
     }
 
     public String getPlaceholderLastNameField(){
+        scroll(lastNameField);
         return getElementAttribute(lastNameField,"placeholder");
     }
 
@@ -208,6 +212,7 @@ public class PracticeFormPage extends BasePages {
     }
 
     public String getPlaceholderEmailField(){
+        scroll(emailField);
         return getElementAttribute(emailField,"placeholder");
     }
 
@@ -217,6 +222,7 @@ public class PracticeFormPage extends BasePages {
     }
 
     public String getTextOfLabelGender(){
+        scroll(genderLabel);
         return getElementTextWithWait(genderLabel);
     }
 
@@ -226,10 +232,12 @@ public class PracticeFormPage extends BasePages {
     }
 
     public String getTextOfLabelMobile(){
+        scroll(mobileLabel);
         return getElementTextWithWait(mobileLabel);
     }
 
     public String getPlaceholderMobileField(){
+        scroll(mobileField);
         return getElementAttribute(mobileField,"placeholder");
     }
 
@@ -239,6 +247,7 @@ public class PracticeFormPage extends BasePages {
     }
 
     public String getTextOfLabelDateOfBirth(){
+        scroll(birthDateLabel);
         return getElementTextWithWait(birthDateLabel);
     }
 
@@ -248,10 +257,12 @@ public class PracticeFormPage extends BasePages {
     }
 
     public String getTextOfLabelSubjects(){
+        scroll(threeLabelsBeforeCurrentAddressLabel.get(0));
         return getElementTextWithWait(threeLabelsBeforeCurrentAddressLabel.get(0));
     }
 
     public String getTextOfLabelHobbies(){
+        scroll(threeLabelsBeforeCurrentAddressLabel.get(1));
         return getElementTextWithWait(threeLabelsBeforeCurrentAddressLabel.get(1));
     }
 
@@ -271,14 +282,17 @@ public class PracticeFormPage extends BasePages {
     }
 
     public String getTextOfLabelPicture(){
+        scroll(threeLabelsBeforeCurrentAddressLabel.get(2));
         return getElementTextWithWait(threeLabelsBeforeCurrentAddressLabel.get(2));
     }
 
     public String getTextOfLabelCurrentAddress(){
+        scroll(currentAddressLabel);
         return getElementTextWithWait(currentAddressLabel);
     }
 
     public String getPlaceholderCurrentAddressField(){
+        scroll(currentAddressField);
         return getElementAttribute(currentAddressField,"placeholder");
     }
 
@@ -288,106 +302,132 @@ public class PracticeFormPage extends BasePages {
     }
 
     public String getTextOfLabelStateCity(){
+        scroll(stateCityLabel);
         return getElementTextWithWait(stateCityLabel);
     }
 
     public String getPlaceholderStatesListBox(){
+        scroll(placeholdersStateAndCity.get(1));
         return getElementTextWithWait(placeholdersStateAndCity.get(1));
     }
 
     public String getPlaceholderCitiesListBox(){
+        scroll(placeholdersStateAndCity.get(2));
         return getElementTextWithWait(placeholdersStateAndCity.get(2));
     }
 
     public boolean isVisibleTitleSubmitForm(){
+        scroll(titleOfSubmitForm);
         return isElementDisplayedWithWait(titleOfSubmitForm);
     }
 
     public String getTitleLabelFieldsText(){
+        scroll(tableTitles.get(0));
         return getElementTextWithWait(tableTitles.get(0));
     }
 
     public String getTitleValueFieldsText(){
+        scroll(tableTitles.get(1));
         return getElementTextWithWait(tableTitles.get(1));
     }
 
     public String getStudentNameText(){
+        scroll(firstRowOfFormTable.get(0));
         return getElementTextWithWait(firstRowOfFormTable.get(0));
     }
 
     public String getValueOfStudentNameRow(){
+        scroll(firstRowOfFormTable.get(1));
         return getElementTextWithWait(firstRowOfFormTable.get(1));
     }
 
     public String getStudentEmailText(){
+        scroll(secondRowOfFormTable.get(0));
         return getElementTextWithWait(secondRowOfFormTable.get(0));
     }
 
     public String getValueOfStudentEmailRow(){
+        scroll(secondRowOfFormTable.get(1));
         return getElementTextWithWait(secondRowOfFormTable.get(1));
     }
 
     public String getGenderText(){
+        scroll(thirdRowOfFormTable.get(0));
         return getElementTextWithWait(thirdRowOfFormTable.get(0));
     }
 
     public String getValueOfGenderRow(){
+        scroll(thirdRowOfFormTable.get(1));
         return getElementTextWithWait(thirdRowOfFormTable.get(1));
     }
 
     public String getMobileText(){
+        scroll(fourthRowOfFormTable.get(0));
         return getElementTextWithWait(fourthRowOfFormTable.get(0));
     }
 
     public String getValueOfMobileRow(){
+        scroll(fourthRowOfFormTable.get(1));
         return getElementTextWithWait(fourthRowOfFormTable.get(1));
     }
 
     public String getDateBirthText(){
+        scroll(fifthRowOfFormTable.get(0));
         return getElementTextWithWait(fifthRowOfFormTable.get(0));
     }
 
     public String getValueOfDateBirthRow(){
+        scroll(fifthRowOfFormTable.get(1));
         return getElementTextWithWait(fifthRowOfFormTable.get(1));
     }
 
     public String getSubjectsText(){
+        scroll(sixthRowOfFormTable.get(0));
         return getElementTextWithWait(sixthRowOfFormTable.get(0));
     }
 
     public String getValueOfSubjectsRow(){
+        scroll(sixthRowOfFormTable.get(1));
         return getElementTextWithWait(sixthRowOfFormTable.get(1));
     }
 
     public String getHobbiesText(){
+        scroll(seventhRowOfFormTable.get(0));
         return getElementTextWithWait(seventhRowOfFormTable.get(0));
     }
 
     public String getValueOfHobbiesRow(){
+        scroll(seventhRowOfFormTable.get(1));
         return getElementTextWithWait(seventhRowOfFormTable.get(1));
     }
 
     public String getPictureText(){
+        scroll(eighthRowOfFormTable.get(0));
         return getElementTextWithWait(eighthRowOfFormTable.get(0));
     }
 
     public String getValueOfPictureRow(){
+        scroll(eighthRowOfFormTable.get(1));
         return getElementTextWithWait(eighthRowOfFormTable.get(1));
     }
 
     public String getAddressText(){
+        scroll(ninthRowOfFormTable.get(0));
         return getElementTextWithWait(ninthRowOfFormTable.get(0));
     }
 
     public String getValueOfAddressRow(){
+        scroll(ninthRowOfFormTable.get(1));
         return getElementTextWithWait(ninthRowOfFormTable.get(1));
     }
 
     public String getStateCityText(){
+        scroll(tenthRowOfFormTable.get(0));
         return getElementTextWithWait(tenthRowOfFormTable.get(0));
     }
 
     public String getValueOfStateCityRow(){
+        scroll(tenthRowOfFormTable.get(1));
         return getElementTextWithWait(tenthRowOfFormTable.get(1));
     }
 }

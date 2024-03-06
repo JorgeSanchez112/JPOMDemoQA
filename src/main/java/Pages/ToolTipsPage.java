@@ -26,26 +26,26 @@ public class ToolTipsPage extends BasePages {
     public void moveClickerTOHoverButton(){
         scroll(hoverMeButton);
         moveClickerToElement(hoverMeButton);
-        waitForAttributeAriaDescribedByEqualToValue(hoverMeButton, "buttonToolTip");
+        waitForElementAttributeToContain(hoverMeButton,"aria-describedby","buttonToolTip");
     }
 
     public void moveClickerTOHoverInput(){
         scroll(hoverMeInput);
         moveClickerToElement(hoverMeInput);
-        waitForAttributeAriaDescribedByEqualToValue(hoverMeInput, "textFieldToolTip");
+        waitForElementAttributeToContain(hoverMeInput,"aria-describedby","textFieldToolTip");
 
     }
 
     public void moveClickerTOContraryLink(){
         scroll(hoverLink.get(0));
         moveClickerToElement(hoverLink.get(0));
-        waitForAttributeAriaDescribedByEqualToValue(hoverLink.get(0), "contraryTexToolTip");
+        waitForElementAttributeToContain(hoverLink.get(0),"aria-describedby","contraryTexToolTip");
     }
 
     public void moveClickerTOVersionLink(){
         scroll(hoverLink.get(1));
         moveClickerToElement(hoverLink.get(1));
-        waitForAttributeAriaDescribedByEqualToValue(hoverLink.get(1), "sectionToolTip");
+        waitForElementAttributeToContain(hoverLink.get(1),"aria-describedby","sectionToolTip");
     }
 
     public String getPageTitleText(){

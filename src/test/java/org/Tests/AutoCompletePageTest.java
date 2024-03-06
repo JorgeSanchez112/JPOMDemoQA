@@ -1,10 +1,14 @@
 package org.Tests;
 
+import Resources.ExcelReader;
 import TestComponents.TestBase;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 public class AutoCompletePageTest extends TestBase {
     @BeforeMethod
@@ -39,10 +43,16 @@ public class AutoCompletePageTest extends TestBase {
         Assert.assertTrue(autoCompletePage.isTheValueContained(secondColorExpected));
     }
 
-    @Parameters({"color","colorExpected"})
-    @Test
-    public void validateColorNameInSingleContainer(String color, String colorExpected){
-        autoCompletePage.typeInSingleContainer(color);
-        Assert.assertEquals(autoCompletePage.getTextOfSingleContainerValue(), colorExpected);
+    @Test(dataProvider = "testData")
+    public void validateColorNameInSingleContainer(Object... data){
+        autoCompletePage.typeInSingleContainer((String) data[0]);
+        Assert.assertEquals(autoCompletePage.getTextOfSingleContainerValue(), (String) data[1]);
+    }
+
+    @DataProvider(name = "testData")
+    public Object[][] testData() throws IOException {
+        String sheetName = "autoComplete";
+        ExcelReader excelReader = new ExcelReader();
+        return excelReader.readTestData(sheetName);
     }
 }

@@ -105,11 +105,6 @@ public class BasePages {
         }
     }
 
-    public void waitForAttributeAriaDescribedByEqualToValue(WebElement element, String value){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.attributeContains(element,"aria-describedby", value));
-    }
-
     public void waitForEnableElement(WebElement element){
         try {
             try {
