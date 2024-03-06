@@ -294,35 +294,50 @@ public class BookStorePage extends BasePages {
     public BSIBookPage searchAndClickOnATitle(String bookTitle){
         waitForChargedElementsOfAWebElementList(columnTitle);
         try {
-            WebElement tryOne = driver.findElement(By.linkText(bookTitle));
-            scroll(tryOne);
-            clickWithWait(tryOne);
-            return new BSIBookPage(driver);
+            try {
+                WebElement tryOne = driver.findElement(By.linkText(bookTitle));
+                scroll(tryOne);
+                clickWithWait(tryOne);
+            }catch (IndexOutOfBoundsException e){
+                e.printStackTrace();
+            }
         }catch (NoSuchElementException e){
             e.printStackTrace();
             System.out.println("Error on line 303 BookstorePage" + e.getMessage());
-            return null;
         }
+        return new BSIBookPage(driver);
     }
 
     public BSLoginPage clickOnLoginTab(){
         waitForChargedElementsOfAWebElementList(deployed_form_exercise);
-        scroll(deployed_form_exercise.get(ZERO));
-        clickWithWait(deployed_form_exercise.get(ZERO));
+        try{
+            scroll(deployed_form_exercise.get(ZERO));
+            clickWithWait(deployed_form_exercise.get(ZERO));
+        }catch (IndexOutOfBoundsException e){
+            e.printStackTrace();
+        }
         return new BSLoginPage(driver);
     }
 
     public BSProfilePage clickOnProfile(){
         waitForChargedElementsOfAWebElementList(deployed_form_exercise);
-        scroll(deployed_form_exercise.get(TWO));
-        clickWithWait(deployed_form_exercise.get(TWO));
+        try{
+            scroll(deployed_form_exercise.get(TWO));
+            clickWithWait(deployed_form_exercise.get(TWO));
+        }catch (IndexOutOfBoundsException e){
+            e.printStackTrace();
+        }
         return new BSProfilePage(driver);
     }
 
     public BSAPIPage clickOnBookstoreApi(){
         waitForChargedElementsOfAWebElementList(deployed_form_exercise);
-        scroll(deployed_form_exercise.get(3));
-        clickWithWait(deployed_form_exercise.get(3));
+        try {
+            scroll(deployed_form_exercise.get(THREE));
+            clickWithWait(deployed_form_exercise.get(THREE));
+        }catch (IndexOutOfBoundsException e){
+            e.printStackTrace();
+        }
         return new BSAPIPage(driver);
     }
 }

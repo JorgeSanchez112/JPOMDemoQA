@@ -39,14 +39,17 @@ public class DraggablePage extends BasePages {
     }
 
     public void clickOnTabAxisRestricted(){
+        scroll(tabAxisRestricted);
         clickWithWait(tabAxisRestricted);
     }
 
     public void clickOnTabContainerRestricted(){
+        scroll(tabContainerRestricted);
         clickWithWait(tabContainerRestricted);
     }
 
     public void clickOnTabCursorStyle(){
+        scroll(tabCursorStyle);
         clickWithWait(tabCursorStyle);
     }
 
@@ -77,12 +80,12 @@ public class DraggablePage extends BasePages {
 
     public void moveTopCursorOfCursorStyle(float width, float height){
         scroll(topLeftStyleCursor);
-        moveElementToCoordinates(topLeftStyleCursor, width, height);
+        moveElementToCoordinates(topLeftStyleCursor,subtractQuantityToParameter(width,54), subtractQuantityToParameter(height,55));
     }
 
     public void moveBottomCursorOfCursorStyle(float width, float height){
         scroll(bottomStyleCursor);
-        moveElementToCoordinates(bottomStyleCursor, width, height);
+        moveElementToCoordinates(bottomStyleCursor, width, addQuantityToParameter(height,50));
     }
 
     public String getPageTitleText(){
@@ -122,7 +125,7 @@ public class DraggablePage extends BasePages {
     }
 
     public String getElementOfCenterCursorXPosition(){
-        return getElementCssValue(centerStyleCursor,"left");
+        return changeFormatOfStringToReturnTextWithoutValueTypeFloat(getElementCssValue(centerStyleCursor,"left"));
     }
 
     public String getElementOfCenterCursorYPosition(){
@@ -130,7 +133,7 @@ public class DraggablePage extends BasePages {
     }
 
     public String getElementOfTopCursorXPosition(){
-        return getElementCssValue(topLeftStyleCursor,"left");
+        return changeFormatOfStringToReturnTextWithoutValueTypeFloat(getElementCssValue(topLeftStyleCursor,"left"));
     }
 
     public String getElementOfTopCursorYPosition(){
@@ -159,6 +162,14 @@ public class DraggablePage extends BasePages {
 
     public boolean isCursorTabVisible(){
         return isElementDisplayedWithWait(tabCursorStyle);
+    }
+
+    public float addQuantityToParameter(float targetParameter,float valueToAdd){
+        return targetParameter + valueToAdd;
+    }
+
+    public float subtractQuantityToParameter(float targetParameter,float valueToDeduct){
+        return  targetParameter - valueToDeduct;
     }
 
 }

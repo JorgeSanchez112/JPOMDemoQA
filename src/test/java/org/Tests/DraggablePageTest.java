@@ -7,7 +7,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class DraggablePageTest extends TestBase {
-    @BeforeMethod //change all the way of tests, those can be used more dinamycally.
+    @BeforeMethod
     public void initializeClass(){
         draggablePage = homePage.clickOnSectionInteractions().clickOnDragabble();
     }
@@ -85,16 +85,17 @@ public class DraggablePageTest extends TestBase {
     public void isCenterCursorElementDroppedToCoordinates(String elementOfCenterCursorXPositionExpected, String elementOfCenterCursorYPositionExpected){
         draggablePage.clickOnTabCursorStyle();
         draggablePage.moveCenterCursorOfCursorStyle(Integer.parseInt(elementOfCenterCursorXPositionExpected),Integer.parseInt(elementOfCenterCursorYPositionExpected));
-        Assert.assertEquals(draggablePage.getElementOfCenterCursorXPosition(), elementOfCenterCursorXPositionExpected + prop.getProperty("pxMeasurer"));
-        Assert.assertEquals(draggablePage.getElementOfCenterCursorYPosition(), elementOfCenterCursorYPositionExpected + prop.getProperty("pxMeasurer"));
+        Assert.assertEquals(draggablePage.getElementOfCenterCursorXPosition(), elementOfCenterCursorXPositionExpected);
+        Assert.assertEquals(draggablePage.getElementOfCenterCursorYPosition(), elementOfCenterCursorYPositionExpected);
     }
+
 
     @Parameters({"elementOfTopCursorXPositionExpected","elementOfTopCursorYPositionExpected"})
     @Test
     public void isTopCursorElementDroppedToCoordinates(String elementOfTopCursorXPositionExpected, String elementOfTopCursorYPositionExpected){
         draggablePage.clickOnTabCursorStyle();
         draggablePage.moveTopCursorOfCursorStyle(Integer.parseInt(elementOfTopCursorXPositionExpected),Integer.parseInt(elementOfTopCursorYPositionExpected));
-        Assert.assertEquals(draggablePage.getElementOfTopCursorXPosition(), elementOfTopCursorXPositionExpected + prop.getProperty("pxMeasurer"));
+        Assert.assertEquals(draggablePage.getElementOfTopCursorXPosition(), elementOfTopCursorXPositionExpected);
         Assert.assertEquals(draggablePage.getElementOfTopCursorYPosition(), elementOfTopCursorYPositionExpected + prop.getProperty("pxMeasurer"));
     }
 
@@ -104,6 +105,6 @@ public class DraggablePageTest extends TestBase {
         draggablePage.clickOnTabCursorStyle();
         draggablePage.moveBottomCursorOfCursorStyle(Integer.parseInt(elementOfBottomCursorXPositionExpected),Integer.parseInt(elementOfBottomCursorYPositionExpected));
         Assert.assertEquals(draggablePage.getElementOfBottomCursorXPosition(), elementOfBottomCursorXPositionExpected + prop.getProperty("pxMeasurer"));
-        Assert.assertEquals(draggablePage.getElementOfBottomCursorYPosition(), "-50" + prop.getProperty("pxMeasurer"));
+        Assert.assertEquals(draggablePage.getElementOfBottomCursorYPosition(), elementOfBottomCursorYPositionExpected + prop.getProperty("pxMeasurer"));
     }
 }

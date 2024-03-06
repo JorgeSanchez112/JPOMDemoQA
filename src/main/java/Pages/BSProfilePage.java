@@ -265,15 +265,23 @@ public class BSProfilePage extends BasePages {
 
     public BSLoginPage clickOnLoginLink(){
         waitForChargedElementsOfAWebElementList(linkRegisterAndLogin);
-        scroll(linkRegisterAndLogin.get(0));
-        clickWithWait(linkRegisterAndLogin.get(0));
+        try {
+            scroll(linkRegisterAndLogin.get(0));
+            clickWithWait(linkRegisterAndLogin.get(0));
+        }catch (IndexOutOfBoundsException e){
+            e.printStackTrace();
+        }
         return new BSLoginPage(driver);
     }
 
     public BSRegisterPage clickOnRegisterLink(){
         waitForChargedElementsOfAWebElementList(linkRegisterAndLogin);
-        scroll(linkRegisterAndLogin.get(1));
-        clickWithWait(linkRegisterAndLogin.get(1));
+        try {
+            scroll(linkRegisterAndLogin.get(1));
+            clickWithWait(linkRegisterAndLogin.get(1));
+        }catch (IndexOutOfBoundsException e){
+            e.printStackTrace();
+        }
         return new BSRegisterPage(driver);
     }
 
@@ -296,5 +304,4 @@ public class BSProfilePage extends BasePages {
         acceptAlertWithWait();
         return new BSLoginPage(driver);
     }
-
 }

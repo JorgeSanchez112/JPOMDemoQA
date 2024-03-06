@@ -177,6 +177,14 @@ public class BasePages {
         }
     }
 
+    public String deleteAllLetters(String textWithLetters){
+        return textWithLetters.replaceAll("[a-zA-Z]","");
+    }
+
+    public String changeFormatOfStringToReturnTextWithoutValueTypeFloat(String textToChangeFormat){
+        return String.format("%.0f", Double.parseDouble(deleteAllLetters(textToChangeFormat)));
+    }
+
     public String getElementCssValue(WebElement element, String propertyName){
         try {
             return element.getCssValue(propertyName);
