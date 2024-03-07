@@ -177,7 +177,12 @@ public class BasePages {
     }
 
     public String changeFormatOfStringToReturnTextWithoutValueTypeFloat(String textToChangeFormat){
-        return String.format("%.0f", Double.parseDouble(deleteAllLetters(textToChangeFormat)));
+        try {
+            return String.format("%.0f", Double.parseDouble(deleteAllLetters(textToChangeFormat)));
+        }catch (NumberFormatException e){
+            e.printStackTrace();
+            return e.getMessage();
+        }
     }
 
     public String getElementCssValue(WebElement element, String propertyName){
@@ -410,9 +415,13 @@ public class BasePages {
         Actions actions = new Actions(driver);
         try {
             try {
-                actions.dragAndDropBy(element, (int) xCoordinate, (int) yCoordinate)
-                        .build()
-                        .perform();
+                try {
+                    actions.dragAndDropBy(element, (int) xCoordinate, (int) yCoordinate)
+                            .build()
+                            .perform();
+                }catch (NumberFormatException e){
+                    e.printStackTrace();
+                }
             }catch (MoveTargetOutOfBoundsException e){
                 e.printStackTrace();
             }

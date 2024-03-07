@@ -22,60 +22,62 @@ public class SortablePage extends BasePages {
     }
 
     public void clickOnTabGrid(){
+        scroll(tabGrid);
         clickWithWait(tabGrid);
     }
 
     public void moveFirstElementListToLastElement(){
+        scroll(elementsList.get(5));
         waitForChargedElementsOfAWebElementList(elementsList);
         dragDropMoveElementToTarget(elementsList.get(0), elementsList.get(5));
     }
 
     public void moveSecondElementListToPenultimateElement(){
+        scroll(elementsList.get(4));
         waitForChargedElementsOfAWebElementList(elementsList);
         dragDropMoveElementToTarget(elementsList.get(1), elementsList.get(4));
     }
 
     public void moveTheThirdElementListToTheSecondToLastElement(){
+        scroll(elementsList.get(3));
         waitForChargedElementsOfAWebElementList(elementsList);
         dragDropMoveElementToTarget(elementsList.get(2), elementsList.get(3));
     }
 
     public void moveFirstElementGridToLastElement(){
+        scroll(elementsGrid.get(8));
         waitForChargedElementsOfAWebElementList(elementsGrid);
         dragDropMoveElementToTarget(elementsGrid.get(0), elementsGrid.get(8));
     }
 
     public void moveFirstElementGridToFourthElement(){
+        scroll(elementsGrid.get(3));
         waitForChargedElementsOfAWebElementList(elementsGrid);
         dragDropMoveElementToTarget(elementsGrid.get(0), elementsGrid.get(3));
     }
 
     public void moveFirstElementGridToFifthElement(){
+        scroll(elementsGrid.get(4));
         waitForChargedElementsOfAWebElementList(elementsGrid);
         dragDropMoveElementToTarget(elementsGrid.get(0), elementsGrid.get(4));
     }
 
     public void moveFirstElementGridToSixthElement(){
+        scroll(elementsGrid.get(5));
         waitForChargedElementsOfAWebElementList(elementsGrid);
         dragDropMoveElementToTarget(elementsGrid.get(0), elementsGrid.get(5));
     }
 
     public void moveSecondElementGridToPenultimateElement(){
+        scroll(elementsGrid.get(7));
         waitForChargedElementsOfAWebElementList(elementsGrid);
         dragDropMoveElementToTarget(elementsGrid.get(1), elementsGrid.get(7));
     }
 
     public void moveTheThirdElementGridToTheSecondToLastElement(){
+        scroll(elementsGrid.get(6));
         waitForChargedElementsOfAWebElementList(elementsGrid);
         dragDropMoveElementToTarget(elementsGrid.get(2), elementsGrid.get(6));
-    }
-
-    public void scrollToLastElementList(){
-        scroll(elementsList.get(5));
-    }
-
-    public void scrollToLastElementGrid(){
-        scroll(elementsGrid.get(8));
     }
 
     public String getPageTitleText(){

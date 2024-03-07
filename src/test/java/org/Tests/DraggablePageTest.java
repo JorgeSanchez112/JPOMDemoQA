@@ -84,7 +84,7 @@ public class DraggablePageTest extends TestBase {
     @Test
     public void isCenterCursorElementDroppedToCoordinates(String elementOfCenterCursorXPositionExpected, String elementOfCenterCursorYPositionExpected){
         draggablePage.clickOnTabCursorStyle();
-        draggablePage.moveCenterCursorOfCursorStyle(Integer.parseInt(elementOfCenterCursorXPositionExpected),Integer.parseInt(elementOfCenterCursorYPositionExpected));
+        draggablePage.moveCenterCursorOfCursorStyle(Float.parseFloat(elementOfCenterCursorXPositionExpected),Float.parseFloat(elementOfCenterCursorYPositionExpected));
         Assert.assertEquals(draggablePage.getElementOfCenterCursorXPosition(), elementOfCenterCursorXPositionExpected);
         Assert.assertEquals(draggablePage.getElementOfCenterCursorYPosition(), elementOfCenterCursorYPositionExpected);
     }
@@ -94,7 +94,7 @@ public class DraggablePageTest extends TestBase {
     @Test
     public void isTopCursorElementDroppedToCoordinates(String elementOfTopCursorXPositionExpected, String elementOfTopCursorYPositionExpected){
         draggablePage.clickOnTabCursorStyle();
-        draggablePage.moveTopCursorOfCursorStyle(Integer.parseInt(elementOfTopCursorXPositionExpected),Integer.parseInt(elementOfTopCursorYPositionExpected));
+        draggablePage.moveTopCursorOfCursorStyle(Float.parseFloat(elementOfTopCursorXPositionExpected),Float.parseFloat(elementOfTopCursorYPositionExpected));
         Assert.assertEquals(draggablePage.getElementOfTopCursorXPosition(), elementOfTopCursorXPositionExpected);
         Assert.assertEquals(draggablePage.getElementOfTopCursorYPosition(), elementOfTopCursorYPositionExpected + prop.getProperty("pxMeasurer"));
     }

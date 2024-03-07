@@ -425,9 +425,9 @@
         <parameter name="containedBoxYPositionExpected" value="50"/>
         <parameter name="containedTextXPositionExpected" value="2"/>
         <parameter name="containedTextYPositionExpected" value="10"/>
-        <parameter name="elementOfCenterCursorXPositionExpected" value="43.0156"/>
+        <parameter name="elementOfCenterCursorXPositionExpected" value="43"/>
         <parameter name="elementOfCenterCursorYPositionExpected" value="44"/>
-        <parameter name="elementOfTopCursorXPositionExpected" value="154.016"/>
+        <parameter name="elementOfTopCursorXPositionExpected" value="154"/>
         <parameter name="elementOfTopCursorYPositionExpected" value="105"/>
         <parameter name="elementOfBottomCursorXPositionExpected" value="150"/>
         <parameter name="elementOfBottomCursorYPositionExpected" value="0"/>

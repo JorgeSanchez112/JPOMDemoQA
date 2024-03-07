@@ -64,9 +64,6 @@ public class TestBase{
     protected BSIBookPage bsiBookPage;
     protected BSAPIPage bsapiPage;
 
-    //Droppable
-    //Draggable
-
     public TestBase() {
         try {
             prop = new Properties();
@@ -133,7 +130,11 @@ public class TestBase{
 
         homePage = new HomePage(driver);
         try{
-            homePage.hidePublicity(driver.findElement(By.cssSelector(prop.getProperty("publicityLocator"))));
+            try {
+                homePage.hidePublicity(driver.findElement(By.cssSelector(prop.getProperty("publicityLocator"))));
+            }catch (TimeoutException e){
+                e.printStackTrace();
+            }
         }catch (NoSuchElementException e){
             e.printStackTrace();
         }

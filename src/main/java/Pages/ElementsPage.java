@@ -21,10 +21,6 @@ public class ElementsPage extends BasePages {
         return driver.getCurrentUrl();
     }
 
-    public String getPageTitleText(){
-        return getElementTextWithWait(pageTitle);
-    }
-
     public int deployedElementsSize(){
         return deployed_element_exercises.size();
     }

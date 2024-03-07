@@ -26,10 +26,12 @@ public class RadioButtonPage extends BasePages {
     }
 
     public void clickOnYesRB(){
+        scroll(yesRadioButton);
         clickWithWait(yesRadioButton);
     }
 
     public void clickOnImpressiveRB(){
+        scroll(impressiveRadioButton);
         clickWithWait(impressiveRadioButton);
     }
 

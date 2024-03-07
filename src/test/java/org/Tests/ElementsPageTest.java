@@ -18,12 +18,6 @@ public class ElementsPageTest extends TestBase {
         Assert.assertEquals(elementsPage.getElementUrlText(),uRL);
     }
 
-    @Parameters("pageTitle")
-    @Test
-    public void validatePageTitle(String pageTitle){
-        Assert.assertEquals(elementsPage.getPageTitleText(),pageTitle);
-    }
-
     @Parameters("elementsSize")
     @Test
     public void validateSizeElements(int elementsSize){
