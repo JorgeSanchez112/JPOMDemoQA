@@ -130,7 +130,6 @@ public class BSProfilePage extends BasePages {
             acceptAlertWithWait();
         }else{
             addBookToTableOfBooksCollection(titleBook);
-            deleteABook(titleBook);//here the method is invoking again.
         }
     }
 
@@ -165,8 +164,12 @@ public class BSProfilePage extends BasePages {
 
     public String getTableTitleImageText(){
         waitForChargedElementsOfAWebElementList(tableHeaderTitles);
-        waitForVisibleElement(tableHeaderTitles.get(0));
-        scroll(tableHeaderTitles.get(0));
+        try {
+            waitForVisibleElement(tableHeaderTitles.get(0));
+            scroll(tableHeaderTitles.get(0));
+        }catch (IndexOutOfBoundsException e){
+            e.printStackTrace();
+        }
         return getElementTextWithWait(tableHeaderTitles.get(0));
     }
 
@@ -230,7 +233,12 @@ public class BSProfilePage extends BasePages {
 
     public boolean isLinkImageDoesNotBrokeInTableOfBooksCollection(String titleBook) throws IOException {
         waitForChargedElementsOfAWebElementList(columnImages);
-        return validateHTTPS_Response(getElementAttribute(columnImages.get(getPositionOfBookWithTheTitle(titleBook)),"src"));
+        try {
+            return validateHTTPS_Response(getElementAttribute(columnImages.get(getPositionOfBookWithTheTitle(titleBook)),"src"));
+        }catch (IndexOutOfBoundsException e){
+            e.printStackTrace();
+        }
+        return false;
     }
 
     public boolean isTitleInTableOfBooksCollection(String value){

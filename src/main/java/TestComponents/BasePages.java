@@ -309,10 +309,14 @@ public class BasePages {
     }
 
     public boolean searchForVisibleElement(List<WebElement> elementsList, String value){
-        for (WebElement element: elementsList) {
-            if (Objects.equals(element.getText(), value)){
-                return true;
+        try{
+            for (WebElement element: elementsList) {
+                if (Objects.equals(element.getText(), value)){
+                    return true;
+                }
             }
+        }catch (TimeoutException e){
+            e.printStackTrace();
         }
         return false;
     }
