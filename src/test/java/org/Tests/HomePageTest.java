@@ -7,9 +7,10 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class HomePageTest extends TestBase {
-    @Parameters("uRL")
+    private final String URL = "https://demoqa.com/";
+
     @Test
-    public void validateURL(String uRL) {
-        Assert.assertEquals(homePage.getHomePageUrlText(),uRL);
+    public void validateURL() {
+        Assert.assertEquals(homePage.getHomePageUrlText(), URL);
     }
 }

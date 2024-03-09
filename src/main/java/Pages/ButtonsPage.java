@@ -12,7 +12,7 @@ public class ButtonsPage extends BasePages {
     private WebElement doubleClickBtn;
     @FindBy (id = "rightClickBtn")
     private WebElement rightClickBtn;
-    @FindBy (css = "div.mt-4:nth-child(3) > button")
+    @FindBy (css = "div.mt-4:nth-child(4) > button")
     private WebElement clickMe;
     @FindBy (id = "doubleClickMessage")
     private WebElement doubleClickMessage;
@@ -27,14 +27,17 @@ public class ButtonsPage extends BasePages {
     }
 
     public void clickOnDoubleBtn(){
+        scroll(doubleClickBtn);
         doubleClick(doubleClickBtn);
     }
 
     public void clickOnRightBtn(){
+        scroll(rightClickBtn);
         rightClick(rightClickBtn);
     }
 
     public void clickOnClickMe(){
+        scroll(clickMe);
         clickWithWait(clickMe);
     }
 
@@ -43,14 +46,17 @@ public class ButtonsPage extends BasePages {
     }
 
     public String getDoubleClickMessageText(){
+        scroll(doubleClickMessage);
         return getElementTextWithWait(doubleClickMessage);
     }
 
     public String getRightClickMessageText(){
+        scroll(rightClickMessage);
         return getElementTextWithWait(rightClickMessage);
     }
 
     public String getClickMeMessageText(){
+        scroll(clickMeMessage);
         return getElementTextWithWait(clickMeMessage);
     }
 

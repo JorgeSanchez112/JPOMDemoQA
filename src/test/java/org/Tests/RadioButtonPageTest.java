@@ -7,15 +7,19 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class RadioButtonPageTest extends TestBase {
+    private final String PAGE_TITLE = "Radio Button";
+    private final String YES_RADIO_BUTTON = "Yes";
+    private final String IMPRESSIVE_RADIO_BUTTON = "Impressive";
+    private final String NO_RADIO_BUTTON = "No";
+
     @BeforeMethod
     public void initializeClass(){
         radioButtonPage = homePage.clickOnSectionElements().clickOnRadioButtonSection();
     }
 
-    @Parameters("pageTitle")
     @Test
-    public void validateCorrectPageTitle(String pageTitle){
-        Assert.assertEquals(radioButtonPage.getPageTitleText(), pageTitle);
+    public void validateCorrectPageTitle(){
+        Assert.assertEquals(radioButtonPage.getPageTitleText(), PAGE_TITLE);
     }
 
     @Test
@@ -23,36 +27,31 @@ public class RadioButtonPageTest extends TestBase {
         Assert.assertTrue(radioButtonPage.isSubtitleVisible());
     }
 
-    @Parameters("yesRadioButtonMessage")
     @Test
-    public void validateYesLabelIsCorrect(String yesRadioButtonMessage){
-        Assert.assertEquals(radioButtonPage.getYesLabelText(),yesRadioButtonMessage);
+    public void validateYesLabelIsCorrect(){
+        Assert.assertEquals(radioButtonPage.getYesLabelText(),YES_RADIO_BUTTON);
     }
 
-    @Parameters("impressiveRadioButtonMessage")
     @Test
-    public void validateImpressiveLabelIsCorrect(String impressiveRadioButtonMessage){
-        Assert.assertEquals(radioButtonPage.getImpressiveLabelText(),impressiveRadioButtonMessage);
+    public void validateImpressiveLabelIsCorrect(){
+        Assert.assertEquals(radioButtonPage.getImpressiveLabelText(),IMPRESSIVE_RADIO_BUTTON);
     }
 
-    @Parameters("thirdLabel")
     @Test
-    public void validateNoLabelIsCorrect(String thirdLabel){
-        Assert.assertEquals(radioButtonPage.getNoLabelText(),thirdLabel);
+    public void validateNoLabelIsCorrect(){
+        Assert.assertEquals(radioButtonPage.getNoLabelText(),NO_RADIO_BUTTON);
     }
 
-    @Parameters("yesRadioButtonMessage")
     @Test
-    public void validateYesRadioButton(String yesRadioButtonMessage){
+    public void validateYesRadioButton(){
         radioButtonPage.clickOnYesRB();
-        Assert.assertEquals(radioButtonPage.response(),yesRadioButtonMessage);
+        Assert.assertEquals(radioButtonPage.response(),YES_RADIO_BUTTON);
     }
 
-    @Parameters("impressiveRadioButtonMessage")
     @Test
-    public void validateImpressiveRadioButton(String impressiveRadioButtonMessage){
+    public void validateImpressiveRadioButton(){
         radioButtonPage.clickOnImpressiveRB();
-        Assert.assertEquals(radioButtonPage.response(),impressiveRadioButtonMessage);
+        Assert.assertEquals(radioButtonPage.response(),IMPRESSIVE_RADIO_BUTTON);
     }
 
     @Test

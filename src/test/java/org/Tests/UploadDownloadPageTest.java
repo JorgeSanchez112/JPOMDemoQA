@@ -7,15 +7,16 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class UploadDownloadPageTest extends TestBase {
+    private final String PAGE_TITLE = "Upload and Download";
+
     @BeforeMethod
     public void initializeClass(){
         uploadDownloadPage = homePage.clickOnSectionElements().clickOnUploadDownloadSection();
     }
 
-    @Parameters("pageTitle")
     @Test
-    public void validateCorrectPageTitle(String pageTitle){
-        Assert.assertEquals(uploadDownloadPage.getPageTitleText(),pageTitle);
+    public void validateCorrectPageTitle(){
+        Assert.assertEquals(uploadDownloadPage.getPageTitleText(),PAGE_TITLE);
     }
 
     @Test

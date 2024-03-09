@@ -7,15 +7,16 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class CheckBoxPageTest extends TestBase {
+    private final String PAGE_TITLE = "Check Box";
+
     @BeforeMethod
     public void initializeClass(){
       checkBoxPage = homePage.clickOnSectionElements().clickOnCheckBoxSection();
     }
 
-    @Parameters("pageTitle")
     @Test
-    public void validateCorrectPageTitle(String pageTitle){
-        Assert.assertEquals(checkBoxPage.getPageTitleText(),pageTitle);
+    public void validateCorrectPageTitle(){
+        Assert.assertEquals(checkBoxPage.getPageTitleText(),PAGE_TITLE);
     }
 
     @Test

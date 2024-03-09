@@ -8,40 +8,40 @@ import org.testng.annotations.Test;
 
 
 public class BrowserWindowsPagePageTest extends TestBase {
+    private final String PAGE_TITLE = "Browser Windows";
+    private final String URL_SAMPLE_PAGE = "https://demoqa.com/sample";
+    private final String MESSAGE_NEW_WINDOW = "Knowledge increases by sharing but not by saving. Please share this website with your friends and in your organization.";
+
     @BeforeMethod
     public void InitializeClass(){
         browserWindowsPage = homePage.clickOnSectionAlerts_Frame_Windows().clickOnBrowserWindows();
     }
 
-    @Parameters("pageTitle")
     @Test
-    public void validateCorrectPageTitle(String pageTitle){
-        Assert.assertEquals(browserWindowsPage.getPageTitleText(), pageTitle);
+    public void validateCorrectPageTitle(){
+        Assert.assertEquals(browserWindowsPage.getPageTitleText(), PAGE_TITLE);
     }
 
-    @Parameters("uRLOfSamplePage")
     @Test
-    public void validateChangeOfTab(String uRLOfSamplePage){
+    public void validateChangeOfTab(){
         browserWindowsPage.clickOnNewTabButton();
         browserWindowsPage.switchToTab();
-        Assert.assertEquals(browserWindowsPage.getBrowserWindowsUrlText(), uRLOfSamplePage);
+        Assert.assertEquals(browserWindowsPage.getBrowserWindowsUrlText(), URL_SAMPLE_PAGE);
         Assert.assertTrue(browserWindowsPage.newTabTextIsVisible());
     }
 
-    @Parameters("uRLOfSamplePage")
     @Test
-    public void validateNewWindowAppear(String uRLOfSamplePage){
+    public void validateNewWindowAppear(){
         browserWindowsPage.clickOnNewWindowButton();
         browserWindowsPage.switchToTab();
-        Assert.assertEquals(browserWindowsPage.getBrowserWindowsUrlText(), uRLOfSamplePage);
+        Assert.assertEquals(browserWindowsPage.getBrowserWindowsUrlText(), URL_SAMPLE_PAGE);
         Assert.assertTrue(browserWindowsPage.newTabTextIsVisible());
     }
 
-    @Parameters("messageOfNewWindow")
     @Test
-    public void validateNewWindowMessage(String messageOfNewWindow){
+    public void validateNewWindowMessage(){
         browserWindowsPage.clickOnNewWindowMessageButton();
         browserWindowsPage.switchToTab();
-        Assert.assertEquals(browserWindowsPage.getMessageOfNewWindow(), messageOfNewWindow);
+        Assert.assertEquals(browserWindowsPage.getMessageOfNewWindow(), MESSAGE_NEW_WINDOW);
     }
 }

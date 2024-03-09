@@ -7,15 +7,19 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class AlertsPageTest extends TestBase {
+    private final String PAGE_TITLE = "Alerts";
+    private final String ACCEPT_ALERT_MESSAGE = "You selected Ok";
+    private final String DISMISS_ALERT_MESSAGE = "You selected Cancel";
+    private final String INPUT_ALERT_MESSAGE = "You entered ";
+
     @BeforeMethod
     public void initializeClass(){
         alertsPage = homePage.clickOnSectionAlerts_Frame_Windows().clickOnAlerts();
     }
 
-    @Parameters("pageTitle")
     @Test
-    public void validateCorrectPageTitle(String pageTitle){
-        Assert.assertEquals(alertsPage.getPageTitleText(),pageTitle);
+    public void validateCorrectPageTitle(){
+        Assert.assertEquals(alertsPage.getPageTitleText(),PAGE_TITLE);
     }
 
     @Test
@@ -50,27 +54,25 @@ public class AlertsPageTest extends TestBase {
         alertsPage.confirmAlert();
     }
 
-    @Parameters("acceptAlertMessage")
     @Test
-    public void validateAcceptAlert(String acceptAlertMessage){
+    public void validateAcceptAlert(){
         alertsPage.clickOnThirdButton();
         alertsPage.confirmAlert();
-        Assert.assertEquals(alertsPage.getConfirmResultText(),acceptAlertMessage);
+        Assert.assertEquals(alertsPage.getConfirmResultText(),ACCEPT_ALERT_MESSAGE);
     }
 
-    @Parameters("dismissAlertMessage")
     @Test
-    public void validateDismissAlert(String dismissAlertMessage){
+    public void validateDismissAlert(){
         alertsPage.clickOnThirdButton();
         alertsPage.cancelAlert();
-        Assert.assertEquals(alertsPage.getConfirmResultText(),dismissAlertMessage);
+        Assert.assertEquals(alertsPage.getConfirmResultText(),DISMISS_ALERT_MESSAGE);
     }
 
-    @Parameters({"inputAlert","inputAlertMessage"})
+    @Parameters({"inputAlert"})
     @Test
-    public void validateInputAlert(String inputAlert, String inputAlertMessage){
+    public void validateInputAlert(String inputAlert){
         alertsPage.clickOnFourthButton();
         alertsPage.typeInAlert(inputAlert);
-        Assert.assertEquals(alertsPage.getInputAlertText(), inputAlertMessage + inputAlert);
+        Assert.assertEquals(alertsPage.getInputAlertText(), INPUT_ALERT_MESSAGE + inputAlert);
     }
 }

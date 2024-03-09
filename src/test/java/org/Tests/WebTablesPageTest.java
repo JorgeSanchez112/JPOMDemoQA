@@ -7,15 +7,17 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class WebTablesPageTest extends TestBase {
+    private final String PAGE_TITLE = "Web Tables";
+    private final String MESSAGE_NO_ROWS_FOUND = "No rows found";
+
     @BeforeMethod
     public void initializeClass(){
         webTablesPage = homePage.clickOnSectionElements().clickOnWebTablesSection();
     }
-    //CHANGE ALL
-    @Parameters("pageTitle")
+
     @Test
-    public void validateCorrectPageTitle(String pageTitle){
-        Assert.assertEquals(webTablesPage.getPageTitleText(), pageTitle);
+    public void validateCorrectPageTitle(){
+        Assert.assertEquals(webTablesPage.getPageTitleText(), PAGE_TITLE);
     }
 
     @Parameters("searchBox")
@@ -25,14 +27,13 @@ public class WebTablesPageTest extends TestBase {
         Assert.assertEquals(webTablesPage.getFirstNameOfFirstRow(),searchBox);
     }
 
-    @Parameters("messageNoRowsFound")
     @Test
-    public void validateAllRowsEmpty(String messageNoRowsFound){
+    public void validateAllRowsEmpty(){
         webTablesPage.clickOnDeleteThirdRow();
         webTablesPage.clickOnDeleteSecondRow();
         webTablesPage.clickOnDeleteFirstRow();
 
-        Assert.assertEquals(webTablesPage.getTextOfMessageNoRowsFound(), messageNoRowsFound);
+        Assert.assertEquals(webTablesPage.getTextOfMessageNoRowsFound(), MESSAGE_NO_ROWS_FOUND);
     }
 
     @Parameters({"name","lastName","email","age","salary","department"})

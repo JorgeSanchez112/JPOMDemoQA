@@ -3,21 +3,21 @@ package org.Tests;
 import TestComponents.TestBase;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
 
 public class BrokenLinksPageTest extends TestBase {
+    private final String PAGE_TITLE = "Broken Links - Images";
+
     @BeforeMethod
     public void initializeClass(){
         brokenLinksPage = homePage.clickOnSectionElements().clickOnBrokenLinksImageSection();
     }
 
-    @Parameters("pageTitle")
     @Test
-    public void validateCorrectPageTitle(String pageTitle){
-        Assert.assertEquals(brokenLinksPage.getPageTitleText(),pageTitle);
+    public void validateCorrectPageTitle(){
+        Assert.assertEquals(brokenLinksPage.getPageTitleText(),PAGE_TITLE);
     }
 
     @Test

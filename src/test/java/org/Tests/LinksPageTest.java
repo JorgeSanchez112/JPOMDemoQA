@@ -7,82 +7,89 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class LinksPageTest extends TestBase {
+    private final String PAGE_TITLE = "Links";
+    private final String URL_HOME = "https://demoqa.com/";
+    private final String HTTP_201 = "201";
+    private final String HTTP_204 = "204";
+    private final String HTTP_301 = "301";
+    private final String HTTP_400 = "400";
+    private final String HTTP_401 = "401";
+    private final String HTTP_403 = "403";
+    private final String HTTP_404 = "404";
+    private final String MESSAGE_201 = "Created";
+    private final String MESSAGE_204 = "No Content";
+    private final String MESSAGE_301 = "Moved Permanently";
+    private final String MESSAGE_400 = "Bad Request";
+    private final String MESSAGE_401 = "Unauthorized";
+    private final String MESSAGE_403 = "Forbidden";
+    private final String MESSAGE_404 = "Not Found";
+
     @BeforeMethod
     public void initializeClass(){
        linksPage = homePage.clickOnSectionElements().clickOnLinksSection();
     }
 
-    @Parameters("pageTitle")
     @Test
-    public void validateCorrectedTitle(String pageTitle){
-        Assert.assertEquals(linksPage.getPageTitleText(),pageTitle);
+    public void validateCorrectedTitle(){
+        Assert.assertEquals(linksPage.getPageTitleText(),PAGE_TITLE);
     }
 
-    @Parameters("uRLHome")
     @Test
-    public void validateHomeLink(String uRLHome) {
-        Assert.assertEquals(linksPage.getHrefOfHomeLink(),uRLHome);
+    public void validateHomeLink() {
+        Assert.assertEquals(linksPage.getHrefOfHomeLink(),URL_HOME);
     }
 
-    @Parameters("uRLHome")
     @Test
-    public void validateHomeETgEzLink(String uRLHome) {
-        Assert.assertEquals(linksPage.getHrefOfHomeETgEzLink(),uRLHome);
+    public void validateHomeETgEzLink() {
+        Assert.assertEquals(linksPage.getHrefOfHomeETgEzLink(),URL_HOME);
     }
 
-    @Parameters({"hTTPTwoZeroOne","messageTwoZeroOne"})
     @Test
-    public void validateCreatedLink(String hTTPTwoZeroOne, String messageTwoZeroOne) {
+    public void validateCreatedLink() {
         linksPage.clickOnCreatedLink();
-        Assert.assertEquals(linksPage.getHttpMessage(),hTTPTwoZeroOne);
-        Assert.assertEquals(linksPage.getNameLinkMessage(),messageTwoZeroOne);
+        Assert.assertEquals(linksPage.getHttpMessage(),HTTP_201);
+        Assert.assertEquals(linksPage.getNameLinkMessage(),MESSAGE_201);
     }
 
-    @Parameters({"hTTPTwoZeroFour","messageTwoZeroFour"})
     @Test
-    public void validateNoContentLink(String hTTPTwoZeroFour, String messageTwoZeroFour) {
+    public void validateNoContentLink() {
         linksPage.clickOnNoContentLink();
-        Assert.assertEquals(linksPage.getHttpMessage(),hTTPTwoZeroFour);
-        Assert.assertEquals(linksPage.getNameLinkMessage(),messageTwoZeroFour);
+        Assert.assertEquals(linksPage.getHttpMessage(),HTTP_204);
+        Assert.assertEquals(linksPage.getNameLinkMessage(),MESSAGE_204);
     }
 
-    @Parameters({"hTTPThreeZeroOne","messageThreeZeroOne"})
     @Test
-    public void validateMovedLink(String hTTPThreeZeroOne, String messageThreeZeroOne) {
+    public void validateMovedLink() {
         linksPage.clickOnMovedLink();
-        Assert.assertEquals(linksPage.getHttpMessage(),hTTPThreeZeroOne);
-        Assert.assertEquals(linksPage.getNameLinkMessage(),messageThreeZeroOne);
+        Assert.assertEquals(linksPage.getHttpMessage(),HTTP_301);
+        Assert.assertEquals(linksPage.getNameLinkMessage(),MESSAGE_301);
     }
 
-    @Parameters({"hTTPFourHundred","messageFourHundred"})
     @Test
-    public void validateBadRequestLink(String hTTPFourHundred, String messageFourHundred) {
+    public void validateBadRequestLink() {
         linksPage.clickOnBadRequestLink();
-        Assert.assertEquals(linksPage.getHttpMessage(),hTTPFourHundred);
-        Assert.assertEquals(linksPage.getNameLinkMessage(),messageFourHundred);
+        Assert.assertEquals(linksPage.getHttpMessage(),HTTP_400);
+        Assert.assertEquals(linksPage.getNameLinkMessage(),MESSAGE_400);
     }
 
-    @Parameters({"hTTPFourZeroOne","messageFourZeroOne"})
     @Test
-    public void validateUnauthorizedLink(String hTTPFourZeroOne, String messageFourZeroOne) {
+    public void validateUnauthorizedLink() {
         linksPage.clickOnUnauthorizedLink();
-        Assert.assertEquals(linksPage.getHttpMessage(),hTTPFourZeroOne);
-        Assert.assertEquals(linksPage.getNameLinkMessage(),messageFourZeroOne);
+        Assert.assertEquals(linksPage.getHttpMessage(),HTTP_401);
+        Assert.assertEquals(linksPage.getNameLinkMessage(),MESSAGE_401);
     }
 
-    @Parameters({"hTTPFourZeroThree","messageFourZeroThree"})
     @Test
-    public void validateForbiddenLink(String hTTPFourZeroThree, String messageFourZeroThree) {
+    public void validateForbiddenLink() {
         linksPage.clickOnForbiddenLink();
-        Assert.assertEquals(linksPage.getHttpMessage(),hTTPFourZeroThree);
-        Assert.assertEquals(linksPage.getNameLinkMessage(),messageFourZeroThree);
+        Assert.assertEquals(linksPage.getHttpMessage(),HTTP_403);
+        Assert.assertEquals(linksPage.getNameLinkMessage(),MESSAGE_403);
     }
 
-    @Parameters({"hTPPFourZeroFour","messageFourZeroFour"})
     @Test
-    public void validateNotFoundLink(String hTPPFourZeroFour, String messageFourZeroFour) {
+    public void validateNotFoundLink() {
         linksPage.clickOnNotFoundLink();
-        Assert.assertEquals(linksPage.getHttpMessage(),hTPPFourZeroFour);
-        Assert.assertEquals(linksPage.getNameLinkMessage(),messageFourZeroFour);
+        Assert.assertEquals(linksPage.getHttpMessage(),HTTP_404);
+        Assert.assertEquals(linksPage.getNameLinkMessage(),MESSAGE_404);
     }
 }

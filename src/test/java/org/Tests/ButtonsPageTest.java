@@ -3,39 +3,39 @@ package org.Tests;
 import TestComponents.TestBase;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class ButtonsPageTest extends TestBase {
+    private final String PAGE_TITLE = "Buttons";
+    private final String DOUBLE_CLICK_MESSAGE = "You have done a double click";
+    private final String RIGHT_CLICK_MESSAGE = "You have done a right click";
+    private final String RADIO_BUTTON = "You have done a dynamic click";
+
     @BeforeMethod
     public void initializeClass(){
        buttonsPage = homePage.clickOnSectionElements().clickOnButtonsSection();
     }
 
-    @Parameters("pageTitle")
     @Test
-    public void validateCorrectPageTitle(String pageTitle){
-        Assert.assertEquals(buttonsPage.getPageTitleText(),pageTitle);
+    public void validateCorrectPageTitle(){
+        Assert.assertEquals(buttonsPage.getPageTitleText(),PAGE_TITLE);
     }
 
-    @Parameters("doubleClickMessage")
     @Test
-    public void validateDoubleClickInABtn(String doubleClickMessage){
+    public void validateDoubleClickInABtn(){
         buttonsPage.clickOnDoubleBtn();
-        Assert.assertEquals(buttonsPage.getDoubleClickMessageText(),doubleClickMessage);
+        Assert.assertEquals(buttonsPage.getDoubleClickMessageText(),DOUBLE_CLICK_MESSAGE);
     }
 
-    @Parameters("rightClickMessage")
     @Test
-    public void validateRightClickInABtn(String rightClickMessage){
+    public void validateRightClickInABtn(){
         buttonsPage.clickOnRightBtn();
-        Assert.assertEquals(buttonsPage.getRightClickMessageText(),rightClickMessage);
+        Assert.assertEquals(buttonsPage.getRightClickMessageText(),RIGHT_CLICK_MESSAGE);
     }
 
-    @Parameters("clickMeMessage")
     @Test
-    public void validateClickInABtn(String clickMeMessage){
+    public void validateClickInABtn(){
         buttonsPage.clickOnClickMe();
-        Assert.assertEquals(buttonsPage.getClickMeMessageText(),clickMeMessage);
+        Assert.assertEquals(buttonsPage.getClickMeMessageText(),RADIO_BUTTON);
     }
 }

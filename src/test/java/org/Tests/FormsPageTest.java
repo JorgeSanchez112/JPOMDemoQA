@@ -7,20 +7,21 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class FormsPageTest extends TestBase {
+    private final String URL = "https://demoqa.com/forms";
+    private final String MENU_LIST_TEXT = "Practice Form";
+
     @BeforeMethod
     public void initializeClass(){
         formsPage = homePage.clickOnSectionForms();
     }
 
-    @Parameters("uRL")
     @Test
-    public void validateURL(String uRL){
-        Assert.assertEquals(formsPage.getFormsUrlText(),uRL);
+    public void validateURL(){
+        Assert.assertEquals(formsPage.getFormsUrlText(),URL);
     }
 
-    @Parameters("menuListText")
     @Test
-    public void validateCorrectMenuListVisible(String menuListText){
-        Assert.assertEquals(formsPage.getMenuListText(),menuListText);
+    public void validateCorrectMenuListText(){
+        Assert.assertEquals(formsPage.getMenuListText(),MENU_LIST_TEXT);
     }
 }

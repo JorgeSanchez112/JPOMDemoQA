@@ -7,20 +7,21 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class AlertsPageFrameWindowsPageTest extends TestBase {
+    private final String URL = "https://demoqa.com/alertsWindows";
+    private final int ELEMENTS_LIST_SIZE = 5;
+
     @BeforeMethod
     public void initializeClass(){
         alertsFrameWindowsPage = homePage.clickOnSectionAlerts_Frame_Windows();
     }
 
-    @Parameters("uRl")
     @Test
-    public void validateURL(String uRL){
-        Assert.assertEquals(alertsFrameWindowsPage.getAlertFrameWindowsUrl(),uRL);
+    public void validateURL(){
+        Assert.assertEquals(alertsFrameWindowsPage.getAlertFrameWindowsUrl(),URL);
     }
 
-    @Parameters("elementsSize")
     @Test
-    public void validateSectionsSize(int elementsSize){
-        Assert.assertEquals(alertsFrameWindowsPage.getSizeSections(),elementsSize);
+    public void validateSectionsSize(){
+        Assert.assertEquals(alertsFrameWindowsPage.getSizeSections(),ELEMENTS_LIST_SIZE);
     }
 }

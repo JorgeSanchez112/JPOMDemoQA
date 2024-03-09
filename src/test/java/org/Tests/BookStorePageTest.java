@@ -7,39 +7,41 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class BookStorePageTest extends TestBase {
+    private final String URL = "https://demoqa.com/books";
+    private final int ELEMENTS_LIST_SIZE = 4;
+    private final String FIRST_TITLE_TABLE = "Image";
+    private final String SECOND_TITLE_TABLE  = "Title";
+    private final String THIRD_TITLE_TABLE  = "Author";
+    private final String FOURTH_TITLE_TABLE  = "Publisher";
+
     @BeforeMethod
     public void initializeClass(){
         bookStorePage = homePage.clickOnSectionBookStoreApplication();
     }
 
-    @Parameters("uRL")
     @Test
-    public void validateURL(String uRL){
-        Assert.assertEquals(bookStorePage.getBookStoreUrlText(),uRL);
+    public void validateURL(){
+        Assert.assertEquals(bookStorePage.getBookStoreUrlText(),URL);
     }
 
-    @Parameters("firstTitleTable")
     @Test
-    public void isFirstTitleOfTableCorrect(String firstTitleTable) {
-        Assert.assertEquals(bookStorePage.getFirstTitleTableText(), firstTitleTable);
+    public void isFirstTitleOfTableCorrect() {
+        Assert.assertEquals(bookStorePage.getFirstTitleTableText(), FIRST_TITLE_TABLE);
     }
 
-    @Parameters("secondTitleTable")
     @Test
-    public void isSecondTitleOfTableCorrect(String secondTitleTable) {
-        Assert.assertEquals(bookStorePage.getSecondTitleTableText(),secondTitleTable);
+    public void isSecondTitleOfTableCorrect() {
+        Assert.assertEquals(bookStorePage.getSecondTitleTableText(),SECOND_TITLE_TABLE);
     }
 
-    @Parameters("thirdTitleTable")
     @Test
-    public void isThirdTitleOfTableCorrect(String thirdTitleTable) {
-        Assert.assertEquals(bookStorePage.getThirdTitleTableText(),thirdTitleTable);
+    public void isThirdTitleOfTableCorrect() {
+        Assert.assertEquals(bookStorePage.getThirdTitleTableText(),THIRD_TITLE_TABLE);
     }
 
-    @Parameters("fourthTitleTable")
     @Test
-    public void isFourthTitleOfTableCorrect(String fourthTitleTable) {
-        Assert.assertEquals(bookStorePage.getFourthTitleTableText(),fourthTitleTable);
+    public void isFourthTitleOfTableCorrect() {
+        Assert.assertEquals(bookStorePage.getFourthTitleTableText(),FOURTH_TITLE_TABLE);
     }
 
     @Test
@@ -241,9 +243,8 @@ public class BookStorePageTest extends TestBase {
         Assert.assertTrue(bookStorePage.isBookTitleFound(bookStorePage.getTitleOfFirstBookText(),titleExpected));
     }
 
-    @Parameters("elementsSize")
     @Test
-    public void validateSectionsSize(int elementsSize){
-        Assert.assertEquals(bookStorePage.getSizeSections(),elementsSize);
+    public void validateSectionsSize(){
+        Assert.assertEquals(bookStorePage.getSizeSections(),ELEMENTS_LIST_SIZE);
     }
 }

@@ -7,15 +7,16 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class DynamicPropertiesPageTest extends TestBase {
+    private final String PAGE_TITLE = "Dynamic Properties";
+
     @BeforeMethod
     public void initializeClass(){
         dynamicProperties = homePage.clickOnSectionElements().clickOnDynamicPropertiesSection();
     }
 
-    @Parameters("pageTitle")
     @Test
-    public void validateCorrectPageTitle(String pageTitle){
-        Assert.assertEquals(dynamicProperties.getPageTitleText(),pageTitle);
+    public void validateCorrectPageTitle(){
+        Assert.assertEquals(dynamicProperties.getPageTitleText(),PAGE_TITLE);
     }
 
     @Test

@@ -30,6 +30,7 @@ public class NestedFramesPage extends BasePages {
     }
 
     public String getPageTitleText(){
+        scroll(pageTitle);
         return getElementTextWithWait(pageTitle);
     }
 

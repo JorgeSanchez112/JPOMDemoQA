@@ -7,20 +7,21 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class InteractionsPageTest extends TestBase {
+    private final String URL = "https://demoqa.com/interaction";
+    private final int ELEMENTS_LIST_SIZE = 5;
+
     @BeforeMethod
     public void initializeClass(){
         interactionsPage = homePage.clickOnSectionInteractions();
     }
 
-    @Parameters("uRL")
     @Test
-    public void validateURL(String uRL){
-        Assert.assertEquals(interactionsPage.getInteractionsUrlText(),uRL);
+    public void validateURL(){
+        Assert.assertEquals(interactionsPage.getInteractionsUrlText(),URL);
     }
 
-    @Parameters("elementsSize")
     @Test
-    public void validateSectionsSize(int elementsSize){
-        Assert.assertEquals(interactionsPage.getSizeSections(),elementsSize);
+    public void validateSectionsSize(){
+        Assert.assertEquals(interactionsPage.getSizeSections(),ELEMENTS_LIST_SIZE);
     }
 }

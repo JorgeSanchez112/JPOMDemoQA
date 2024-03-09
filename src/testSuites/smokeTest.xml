@@ -9,65 +9,42 @@
     </listeners>
 
     <test name = "home">
-        <parameter name="uRL" value="https://demoqa.com/"/>
-
         <classes>
             <class name = "org.Tests.HomePageTest" />
         </classes>
     </test>
 
     <test name = "elements">
-        <parameter name="uRL" value="https://demoqa.com/elements"/>
-        <parameter name="pageTitle" value="Elements"/>
-        <parameter name="elementsSize" value="9"/>
-
         <classes>
             <class name = "org.Tests.ElementsPageTest" />
         </classes>
     </test>
 
     <test name = "forms">
-        <parameter name="uRL" value="https://demoqa.com/forms"/>
-        <parameter name="pageTitle" value="Forms"/>
-
         <classes>
             <class name = "org.Tests.FormsPageTest" />
         </classes>
     </test>
 
     <test name = "alerts,frame and windows">
-        <parameter name="uRL" value="https://demoqa.com/alertsWindows"/>
-        <parameter name="elementsSize" value="5"/>
-
         <classes>
             <class name = "org.Tests.AlertsPageFrameWindowsPageTest" />
         </classes>
     </test>
 
     <test name = "widgets">
-        <parameter name="uRL" value="https://demoqa.com/widgets"/>
-        <parameter name="elementsSize" value="9"/>
-
         <classes>
             <class name = "org.Tests.WidgetsPageTest" />
         </classes>
     </test>
 
     <test name = "interactions">
-        <parameter name="uRL" value="https://demoqa.com/interaction"/>
-        <parameter name="elementsSize" value="5"/>
-
         <classes>
             <class name = "org.Tests.InteractionsPageTest" />
         </classes>
     </test>
 
     <test name = "Book Store Application">
-        <parameter name="uRL" value="https://demoqa.com/books"/>
-        <parameter name="firstTitleTable" value="Image"/>
-        <parameter name="secondTitleTable" value="Title"/>
-        <parameter name="thirdTitleTable" value="Author"/>
-        <parameter name="fourthTitleTable" value="Publisher"/>
         <parameter name="titleOfFirstBook" value="Git Pocket Guide"/>
         <parameter name="titleOfSecondBook" value="Learning JavaScript Design Patterns"/>
         <parameter name="titleOfThirdBook" value="Designing Evolvable Web APIs with ASP.NET"/>
@@ -97,15 +74,10 @@
     </test>
 
     <test name = "Text Box">
-        <parameter name="pageTitle" value="Text Box"/>
         <parameter name="username" value="desconocido1"/>
         <parameter name="email" value="example@12.gov"/>
         <parameter name="address" value="Street unknown"/>
         <parameter name="permanentAddress" value="Permanent street unknown"/>
-        <parameter name="userNameMessage" value="Name:"/>
-        <parameter name="emailMessage" value="Email:"/>
-        <parameter name="addressMessage" value="Current Address :"/>
-        <parameter name="permanentAddressMessage" value="Permananet Address :"/>
 
         <classes>
             <class name = "org.Tests.TextBoxPageTest" />
@@ -113,28 +85,19 @@
     </test>
 
     <test name = "Check Box">
-        <parameter name="pageTitle" value="Check Box"/>
-
         <classes>
             <class name = "org.Tests.CheckBoxPageTest" />
         </classes>
     </test>
 
     <test name = "Radio Button">
-        <parameter name="pageTitle" value="Radio Button"/>
-        <parameter name="yesRadioButtonMessage" value="Yes"/>
-        <parameter name="impressiveRadioButtonMessage" value="Impressive"/>
-        <parameter name="thirdLabel" value="No"/>
-
         <classes>
             <class name = "org.Tests.RadioButtonPageTest" />
         </classes>
     </test>
 
     <test name = "Web Tables">
-        <parameter name="pageTitle" value="Web Tables"/>
         <parameter name="searchBox" value="Kierra"/>
-        <parameter name="messageNoRowsFound" value="No rows found"/>
         <parameter name="name" value="Aleatorio"/>
         <parameter name="lastName" value="apellido"/>
         <parameter name="email" value="locosaurio@loco.com"/>
@@ -142,87 +105,49 @@
         <parameter name="salary" value="1000000"/>
         <parameter name="department" value="IT"/>
 
-
         <classes>
             <class name = "org.Tests.WebTablesPageTest" />
         </classes>
     </test>
 
     <test name = "Buttons">
-        <parameter name="pageTitle" value="Buttons"/>
-        <parameter name="DoubleClickMessage" value="You have done a double click"/>
-        <parameter name="RightClickMessage" value="You have done a right click"/>
-        <parameter name="ClickMeMessage" value="You have done a dynamic click"/>
-
         <classes>
             <class name = "org.Tests.ButtonsPageTest" />
         </classes>
     </test>
 
     <test name = "Links">
-        <parameter name="pageTitle" value="Links"/>
-        <parameter name="uRLHome" value="https://demoqa.com/"/>
-        <parameter name="hTTPTwoZeroOne" value="201"/>
-        <parameter name="hTTPTwoZeroFour" value="204"/>
-        <parameter name="hTTPThreeZeroOne" value="301"/>
-        <parameter name="hTTPFourHundred" value="400"/>
-        <parameter name="hTTPFourZeroOne" value="401"/>
-        <parameter name="hTTPFourZeroThree" value="403"/>
-        <parameter name="hTPPFourZeroFour" value="404"/>
-        <parameter name="messageTwoZeroOne" value="Created"/>
-        <parameter name="messageTwoZeroFour" value="No Content"/>
-        <parameter name="messageThreeZeroOne" value="Moved Permanently"/>
-        <parameter name="messageFourHundred" value="Bad Request"/>
-        <parameter name="messageFourZeroOne" value="Unauthorized"/>
-        <parameter name="messageFourZeroThree" value="Forbidden"/>
-        <parameter name="messageFourZeroFour" value="Not Found"/>
-
         <classes>
             <class name = "org.Tests.LinksPageTest" />
         </classes>
     </test>
 
     <test name = "Broken Links - Images">
-        <parameter name="pageTitle" value="Broken Links - Images"/>
-
         <classes>
             <class name = "org.Tests.BrokenLinksPageTest" />
         </classes>
     </test>
 
     <test name = "Upload and Download">
-        <parameter name="pageTitle" value="Upload and Download"/>
-
         <classes>
             <class name = "org.Tests.UploadDownloadPageTest" />
         </classes>
     </test>
 
     <test name = "Dynamic Properties">
-        <parameter name="pageTitle" value="Dynamic Properties"/>
-
         <classes>
             <class name = "org.Tests.DynamicPropertiesPageTest" />
         </classes>
     </test>
     
     <test name="Browser Windows">
-        <parameter name="pageTitle" value="Browser Windows"/>
-        <parameter name="uRLOfSamplePage" value="https://demoqa.com/sample"/>
-        <parameter name="messageOfNewWindow" value="Knowledge increases by sharing but not by saving. Please share this website with your friends and in your organization."/>
-
         <classes>
             <class name="org.Tests.BrowserWindowsPagePageTest"/>
         </classes>
     </test>
 
     <test name = "Alerts">
-        <parameter name="pageTitle" value="Alerts"/>
-        <parameter name="acceptAlertMessage" value="You selected Ok"/>
-        <parameter name="dismissAlertMessage" value="You selected Cancel"/>
         <parameter name="inputAlert" value="lolada"/>
-        <parameter name="inputAlertMessage" value="You entered "/>
-
 
         <classes>
             <class name = "org.Tests.AlertsPageTest" />
@@ -230,19 +155,12 @@
     </test>
 
     <test name = "Frames">
-        <parameter name="pageTitle" value="Frames"/>
-        <parameter name="frameText" value="This is a sample page"/>
-
         <classes>
             <class name = "org.Tests.FramesPageTest" />
         </classes>
     </test>
 
     <test name = "Nested Frames">
-        <parameter name="pageTitle" value="Nested Frames"/>
-        <parameter name="parentFrame" value="Parent frame"/>
-        <parameter name="childIframe" value="Child Iframe"/>
-
         <classes>
             <class name = "org.Tests.NestedFramesPageTest" />
         </classes>

@@ -7,20 +7,21 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class WidgetsPageTest extends TestBase {
+    private final String URL = "https://demoqa.com/widgets";
+    private final int ELEMENTS_LIST_SIZE = 9;
+
     @BeforeMethod
     public void initializeClass(){
         widgetsPage = homePage.clickOnSectionWidgets();
     }
 
-    @Parameters("uRL")
     @Test
-    public void validateURL(String uRL){
-        Assert.assertEquals(widgetsPage.getWidgetsUrlText(),uRL);
+    public void validateURL(){
+        Assert.assertEquals(widgetsPage.getWidgetsUrlText(),URL);
     }
 
-    @Parameters("elementsSize")
     @Test
-    public void validateSectionsSize(int elementsSize){
-        Assert.assertEquals(widgetsPage.getSizeSections(),elementsSize);
+    public void validateSectionsSize(){
+        Assert.assertEquals(widgetsPage.getSizeSections(),ELEMENTS_LIST_SIZE);
     }
 }
