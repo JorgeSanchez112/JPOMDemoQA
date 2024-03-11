@@ -6,7 +6,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class NestedFramesPageTest extends TestBase {
-    private final String PAGE_TITLE = "Frames";
+    private final String PAGE_TITLE = "Nested Frames";
     private final String PARENT_FRAME = "Parent frame";
     private final String CHILD_FRAME = "Child Iframe";
 

@@ -7,15 +7,16 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class ResizablePageTest extends TestBase {
+    private final String PAGE_TITLE = "Resizable";
+
     @BeforeMethod
     public void initializeClass(){
         resizablePage = homePage.clickOnSectionInteractions().clickOnResizable();
     }
 
-    @Parameters("pageTitle")
     @Test
-    public void validateCorrectPageTitle(String pageTitle){
-        Assert.assertEquals(resizablePage.getPageTitleText(),pageTitle);
+    public void validateCorrectPageTitle(){
+        Assert.assertEquals(resizablePage.getPageTitleText(),PAGE_TITLE);
     }
 
     @Test
@@ -26,6 +27,7 @@ public class ResizablePageTest extends TestBase {
     @Parameters({"WidthOfBoxRestricted","HeightOfBoxRestricted"})
     @Test
     public void isResizableRestrictedToMax(String WidthOfBoxRestricted, String HeightOfBoxRestricted) {
+        System.out.println(WidthOfBoxRestricted + HeightOfBoxRestricted);
         resizablePage.resizeBoxRestrictedToMax(Integer.parseInt(WidthOfBoxRestricted),Integer.parseInt(HeightOfBoxRestricted));
         Assert.assertEquals(resizablePage.getWidthOfBoxRestricted(),WidthOfBoxRestricted + prop.getProperty("pxMeasurer"));
         Assert.assertEquals(resizablePage.getHeightOfBoxRestricted(),HeightOfBoxRestricted + prop.getProperty("pxMeasurer"));
@@ -39,6 +41,7 @@ public class ResizablePageTest extends TestBase {
     @Parameters({"WidthOfResizeBox","HeightOfResizeBox"})
     @Test
     public void isResizableBoxTo500px(String WidthOfResizeBox, String HeightOfResizeBox) {
+        System.out.println(WidthOfResizeBox + HeightOfResizeBox);
         resizablePage.resizeFreeBox(Integer.parseInt(WidthOfResizeBox),Integer.parseInt(HeightOfResizeBox));
         Assert.assertEquals(resizablePage.getWidthOfResizeBox(),WidthOfResizeBox + prop.getProperty("pxMeasurer"));
         Assert.assertEquals(resizablePage.getHeightOfResizeBox(),HeightOfResizeBox + prop.getProperty("pxMeasurer"));

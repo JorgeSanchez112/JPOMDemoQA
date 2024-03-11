@@ -29,19 +29,15 @@ public class ResizablePage extends BasePages {
     }
 
     public void resizeBoxRestrictedToMax(int width, int height){
-        sizeX = subtractBaseSize(Integer.parseInt(getWidthOfBoxRestricted()),width);
-        sizeY = subtractBaseSize(Integer.parseInt(getHeightOfBoxRestricted()),height);
         scroll(resizableBoxRestricted);
         hidePublicity(rightSidePublicity);
-        resizeElement(resizeIconOfBoxRestricted, sizeX, sizeY);
+        resizeElement(resizeIconOfBoxRestricted, width, height);
     }
 
     public void resizeFreeBox(int width, int height){
-        sizeX = subtractBaseSize(Integer.parseInt(getHeightOfResizeBox()),width);
-        sizeY = subtractBaseSize(Integer.parseInt(getWidthOfResizeBox()),height);
         scroll(resizableBox);
         hidePublicity(rightSidePublicity);
-        resizeElement(resizeIcon, sizeX, sizeY);
+        resizeElement(resizeIcon, width, height);
     }
 
     public String getPageTitleText(){
@@ -62,10 +58,6 @@ public class ResizablePage extends BasePages {
 
     public String getHeightOfResizeBox(){
         return resizableBox.getCssValue("height");
-    }
-
-    public int subtractBaseSize(int BaseSize, int value){
-        return BaseSize - value;
     }
 
     public boolean isResizableRestrictedTextVisible(){

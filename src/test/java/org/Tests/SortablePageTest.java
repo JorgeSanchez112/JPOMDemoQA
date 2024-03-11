@@ -7,92 +7,89 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class SortablePageTest extends TestBase {
+    private final String PAGE_TITLE = "Sortable";
+    private final String ONE = "One";
+    private final String TWO = "Two";
+    private final String THREE = "Three";
+    private final String FOUR = "Four";
+
     @BeforeMethod
     public void initializeClassAndHidePublicity(){
         sortablePage = homePage.clickOnSectionInteractions().clickOnSortable();
     }
 
-    @Parameters("pageTitle")
     @Test
-    public void validateCorrectPageTitle(String pageTitle){
-        Assert.assertEquals(sortablePage.getPageTitleText(),pageTitle);
+    public void validateCorrectPageTitle(){
+        Assert.assertEquals(sortablePage.getPageTitleText(),PAGE_TITLE);
     }
 
-    @Parameters({"numberOne","numberTwo"})
     @Test
-    public void dragFirstElementAndDropItInLastElementOfElementLists(String numberOne, String numberTwo) {
+    public void dragFirstElementAndDropItInLastElementOfElementLists() {
         sortablePage.moveFirstElementListToLastElement();
-        Assert.assertEquals(sortablePage.getTextOfFirstElementValueOfElementsList(), numberTwo);
-        Assert.assertEquals(sortablePage.getTextOfSixthElementValueOfElementsList(), numberOne);
+        Assert.assertEquals(sortablePage.getTextOfFirstElementValueOfElementsList(), TWO);
+        Assert.assertEquals(sortablePage.getTextOfSixthElementValueOfElementsList(), ONE);
     }
 
     @Parameters({"numberTwo","numberThree"})
     @Test
-    public void dragSecondElementAndDropItInPenultimateElementOfElementLists(String numberTwo, String numberThree) {
+    public void dragSecondElementAndDropItInPenultimateElementOfElementLists() {
         sortablePage.moveSecondElementListToPenultimateElement();
-        Assert.assertEquals(sortablePage.getTextOfSecondElementValueOfElementsList(), numberThree);
-        Assert.assertEquals(sortablePage.getTextOfFifthElementValueOfElementsList(), numberTwo);
+        Assert.assertEquals(sortablePage.getTextOfSecondElementValueOfElementsList(), THREE);
+        Assert.assertEquals(sortablePage.getTextOfFifthElementValueOfElementsList(), TWO);
     }
 
-    @Parameters({"numberThree","numberFour"})
     @Test
-    public void dragThirdElementAndDropItInTheSecondToLastElementOfElementLists(String numberThree, String numberFour) {
+    public void dragThirdElementAndDropItInTheSecondToLastElementOfElementLists() {
         sortablePage.moveTheThirdElementListToTheSecondToLastElement();
-        Assert.assertEquals(sortablePage.getTextOfThirdElementValueOfElementsList(), numberFour);
-        Assert.assertEquals(sortablePage.getTextOfFourthElementValueOfElementsList(), numberThree);
+        Assert.assertEquals(sortablePage.getTextOfThirdElementValueOfElementsList(), FOUR);
+        Assert.assertEquals(sortablePage.getTextOfFourthElementValueOfElementsList(), THREE);
     }
 
-    @Parameters({"numberOne","numberTwo"})
     @Test
-    public void dragFirstElementAndDropItInLastElementOfElementsGrid(String numberOne, String numberTwo) {
+    public void dragFirstElementAndDropItInLastElementOfElementsGrid() {
         sortablePage.clickOnTabGrid();
         sortablePage.moveFirstElementGridToLastElement();
-        Assert.assertEquals(sortablePage.getTextOfFirstElementValueOfElementsGrid(), numberTwo);
-        Assert.assertEquals(sortablePage.getTextOfNinethElementValueOfElementsGrid(), numberOne);
+        Assert.assertEquals(sortablePage.getTextOfFirstElementValueOfElementsGrid(), TWO);
+        Assert.assertEquals(sortablePage.getTextOfNinethElementValueOfElementsGrid(), ONE);
     }
 
-    @Parameters({"numberTwo","numberThree"})
     @Test
-    public void dragSecondElementAndDropItInPenultimateElementOfElementsGrid(String numberTwo, String numberThree) {
+    public void dragSecondElementAndDropItInPenultimateElementOfElementsGrid() {
         sortablePage.clickOnTabGrid();
         sortablePage.moveSecondElementGridToPenultimateElement();
-        Assert.assertEquals(sortablePage.getTextOfSecondElementValueOfElementsGrid(), numberThree);
-        Assert.assertEquals(sortablePage.getTextOfEighthElementValueOfElementsGrid(), numberTwo);
+        Assert.assertEquals(sortablePage.getTextOfSecondElementValueOfElementsGrid(), THREE);
+        Assert.assertEquals(sortablePage.getTextOfEighthElementValueOfElementsGrid(), TWO);
     }
 
-    @Parameters({"numberThree","numberFour"})
     @Test
-    public void dragThirdElementAndDropItInTheSecondToLastElementOfElementsGrid(String numberThree, String numberFour) {
+    public void dragThirdElementAndDropItInTheSecondToLastElementOfElementsGrid() {
         sortablePage.clickOnTabGrid();
         sortablePage.moveTheThirdElementGridToTheSecondToLastElement();
-        Assert.assertEquals(sortablePage.getTextOfThirdElementValueOfElementsGrid(), numberFour);
-        Assert.assertEquals(sortablePage.getTextOfSeventhElementValueOfElementsGrid(), numberThree);
+        Assert.assertEquals(sortablePage.getTextOfThirdElementValueOfElementsGrid(), FOUR);
+        Assert.assertEquals(sortablePage.getTextOfSeventhElementValueOfElementsGrid(), THREE);
     }
 
-    @Parameters({"numberOne","numberTwo"})
     @Test
-    public void dragFirstElementAndDropItInFourthElementOfElementsGrid(String numberOne, String numberTwo) {
+    public void dragFirstElementAndDropItInFourthElementOfElementsGrid() {
         sortablePage.clickOnTabGrid();
         sortablePage.moveFirstElementGridToFourthElement();
-        Assert.assertEquals(sortablePage.getTextOfFirstElementValueOfElementsGrid(), numberTwo);
-        Assert.assertEquals(sortablePage.getTextOfFourthElementValueOfElementsGrid(), numberOne);
+        Assert.assertEquals(sortablePage.getTextOfFirstElementValueOfElementsGrid(), TWO);
+        Assert.assertEquals(sortablePage.getTextOfFourthElementValueOfElementsGrid(), ONE);
     }
 
-    @Parameters({"numberOne","numberTwo"})
     @Test
-    public void dragFirstElementAndDropItInFifthElementOfElementsGrid(String numberOne, String numberTwo) {
+    public void dragFirstElementAndDropItInFifthElementOfElementsGrid() {
         sortablePage.clickOnTabGrid();
         sortablePage.moveFirstElementGridToFifthElement();
-        Assert.assertEquals(sortablePage.getTextOfFirstElementValueOfElementsGrid(), numberTwo);
-        Assert.assertEquals(sortablePage.getTextOfFifthElementValueOfElementsGrid(), numberOne);
+        Assert.assertEquals(sortablePage.getTextOfFirstElementValueOfElementsGrid(), TWO);
+        Assert.assertEquals(sortablePage.getTextOfFifthElementValueOfElementsGrid(), ONE);
     }
 
-    @Parameters({"numberOne","numberTwo"})
     @Test
-    public void dragFirstElementAndDropItInSixthElementOfElementsGrid(String numberOne, String numberTwo) {
+    public void dragFirstElementAndDropItInSixthElementOfElementsGrid() {
         sortablePage.clickOnTabGrid();
         sortablePage.moveFirstElementGridToSixthElement();
-        Assert.assertEquals(sortablePage.getTextOfFirstElementValueOfElementsGrid(), numberTwo);
-        Assert.assertEquals(sortablePage.getTextOfSixthElementValueOfElementsGrid(), numberOne);
+        Assert.assertEquals(sortablePage.getTextOfFirstElementValueOfElementsGrid(), TWO);
+        Assert.assertEquals(sortablePage.getTextOfSixthElementValueOfElementsGrid(), ONE);
     }
 }

@@ -11,27 +11,28 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 public class AutoCompletePageTest extends TestBase {
+    private final String PAGE_TITLE = "Auto Complete";
+    private final String FIRST_LABEL  = "Type multiple color names";
+    private final String SECOND_LABEL  = "Type single color name";
+
     @BeforeMethod
     public void initializeClass(){
         autoCompletePage = homePage.clickOnSectionWidgets().clickOnAutoComplete();
     }
 
-    @Parameters("pageTitle")
     @Test
-    public void validateCorrectPageTitle(String pageTitle){
-        Assert.assertEquals(autoCompletePage.getPageTitleText(),pageTitle);
+    public void validateCorrectPageTitle(){
+        Assert.assertEquals(autoCompletePage.getPageTitleText(),PAGE_TITLE);
     }
 
-    @Parameters("firstLabel")
     @Test
-    public void validateCorrectMultipleContainerLabel(String firstLabel){
-        Assert.assertEquals(autoCompletePage.getMultipleContainerLabelText(),firstLabel);
+    public void validateCorrectMultipleContainerLabel(){
+        Assert.assertEquals(autoCompletePage.getMultipleContainerLabelText(),FIRST_LABEL);
     }
 
-    @Parameters("secondLabel")
     @Test
-    public void validateCorrectSingleContainerLabel(String secondLabel){
-        Assert.assertEquals(autoCompletePage.getSingleContainerLabelText(),secondLabel);
+    public void validateCorrectSingleContainerLabel(){
+        Assert.assertEquals(autoCompletePage.getSingleContainerLabelText(),SECOND_LABEL);
     }
 
     @Parameters({"firstColor","secondColor","firstColorExpected","secondColorExpected"})

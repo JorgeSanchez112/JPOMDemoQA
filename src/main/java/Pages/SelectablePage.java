@@ -22,6 +22,7 @@ public class SelectablePage extends BasePages {
     }
 
     public void clickOnTabGrid(){
+        scroll(tabGrid);
         clickWithWait(tabGrid);
     }
 

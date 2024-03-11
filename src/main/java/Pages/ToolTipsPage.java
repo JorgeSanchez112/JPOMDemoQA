@@ -71,5 +71,4 @@ public class ToolTipsPage extends BasePages {
     public String getTextFromHoverVersionLinkAttribute(){
         return getElementAttribute(hoverLink.get(1),"aria-describedby");
     }
-
 }

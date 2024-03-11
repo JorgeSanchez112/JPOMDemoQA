@@ -7,33 +7,34 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class AccordianPageTest extends TestBase {
+    private final String PAGE_TITLE = "Accordian";
+    private final String FIRST_TOPIC_TITLE = "What is Lorem Ipsum?";
+    private final String SECOND_TOPIC_TITLE = "Where does it come from?";
+    private final String THIRD_TOPIC_TITLE = "Why do we use it?";
+
     @BeforeMethod
     public void initializeClass(){
         accordianPage = homePage.clickOnSectionWidgets().clickOnAccordian();
     }
 
-    @Parameters("pageTitle")
     @Test
-    public void validateCorrectPageTitle(String pageTitle){
-        Assert.assertEquals(accordianPage.getPageTitleText(),pageTitle);
+    public void validateCorrectPageTitle(){
+        Assert.assertEquals(accordianPage.getPageTitleText(),PAGE_TITLE);
     }
 
-    @Parameters("firstTopicTitle")
     @Test
-    public void isFirstTopicTitleCorrect(String firstTopicTitle){
-        Assert.assertEquals(accordianPage.getCard1TopicText(),firstTopicTitle);
+    public void isFirstTopicTitleCorrect(){
+        Assert.assertEquals(accordianPage.getCard1TopicText(),FIRST_TOPIC_TITLE);
     }
 
-    @Parameters("secondTopicTitle")
     @Test
-    public void isSecondTopicTitleCorrect(String secondTopicTitle){
-        Assert.assertEquals(accordianPage.getCard2TopicText(),secondTopicTitle);
+    public void isSecondTopicTitleCorrect(){
+        Assert.assertEquals(accordianPage.getCard2TopicText(),SECOND_TOPIC_TITLE);
     }
 
-    @Parameters("thirdTopicTitle")
     @Test
-    public void isThirdTopicTitleCorrect(String thirdTopicTitle){
-        Assert.assertEquals(accordianPage.getCard3TopicText(),thirdTopicTitle);
+    public void isThirdTopicTitleCorrect(){
+        Assert.assertEquals(accordianPage.getCard3TopicText(),THIRD_TOPIC_TITLE);
     }
 
     @Test

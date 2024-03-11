@@ -7,27 +7,28 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class DatePickerPageTest extends TestBase {
+    private final String PAGE_TITLE = "Date Picker";
+    private final String FIRST_LABEL  = "Select Date";
+    private final String SECOND_LABEL  = "Date And Time";
+
     @BeforeMethod
     public void initializeClass(){
         datePickerPage = homePage.clickOnSectionWidgets().clickOnDatePicker();
     }
 
-    @Parameters("pageTitle")
     @Test
-    public void validateCorrectPageTitle(String pageTitle){
-        Assert.assertEquals(datePickerPage.getPageTitleText(),pageTitle);
+    public void validateCorrectPageTitle(){
+        Assert.assertEquals(datePickerPage.getPageTitleText(),PAGE_TITLE);
     }
 
-    @Parameters("firstLabel")
     @Test
-    public void validateCorrectDateLabel(String firstLabel){
-        Assert.assertEquals(datePickerPage.getDateLabelText(),firstLabel);
+    public void validateCorrectDateLabel(){
+        Assert.assertEquals(datePickerPage.getDateLabelText(),FIRST_LABEL);
     }
 
-    @Parameters("secondLabel")
     @Test
-    public void validateCorrectDateTimeLabel(String secondLabel){
-        Assert.assertEquals(datePickerPage.getDateTimeLabelText(),secondLabel);
+    public void validateCorrectDateTimeLabel(){
+        Assert.assertEquals(datePickerPage.getDateTimeLabelText(),SECOND_LABEL);
     }
 
     @Parameters({"month","day","year","dateExpected"})

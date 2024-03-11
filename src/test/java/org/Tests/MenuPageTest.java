@@ -7,15 +7,15 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class MenuPageTest extends TestBase {
+    private final String PAGE_TITLE = "Menu";
     @BeforeMethod
     public void initializeClassAndHideAdvertising(){
         menuPage = homePage.clickOnSectionWidgets().clickOnMenu();
     }
 
-    @Parameters("pageTitle")
     @Test
-    public void validateCorrectPageTitle(String pageTitle){
-        Assert.assertEquals(menuPage.getPageTitleText(),pageTitle);
+    public void validateCorrectPageTitle(){
+        Assert.assertEquals(menuPage.getPageTitleText(),PAGE_TITLE);
     }
 
     @Test

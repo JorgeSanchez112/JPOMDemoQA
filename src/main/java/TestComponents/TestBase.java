@@ -67,6 +67,13 @@ public class TestBase{
     //BookStore
     //TextBox
     //AlertsPage
+    //AutoComplete
+    //DatePicker
+    //ToolTips
+    //Select Menu
+    //Sortable -- Likely this will require changes
+    //Resizable
+    //Draggable
 
     public TestBase() {
         try {

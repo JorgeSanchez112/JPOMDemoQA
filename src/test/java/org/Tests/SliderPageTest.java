@@ -7,15 +7,16 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class SliderPageTest extends TestBase {
+    private final String PAGE_TITLE = "Slider";
+
     @BeforeMethod
     public void initializeClass(){
         sliderPage = homePage.clickOnSectionWidgets().clickOnSlider();
     }
 
-    @Parameters("pageTitle")
     @Test
-    public void validateCorrectPageTitle(String pageTitle){
-        Assert.assertEquals(sliderPage.getPageTitleText(),pageTitle);
+    public void validateCorrectPageTitle(){
+        Assert.assertEquals(sliderPage.getPageTitleText(),PAGE_TITLE);
 
     }
 

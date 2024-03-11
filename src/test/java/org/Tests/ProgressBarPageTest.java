@@ -3,38 +3,37 @@ package org.Tests;
 import TestComponents.TestBase;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class ProgressBarPageTest extends TestBase {
+    private final String PAGE_TITLE = "Progress Bar";
+    private final String FULL_BAR_PERCENTAGE = "100%";
+    private final String EMPTY_BAR_PERCENTAGE = "0%";
+
     @BeforeMethod
     public void initializeClass(){
         progressBarPage = homePage.clickOnSectionWidgets().clickOnProgressBar();
     }
 
-    @Parameters("pageTitle")
     @Test
-    public void validateCorrectPageTitle(String pageTitle){
-        Assert.assertEquals(progressBarPage.getPageTitleText(),pageTitle);
+    public void validateCorrectPageTitle(){
+        Assert.assertEquals(progressBarPage.getPageTitleText(),PAGE_TITLE);
     }
 
-    @Parameters("pageTitle")
     @Test
-    public void validateCorrectLabelText(String pageTitle){
-        Assert.assertEquals(progressBarPage.getLabelText(), pageTitle);
+    public void validateCorrectLabelText(){
+        Assert.assertEquals(progressBarPage.getLabelText(), PAGE_TITLE);
     }
 
-    @Parameters("fullBarPercentage")
     @Test
-    public void validateProgressBar(String fullBarPercentage) throws InterruptedException {
+    public void validateProgressBar(){
         progressBarPage.startProgressBarAndWaitTo100Percent();
-        Assert.assertEquals(progressBarPage.getPercentText(), fullBarPercentage);
+        Assert.assertEquals(progressBarPage.getPercentText(), FULL_BAR_PERCENTAGE);
     }
 
-    @Parameters("emptyBarPercentage")
     @Test
-    public void validateReturnToBasePage(String emptyBarPercentage) throws InterruptedException {
+    public void validateReturnToBasePage(){
         progressBarPage.startProgressBarTillEndAndRestartBar();
-        Assert.assertEquals(progressBarPage.getPercentText(), emptyBarPercentage);
+        Assert.assertEquals(progressBarPage.getPercentText(), EMPTY_BAR_PERCENTAGE);
     }
 }

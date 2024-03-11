@@ -38,10 +38,12 @@ public class DatePickerPage extends BasePages {
     }
 
     public void clickOnDateInput(){
+        scroll(dateInput);
         clickWithWait(dateInput);
     }
 
     public void clickOnDateAndTimeInput(){
+        scroll(dateAndTimeInput);
         clickWithWait(dateAndTimeInput);
     }
 

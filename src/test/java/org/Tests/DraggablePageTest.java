@@ -7,15 +7,16 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class DraggablePageTest extends TestBase {
+    private final String PAGE_TITLE = "Dragabble";
+
     @BeforeMethod
     public void initializeClass(){
         draggablePage = homePage.clickOnSectionInteractions().clickOnDragabble();
     }
 
-    @Parameters("pageTitle")
     @Test
-    public void validateCorrectPageTitle(String pageTitle){
-        Assert.assertEquals(draggablePage.getPageTitleText(),pageTitle);
+    public void validateCorrectPageTitle(){
+        Assert.assertEquals(draggablePage.getPageTitleText(),PAGE_TITLE);
     }
 
     @Test

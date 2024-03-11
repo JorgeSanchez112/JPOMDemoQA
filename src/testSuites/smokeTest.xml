@@ -167,30 +167,18 @@
     </test>
 
     <test name = "Modal Dialogs">
-        <parameter name="pageTitle" value="Modal Dialogs"/>
-        <parameter name="smallModal" value="This is a small modal. It has very less content"/>
-        <parameter name="largeModal" value="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."/>
-
         <classes>
             <class name = "org.Tests.ModalDialogsPageTest" />
         </classes>
     </test>
 
     <test name = "Accordian">
-        <parameter name="pageTitle" value="Accordian"/>
-        <parameter name="firstTopicTitle" value="What is Lorem Ipsum?"/>
-        <parameter name="secondTopicTitle" value="Where does it come from?"/>
-        <parameter name="thirdTopicTitle" value="Why do we use it?"/>
-
         <classes>
             <class name = "org.Tests.AccordianPageTest" />
         </classes>
     </test>
 
     <test name = "Auto Complete">
-        <parameter name="pageTitle" value="Auto Complete"/>
-        <parameter name="firstLabel" value="Type multiple color names"/>
-        <parameter name="secondLabel" value="Type single color name"/>
         <parameter name="firstColor" value="Bla"/>
         <parameter name="secondColor" value="Whit"/>
         <parameter name="firstColorExpected" value="Black"/>
@@ -204,9 +192,6 @@
     </test>
 
     <test name = "Date Picker">
-        <parameter name="pageTitle" value="Date Picker"/>
-        <parameter name="firstLabel" value="Select Date"/>
-        <parameter name="secondLabel" value="Date And Time"/>
         <parameter name="month" value="May"/>
         <parameter name="day" value="30"/>
         <parameter name="year" value="2022"/>
@@ -220,69 +205,43 @@
     </test>
 
     <test name = "Slider">
-        <parameter name="pageTitle" value="Slider"/>
-
         <classes>
             <class name = "org.Tests.SliderPageTest" />
         </classes>
     </test>
 
     <test name = "Progress Bar">
-        <parameter name="pageTitle" value="Progress Bar"/>
-        <parameter name="fullBarPercentage" value="100%"/>
-        <parameter name="emptyBarPercentage" value="0%"/>
-
         <classes>
             <class name = "org.Tests.ProgressBarPageTest" />
         </classes>
     </test>
 
     <test name = "Tabs">
-        <parameter name="pageTitle" value="Tabs"/>
-        <parameter name="firstTabTitle" value="What"/>
-        <parameter name="secondTabTitle" value="Origin"/>
-        <parameter name="thirdTabTitle" value="Use"/>
-        <parameter name="whatTabText" value="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."/>
-        <parameter name="firstParagraphOfOriginTabText" value='Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.'/>
-        <parameter name="secondParaGraphOfOriginTabText" value='The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.'/>
-        <parameter name="useTabText" value="It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."/>
-
         <classes>
             <class name = "org.Tests.TabsPageTest"/>
         </classes>
     </test>
 
     <test name = "Tool tips">
-        <parameter name="pageTitle" value="Tool Tips"/>
-        <parameter name="subTitle" value="Practice Tool Tips"/>
-
         <classes>
             <class name = "org.Tests.ToolTipsPageTest"/>
         </classes>
     </test>
 
     <test name = "Menu">
-        <parameter name="pageTitle" value="Menu"/>
-
         <classes>
             <class name = "org.Tests.MenuPageTest"/>
         </classes>
     </test>
 
     <test name = "Select Menu">
-        <parameter name="pageTitle" value="Select Menu"/>
-        <parameter name="firstLabel" value="Select Value"/>
         <parameter name="typeOption" value="Group 1, option 2"/>
-        <parameter name="secondLabel" value="Select One"/>
         <parameter name="expectedOne" value="Mr."/>
-        <parameter name="thirdLabel" value="Old Style Select Menu"/>
         <parameter name="optionOfColor" value="Yellow"/>
-        <parameter name="fourthLabel" value="Multiselect drop down"/>
         <parameter name="firstExpectedMultiValue" value="Green"/>
         <parameter name="secondExpectedMultiValue" value="Blue"/>
         <parameter name="thirdExpectedMultiValue" value="Black"/>
         <parameter name="fourthExpectedMultiValue" value="Red"/>
-        <parameter name="fifthLabel" value="Standard multi select"/>
         <parameter name="selectFirstValueOnStandardMultiSelect" value="Volvo"/>
         <parameter name="selectSecondValueOnStandardMultiSelect" value="Saab"/>
         <parameter name="selectThirdValueOnStandardMultiSelect" value="Opel"/>
@@ -294,27 +253,18 @@
     </test>
 
     <test name = "Sortable">
-        <parameter name="pageTitle" value="Sortable" />
-        <parameter name="numberOne" value="One" />
-        <parameter name="numberTwo" value="Two" />
-        <parameter name="numberThree" value="Three" />
-        <parameter name="numberFour" value="Four" />
-
         <classes>
             <class name = "org.Tests.SortablePageTest" />
         </classes>
     </test>
 
     <test name = "Selectable">
-        <parameter name="pageTitle" value="Selectable" />
-
         <classes>
             <class name = "org.Tests.SelectablePageTest" />
         </classes>
     </test>
 
     <test name = "Resizable">
-        <parameter name="pageTitle" value="Resizable" />
         <parameter name="WeightOfBoxRestricted" value="500" />
         <parameter name="HeightOfBoxRestricted" value="300" />
         <parameter name="WeightOfResizeBox" value="500" />
@@ -326,15 +276,12 @@
     </test>
 
     <test name = "Droppable">
-        <parameter name="pageTitle" value="Droppable"/>
-
         <classes>
             <class name = "org.Tests.DroppablePageTest" />
         </classes>
     </test>
 
     <test name = "Draggable">
-        <parameter name="pageTitle" value="Dragabble"/>
         <parameter name="simpleBoxXPositionExpected" value="10"/>
         <parameter name="simpleBoxYPositionExpected" value="10"/>
         <parameter name="restrictedXBoxPositionExpected" value="50"/>

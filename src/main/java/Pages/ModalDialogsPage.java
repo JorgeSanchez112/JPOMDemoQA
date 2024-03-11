@@ -28,10 +28,12 @@ public class ModalDialogsPage extends BasePages {
     }
 
     public void clickOnSmallModalButton(){
+        scroll(smallModalButton);
         clickWithWait(smallModalButton);
     }
 
     public void clickOnLargeModalButton(){
+        scroll(largeModalButton);
         clickWithWait(largeModalButton);
     }
 

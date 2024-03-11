@@ -7,15 +7,15 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class DroppablePageTest extends TestBase {
+    private final String PAGE_TITLE = "Droppable";
     @BeforeMethod
     public void initializeClass(){
         droppablePage = homePage.clickOnSectionInteractions().clickOnDroppable();
     }
 
-    @Parameters("pageTitle")
     @Test
-    public void validateCorrectPageTitle(String pageTitle){
-        Assert.assertEquals(droppablePage.getPageTitleText(),pageTitle);
+    public void validateCorrectPageTitle(){
+        Assert.assertEquals(droppablePage.getPageTitleText(),PAGE_TITLE);
     }
 
     @Test

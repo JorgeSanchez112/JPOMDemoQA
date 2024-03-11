@@ -7,21 +7,26 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class SelectMenuPageTest extends TestBase {
+    private final String PAGE_TITLE = "Select Menu";
+    private final String FIRST_LABEL = "Select Value";
+    private final String SECOND_LABEL = "Select One";
+    private final String THIRD_LABEL = "Old Style Select Menu";
+    private final String FOURTH_LABEL = "Multiselect drop down";
+    private final String FIFTH_LABEL = "Standard multi select";
+
     @BeforeMethod
     public void initializeClass(){
         selectMenuPage = homePage.clickOnSectionWidgets().clickOnSelectMenu();
     }
 
-    @Parameters("pageTitle")
     @Test
-    public void validateCorrectPageTitle(String pageTitle){
-        Assert.assertEquals(selectMenuPage.getPageTitleText(),pageTitle);
+    public void validateCorrectPageTitle(){
+        Assert.assertEquals(selectMenuPage.getPageTitleText(),PAGE_TITLE);
     }
 
-    @Parameters("firstLabel")
     @Test
-    public void validateCorrectSelectValueLabel(String firstLabel){
-        Assert.assertEquals(selectMenuPage.getValueLabelText(),firstLabel);
+    public void validateCorrectSelectValueLabel(){
+        Assert.assertEquals(selectMenuPage.getValueLabelText(),FIRST_LABEL);
     }
 
     @Parameters("typeOption")
@@ -32,10 +37,9 @@ public class SelectMenuPageTest extends TestBase {
         Assert.assertEquals(selectMenuPage.getSelectValueContainerText(),typeOption);
     }
 
-    @Parameters("secondLabel")
     @Test
-    public void validateCorrectSelectOneLabel(String secondLabel){
-        Assert.assertEquals(selectMenuPage.getOneLabelText(),secondLabel);
+    public void validateCorrectSelectOneLabel(){
+        Assert.assertEquals(selectMenuPage.getOneLabelText(),SECOND_LABEL);
     }
 
     @Parameters("expectedOne")
@@ -46,10 +50,9 @@ public class SelectMenuPageTest extends TestBase {
         Assert.assertEquals(selectMenuPage.getSelectOneContainerText(),expectedOne);
     }
 
-    @Parameters("thirdLabel")
     @Test
-    public void validateCorrectOldStyleSelectLabel(String thirdLabel){
-        Assert.assertEquals(selectMenuPage.getOldStyleSelectLabelText(),thirdLabel);
+    public void validateCorrectOldStyleSelectLabel(){
+        Assert.assertEquals(selectMenuPage.getOldStyleSelectLabelText(),THIRD_LABEL);
     }
 
     @Parameters("optionOfColor")
@@ -59,10 +62,9 @@ public class SelectMenuPageTest extends TestBase {
         Assert.assertEquals(selectMenuPage.RetrieveTextOfSelectedOptionFromOldStyleMenu(),optionOfColor);
     }
 
-    @Parameters("fourthLabel")
     @Test
-    public void validateCorrectMultiselectDropdownLabel(String fourthLabel){
-        Assert.assertEquals(selectMenuPage.getMultiSelectDropdownLabelText(),fourthLabel);
+    public void validateCorrectMultiselectDropdownLabel(){
+        Assert.assertEquals(selectMenuPage.getMultiSelectDropdownLabelText(),FOURTH_LABEL);
 
     }
 
@@ -76,10 +78,9 @@ public class SelectMenuPageTest extends TestBase {
         Assert.assertEquals(selectMenuPage.getRedValueTextOfMultiplyDropdown(),fourthExpectedMultiValue);
     }
 
-    @Parameters("fifthLabel")
     @Test
-    public void validateCorrectStandardMultiSelectLabel(String fifthLabel){
-        Assert.assertEquals(selectMenuPage.getStandardMultiSelectLabelText(),fifthLabel);
+    public void validateCorrectStandardMultiSelectLabel(){
+        Assert.assertEquals(selectMenuPage.getStandardMultiSelectLabelText(),FIFTH_LABEL);
     }
 
     @Parameters({"selectFirstValueOnStandardMultiSelect","selectSecondValueOnStandardMultiSelect","selectThirdValueOnStandardMultiSelect","selectFourthValueOnStandardMultiSelect"})
