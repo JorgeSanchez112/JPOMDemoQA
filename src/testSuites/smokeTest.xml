@@ -45,28 +45,8 @@
     </test>
 
     <test name = "Book Store Application">
-        <parameter name="titleOfFirstBook" value="Git Pocket Guide"/>
-        <parameter name="titleOfSecondBook" value="Learning JavaScript Design Patterns"/>
-        <parameter name="titleOfThirdBook" value="Designing Evolvable Web APIs with ASP.NET"/>
-        <parameter name="titleOfFourthBook" value="Speaking JavaScript"/>
-        <parameter name="titleOfFifthBook" value="You Don't Know JS"/>
-        <parameter name="titleOfSixthBook" value="Programming JavaScript Applications"/>
-        <parameter name="titleOfSeventhBook" value="Eloquent JavaScript, Second Edition"/>
-        <parameter name="titleOfEighthBook" value="Understanding ECMAScript 6"/>
-        <parameter name="authorOfGitPocketGuideBook" value="Richard E. Silverman"/>
-        <parameter name="authorOfLearningJavaScriptDesignPatternsBook" value="Addy Osmani"/>
-        <parameter name="authorOfDesigningEvolvableWebAPIswithASPNETBook" value="Glenn Block et al."/>
-        <parameter name="authorOfSpeakingJavaScriptBook" value="Axel Rauschmayer"/>
-        <parameter name="authorOfYouDontKnowJSBook" value="Kyle Simpson"/>
-        <parameter name="authorOfProgrammingJavaScriptApplicationsBook" value="Eric Elliott"/>
-        <parameter name="authorOfEloquentJavaScriptSecondEditionBook" value="Marijn Haverbeke"/>
-        <parameter name="authorOfUnderstandingECMAScript6Book" value="Nicholas C. Zakas"/>
-        <parameter name="publisherOfBooks" value="O'Reilly Media"/>
-        <parameter name="SecondPublisherOfBooks" value="No Starch Press"/>
-        <parameter name="searchBarPlaceholder" value="Type to search"/>
         <parameter name="searchBar" value="GIT"/>
         <parameter name="titleExpected" value="Git"/>
-        <parameter name="elementsSize" value="4"/>
 
         <classes>
             <class name = "org.Tests.BookStorePageTest" />

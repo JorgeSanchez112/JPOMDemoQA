@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
 import java.util.ArrayList;
@@ -223,7 +224,6 @@ public class BasePages {
         return false;
     }
 
-
     public boolean isElementVisibleAccordingToPositionReceivedOfList(List<WebElement> elements, int position){
         if (elements.size() != 0){
             try{
@@ -319,6 +319,36 @@ public class BasePages {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public boolean validateAllListItemsAreVisible(List<WebElement> elementList){
+        WebElement element = runWebElementList(elementList);
+        try {
+            scroll(element);
+            return element.isDisplayed();
+        }catch (TimeoutException e){
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean validateResponseCodeIs200inAList(List<WebElement> elementList) throws IOException {
+        WebElement element = runWebElementList(elementList);
+        scroll(element);
+        System.out.println(element);
+        System.out.println();
+        return validateHTTPS_Response(element.getAttribute("src"));
+    }
+
+    public WebElement runWebElementList(List<WebElement> elementList){
+        try {
+            for (WebElement element: elementList) {
+                return element;
+            }
+        }catch (NoSuchElementException e){
+            e.printStackTrace();
+        }
+        return elementList.get(0);
     }
 
     public int getPositionOfOneElementInAList(List<WebElement> elementsList, String value){
@@ -475,12 +505,15 @@ public class BasePages {
     }
 
     public boolean validateHTTPS_Response(String src) throws IOException {
-        HttpURLConnection http = (HttpURLConnection) (new URL(src).openConnection());
-        http.setRequestMethod("HEAD");
-        http.connect();
-
-        int responseCode = http.getResponseCode();
-
-        return responseCode == 200;
+        try {
+            HttpURLConnection http = (HttpURLConnection) (new URL(src).openConnection());
+            http.setRequestMethod("HEAD");
+            http.connect();
+            int responseCode = http.getResponseCode();
+            return responseCode == 200;
+        }catch (MalformedURLException e){
+            e.printStackTrace();
+        }
+        return false;
     }
 }

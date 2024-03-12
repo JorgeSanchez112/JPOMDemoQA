@@ -5,6 +5,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.io.IOException;
 import java.util.List;
 
 public class BookStorePage extends BasePages {
@@ -16,7 +17,7 @@ public class BookStorePage extends BasePages {
     private List<WebElement> tableTitles;
     @FindBy(className = "rt-tr-group")
     private List<WebElement> bookRow;
-    @FindBy(css = ".rt-tr > .rt-td:nth-child(1)")
+    @FindBy(css = ".rt-tr > .rt-td:nth-child(1) > img")
     private List<WebElement> columnImages;
     @FindBy(css = ".rt-tr > .rt-td:nth-child(2)")
     private List<WebElement> columnTitle;
@@ -83,22 +84,22 @@ public class BookStorePage extends BasePages {
         return getElementTextAccordingToPositionReceived(tableTitles,THREE);
     }
 
-    public String getTitleOfFirstBookText() {
+    public String getTitleBookText(String title) {
         scrollToRow(ZERO);
         waitForChargedElementsOfAWebElementList(columnTitle);
-        return getElementTextAccordingToPositionReceived(columnTitle,ZERO);
+        return getElementTextAccordingToPositionReceived(columnTitle,getPositionOfOneElementInAList(columnTitle,title));
     }
 
-    public String getAuthorOfFirstBookText() {
+    public String getBookAuthorText(String title) {
         scrollToRow(ZERO);
         waitForChargedElementsOfAWebElementList(columnAuthor);
-        return getElementTextAccordingToPositionReceived(columnAuthor,ZERO);
+        return getElementTextAccordingToPositionReceived(columnAuthor,getPositionOfOneElementInAList(columnTitle,title));// First searches for the book title and then returns the respective author
     }
 
-    public String getPublisherOfFirstBookText() {
+    public String getBookPublisherText(String title) {
         scrollToRow(ZERO);
         waitForChargedElementsOfAWebElementList(columnPublisher);
-        return getElementTextAccordingToPositionReceived(columnPublisher,ZERO);
+        return getElementTextAccordingToPositionReceived(columnPublisher,getPositionOfOneElementInAList(columnTitle,title));
     }
 
     public String getTitleOfSecondBookText() {
@@ -235,16 +236,16 @@ public class BookStorePage extends BasePages {
         return isElementVisibleAccordingToPositionReceivedOfList(columnImages,ZERO);
     }
 
-    public boolean isVisibleSecondImage() {
+    public boolean areTheImagesVisible() {
         scrollToRow(ONE);
         waitForChargedElementsOfAWebElementList(columnImages);
-        return isElementVisibleAccordingToPositionReceivedOfList(columnImages,ONE);
+        return validateAllListItemsAreVisible(columnImages);
     }
 
-    public boolean isVisibleThirdImage() {
-        scrollToRow(TWO);
+    public boolean areNotBrokeLinkImages() throws IOException {
+        scrollToRow(ONE);
         waitForChargedElementsOfAWebElementList(columnImages);
-        return isElementVisibleAccordingToPositionReceivedOfList(columnImages,TWO);
+        return validateResponseCodeIs200inAList(columnImages);
     }
 
     public boolean isVisibleFourthImage() {
