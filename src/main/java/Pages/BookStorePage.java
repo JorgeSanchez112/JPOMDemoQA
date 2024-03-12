@@ -30,10 +30,6 @@ public class BookStorePage extends BasePages {
     private final int ONE = 1;
     private final int TWO = 2;
     private final int THREE = 3;
-    private final int FOUR = 4;
-    private final int FIVE = 5;
-    private final int SIX = 6;
-    private final int SEVEN = 7;
 
     public BookStorePage(WebDriver driver) {
         super(driver);
@@ -102,130 +98,6 @@ public class BookStorePage extends BasePages {
         return getElementTextAccordingToPositionReceived(columnPublisher,getPositionOfOneElementInAList(columnTitle,title));
     }
 
-    public String getTitleOfSecondBookText() {
-        scrollToRow(ONE);
-        waitForChargedElementsOfAWebElementList(columnTitle);
-        return getElementTextAccordingToPositionReceived(columnTitle,ONE);
-    }
-
-    public String getAuthorOfSecondBookText() {
-        scrollToRow(ONE);
-        waitForChargedElementsOfAWebElementList(columnAuthor);
-        return getElementTextAccordingToPositionReceived(columnAuthor,ONE);
-    }
-
-    public String getPublisherOfSecondBookText() {
-        scrollToRow(ONE);
-        waitForChargedElementsOfAWebElementList(columnPublisher);
-        return getElementTextAccordingToPositionReceived(columnPublisher,ONE);
-    }
-
-    public String getTitleOfThirdBookText() {
-        scrollToRow(TWO);
-        waitForChargedElementsOfAWebElementList(columnTitle);
-        return getElementTextAccordingToPositionReceived(columnTitle,TWO);
-    }
-
-    public String getAuthorOfThirdBookText() {
-        scrollToRow(TWO);
-        waitForChargedElementsOfAWebElementList(columnAuthor);
-        return getElementTextAccordingToPositionReceived(columnAuthor,TWO);
-    }
-
-    public String getPublisherOfThirdBookText() {
-        scrollToRow(TWO);
-        waitForChargedElementsOfAWebElementList(columnPublisher);
-        return getElementTextAccordingToPositionReceived(columnPublisher,TWO);
-    }
-
-    public String getTitleOfFourthBookText() {
-        scrollToRow(THREE);
-        waitForChargedElementsOfAWebElementList(columnTitle);
-        return getElementTextAccordingToPositionReceived(columnTitle,THREE);
-    }
-
-    public String getAuthorOfFourthBookText() {
-        scrollToRow(THREE);
-        waitForChargedElementsOfAWebElementList(columnAuthor);
-        return getElementTextAccordingToPositionReceived(columnAuthor,THREE);
-    }
-
-    public String getPublisherOfFourthBookText() {
-        scrollToRow(THREE);
-        waitForChargedElementsOfAWebElementList(columnPublisher);
-        return getElementTextAccordingToPositionReceived(columnPublisher,THREE);
-    }
-
-    public String getTitleOfFifthBookText() {
-        scrollToRow(FOUR);
-        waitForChargedElementsOfAWebElementList(columnTitle);
-        return getElementTextAccordingToPositionReceived(columnTitle,FOUR);
-    }
-
-    public String getAuthorOfFifthBookText() {
-        scrollToRow(FOUR);
-        waitForChargedElementsOfAWebElementList(columnAuthor);
-        return getElementTextAccordingToPositionReceived(columnAuthor,FOUR);
-    }
-
-    public String getPublisherOfFifthBookText() {
-        scrollToRow(FOUR);
-        waitForChargedElementsOfAWebElementList(columnPublisher);
-        return getElementTextAccordingToPositionReceived(columnPublisher,FOUR);
-    }
-
-    public String getTitleOfSixthBookText() {
-        scrollToRow(FIVE);
-        waitForChargedElementsOfAWebElementList(columnTitle);
-        return getElementTextAccordingToPositionReceived(columnTitle,FIVE);
-    }
-
-    public String getAuthorOfSixthBookText() {
-        scrollToRow(FIVE);
-        waitForChargedElementsOfAWebElementList(columnAuthor);
-        return getElementTextAccordingToPositionReceived(columnAuthor,FIVE);
-    }
-
-    public String getPublisherOfSixthBookText() {
-        waitForChargedElementsOfAWebElementList(columnPublisher);
-        return getElementTextAccordingToPositionReceived(columnPublisher,FIVE);
-    }
-
-    public String getTitleOfSeventhBookText() {
-        scrollToRow(SIX);
-        waitForChargedElementsOfAWebElementList(columnTitle);
-        return getElementTextAccordingToPositionReceived(columnTitle,SIX);
-    }
-
-    public String getAuthorOfSeventhBookText() {
-        scrollToRow(SIX);
-        waitForChargedElementsOfAWebElementList(columnAuthor);
-        return getElementTextAccordingToPositionReceived(columnAuthor,SIX);
-    }
-
-    public String getPublisherOfSeventhBookText() {
-        scrollToRow(SIX);
-        waitForChargedElementsOfAWebElementList(columnPublisher);
-        return getElementTextAccordingToPositionReceived(columnPublisher,SIX);
-    }
-
-    public String getTitleOfEighthBookText() {
-        waitForChargedElementsOfAWebElementList(columnTitle);
-        return getElementTextAccordingToPositionReceived(columnTitle,SEVEN);
-    }
-
-    public String getAuthorOfEighthBookText() {
-        scrollToRow(SEVEN);
-        waitForChargedElementsOfAWebElementList(columnAuthor);
-        return getElementTextAccordingToPositionReceived(columnAuthor,SEVEN);
-    }
-
-    public String getPublisherOfEighthBookText() {
-        scrollToRow(SEVEN);
-        waitForChargedElementsOfAWebElementList(columnPublisher);
-        return getElementTextAccordingToPositionReceived(columnPublisher,SEVEN);
-    }
-
     public String getBookStoreUrlText(){
         return driver.getCurrentUrl();
     }
@@ -246,36 +118,6 @@ public class BookStorePage extends BasePages {
         scrollToRow(ONE);
         waitForChargedElementsOfAWebElementList(columnImages);
         return validateResponseCodeIs200inAList(columnImages);
-    }
-
-    public boolean isVisibleFourthImage() {
-        scrollToRow(THREE);
-        waitForChargedElementsOfAWebElementList(columnImages);
-        return isElementVisibleAccordingToPositionReceivedOfList(columnImages,THREE);
-    }
-
-    public boolean isVisibleFifthImage() {
-        scrollToRow(FOUR);
-        waitForChargedElementsOfAWebElementList(columnImages);
-        return isElementVisibleAccordingToPositionReceivedOfList(columnImages,FOUR);
-    }
-
-    public boolean isVisibleSixthImage() {
-        scrollToRow(FIVE);
-        waitForChargedElementsOfAWebElementList(columnImages);
-        return isElementVisibleAccordingToPositionReceivedOfList(columnImages,FIVE);
-    }
-
-    public boolean isVisibleSeventhImage() {
-        scrollToRow(SIX);
-        waitForChargedElementsOfAWebElementList(columnImages);
-        return isElementVisibleAccordingToPositionReceivedOfList(columnImages,SIX);
-    }
-
-    public boolean isVisibleEighthImage() {
-        scrollToRow(SIX);
-        waitForChargedElementsOfAWebElementList(columnImages);
-        return isElementVisibleAccordingToPositionReceivedOfList(columnImages,SEVEN);
     }
 
     public boolean isBookTitleFound(String bookTitle, String textExpected){
