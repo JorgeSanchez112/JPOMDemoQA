@@ -32,10 +32,12 @@ public class AlertsPage extends BasePages {
     }
 
     public void clickOnFirstButton(){
+        scroll(alertButton);
         clickWithWait(alertButton);
     }
 
     public void clickOnSecondButton(){
+        scroll(afterFiveSecButton);
         clickWithWait(afterFiveSecButton);
     }
 

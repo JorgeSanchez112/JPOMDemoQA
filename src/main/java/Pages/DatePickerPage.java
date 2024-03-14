@@ -1,12 +1,14 @@
 package Pages;
 
 import TestComponents.BasePages;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
+import java.util.Objects;
 
 public class DatePickerPage extends BasePages {
     @FindBy(css = ".col-md-3.col-sm-12")
@@ -29,6 +31,8 @@ public class DatePickerPage extends BasePages {
     private WebElement yearDateTimeContainer;
     @FindBy(className = "react-datepicker__year-option")
     private List<WebElement> yearsOfDateTimeInput;
+    @FindBy(css = ".react-datepicker__year-option > a")
+    private List<WebElement> upDownYearButton;
     @FindBy(className = "react-datepicker__time-list-item")
     private List<WebElement> timeOfDateTimeInput;
 
@@ -57,9 +61,38 @@ public class DatePickerPage extends BasePages {
         clickWithWait(monthContainer);
         selectListValue(monthsOfDateTimeInput,month);
         clickWithWait(yearDateTimeContainer);
-        selectListValue(yearsOfDateTimeInput,year);
+        selectDateTimeYear(Integer.parseInt(year));
         selectDay(days,day);
         selectListValue(timeOfDateTimeInput,time);
+    }
+
+    public void selectDateTimeYear(Integer year){
+        boolean match = false;
+        do {
+
+            for (WebElement element : yearsOfDateTimeInput){
+                try{
+                    try {
+                        if (Objects.equals(element.getText(), "") || Objects.equals(element.getText(), "✓\n" +
+                                "2024")){
+                            match = false;
+                        }else if(Integer.parseInt(element.getText()) == year){
+                            clickWithWait(element);
+                            match = true;
+                        } else if (Integer.parseInt(yearsOfDateTimeInput.get(1).getText()) < year) {
+                            clickWithWait(upDownYearButton.get(0));
+                        }else{
+                            clickWithWait(upDownYearButton.get(1));
+                        }
+                    }catch (StaleElementReferenceException e){
+                        e.printStackTrace();
+                    }
+                }catch (NumberFormatException e){
+                    e.printStackTrace();
+                }
+            }
+        }while (!match);
+
     }
 
     public String getPageTitleText(){

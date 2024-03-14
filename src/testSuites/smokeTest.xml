@@ -191,18 +191,6 @@
     </test>
 
     <test name = "Select Menu">
-        <parameter name="typeOption" value="Group 1, option 2"/>
-        <parameter name="expectedOne" value="Mr."/>
-        <parameter name="optionOfColor" value="Yellow"/>
-        <parameter name="firstExpectedMultiValue" value="Green"/>
-        <parameter name="secondExpectedMultiValue" value="Blue"/>
-        <parameter name="thirdExpectedMultiValue" value="Black"/>
-        <parameter name="fourthExpectedMultiValue" value="Red"/>
-        <parameter name="selectFirstValueOnStandardMultiSelect" value="Volvo"/>
-        <parameter name="selectSecondValueOnStandardMultiSelect" value="Saab"/>
-        <parameter name="selectThirdValueOnStandardMultiSelect" value="Opel"/>
-        <parameter name="selectFourthValueOnStandardMultiSelect" value="Audi"/>
-
         <classes>
             <class name = "org.Tests.SelectMenuPageTest" />
         </classes>

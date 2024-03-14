@@ -82,8 +82,10 @@ public class SelectMenuPage extends BasePages {
         selectOneElementAccordingToText(oldStyleSelectMenu,color);
     }
 
-    public void scrollAndSelectValueOnStandardMultiSelect(String value){
-        selectOneElementAccordingToText(standardMultiSelect,value);
+    public void scrollAndSelectAllValuesOnStandardMultiSelect(){
+        for (WebElement element:standardMultiSelectValues) {
+            selectOneElementAccordingToText(standardMultiSelect,element.getText());
+        }
     }
 
     public String getPageTitleText(){
@@ -111,7 +113,7 @@ public class SelectMenuPage extends BasePages {
     }
 
     public String getSelectValueOnOldStyleSelectMenuText(){
-        return getElementAttribute(oldStyleSelectMenu,"value");//this obtains the value of the selected option that is numeryc
+        return getElementAttribute(oldStyleSelectMenu,"value");//this obtains the value of the selected option that is numeric
     }
 
     public String RetrieveTextOfSelectedOptionFromOldStyleMenu(){
@@ -150,22 +152,27 @@ public class SelectMenuPage extends BasePages {
     }
 
     public String getStandardMultiSelectLabelText(){
+        waitForChargedElementsOfAWebElementList(fourthAndFifthLabels);
         return getElementTextWithWait(fourthAndFifthLabels.get(1));
     }
 
     public boolean isVolvoSelectedOfStandardMultiSelect(){
+        waitForChargedElementsOfAWebElementList(standardMultiSelectValues);
         return hasElementBeenSelected(standardMultiSelectValues.get(0));
     }
 
     public boolean isSaabSelectedOfStandardMultiSelect(){
+        waitForChargedElementsOfAWebElementList(standardMultiSelectValues);
         return hasElementBeenSelected(standardMultiSelectValues.get(1));
     }
 
     public boolean isOpelSelectedOfStandardMultiSelect(){
+        waitForChargedElementsOfAWebElementList(standardMultiSelectValues);
         return hasElementBeenSelected(standardMultiSelectValues.get(2));
     }
 
     public boolean isAudiSelectedOfStandardMultiSelect(){
+        waitForChargedElementsOfAWebElementList(standardMultiSelectValues);
         return hasElementBeenSelected(standardMultiSelectValues.get(3));
     }
 
