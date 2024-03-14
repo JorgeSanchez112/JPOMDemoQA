@@ -45,20 +45,12 @@
     </test>
 
     <test name = "Book Store Application">
-        <parameter name="searchBar" value="GIT"/>
-        <parameter name="titleExpected" value="Git"/>
-
         <classes>
             <class name = "org.Tests.BookStorePageTest" />
         </classes>
     </test>
 
     <test name = "Text Box">
-        <parameter name="username" value="desconocido1"/>
-        <parameter name="email" value="example@12.gov"/>
-        <parameter name="address" value="Street unknown"/>
-        <parameter name="permanentAddress" value="Permanent street unknown"/>
-
         <classes>
             <class name = "org.Tests.TextBoxPageTest" />
         </classes>
@@ -127,8 +119,6 @@
     </test>
 
     <test name = "Alerts">
-        <parameter name="inputAlert" value="lolada"/>
-
         <classes>
             <class name = "org.Tests.AlertsPageTest" />
         </classes>
@@ -159,26 +149,12 @@
     </test>
 
     <test name = "Auto Complete">
-        <parameter name="firstColor" value="Bla"/>
-        <parameter name="secondColor" value="Whit"/>
-        <parameter name="firstColorExpected" value="Black"/>
-        <parameter name="secondColorExpected" value="White"/>
-        <parameter name="color" value="Voil"/>
-        <parameter name="colorExpected" value="Voilet"/>
-
         <classes>
             <class name = "org.Tests.AutoCompletePageTest" />
         </classes>
     </test>
 
     <test name = "Date Picker">
-        <parameter name="month" value="May"/>
-        <parameter name="day" value="30"/>
-        <parameter name="year" value="2022"/>
-        <parameter name="dateExpected" value="05/30/2022"/>
-        <parameter name="time" value="20:00"/>
-        <parameter name="dateTimeExpected" value="May 30, 2022 8:00 PM"/>
-
         <classes>
             <class name = "org.Tests.DatePickerPageTest" />
         </classes>

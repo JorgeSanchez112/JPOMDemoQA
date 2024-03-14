@@ -1,10 +1,13 @@
 package org.Tests;
 
+import Resources.ExcelReader;
 import TestComponents.TestBase;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 public class TextBoxPageTest extends TestBase {
     private final String PAGE_TITLE = "Text Box";
@@ -23,45 +26,60 @@ public class TextBoxPageTest extends TestBase {
         Assert.assertEquals(textBoxPage.getPageTitleText(),PAGE_TITLE);
     }
 
-    @Parameters({"username"})
-    @Test
-    public void validateNameAnswerVisibleIsCorrect(String username){
+    @Test(dataProvider = "testData")
+    public void validateNameAnswerVisibleIsCorrect(Object... data){
+        String username = (String) data[0];
+
         textBoxPage.typeOnUsernameField(username);
         textBoxPage.clickOnSubmitButton();
         Assert.assertEquals(textBoxPage.getTextNameAnswer(),USER_NAME_MESSAGE + username);
     }
 
-    @Parameters({"email"})
-    @Test
-    public void validateEmailAnswerVisibleIsCorrect(String email){
+    @Test(dataProvider = "testData")
+    public void validateEmailAnswerVisibleIsCorrect(Object... data){
+        String email = (String) data[1];
+
         textBoxPage.typeOnEmailField(email);
         textBoxPage.clickOnSubmitButton();
         Assert.assertEquals(textBoxPage.getTextEmailAnswer(),EMAIL_MESSAGE + email);
     }
 
-    @Parameters({"address"})
-    @Test
-    public void validateAddressAnswerVisibleIsCorrect(String address){
+    @Test(dataProvider = "testData")
+    public void validateAddressAnswerVisibleIsCorrect(Object... data){
+        String address = (String) data[2];
+
         textBoxPage.typeOnAddressField(address);
         textBoxPage.clickOnSubmitButton();
         Assert.assertEquals(textBoxPage.getTextAddressAnswer(),ADDRESS_MESSAGE + address);
     }
 
-    @Parameters({"permanentAddress"})
-    @Test
-    public void validatePermanentAddressAnswerIsCorrect(String permanentAddress){
+    @Test(dataProvider = "testData")
+    public void validatePermanentAddressAnswerIsCorrect(Object... data){
+        String permanentAddress = (String) data[3];
+
         textBoxPage.typeOnPermanentAddressField(permanentAddress);
         textBoxPage.clickOnSubmitButton();
         Assert.assertEquals(textBoxPage.getTextPermanentAddressAnswer(),PERMANENT_ADDRESS_MESSAGE + permanentAddress);
     }
 
-    @Parameters({"username", "email", "address", "permanentAddress"})
-    @Test
-    public void validateAnswers(String username, String email, String address, String permanentAddress){
+    @Test(dataProvider = "testData")
+    public void validateAnswers(Object... data){
+        String username = (String) data[0];
+        String email = (String) data[1];
+        String address = (String) data[2];
+        String permanentAddress = (String) data[3];
+
         textBoxPage.fillAllFormAndClickOnSubmit(username, email, address, permanentAddress);
         Assert.assertEquals(textBoxPage.getTextNameAnswer(),USER_NAME_MESSAGE + username);
         Assert.assertEquals(textBoxPage.getTextEmailAnswer(),EMAIL_MESSAGE + email);
         Assert.assertEquals(textBoxPage.getTextAddressAnswer(),ADDRESS_MESSAGE + address);
         Assert.assertEquals(textBoxPage.getTextPermanentAddressAnswer(),PERMANENT_ADDRESS_MESSAGE + permanentAddress);
+    }
+
+    @DataProvider(name = "testData")
+    public Object[][] testData() throws IOException {
+        String sheetName = "textBox";
+        ExcelReader excelReader = new ExcelReader();
+        return excelReader.readTestData(sheetName);
     }
 }

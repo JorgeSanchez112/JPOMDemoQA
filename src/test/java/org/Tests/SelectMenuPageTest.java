@@ -1,10 +1,14 @@
 package org.Tests;
 
+import Resources.ExcelReader;
 import TestComponents.TestBase;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 public class SelectMenuPageTest extends TestBase {
     private final String PAGE_TITLE = "Select Menu";
@@ -29,12 +33,13 @@ public class SelectMenuPageTest extends TestBase {
         Assert.assertEquals(selectMenuPage.getValueLabelText(),FIRST_LABEL);
     }
 
-    @Parameters("typeOption")
-    @Test
-    public void selectValueByDropdown(String typeOption){ //this could stay in a file of Data-Driven testing
-        selectMenuPage.typeInSelectValueDropDown(typeOption);
+    @Test(dataProvider = "testData")
+    public void selectValueByDropdown(Object... data){ //this could stay in a file of Data-Driven testing
+        String groupOption = (String) data[0];
+
+        selectMenuPage.typeInSelectValueDropDown(groupOption);
         selectMenuPage.enterActionInSelectValueDropDown();
-        Assert.assertEquals(selectMenuPage.getSelectValueContainerText(),typeOption);
+        Assert.assertEquals(selectMenuPage.getSelectValueContainerText(),groupOption);
     }
 
     @Test
@@ -42,12 +47,13 @@ public class SelectMenuPageTest extends TestBase {
         Assert.assertEquals(selectMenuPage.getOneLabelText(),SECOND_LABEL);
     }
 
-    @Parameters("expectedOne")
-    @Test
-    public void selectOneByDropdown(String expectedOne){
-        selectMenuPage.typeOptionInSelectOneDropDown(expectedOne);
+    @Test(dataProvider = "testData")
+    public void selectOneByDropdown(Object... data){
+        String titleOption = (String) data[1];
+
+        selectMenuPage.typeOptionInSelectOneDropDown(titleOption);
         selectMenuPage.enterActionInSelectOneDropDown();
-        Assert.assertEquals(selectMenuPage.getSelectOneContainerText(),expectedOne);
+        Assert.assertEquals(selectMenuPage.getSelectOneContainerText(),titleOption);
     }
 
     @Test
@@ -55,9 +61,10 @@ public class SelectMenuPageTest extends TestBase {
         Assert.assertEquals(selectMenuPage.getOldStyleSelectLabelText(),THIRD_LABEL);
     }
 
-    @Parameters("optionOfColor")
-    @Test //this need a change
-    public void selectValueInOldSelectMenu(String optionOfColor){
+    @Test(dataProvider = "testData") //this need a change
+    public void selectValueInOldSelectMenu(Object... data){
+        String optionOfColor = (String) data[2];
+
         selectMenuPage.selectValueOnOldStyleSelectMenu(optionOfColor);
         Assert.assertEquals(selectMenuPage.RetrieveTextOfSelectedOptionFromOldStyleMenu(),optionOfColor);
     }
@@ -94,5 +101,12 @@ public class SelectMenuPageTest extends TestBase {
         Assert.assertTrue(selectMenuPage.isSaabSelectedOfStandardMultiSelect());
         Assert.assertTrue(selectMenuPage.isOpelSelectedOfStandardMultiSelect());
         Assert.assertTrue(selectMenuPage.isAudiSelectedOfStandardMultiSelect());
+    }
+
+    @DataProvider(name = "testData")
+    public Object[][] testData() throws IOException {
+        String sheetName = "selectMenu";
+        ExcelReader excelReader = new ExcelReader();
+        return excelReader.readTestData(sheetName);
     }
 }

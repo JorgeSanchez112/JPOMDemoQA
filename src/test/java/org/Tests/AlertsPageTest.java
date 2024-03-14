@@ -1,10 +1,14 @@
 package org.Tests;
 
+import Resources.ExcelReader;
 import TestComponents.TestBase;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 public class AlertsPageTest extends TestBase {
     private final String PAGE_TITLE = "Alerts";
@@ -69,10 +73,19 @@ public class AlertsPageTest extends TestBase {
     }
 
     @Parameters({"inputAlert"})
-    @Test
-    public void validateInputAlert(String inputAlert){
+    @Test(dataProvider = "testData")
+    public void validateInputAlert(Object... data){
+        String inputAlert = (String) data[0];
+
         alertsPage.clickOnFourthButton();
         alertsPage.typeInAlert(inputAlert);
         Assert.assertEquals(alertsPage.getInputAlertText(), INPUT_ALERT_MESSAGE + inputAlert);
+    }
+
+    @DataProvider(name = "testData")
+    public Object[][] testData() throws IOException {
+        String sheetName = "alerts";
+        ExcelReader excelReader = new ExcelReader();
+        return excelReader.readTestData(sheetName);
     }
 }

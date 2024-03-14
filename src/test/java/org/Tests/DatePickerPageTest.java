@@ -1,10 +1,14 @@
 package org.Tests;
 
+import Resources.ExcelReader;
 import TestComponents.TestBase;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 public class DatePickerPageTest extends TestBase {
     private final String PAGE_TITLE = "Date Picker";
@@ -31,19 +35,35 @@ public class DatePickerPageTest extends TestBase {
         Assert.assertEquals(datePickerPage.getDateTimeLabelText(),SECOND_LABEL);
     }
 
-    @Parameters({"month","day","year","dateExpected"})
-    @Test
-    public void validateDateSelected(String month, String day, String year, String dateExpected){
+    @Test(dataProvider = "testData")
+    public void validateDateSelected(Object... data){
+        String month = (String) data[0];
+        String day = (String) data[1];
+        String year = (String) data[2];
+        String dateExpected = (String) data[4];
+
         datePickerPage.clickOnDateInput();
         datePickerPage.selectDate(month,day,year);
         Assert.assertEquals(datePickerPage.getDateValueText(),dateExpected);
     }
 
-    @Parameters({"month","day","year","time","dateTimeExpected"})
-    @Test
-    public void validateDateTimeSelected(String month, String day, String year, String time, String dateTimeExpected){
+    @Test(dataProvider = "testData")
+    public void validateDateTimeSelected(Object... data){
+        String month = (String) data[0];
+        String day = (String) data[1];
+        String year = (String) data[2];
+        String time = (String) data[3];
+        String dateTimeExpected = (String) data[5];
+
         datePickerPage.clickOnDateAndTimeInput();
         datePickerPage.selectDateAndTime(month,day,year,time);
         Assert.assertEquals(datePickerPage.getDateTimeValueText(),dateTimeExpected);
+    }
+
+    @DataProvider(name = "testData")
+    public Object[][] testData() throws IOException {
+        String sheetName = "datePicker";
+        ExcelReader excelReader = new ExcelReader();
+        return excelReader.readTestData(sheetName);
     }
 }

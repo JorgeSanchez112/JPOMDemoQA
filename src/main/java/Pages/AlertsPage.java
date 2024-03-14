@@ -2,6 +2,7 @@ package Pages;
 
 import TestComponents.BasePages;
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -57,10 +58,13 @@ public class AlertsPage extends BasePages {
     }
 
     public void typeInAlert(String text){
-        Alert alert = driver.switchTo().alert();
-        alert.sendKeys(text);
-        alert.accept();
-
+        try{
+            Alert alert = driver.switchTo().alert();
+            alert.sendKeys(text);
+            confirmAlert();
+        }catch (NoAlertPresentException e){
+            e.printStackTrace();
+        }
     }
 
     public String getPageTitleText(){

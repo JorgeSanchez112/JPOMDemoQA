@@ -5,7 +5,6 @@ import TestComponents.TestBase;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -57,6 +56,7 @@ public class BookStorePageTest extends TestBase {
     @Test(dataProvider = "testData")
     public void areBookTitleCorrect(Object... data) {
         String bookTitle = (String) data[0];
+
         Assert.assertEquals(bookStorePage.getTitleBookText(bookTitle),bookTitle);
     }
 
@@ -64,6 +64,7 @@ public class BookStorePageTest extends TestBase {
     public void isFirstBookAuthorCorrect(Object... data) {
         String bookTitle = (String) data[0];
         String author = (String) data[1];
+
         Assert.assertEquals(bookStorePage.getBookAuthorText(bookTitle),author);
     }
 
@@ -71,6 +72,7 @@ public class BookStorePageTest extends TestBase {
     public void isFirstBookPublisherCorrect(Object... data) {
         String bookTitle = (String) data[0];
         String publisher = (String) data[2];
+
         Assert.assertEquals(bookStorePage.getBookPublisherText(bookTitle),publisher);
     }
 
@@ -90,12 +92,15 @@ public class BookStorePageTest extends TestBase {
         Assert.assertEquals(bookStorePage.getSearchBarPlaceholderText(),SEARCH_BAR_PLACEHOLDER);
     }
 
-    @Parameters({"searchBar","titleExpected"})
-    @Test
-    public void isBookSearchedBySearchBar(String searchBar, String titleExpected) {
+
+    @Test(dataProvider = "testData")
+    public void isBookSearchedBySearchBar(Object... data) {
+        String bookTitle = (String) data[0];
+        String searchBar = (String) data[3];
+
         bookStorePage.scrollToSearchBar();
         bookStorePage.typeOnSearchBar(searchBar);
-        Assert.assertTrue(bookStorePage.isBookTitleFound(bookStorePage.getTitleBookText(titleExpected),titleExpected));
+        Assert.assertTrue(bookStorePage.isBookTitleFound(bookStorePage.getTitleBookText(bookTitle),bookTitle));
     }
 
     @Test

@@ -32,24 +32,24 @@ public class ToolTipsPageTest extends TestBase {
     @Test
     public void validateButtonHover(){
         toolTipsPage.moveClickerTOHoverButton();
-        Assert.assertEquals(toolTipsPage.getTextFromButtonHoverAttribute(), BUTTON_HOVER);
+        Assert.assertEquals(toolTipsPage.getTextFromButtonHoverAttribute(),BUTTON_HOVER);
     }
 
     @Test
     public void validateInputHover(){
         toolTipsPage.moveClickerTOHoverInput();
-        Assert.assertEquals(toolTipsPage.getTextFromInputHoverAttribute(), INPUT_HOVER);
+        Assert.assertEquals(toolTipsPage.getTextFromInputHoverAttribute(),INPUT_HOVER);
     }
 
     @Test
     public void validateContraryLinkHover(){
         toolTipsPage.moveClickerTOContraryLink();
-        Assert.assertEquals(toolTipsPage.getTextFromHoverContraryLinkAttribute(), CONTRARY_LINK_HOVER);
+        Assert.assertEquals(toolTipsPage.getTextFromHoverContraryLinkAttribute(),CONTRARY_LINK_HOVER);
     }
 
     @Test
     public void validateVersionLinkHover()  {
         toolTipsPage.moveClickerTOVersionLink();
-        Assert.assertEquals(toolTipsPage.getTextFromHoverVersionLinkAttribute(), VERSION_LINK_HOVER);
+        Assert.assertEquals(toolTipsPage.getTextFromHoverVersionLinkAttribute(),VERSION_LINK_HOVER);
     }
 }

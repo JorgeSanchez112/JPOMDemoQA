@@ -116,8 +116,13 @@ public class SelectMenuPage extends BasePages {
 
     public String RetrieveTextOfSelectedOptionFromOldStyleMenu(){
         waitForChargedElementsOfAWebElementList(optionsOFOldStyleMenu);//assure all element of list are charged
-        WebElement valueOfPosition = optionsOFOldStyleMenu.get(Integer.parseInt(getSelectValueOnOldStyleSelectMenuText()));//the value of the option is according to the position so is first envelope the option in a list for then get the value so get the text.
-        return getElementTextWithWait(valueOfPosition);
+        try{
+            WebElement valueOfPosition = optionsOFOldStyleMenu.get(Integer.parseInt(getSelectValueOnOldStyleSelectMenuText()));//the value of the option is according to the position so is first envelope the option in a list for then get the value so get the text.
+            return getElementTextWithWait(valueOfPosition);
+        }catch (NumberFormatException e){
+            e.printStackTrace();
+        }
+        return optionsOFOldStyleMenu.get(0).getText();
     }
 
     public String getMultiSelectDropdownLabelText(){

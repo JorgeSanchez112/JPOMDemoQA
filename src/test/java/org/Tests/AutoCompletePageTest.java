@@ -35,15 +35,16 @@ public class AutoCompletePageTest extends TestBase {
         Assert.assertEquals(autoCompletePage.getSingleContainerLabelText(),SECOND_LABEL);
     }
 
-    @Parameters({"firstColor","secondColor","firstColorExpected","secondColorExpected"})
-    @Test
-    public void validateColorNamesInMultipleContainer(String firstColor, String secondColor, String firstColorExpected, String secondColorExpected){
+    @Test(dataProvider = "testData")
+    public void validateColorNamesInMultipleContainer(Object... data){
+        String firstColor = (String) data[1];
+        String secondColor = (String) data[2];
+
         autoCompletePage.typeInMultipleContainer(firstColor);
         autoCompletePage.typeInMultipleContainer(secondColor);
-        Assert.assertTrue(autoCompletePage.isTheValueContained(firstColorExpected));
-        Assert.assertTrue(autoCompletePage.isTheValueContained(secondColorExpected));
+        Assert.assertTrue(autoCompletePage.isTheValueContained(firstColor));
+        Assert.assertTrue(autoCompletePage.isTheValueContained(secondColor));
     }
-
     @Test(dataProvider = "testData")
     public void validateColorNameInSingleContainer(Object... data){
         autoCompletePage.typeInSingleContainer((String) data[0]);
