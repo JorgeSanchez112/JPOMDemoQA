@@ -361,6 +361,10 @@ public class BasePages {
         return 0;
     }
 
+    public float subtractQuantityToParameter(float targetParameter,float valueToDeduct){
+        return  targetParameter - valueToDeduct;
+    }
+
     public int searchNumberOne(List<WebElement> dateOfDaysList){
         try {
             for (int i = 0; i<= dateOfDaysList.size(); i++){

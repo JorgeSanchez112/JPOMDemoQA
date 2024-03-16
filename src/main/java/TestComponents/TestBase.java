@@ -64,11 +64,6 @@ public class TestBase{
     protected BSIBookPage bsiBookPage;
     protected BSAPIPage bsapiPage;
 
-    //DatePicker
-
-    //Sortable -- Likely this will require changes
-    //Resizable
-    //Draggable
 
     public TestBase() {
         try {

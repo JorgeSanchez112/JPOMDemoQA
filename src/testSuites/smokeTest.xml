@@ -69,14 +69,6 @@
     </test>
 
     <test name = "Web Tables">
-        <parameter name="searchBox" value="Kierra"/>
-        <parameter name="name" value="Aleatorio"/>
-        <parameter name="lastName" value="apellido"/>
-        <parameter name="email" value="locosaurio@loco.com"/>
-        <parameter name="age" value="12"/>
-        <parameter name="salary" value="1000000"/>
-        <parameter name="department" value="IT"/>
-
         <classes>
             <class name = "org.Tests.WebTablesPageTest" />
         </classes>
@@ -209,11 +201,6 @@
     </test>
 
     <test name = "Resizable">
-        <parameter name="WeightOfBoxRestricted" value="500" />
-        <parameter name="HeightOfBoxRestricted" value="300" />
-        <parameter name="WeightOfResizeBox" value="500" />
-        <parameter name="HeightOfResizeBox" value="300" />
-
         <classes>
             <class name = "org.Tests.ResizablePageTest" />
         </classes>

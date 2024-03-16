@@ -73,10 +73,11 @@ public class DatePickerPage extends BasePages {
             for (WebElement element : yearsOfDateTimeInput){
                 try{
                     try {
-                        if (Objects.equals(element.getText(), "") || Objects.equals(element.getText(), "✓\n" +
-                                "2024")){
+                        if (Objects.equals(element.getText(), "")){
                             match = false;
-                        }else if(Integer.parseInt(element.getText()) == year){
+                        } else if (Objects.equals(element.getText(), "✓\n" + "2024")) {
+                            clickWithWait(upDownYearButton.get(1));
+                        } else if(Integer.parseInt(element.getText()) == year){
                             clickWithWait(element);
                             match = true;
                         } else if (Integer.parseInt(yearsOfDateTimeInput.get(1).getText()) < year) {

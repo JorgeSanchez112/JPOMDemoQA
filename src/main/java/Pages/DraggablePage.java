@@ -168,8 +168,6 @@ public class DraggablePage extends BasePages {
         return targetParameter + valueToAdd;
     }
 
-    public float subtractQuantityToParameter(float targetParameter,float valueToDeduct){
-        return  targetParameter - valueToDeduct;
-    }
+
 
 }

@@ -20,8 +20,8 @@ public class ResizablePage extends BasePages {
     @FindBy(css = "#resizable > .react-resizable-handle")
     private WebElement resizeIcon;
 
-    private int sizeX = 0;
-    private int sizeY = 0;
+    private final float WIDTH_BASE_OF_RESIZABLE_FREE = 200;
+    private final float HEIGHT_BASE_OF_RESIZABLE_FREE = 200;
 
     public ResizablePage(WebDriver driver) {
         super(driver);
@@ -34,10 +34,10 @@ public class ResizablePage extends BasePages {
         resizeElement(resizeIconOfBoxRestricted, width, height);
     }
 
-    public void resizeFreeBox(int width, int height){
+    public void resizeFreeBox(float width, float height){
         scroll(resizableBox);
         hidePublicity(rightSidePublicity);
-        resizeElement(resizeIcon, width, height);
+        resizeElement(resizeIcon, (int) (subtractQuantityToParameter(width,WIDTH_BASE_OF_RESIZABLE_FREE)), (int) subtractQuantityToParameter(height,HEIGHT_BASE_OF_RESIZABLE_FREE));
     }
 
     public String getPageTitleText(){
