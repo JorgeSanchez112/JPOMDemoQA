@@ -128,8 +128,22 @@ public class PracticeFormPage extends BasePages {
         pressEnterKey(subjectField);
     }
 
-    public void clickOnMusicCheckBoxButton(){
-        scroll(checkboxes.get(2));
+    public void selectHobbies(String hobby){
+        scroll(checkboxes.get(0));
+        switch (hobby){
+            case "Sports":
+                clickWithWait(checkboxes.get(0));
+                break;
+            case "Reading":
+                clickWithWait(checkboxes.get(1));
+                break;
+            case "Music":
+                clickWithWait(checkboxes.get(2));
+                break;
+            default:
+                System.out.println("Hobby selected is not available");
+        }
+
         clickWithWait(checkboxes.get(2));
     }
 
@@ -155,7 +169,7 @@ public class PracticeFormPage extends BasePages {
         pressEnterKey(submitButton);
     }
 
-    public void fillAllFormFields(String name, String lastname,String email, String gender, String phone, String month, String day, String year, String subject, String picturePath, String text, String state, String city){
+    public void fillAllFormFields(String name, String lastname,String email, String gender, String phone, String month, String day, String year, String subject,String hobby, String picturePath, String text, String state, String city){
         typeInFirstNameField(name);
         typeInLastNameField(lastname);
         typeInEmailField(email);
@@ -163,7 +177,7 @@ public class PracticeFormPage extends BasePages {
         typeInMobileField(phone);
         selectDate(month, day, year);
         typeInSubjectField(subject);
-        clickOnMusicCheckBoxButton();
+        selectHobbies(hobby);
         selectAPicture(picturePath);
         typeInCurrentAddressField(text);
         typeInStateListBox(state);

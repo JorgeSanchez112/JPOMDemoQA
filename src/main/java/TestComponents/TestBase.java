@@ -64,7 +64,6 @@ public class TestBase{
     protected BSIBookPage bsiBookPage;
     protected BSAPIPage bsapiPage;
 
-
     public TestBase() {
         try {
             prop = new Properties();

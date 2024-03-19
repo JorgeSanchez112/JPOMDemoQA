@@ -419,6 +419,7 @@ public class BasePages {
             x ++;
             try {
                 if (Objects.equals(daysOfList.getText(), day)){
+                    scroll(daysOfList);
                     clickWithWait(daysOfList);
                     x--;
                     break;

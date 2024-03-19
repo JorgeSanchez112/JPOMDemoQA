@@ -76,11 +76,12 @@ public class BSLoginPage extends BasePages {
 
     public String getUsernameInputBorderColor(){
         waitForElementAttributeToContain(usernameInput,"border-color","rgb(220, 53, 69)");
-        return getElementAttribute(usernameInput,"border-color");
+        return getElementCssValue(usernameInput,"border-color");
     }
 
     public String getPasswordInputBorderColor(){
-        return getElementAttribute(passwordInput,"border-color");
+        waitForElementAttributeToContain(usernameInput,"border-color","rgb(220, 53, 69)");
+        return getElementCssValue(passwordInput,"border-color");
     }
 
     public String getCurrentUrl(){

@@ -51,8 +51,12 @@ public class Listeners extends TestBase implements ITestListener {
         WebDriver driver = ((TestBase) result.getInstance()).getDriver();
         if (driver != null) {
             try {
-                String base64Screenshot = takeScreenshot(driver);
-                extentTest.get().addScreenCaptureFromBase64String(base64Screenshot);
+                try{
+                    String base64Screenshot = takeScreenshot(driver);
+                    extentTest.get().addScreenCaptureFromBase64String(base64Screenshot);
+                }catch (IllegalArgumentException e){
+                    e.printStackTrace();
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
