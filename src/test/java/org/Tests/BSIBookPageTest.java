@@ -1,17 +1,19 @@
 package org.Tests;
 
+import Resources.ExcelReader;
 import TestComponents.TestBase;
 import org.openqa.selenium.WebDriverException;
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class BSIBookPageTest extends TestBase {
+import java.io.IOException;
 
-    @BeforeMethod
-    @Parameters("bookTitle")
+public class BSIBookPageTest extends TestBase {
+    private final String PAGE_TITLE = "Book Store";
+    private final String URL_LOGIN = "https://demoqa.com/login";
+    private final String URL_BOOKS = "Books :";
+
     public void initializeClass(String bookTitle){
         try{
             bsiBookPage = homePage.clickOnSectionBookStoreApplication().searchAndClickOnATitle(bookTitle);
@@ -20,133 +22,208 @@ public class BSIBookPageTest extends TestBase {
         }
     }
 
-    @Parameters("pageTitle")
-    @Test
-    public void validateCorrectPageTitle(String pageTitle){
-        Assert.assertEquals(bsiBookPage.getPageTitleText(),pageTitle);
+    @Test(dataProvider = "dataTest")
+    public void validateCorrectPageTitle(Object... data){
+        String bookTitle = (String) data[0];
+        initializeClass(bookTitle);
+
+        Assert.assertEquals(bsiBookPage.getPageTitleText(),PAGE_TITLE);
     }
 
-    @Test
-    public void isUsernameLabelVisible(){
+    @Test(dataProvider = "dataTest")
+    public void isUsernameLabelVisible(Object... data){
+        String bookTitle = (String) data[0];
+        initializeClass(bookTitle);
+
         Assert.assertFalse(bsiBookPage.usernameLabelIsVisible());
     }
 
-    @Parameters("uRLLogin")
-    @Test
-    public void validateLoginButton(String uRLLogin){
-        Assert.assertEquals(bsiBookPage.clickOnLogin().getCurrentUrl(),uRLLogin);
+    @Test(dataProvider = "dataTest")
+    public void validateLoginButton(Object... data){
+        String bookTitle = (String) data[0];
+        initializeClass(bookTitle);
+
+        Assert.assertEquals(bsiBookPage.clickOnLogin().getCurrentUrl(),URL_LOGIN);
     }
 
-    @Parameters("isbnValue")
-    @Test
-    public void validateIsbnValueIsCorrect(String isbnValue){
+    @Test(dataProvider = "dataTest")
+    public void validateIsbnValueIsCorrect(Object... data){
+        String bookTitle = (String) data[0];
+        String isbnValue = (String) data[1];
+        initializeClass(bookTitle);
+
         Assert.assertEquals(bsiBookPage.getIsbnValueText(),isbnValue);
     }
 
-    @Test
-    public void isIsbnLabelVisible(){
+    @Test(dataProvider = "dataTest")
+    public void isIsbnLabelVisible(Object... data){
+        String bookTitle = (String) data[0];
+        initializeClass(bookTitle);
+
         Assert.assertTrue(bsiBookPage.isbnLabelIsVisible());
     }
 
-    @Parameters("bookTitle")
-    @Test
-    public void validateTitleValueIsCorrect(String bookTitle){
+    @Test(dataProvider = "dataTest")
+    public void validateTitleValueIsCorrect(Object... data){
+        String bookTitle = (String) data[0];
+        initializeClass(bookTitle);
+
         Assert.assertEquals(bsiBookPage.getTitleValueText(),bookTitle);
     }
 
-    @Test
-    public void isTitleLabelVisible(){
+    @Test(dataProvider = "dataTest")
+    public void isTitleLabelVisible(Object... data){
+        String bookTitle = (String) data[0];
+        initializeClass(bookTitle);
+
         Assert.assertTrue(bsiBookPage.titleLabelIsVisible());
     }
 
-    @Parameters("subTitleValue")
-    @Test
-    public void validateSubtitleValueIsCorrect(String subTitleValue){
+    @Test(dataProvider = "dataTest")
+    public void validateSubtitleValueIsCorrect(Object... data){
+        String bookTitle = (String) data[0];
+        String subTitleValue = (String) data[2];
+        initializeClass(bookTitle);
+
         Assert.assertEquals(bsiBookPage.getSubTitleValueText(),subTitleValue);
     }
 
-    @Test
-    public void isSubTitleLabelVisible(){
+    @Test(dataProvider = "dataTest")
+    public void isSubTitleLabelVisible(Object... data){
+        String bookTitle = (String) data[0];
+        initializeClass(bookTitle);
+
         Assert.assertTrue(bsiBookPage.subtitleLabelIsVisible());
     }
 
-    @Parameters("authorValue")
-    @Test
-    public void ValidateAuthorValueIsCorrect(String authorValue){
+    @Test(dataProvider = "dataTest")
+    public void ValidateAuthorValueIsCorrect(Object... data){
+        String bookTitle = (String) data[0];
+        String authorValue = (String) data[3];
+        initializeClass(bookTitle);
+
         Assert.assertEquals(bsiBookPage.getAuthorValueText(),authorValue);
     }
 
-    @Test
-    public void isAuthorLabelVisible(){
+    @Test(dataProvider = "dataTest")
+    public void isAuthorLabelVisible(Object... data){
+        String bookTitle = (String) data[0];
+        initializeClass(bookTitle);
+
         Assert.assertTrue(bsiBookPage.authorLabelIsVisible());
     }
 
-    @Parameters("publisherValue")
-    @Test
-    public void validatePublisherValueIsCorrect(String publisherValue){
+    @Test(dataProvider = "dataTest")
+    public void validatePublisherValueIsCorrect(Object... data){
+        String bookTitle = (String) data[0];
+        String publisherValue = (String) data[4];
+        initializeClass(bookTitle);
+
         Assert.assertEquals(bsiBookPage.getPublisherValueText(),publisherValue);
     }
 
-    @Test
-    public void isPublisherLabelVisible(){
+    @Test(dataProvider = "dataTest")
+    public void isPublisherLabelVisible(Object... data){
+        String bookTitle = (String) data[0];
+        initializeClass(bookTitle);
+
         Assert.assertTrue(bsiBookPage.publisherLabelIsVisible());
     }
 
-    @Parameters("totalPages")
-    @Test
-    public void validateTotalPageValueIsCorrect(String totalPages){
+    @Test(dataProvider = "dataTest")
+    public void validateTotalPageValueIsCorrect(Object... data){
+        String bookTitle = (String) data[0];
+        String totalPages = (String) data[5];
+        initializeClass(bookTitle);
+
         Assert.assertEquals(bsiBookPage.getTotalPagesValueText(),totalPages);
     }
 
-    @Test
-    public void isTotalPagesLabelVisible(){
+    @Test(dataProvider = "dataTest")
+    public void isTotalPagesLabelVisible(Object... data){
+        String bookTitle = (String) data[0];
+        initializeClass(bookTitle);
+
         Assert.assertTrue(bsiBookPage.pagesLabelIsVisible());
     }
 
-    @Parameters("descriptionValue")
-    @Test
-    public void validateDescriptionValueIsCorrect(String descriptionValue){
+    @Test(dataProvider = "dataTest")
+    public void validateDescriptionValueIsCorrect(Object... data){
+        String bookTitle = (String) data[0];
+        String descriptionValue = (String) data[6];
+        initializeClass(bookTitle);
+
         Assert.assertEquals(bsiBookPage.getDescriptionValueText(),descriptionValue);
     }
 
-    @Test
-    public void isDescriptionLabelVisible(){
+    @Test(dataProvider = "dataTest")
+    public void isDescriptionLabelVisible(Object... data){
+        String bookTitle = (String) data[0];
+        initializeClass(bookTitle);
+
         Assert.assertTrue(bsiBookPage.descriptionLabelIsVisible());
     }
 
-    @Test
-    public void isWebsiteLabelVisible(){
+    @Test(dataProvider = "dataTest")
+    public void isWebsiteLabelVisible(Object... data){
+        String bookTitle = (String) data[0];
+        initializeClass(bookTitle);
+
         Assert.assertTrue(bsiBookPage.websiteLabelIsVisible());
     }
 
-    @Test
-    public void isWebsiteLinkVisible(){
+    @Test(dataProvider = "dataTest")
+    public void isWebsiteLinkVisible(Object... data){
+        String bookTitle = (String) data[0];
+        initializeClass(bookTitle);
+
         Assert.assertTrue(bsiBookPage.websiteValueLinkIsVisible());
     }
 
-    @Parameters("uRLBooks")
-    @Test
-    public void isRedirectHome(String uRLBooks){
-        Assert.assertEquals(bsiBookPage.clickOnBackToBookStoreBookButton().getBookStoreUrlText(),uRLBooks);
+    @Test(dataProvider = "dataTest")
+    public void isRedirectHome(Object... data){
+        String bookTitle = (String) data[0];
+        initializeClass(bookTitle);
+
+        Assert.assertEquals(bsiBookPage.clickOnBackToBookStoreBookButton().getBookStoreUrlText(),URL_BOOKS);
     }
 
-    @Test
-    public void isNotLogOutButtonVisible(){
+    @Test(dataProvider = "dataTest")
+    public void isNotLogOutButtonVisible(Object... data){
+        String bookTitle = (String) data[0];
+        initializeClass(bookTitle);
+
         Assert.assertFalse(bsiBookPage.logOutButtonIsVisible());
     }
 
-    @Parameters({"userName","password"})
-    @Test
-    public void validateUserNameValue(String userName, String password) {
+
+    @Test(dataProvider = "dataTest")
+    public void validateUserNameValue(Object... data) {
+        String bookTitle = (String) data[0];
+        String userName = (String) data[7];
+        String password = (String) data[8];
+        initializeClass(bookTitle);
+
         bsiBookPage.clickOnLogin().userLogin(userName,password);
         Assert.assertEquals(bsiBookPage.getUsernameValueText(),userName);
     }
 
-    @Parameters({"userName","password","uRLLogin"})
-    @Test
-    public void validateLogOutButtonIsFunctional(String userName, String password, String uRLLogin) {
+    @Test(dataProvider = "dataTest")
+    public void validateLogOutButtonIsFunctional(Object... data) {
+        String bookTitle = (String) data[0];
+        String userName = (String) data[7];
+        String password = (String) data[8];
+        initializeClass(bookTitle);
+
         bsiBookPage.clickOnLogin().userLogin(userName,password);
-        Assert.assertEquals(bsiBookPage.clickOnLogOutButton().getCurrentUrl(),uRLLogin);
+        Assert.assertEquals(bsiBookPage.clickOnLogOutButton().getCurrentUrl(),URL_LOGIN);
+    }
+
+    @DataProvider(name = "dataTest")
+    Object[][] testData() throws IOException {
+        String sheetName = "BSBookPage";
+        ExcelReader excelReader = new ExcelReader();
+        return excelReader.readTestData(sheetName);
     }
 
 }

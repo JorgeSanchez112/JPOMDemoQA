@@ -121,7 +121,7 @@ public class BasePages {
     public void waitForVisibleElement(WebElement element){
         try{
             try {
-                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
                 wait.until(ExpectedConditions.visibilityOf(element));
             }catch (NoSuchElementException e){
                 e.printStackTrace();
@@ -419,7 +419,6 @@ public class BasePages {
             x ++;
             try {
                 if (Objects.equals(daysOfList.getText(), day)){
-                    scroll(daysOfList);
                     clickWithWait(daysOfList);
                     x--;
                     break;

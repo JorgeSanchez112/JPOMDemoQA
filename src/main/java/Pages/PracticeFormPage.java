@@ -119,7 +119,7 @@ public class PracticeFormPage extends BasePages {
         clickWithWait(birthDateField);
         selectListValue(months,month);
         selectListValue(years,year);
-        selectDay(calendarDays,day);
+        selectDay(calendarDays,removeBeginZero(day));
     }
 
     public void typeInSubjectField(String subject){
@@ -143,8 +143,6 @@ public class PracticeFormPage extends BasePages {
             default:
                 System.out.println("Hobby selected is not available");
         }
-
-        clickWithWait(checkboxes.get(2));
     }
 
     public void selectAPicture(String picturePath){
@@ -169,7 +167,7 @@ public class PracticeFormPage extends BasePages {
         pressEnterKey(submitButton);
     }
 
-    public void fillAllFormFields(String name, String lastname,String email, String gender, String phone, String month, String day, String year, String subject,String hobby, String picturePath, String text, String state, String city){
+    public void fillAllFormFields(String name, String lastname,String email, String gender, String phone, String month, String day, String year, String subject, String hobby, String picturePath, String text, String state, String city){
         typeInFirstNameField(name);
         typeInLastNameField(lastname);
         typeInEmailField(email);
@@ -443,5 +441,9 @@ public class PracticeFormPage extends BasePages {
     public String getValueOfStateCityRow(){
         scroll(tenthRowOfFormTable.get(1));
         return getElementTextWithWait(tenthRowOfFormTable.get(1));
+    }
+
+    public String removeBeginZero(String originalValue){
+        return originalValue.replaceAll("^0+", ""); // Remove leading zeros
     }
 }
