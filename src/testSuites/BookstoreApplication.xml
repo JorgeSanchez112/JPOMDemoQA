@@ -13,58 +13,18 @@
     </test>
 
     <test name="BS Profile Page">
-        <parameter name="uRLRegister" value="https://demoqa.com/register"/>
-        <parameter name="usernameValue" value="lola12"/>
-        <parameter name="passwordValue" value="P@ssw0rd"/>
-        <parameter name="booksLabel" value="Books :"/>
-        <parameter name="searchBoxPlaceholder" value="Type to search"/>
-        <parameter name="usernameLabel" value="User Name :"/>
-        <parameter name="uRLLogin" value="https://demoqa.com/login"/>
-        <parameter name="tableTitleImage" value="Image"/>
-        <parameter name="tableTitleTitle" value="Title"/>
-        <parameter name="tableTitleAuthor" value="Author"/>
-        <parameter name="tableTitlePublisher" value="Publisher"/>
-        <parameter name="tableTitleAction" value="Action"/>
-        <parameter name="searchBoxValue" value="Git Pocket"/>
-        <parameter name="bookTitleExpected" value="Git Pocket Guide"/>
-        <parameter name="pageOfTable" value="Page of 1"/>
-        <parameter name="totalPagesOfTable" value="1"/>
-        <parameter name="uRLBooks" value="https://demoqa.com/books"/>
-        <parameter name="titleBook" value="Learning JavaScript Design Patterns"/>
-        <parameter name="pageNumberBase" value="1"/>
-        <parameter name="authorAccordingTitle" value="Addy Osmani"/>
-        <parameter name="publisherAccordingTitle" value="O'Reilly Media"/>
-        <parameter name="pageNumberExpected" value="2"/>
-
         <classes>
             <class name="org.Tests.BSProfilePageTest"/>
         </classes>
     </test>
 
     <test name="BS Register page">
-        <parameter name="subTitle" value="Register to Book Store"/>
-        <parameter name="firstNameLabel" value="First Name :"/>
-        <parameter name="lastNameLabel" value="Last Name :"/>
-        <parameter name="userNameLabel" value="UserName :"/>
-        <parameter name="passwordLabel" value="Password :"/>
-        <parameter name="firstNameValue" value="firstNameValue"/>
-        <parameter name="lastNameValue" value="lastNameValue"/>
-        <parameter name="userNameValue" value="userNameValue"/>
-        <parameter name="passwordValue" value="passwordValue"/>
-
         <classes>
-            <class name="org.Tests.BSRegisterTest"/>
+            <class name="org.Tests.BSRegisterPageTest"/>
         </classes>
     </test>
 
     <test name="BS Login Page">
-        <parameter name="subTitle" value="Welcome,"/>
-        <parameter name="subSubTitle" value="Login in Book Store"/>
-        <parameter name="usernameLabel" value="UserName :"/>
-        <parameter name="passwordLabel" value="Password :"/>
-        <parameter name="usernameValue" value="lola"/>
-        <parameter name="passwordValue" value="123"/>
-        
         <classes>
             <class name="org.Tests.BSLoginPageTest"/>
         </classes>

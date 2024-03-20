@@ -28,6 +28,8 @@ public class BSRegisterPage extends BasePages {
     private WebElement passwordInput;
     @FindBy(id = "recaptcha-anchor")
     private WebElement recaptcha;
+    @FindBy(className = "recaptcha-checkbox-checkmark")
+    private WebElement recaptchaValidationIcon;
     @FindBy(id = "name")
     private WebElement messageOfCaptcha;
     @FindBy(id = "register")
@@ -40,18 +42,56 @@ public class BSRegisterPage extends BasePages {
         PageFactory.initElements(driver,this);
     }
 
-    public boolean isTitleVisible(){
-        return isElementDisplayedWithWait(pageTitle);
+    public void typeOnFirstnameInput(String firstname){
+        waitForVisibleElement(firstNameInput);
+        scroll(firstNameInput);
+        sendKeysToElement(firstNameInput,firstname);
     }
 
-    public boolean isRecaptchaMessageVisible(){
-        return isElementDisplayedWithWait(messageOfCaptcha);
+    public void typeOnLastNameInput(String lastName){
+        sendKeysToElement(lastNameInput,lastName);
     }
-    
-    public boolean isRecaptchaClicked(){
-        return hasElementBeenSelected(recaptcha);
+
+    public void typeOnUsernameInput(String username){
+        sendKeysToElement(usernameInput,username);
     }
-    
+
+    public void typeOnPasswordInput(String password){
+        sendKeysToElement(passwordInput,password);
+    }
+
+    public void clickOnRecaptcha(){
+        waitForVisibleElement(registerButton);
+        scroll(registerButton);
+        driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@title='reCAPTCHA']")));
+        clickWithWait(recaptcha);
+    }
+
+    public void clickOnRegisterButton(){
+        waitForVisibleElement(registerButton);
+        scroll(registerButton);
+        clickWithWait(registerButton);
+    }
+
+    public void fillOutAllFormFields(String firstNameValue, String lastNameValue, String userNameValue, String passwordValue){
+        typeOnFirstnameInput(firstNameValue);
+        typeOnLastNameInput(lastNameValue);
+        typeOnUsernameInput(userNameValue);
+        typeOnPasswordInput(passwordValue);
+    }
+
+    public String registerAnUserAndReturnAlertMessage(String firstNameValue, String lastNameValue, String userNameValue, String passwordValue){
+        fillOutAllFormFields(firstNameValue,lastNameValue,userNameValue,passwordValue);
+        clickOnRecaptcha();
+        driver.switchTo().parentFrame();
+        clickOnRegisterButton();
+        return driver.switchTo().alert().getText();
+    }
+
+    public void acceptAlertOfSuccessRegister(){
+        acceptAlertWithWait();
+    }
+
     public String getSubtitleText(){
         scroll(subTitle);
         return getElementTextWithWait(subTitle);
@@ -99,35 +139,16 @@ public class BSRegisterPage extends BasePages {
         return driver.getCurrentUrl();
     }
 
-    public void typeOnFirstnameInput(String firstname){
-        waitForVisibleElement(firstNameInput);
-        scroll(firstNameInput);
-        sendKeysToElement(firstNameInput,firstname);
+    public boolean isTitleVisible(){
+        return isElementDisplayedWithWait(pageTitle);
     }
 
-    public void typeOnLastNameInput(String lastName){
-        sendKeysToElement(lastNameInput,lastName);
+    public boolean isRecaptchaMessageVisible(){
+        return isElementDisplayedWithWait(messageOfCaptcha);
     }
 
-    public void typeOnUsernameInput(String username){
-        sendKeysToElement(usernameInput,username);
-    }
-
-    public void typeOnPasswordInput(String password){
-         sendKeysToElement(passwordInput,password);
-    }
-
-    public void clickOnRecaptcha(){
-        waitForVisibleElement(registerButton);
-        scroll(registerButton);
-        driver.switchTo().frame(driver.findElement(By.cssSelector("#g-recaptcha > div > div > iframe")));
-        clickWithWait(recaptcha);
-    }
-
-    public void clickOnRegisterButton(){
-        waitForVisibleElement(registerButton);
-        scroll(registerButton);
-        clickWithWait(registerButton);
+    public boolean isRecaptchaClicked(){
+        return  isElementDisplayedWithWait(recaptchaValidationIcon);
     }
 
     public BSLoginPage clickOnBackToLogin(){

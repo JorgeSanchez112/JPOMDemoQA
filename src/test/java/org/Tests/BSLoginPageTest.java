@@ -1,12 +1,24 @@
 package org.Tests;
 
+import Resources.ExcelReader;
 import TestComponents.TestBase;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
+
 public class BSLoginPageTest extends TestBase {
+    private final String SUB_TITLE = "Welcome,";
+    private final String SUB_SUB_TITLE = "Login in Book Store";
+    private final String USERNAME_LABEL= "UserName :";
+    private final String PASSWORD_LABEL = "Password :";
+    private final String RGB_RED_COLOR = "rgb(220, 53, 69)";
+    private final String WRONG_USERNAME = "username1";
+    private final String WRONG_PASSWORD = "password";
+
     @BeforeMethod
     public void initializeClass(){
         bsLoginPage = homePage.clickOnSectionBookStoreApplication().clickOnLoginTab();
@@ -17,40 +29,38 @@ public class BSLoginPageTest extends TestBase {
         Assert.assertTrue(bsLoginPage.isTitleVisible());
     }
 
-    @Parameters("subTitle")
     @Test
-    public void isSubtitleCorrect(String subTitle){
-        Assert.assertEquals(bsLoginPage.getSubTitleText(), subTitle);
+    public void isSubtitleCorrect(){
+        Assert.assertEquals(bsLoginPage.getSubTitleText(), SUB_TITLE);
     }
 
-    @Parameters("subSubTitle")
     @Test
-    public void isSubSubtitleCorrect(String subSubTitle){
-        Assert.assertEquals(bsLoginPage.getSubSubTitleText(), subSubTitle);
+    public void isSubSubtitleCorrect(){
+        Assert.assertEquals(bsLoginPage.getSubSubTitleText(), SUB_SUB_TITLE);
     }
 
-    @Parameters("usernameLabel")
     @Test
-    public void isUsernameLabelCorrect(String usernameLabel){
-        Assert.assertEquals(bsLoginPage.getUsernameLabelText(), usernameLabel);
+    public void isUsernameLabelCorrect(){
+        Assert.assertEquals(bsLoginPage.getUsernameLabelText(), USERNAME_LABEL);
     }
 
-    @Parameters("passwordLabel")
     @Test
-    public void isPasswordLabelCorrect(String passwordLabel){
-        Assert.assertEquals(bsLoginPage.getPasswordLabelText(),passwordLabel);
+    public void isPasswordLabelCorrect(){
+        Assert.assertEquals(bsLoginPage.getPasswordLabelText(), PASSWORD_LABEL);
     }
 
-    @Parameters("usernameValue")
-    @Test
-    public void isTheUsernameInputContainingTheFilledValue(String usernameValue){
+    @Test(dataProvider = "dataTest")
+    public void isTheUsernameInputContainingTheFilledValue(Object... data){
+        String usernameValue = (String) data[0];
+
         bsLoginPage.typeOnUsernameInput(usernameValue);
         Assert.assertEquals(bsLoginPage.getUsernameInputValue(),usernameValue);
     }
 
-    @Parameters("passwordValue")
-    @Test
-    public void isThePasswordInputContainingTheFilledValue(String passwordValue){
+    @Test(dataProvider = "dataTest")
+    public void isThePasswordInputContainingTheFilledValue(Object... data){
+        String passwordValue = (String) data[1];
+
         bsLoginPage.typeOnPasswordInput(passwordValue);
         Assert.assertEquals(bsLoginPage.getPasswordInputValue(),passwordValue);
     }
@@ -58,21 +68,35 @@ public class BSLoginPageTest extends TestBase {
     @Test
     public void isActiveRedBorderColorToNotFilledInputs(){
         bsLoginPage.clickOnLoginButton();
-        Assert.assertEquals(bsLoginPage.getUsernameInputBorderColor(), prop.getProperty("RGBRedColor"));
-        Assert.assertEquals(bsLoginPage.getPasswordInputBorderColor(), prop.getProperty("RGBRedColor"));
+        Assert.assertEquals(bsLoginPage.getUsernameInputBorderColor(), RGB_RED_COLOR);
+        Assert.assertEquals(bsLoginPage.getPasswordInputBorderColor(), RGB_RED_COLOR);
     }
 
-    @Parameters({"usernameValue","passwordValue"})
     @Test
-    public void isShowedCredentialsErrorMessage(String usernameValue, String passwordValue){
-        bsLoginPage.typeOnUsernameInput(usernameValue);
-        bsLoginPage.typeOnPasswordInput(passwordValue);
+    public void isShowedCredentialsErrorMessage(){
+        bsLoginPage.typeOnUsernameInput(WRONG_USERNAME);
+        bsLoginPage.typeOnPasswordInput(WRONG_PASSWORD);
         bsLoginPage.clickOnLoginButton();
         Assert.assertTrue(bsLoginPage.isErrorMessageVisible());
+    }
+
+    @Test(dataProvider = "dataTest")
+    public void isUserLoggedAimedToProfileDashboard(Object... data){
+        String usernameValue = (String) data[0];
+        String passwordValue = (String) data[1];
+
+        Assert.assertTrue(bsLoginPage.userLogin(usernameValue,passwordValue).isTitleVisible());
     }
 
     @Test
     public void newUserButtonUsDirectedToRegister(){
         Assert.assertNotEquals(bsLoginPage.getCurrentUrl(), bsLoginPage.clickOnNewUserButton().getCurrentUrl());
+    }
+
+    @DataProvider
+    private Object[][] dataTest() throws IOException {
+        String sheetName = "BSLogin";
+        ExcelReader excelReader = new ExcelReader();
+        return excelReader.readTestData(sheetName);
     }
 }

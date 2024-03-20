@@ -103,10 +103,11 @@ public class BSLoginPage extends BasePages {
         return new BSRegisterPage(driver);
     }
 
-    public void userLogin(String username,String password){
+    public BSProfilePage userLogin(String username,String password){
         waitForVisibleElement(loginButton);
         typeOnUsernameInput(username);
         typeOnPasswordInput(password);
         clickOnLoginButton();
+        return new BSProfilePage(driver);
     }
 }
