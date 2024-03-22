@@ -26,7 +26,7 @@ public class UploadDownloadPage extends BasePages {
     }
 
     public void searchFileInSelectFile(){
-        sendKeysToElement(uploadFileButton,"C:\\Users\\Jorge\\Downloads\\sampleFile.jpeg");
+        sendKeysToElement(uploadFileButton, System.getProperty("user.home") + "Downloads\\sampleFile.jpeg");
     }
 
     public String getPageTitleText(){

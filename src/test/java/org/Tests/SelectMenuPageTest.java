@@ -95,6 +95,8 @@ public class SelectMenuPageTest extends TestBase {
     @Test
     public void selectMultiplyValuesOnStandardMultiSelect(){
         selectMenuPage.scrollAndSelectAllValuesOnStandardMultiSelect();
+        Assert.assertTrue(selectMenuPage.wereAllOptionsSelectedOfStandardMultiSelect());
+
         Assert.assertTrue(selectMenuPage.isVolvoSelectedOfStandardMultiSelect());
         Assert.assertTrue(selectMenuPage.isSaabSelectedOfStandardMultiSelect());
         Assert.assertTrue(selectMenuPage.isOpelSelectedOfStandardMultiSelect());

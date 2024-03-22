@@ -65,8 +65,6 @@ public class TestBase{
     protected BSAPIPage bsapiPage;
 
     //BSProfilePage
-    //BookPage
-    //BSRegister
     //Upload_Download
 
     public TestBase() {
@@ -149,7 +147,6 @@ public class TestBase{
     public void tearDown(){
         try {
             WebDriver driver = getDriver();
-            System.out.println(driver);
             if (driver != null) {
                 driver.quit();
                 webDriverThreadLocal.remove();

@@ -8,7 +8,7 @@
 
     <test name="BSI Book Page">
         <classes>
-            <class name="org.Tests.BSIBookPageTest"/>
+            <class name="org.Tests.BSBookPageTest"/>
         </classes>
     </test>
 

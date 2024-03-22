@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class BSIBookPageTest extends TestBase {
+public class BSBookPageTest extends TestBase {
     private final String PAGE_TITLE = "Book Store";
     private final String URL_LOGIN = "https://demoqa.com/login";
     private final String URL_BOOKS = "Books :";
@@ -180,7 +180,7 @@ public class BSIBookPageTest extends TestBase {
         Assert.assertTrue(bsiBookPage.websiteValueLinkIsVisible());
     }
 
-    @Test(dataProvider = "dataTest")
+    @Test(dataProvider = "dataTest")//MIRAR
     public void isRedirectHome(Object... data){
         String bookTitle = (String) data[0];
         initializeClass(bookTitle);

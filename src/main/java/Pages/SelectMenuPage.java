@@ -159,6 +159,10 @@ public class SelectMenuPage extends BasePages {
         return getElementTextWithWait(fourthAndFifthLabels.get(1));
     }
 
+    public boolean wereAllOptionsSelectedOfStandardMultiSelect(){
+        return hasElementBeenSelected(runWebElementList(standardMultiSelectValues));
+    }
+
     public boolean isVolvoSelectedOfStandardMultiSelect(){
         waitForChargedElementsOfAWebElementList(standardMultiSelectValues);
         return hasElementBeenSelected(standardMultiSelectValues.get(0));

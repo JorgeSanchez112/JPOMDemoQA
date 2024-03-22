@@ -22,7 +22,7 @@ public class BSRegisterPageTest extends TestBase {
         bsRegisterPage = homePage.clickOnSectionBookStoreApplication().clickOnLoginTab().clickOnNewUserButton();
     }
 
-    /*@Test
+    @Test
     public void isTitleRegisterVisible(){
         Assert.assertTrue(bsRegisterPage.isTitleVisible());
     }
@@ -92,10 +92,11 @@ public class BSRegisterPageTest extends TestBase {
     public void isRecaptchaChecked(){
         bsRegisterPage.clickOnRecaptcha();
         Assert.assertTrue(bsRegisterPage.isRecaptchaClicked());
-    }*/
+    }
 
-    @Test(dataProvider = "dataTest",priority = 0)
-    public void wasRegisterCompletedSuccessfully(Object... data){
+    @Test(dataProvider = "dataTest")
+    public void wasRegisterCompletedSuccessfully(Object... data)//This Test often could fail due to a captcha that there is in the register page that I couldn't solve to automatize without a low percentage to fail.
+    {
         String firstNameValue = (String) data[0];
         String lastNameValue = (String) data[1];
         String userNameValue = (String) data[2];
@@ -105,19 +106,18 @@ public class BSRegisterPageTest extends TestBase {
         bsRegisterPage.acceptAlertOfSuccessRegister();
     }
 
-    @Test(dataProvider = "dataTest",priority = 1)
-    public void deleteAllCreatedUsers(Object... data){
+    @Test(dataProvider = "dataTest")
+    public void deleteCreatedUsers(Object... data){//This is a method created to try to delete all the users Created to can reuse the same info that it's contain in an Excel to achieve Data Driven Testing(DDT)
         String userNameValue = (String) data[2];
         String passwordValue = (String) data[3];
 
         bsRegisterPage.clickOnBackToLogin().userLogin(userNameValue,passwordValue).deleteAccount();
     }
 
-  /*  @Test
-    public void isBackToLoginButtonReturnUsToLogin(){
+    @Test
+    public void isBackToLoginButtonRedirectUsToLogin(){
         Assert.assertNotEquals(bsRegisterPage.getCurrentUrl(), bsRegisterPage.clickOnBackToLogin().getCurrentUrl());
-        bsRegisterPage.backToPage();
-    }*/
+    }
 
     @DataProvider
     private Object[][] dataTest() throws IOException {

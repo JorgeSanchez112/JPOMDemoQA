@@ -18,8 +18,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.RejectedExecutionException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class BasePages {
+    private static final Logger logger = LogManager.getLogger();
 
     @FindBy(className = "text-center")
     protected WebElement pageTitle;
@@ -31,12 +34,21 @@ public class BasePages {
         this.driver = driver;
     }
 
+    private final String MESSAGE_TO_NO_ALERT_PRESENT_EXCEPTION = "NoAlertPresentException: No alert present to accept";
+    private final String MESSAGE_TO_NO_SUCH_ELEMENT_EXCEPTION = "NoSuchElementException: Element can not be found";
+    private final String MESSAGE_TO_WEB_DRIVER_EXCEPTION = "WebDriverException: An unexpected error occurred while interacting with the WebDriver. This could be due to various reasons such as network issues, browser compatibility issues, or invalid WebDriver configurations.";
+    private final String MESSAGE_TO_INDEX_OUT_OF_BOUNDS_EXCEPTION = "IndexOutOfBoundsException: The operation encountered an IndexOutOfBoundsException, indicating an attempt to access or manipulate an element at an invalid index position within a collection or array.";
+    private final String MESSAGE_NUMBER_FORMAT_EXCEPTION = "NumberFormatException: Method expects a string representation of a numeric value, but the provided string is not formatted as a valid number.";
+    private final String MESSAGE_ELEMENT_NOT_INTERACTABLE_EXCEPTION = "ElementNotInteractableException: Possible causes include elements being hidden, disabled, overlapped by other elements, or located outside the viewport.";
+    private final String MESSAGE_MOVE_TARGET_OUT_OF_BOUNDS_EXCEPTION = "MoveTargetOutOfBoundsException: MoveTargetOutOfBoundsException occurred, indicating that the target element cannot be moved to the specified coordinates.";
+    private final String MESSAGE_TO_TIME_OUT_EXCEPTION = "TimeOutException: The presence of a web element or the completion of an action, does not occur within the specified time frame.";
+
     public void acceptAlertWithWait(){
         waitAlert();
         try {
             driver.switchTo().alert().accept();
         }catch (NoAlertPresentException e){
-            e.printStackTrace();
+            handleException(MESSAGE_TO_NO_ALERT_PRESENT_EXCEPTION, e);
         }
     }
 
@@ -45,7 +57,7 @@ public class BasePages {
         try{
             driver.switchTo().alert().dismiss();
         }catch (NoAlertPresentException e){
-            e.printStackTrace();
+            handleException(MESSAGE_TO_NO_ALERT_PRESENT_EXCEPTION,e);
         }
     }
 
@@ -60,13 +72,13 @@ public class BasePages {
                     waitForVisibleElement(element);
                     ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
                 }catch (NoSuchElementException e){
-                    e.printStackTrace();
+                    handleException(MESSAGE_TO_NO_SUCH_ELEMENT_EXCEPTION,e);
                 }
             }catch (IndexOutOfBoundsException e){
-                e.printStackTrace();
+                handleException(MESSAGE_TO_INDEX_OUT_OF_BOUNDS_EXCEPTION,e);
             }
         }catch (WebDriverException e){
-            e.printStackTrace();
+            handleException(MESSAGE_TO_WEB_DRIVER_EXCEPTION,e);
         }
     }
 
@@ -75,7 +87,7 @@ public class BasePages {
         try {
             ((JavascriptExecutor) driver).executeScript("arguments[0].style.display = 'none';", element);
         }catch (WebDriverException e){
-            e.printStackTrace();
+            handleException(MESSAGE_TO_WEB_DRIVER_EXCEPTION,e);
         }
     }
 
@@ -83,7 +95,7 @@ public class BasePages {
         try {
             input.sendKeys(text);
         }catch (WebDriverException e){
-            e.printStackTrace();
+            handleException(MESSAGE_TO_WEB_DRIVER_EXCEPTION,e);
         }
     }
 
@@ -92,16 +104,16 @@ public class BasePages {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             wait.until(ExpectedConditions.elementToBeClickable(element));
         }catch (WebDriverException e){
-            e.printStackTrace();
+            handleException(MESSAGE_TO_WEB_DRIVER_EXCEPTION,e);
         }
     }
 
     public void waitForElementAttributeToContain(WebElement element, String attribute, String expectedValue) {
         try {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             wait.until(ExpectedConditions.attributeContains(element, attribute, expectedValue));
         } catch (TimeoutException e) {
-            e.printStackTrace();
+            handleException(MESSAGE_TO_TIME_OUT_EXCEPTION,e);
         }
     }
 
@@ -111,10 +123,10 @@ public class BasePages {
                 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
                 wait.until(ExpectedConditions.elementToBeClickable(element));
             }catch (TimeoutException e){
-                e.printStackTrace();
+                handleException(MESSAGE_TO_TIME_OUT_EXCEPTION,e);
             }
         }catch (NoSuchElementException e){
-            e.printStackTrace();
+            handleException(MESSAGE_TO_NO_SUCH_ELEMENT_EXCEPTION,e);
         }
     }
 
@@ -124,10 +136,10 @@ public class BasePages {
                 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
                 wait.until(ExpectedConditions.visibilityOf(element));
             }catch (NoSuchElementException e){
-                e.printStackTrace();
+                handleException(MESSAGE_TO_NO_SUCH_ELEMENT_EXCEPTION,e);
             }
         }catch (TimeoutException e){
-            e.printStackTrace();
+            handleException(MESSAGE_TO_TIME_OUT_EXCEPTION,e);
         }
     }
 
@@ -136,8 +148,7 @@ public class BasePages {
         try{
             select.selectByVisibleText(elementText);
         }catch (NoSuchElementException e){
-            e.printStackTrace();
-            System.out.println("The element Text should contain the same value that the option");
+            handleException(MESSAGE_TO_NO_SUCH_ELEMENT_EXCEPTION + "The element Text should contain the same value that the option",e);
         }
     }
 
@@ -147,10 +158,10 @@ public class BasePages {
                 scroll(elements.get(position));
                 return elements.get(position).getText();
             }catch (IndexOutOfBoundsException e){
-                e.printStackTrace();
+                handleException(MESSAGE_TO_INDEX_OUT_OF_BOUNDS_EXCEPTION,e);
             }
         }
-        return "Error in 'getElementTextAccordingToPositionReceived' method";
+        return "";
     }
 
     public String getElementTextWithWait(WebElement element){
@@ -158,18 +169,18 @@ public class BasePages {
             waitForVisibleElement(element);
             return element.getText();
         }catch (WebDriverException e){
-            e.printStackTrace();
-            return e.getMessage();
+            handleException(MESSAGE_TO_WEB_DRIVER_EXCEPTION,e);
         }
+        return "";
     }
 
     public String getElementAttribute(WebElement element, String attribute){
         try {
             return element.getAttribute(attribute);
         }catch (WebDriverException e){
-            e.printStackTrace();
-            return e.getMessage();
+            handleException(MESSAGE_TO_WEB_DRIVER_EXCEPTION,e);
         }
+        return "";
     }
 
     public String deleteAllLetters(String textWithLetters){
@@ -180,25 +191,25 @@ public class BasePages {
         try {
             return String.format("%.0f", Double.parseDouble(deleteAllLetters(textToChangeFormat)));
         }catch (NumberFormatException e){
-            e.printStackTrace();
-            return e.getMessage();
+            handleException(MESSAGE_NUMBER_FORMAT_EXCEPTION,e);
         }
+        return "";
     }
 
     public String getElementCssValue(WebElement element, String propertyName){
         try {
             return element.getCssValue(propertyName);
         }catch (WebDriverException e){
-            e.printStackTrace();
-            return e.getMessage();
+            handleException(MESSAGE_TO_WEB_DRIVER_EXCEPTION,e);
         }
+        return "";
     }
 
     public boolean hasElementBeenSelected(WebElement element){
         try {
             return element.isSelected();
         }catch (WebDriverException e){
-            e.printStackTrace();
+            handleException(MESSAGE_TO_WEB_DRIVER_EXCEPTION,e);
         }
         return false;
     }
@@ -208,7 +219,7 @@ public class BasePages {
             waitForEnableElement(element);
             return element.isEnabled();
         }catch (WebDriverException e){
-            e.printStackTrace();
+            handleException(MESSAGE_TO_WEB_DRIVER_EXCEPTION,e);
         }
         return false;
     }
@@ -218,7 +229,7 @@ public class BasePages {
             waitForVisibleElement(element);
             return element.isDisplayed();
         }catch (WebDriverException e){
-            e.printStackTrace();
+            handleException(MESSAGE_TO_WEB_DRIVER_EXCEPTION,e);
         }
         return false;
     }
@@ -229,13 +240,15 @@ public class BasePages {
                 scroll(elements.get(position));
                 return isElementDisplayedWithWait(elements.get(position));
             }catch (IndexOutOfBoundsException e){
-                e.printStackTrace();
+                handleException(MESSAGE_TO_INDEX_OUT_OF_BOUNDS_EXCEPTION,e);
             }
         }
         return false;
     }
 
     public void waitForChargedElementsOfAWebElementList(List<WebElement> elementsList){
+        String MESSAGE_TO_REJECTED_EXECUTION_EXCEPTION = "RejectedExecutionException occurred, indicating that a task submission to an executor has been rejected for execution.";
+
         try {
             try {
                 try {
@@ -245,16 +258,16 @@ public class BasePages {
                         wait.pollingEvery(Duration.ofMillis(250));
                         wait.until(ExpectedConditions.visibilityOfAllElements(elementsList));
                     }catch (RejectedExecutionException e){
-                        e.printStackTrace();
+                        handleException(MESSAGE_TO_REJECTED_EXECUTION_EXCEPTION,e);
                     }
                 }catch (IndexOutOfBoundsException e){
-                    e.printStackTrace();
+                    handleException(MESSAGE_TO_INDEX_OUT_OF_BOUNDS_EXCEPTION,e);
                 }
             }catch (NoSuchElementException e){
-                e.printStackTrace();
+                handleException(MESSAGE_TO_NO_SUCH_ELEMENT_EXCEPTION,e);
             }
         }catch (WebDriverException e){
-            e.printStackTrace();
+            handleException(MESSAGE_TO_WEB_DRIVER_EXCEPTION,e);
         }
     }
 
@@ -264,24 +277,26 @@ public class BasePages {
                 WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
                 wait.until(ExpectedConditions.alertIsPresent());
             }catch (NoSuchElementException e){
-                e.printStackTrace();
+                handleException(MESSAGE_TO_NO_SUCH_ELEMENT_EXCEPTION,e);
             }
         }catch (TimeoutException e){
-            e.printStackTrace();
+            handleException(MESSAGE_TO_TIME_OUT_EXCEPTION,e);
         }
 
     }
 
     public void clickWithWait(WebElement element){
+        String MESSAGE_TO_ELEMENT_CLICK_INTERCEPTED_EXCEPTION = "Element has been intercepted, possibly other element no allowed the correct click";
+
         try {
             try {
                 waitForClick(element);
                 element.click();
             }catch (ElementClickInterceptedException e){
-                e.printStackTrace();
+                handleException(MESSAGE_TO_ELEMENT_CLICK_INTERCEPTED_EXCEPTION,e);
             }
         }catch (WebDriverException e){
-            e.printStackTrace();
+            handleException(MESSAGE_TO_WEB_DRIVER_EXCEPTION,e);
         }
     }
 
@@ -298,16 +313,20 @@ public class BasePages {
     public boolean isListItemSelected(WebElement listItem) {
         String expectedClass = "active";
         String actualClass = listItem.getAttribute("class");
+
         return actualClass.contains(expectedClass);
     }
 
     public boolean isElementDropped(WebElement listItem) {
         String expectedClass = "ui-state-highlight";
         String actualClass = listItem.getAttribute("class");
+
         return actualClass.contains(expectedClass);
     }
 
     public boolean searchForVisibleElement(List<WebElement> elementsList, String value){
+        String MESSAGE_TO_STALE_ELEMENT_REFERENCE_EXCEPTION = "Element could have been located and referenced, but then changes state or is removed from the DOM before an action is performed on it.";
+
         try{
             try{
                 for (WebElement element: elementsList) {
@@ -316,10 +335,10 @@ public class BasePages {
                     }
                 }
             }catch (StaleElementReferenceException e){
-                e.printStackTrace();
+                handleException(MESSAGE_TO_STALE_ELEMENT_REFERENCE_EXCEPTION,e);
             }
         }catch (TimeoutException e){
-            e.printStackTrace();
+            handleException(MESSAGE_TO_TIME_OUT_EXCEPTION,e);
         }
         return false;
     }
@@ -330,7 +349,7 @@ public class BasePages {
             scroll(element);
             return element.isDisplayed();
         }catch (TimeoutException e){
-            e.printStackTrace();
+            handleException(MESSAGE_TO_TIME_OUT_EXCEPTION,e);
         }
         return false;
     }
@@ -338,8 +357,6 @@ public class BasePages {
     public boolean validateResponseCodeIs200inAList(List<WebElement> elementList) throws IOException {
         WebElement element = runWebElementList(elementList);
         scroll(element);
-        System.out.println(element);
-        System.out.println();
         return validateHTTPS_Response(element.getAttribute("src"));
     }
 
@@ -349,9 +366,9 @@ public class BasePages {
                 return element;
             }
         }catch (NoSuchElementException e){
-            e.printStackTrace();
+            handleException(MESSAGE_TO_NO_SUCH_ELEMENT_EXCEPTION,e);
         }
-        return elementList.get(0);
+        return null;
     }
 
     public int getPositionOfOneElementInAList(List<WebElement> elementsList, String value){
@@ -377,7 +394,7 @@ public class BasePages {
                 }
             }
         }catch (IndexOutOfBoundsException e){
-            e.printStackTrace();
+            handleException(MESSAGE_TO_INDEX_OUT_OF_BOUNDS_EXCEPTION,e);
         }
         return dateOfDaysList.size();
     }
@@ -410,7 +427,7 @@ public class BasePages {
                     System.out.println("value does not available");
                 }
             }catch (WebDriverException e){
-                e.printStackTrace();
+                handleException(MESSAGE_TO_WEB_DRIVER_EXCEPTION,e);
             }
         }
     }
@@ -430,7 +447,7 @@ public class BasePages {
                     System.out.println("day does not exist");
                 }
             }catch (WebDriverException e){
-                System.out.println(e.getMessage());
+                handleException(MESSAGE_TO_WEB_DRIVER_EXCEPTION,e);
             }
 
         }
@@ -461,13 +478,13 @@ public class BasePages {
                             .build()
                             .perform();
                 }catch (NumberFormatException e){
-                    e.printStackTrace();
+                    handleException(MESSAGE_NUMBER_FORMAT_EXCEPTION,e);
                 }
             }catch (MoveTargetOutOfBoundsException e){
-                e.printStackTrace();
+                handleException(MESSAGE_MOVE_TARGET_OUT_OF_BOUNDS_EXCEPTION,e);
             }
         }catch (ElementNotInteractableException e){
-            e.printStackTrace();
+            handleException(MESSAGE_ELEMENT_NOT_INTERACTABLE_EXCEPTION,e);
         }
     }
 
@@ -479,10 +496,10 @@ public class BasePages {
                         .build()
                         .perform();
             }catch (ElementNotInteractableException e){
-                e.printStackTrace();
+                handleException(MESSAGE_ELEMENT_NOT_INTERACTABLE_EXCEPTION,e);
             }
         }catch (IndexOutOfBoundsException e){
-            e.printStackTrace();
+            handleException(MESSAGE_TO_INDEX_OUT_OF_BOUNDS_EXCEPTION,e);
         }
     }
 
@@ -493,7 +510,7 @@ public class BasePages {
                     .build()
                     .perform();
         }catch (ElementNotInteractableException e){
-            e.printStackTrace();
+            handleException(MESSAGE_ELEMENT_NOT_INTERACTABLE_EXCEPTION,e);
         }
     }
 
@@ -506,12 +523,13 @@ public class BasePages {
                     .build()
                     .perform();
         }catch (MoveTargetOutOfBoundsException e){
-            e.printStackTrace();
+            handleException(MESSAGE_MOVE_TARGET_OUT_OF_BOUNDS_EXCEPTION,e);
         }
 
     }
 
     public boolean validateHTTPS_Response(String src) throws IOException {
+        String MESSAGE_MALFORMED_URL_EXCEPTION = "URL is incorrect";
         try {
             HttpURLConnection http = (HttpURLConnection) (new URL(src).openConnection());
             http.setRequestMethod("HEAD");
@@ -519,8 +537,13 @@ public class BasePages {
             int responseCode = http.getResponseCode();
             return responseCode == 200;
         }catch (MalformedURLException e){
-            e.printStackTrace();
+            handleException(MESSAGE_MALFORMED_URL_EXCEPTION,e);
         }
         return false;
+    }
+
+
+    private void handleException(String messageException,Exception e) {
+        logger.error(messageException, e);
     }
 }
