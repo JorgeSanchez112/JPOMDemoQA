@@ -20,13 +20,15 @@ public class ResizablePage extends BasePages {
     @FindBy(css = "#resizable > .react-resizable-handle")
     private WebElement resizeIcon;
 
-    private final float WIDTH_BASE_OF_RESIZABLE_FREE = 200;
-    private final float HEIGHT_BASE_OF_RESIZABLE_FREE = 200;
-
     public ResizablePage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver,this);
     }
+
+    private final String WIDTH_PROPERTY_NAME = "width";
+    private final String HEIGHT_PROPERTY_NAME = "height";
+    private final float WIDTH_BASE_OF_RESIZABLE_FREE = 200;
+    private final float HEIGHT_BASE_OF_RESIZABLE_FREE = 200;
 
     public void resizeBoxRestrictedToMax(int width, int height){
         scroll(resizableBoxRestricted);
@@ -45,19 +47,19 @@ public class ResizablePage extends BasePages {
     }
 
     public String getWidthOfBoxRestricted(){
-        return resizableBoxRestricted.getCssValue("width");
+        return resizableBoxRestricted.getCssValue(WIDTH_PROPERTY_NAME);
     }
 
     public String getWidthOfResizeBox(){
-        return resizableBox.getCssValue("width");
+        return resizableBox.getCssValue(WIDTH_PROPERTY_NAME);
     }
 
     public String getHeightOfBoxRestricted(){
-        return resizableBoxRestricted.getCssValue("height");
+        return resizableBoxRestricted.getCssValue(HEIGHT_PROPERTY_NAME);
     }
 
     public String getHeightOfResizeBox(){
-        return resizableBox.getCssValue("height");
+        return resizableBox.getCssValue(HEIGHT_PROPERTY_NAME);
     }
 
     public boolean isResizableRestrictedTextVisible(){

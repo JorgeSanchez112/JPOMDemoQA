@@ -5,7 +5,6 @@ import TestComponents.TestBase;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -137,32 +136,32 @@ public class BSProfilePageTest extends TestBase {
     }
 
     @Test
-    public void validateCorrectPageLabelText(String USERNAME, String PASSWORD) {
+    public void validateCorrectPageLabelText() {
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
         Assert.assertEquals(bsProfilePage.getPageText(),PAGE_OF_TABLE);
     }
 
     @Test
-    public void validateCorrectTotalOfPages(String USERNAME, String PASSWORD) {
+    public void validateCorrectTotalOfPages() {
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
         Assert.assertEquals(bsProfilePage.getTotalOfPagesText(),TOTAL_PAGES_OF_TABLE);
     }
 
     @Test
-    public void wereAllBooksDeleted(String USERNAME, String PASSWORD) {
+    public void wereAllBooksDeleted() {
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
         bsProfilePage.deleteAllBooks();
         Assert.assertTrue(bsProfilePage.isMessageNoDataVisible());
     }
 
     @Test
-    public void validateGoToBookStoreRedirectToBookStorePage(String USERNAME, String PASSWORD) {
+    public void validateGoToBookStoreRedirectToBookStorePage() {
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
         Assert.assertEquals(bsProfilePage.clickOnGoToBookStoreButton().getBookStoreUrlText(),URL_BOOKS);
     }
 
     @Test
-    public void validateCancelButtonOfDeleteAccountAlertIsFunctional(String USERNAME, String PASSWORD) {
+    public void validateCancelButtonOfDeleteAccountAlertIsFunctional() {
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
         bsProfilePage.tryToDeleteAccount();
         Assert.assertEquals(bsProfilePage.getUserNameValueText(),USERNAME);
@@ -178,7 +177,6 @@ public class BSProfilePageTest extends TestBase {
         Assert.assertTrue(bsProfilePage.isTitleInTableOfBooksCollection(titleBook));
     }
 
-    @Parameters({"usernameValue","PASSWORD","titleBook"})
     @Test(dataProvider = "books")
     public void isAddedABookInTable(Object... data) {
         String titleBook = (String) data[0];
@@ -189,7 +187,7 @@ public class BSProfilePageTest extends TestBase {
     }
 
     @Test
-    public void pageNumber(String USERNAME, String PASSWORD) {
+    public void pageNumber() {
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
         Assert.assertEquals(bsProfilePage.getPageNumber(),PAGE_NUMBER_BASE);
     }
@@ -230,7 +228,7 @@ public class BSProfilePageTest extends TestBase {
     }
 
     @Test
-    public void isShowedDataWithNextButton(String USERNAME, String PASSWORD) {
+    public void isShowedDataWithNextButton() {
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
         bsProfilePage.addAllBooksToTableOfBooksCollection();
         bsProfilePage.clickOnNextButton();
@@ -238,7 +236,7 @@ public class BSProfilePageTest extends TestBase {
     }
 
     @Test
-    public void isShowedDataWithPreviousButton(String USERNAME, String PASSWORD) {
+    public void isShowedDataWithPreviousButton() {
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
         bsProfilePage.addAllBooksToTableOfBooksCollection();
         bsProfilePage.clickOnNextButton();
@@ -249,7 +247,7 @@ public class BSProfilePageTest extends TestBase {
 
     /*
     @Test
-    public void validateAccountIsDeleted(String usernameValue, String PASSWORD) {
+    public void validateAccountIsDeleted() {
         bsProfilePage.clickOnLoginLink().userLogin(usernameValue,PASSWORD);
         bsProfilePage.deleteAccount().userLogin(prop.getProperty("BSUsername"),prop.getProperty("BSPassword"));
         Assert.assertTrue(bsProfilePage.isTitleVisible());

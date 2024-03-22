@@ -20,24 +20,27 @@ public class BrokenLinksPage extends BasePages {
         PageFactory.initElements(driver,this);
     }
 
+    private final String SRC_ATTRIBUTE = "src";
+    private final String HREF_ATTRIBUTE = "href";
+
     public String getPageTitleText(){
         return getElementTextWithWait(pageTitle);
     }
 
     public boolean isDisplayedValidImage() throws IOException {
-        return validateHTTPS_Response(images.get(0).getAttribute("src"));
+        return validateHTTPS_Response(images.get(0).getAttribute(SRC_ATTRIBUTE));
     }
 
     public boolean isDisplayedBrokenImage() throws IOException {
-        return validateHTTPS_Response(images.get(1).getAttribute("src"));
+        return validateHTTPS_Response(images.get(1).getAttribute(SRC_ATTRIBUTE));
     }
 
     public boolean isAValidLink() throws IOException {
-        return validateHTTPS_Response(links.get(2).getAttribute("href"));
+        return validateHTTPS_Response(links.get(2).getAttribute(HREF_ATTRIBUTE));
     }
 
     public boolean isABrokenLink() throws IOException {
-        return validateHTTPS_Response(links.get(3).getAttribute("href"));
+        return validateHTTPS_Response(links.get(3).getAttribute(HREF_ATTRIBUTE));
     }
 
 }

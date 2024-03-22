@@ -33,6 +33,10 @@ public class BSLoginPage extends BasePages {
         PageFactory.initElements(driver,this);
     }
 
+    private final String VALUE_ATTRIBUTE = "value";
+    private final String BORDER_COLOR_ATTRIBUTE = "border-color";
+    private final String RGB_RED_COLOR = "rgb(220, 53, 69)";
+
     public void typeOnUsernameInput(String name){
         waitForVisibleElement(usernameInput);
         scroll(usernameInput);
@@ -63,7 +67,7 @@ public class BSLoginPage extends BasePages {
     }
 
     public String getUsernameInputValue(){
-        return getElementAttribute(usernameInput,"value");
+        return getElementAttribute(usernameInput,VALUE_ATTRIBUTE);
     }
 
     public String getPasswordLabelText(){
@@ -71,17 +75,17 @@ public class BSLoginPage extends BasePages {
     }
 
     public String getPasswordInputValue(){
-        return getElementAttribute(passwordInput,"value");
+        return getElementAttribute(passwordInput,VALUE_ATTRIBUTE);
     }
 
     public String getUsernameInputBorderColor(){
-        waitForElementAttributeToContain(usernameInput,"border-color","rgb(220, 53, 69)");
-        return getElementCssValue(usernameInput,"border-color");
+        waitForElementAttributeToContain(usernameInput,BORDER_COLOR_ATTRIBUTE,RGB_RED_COLOR);
+        return getElementCssValue(usernameInput,BORDER_COLOR_ATTRIBUTE);
     }
 
     public String getPasswordInputBorderColor(){
-        waitForElementAttributeToContain(usernameInput,"border-color","rgb(220, 53, 69)");
-        return getElementCssValue(passwordInput,"border-color");
+        waitForElementAttributeToContain(usernameInput,BORDER_COLOR_ATTRIBUTE,RGB_RED_COLOR);
+        return getElementCssValue(passwordInput,BORDER_COLOR_ATTRIBUTE);
     }
 
     public String getCurrentUrl(){

@@ -38,6 +38,9 @@ public class DraggablePage extends BasePages {
         PageFactory.initElements(driver,this);
     }
 
+    private final String LEFT = "left";
+    private final String TOP = "top";
+
     public void clickOnTabAxisRestricted(){
         scroll(tabAxisRestricted);
         clickWithWait(tabAxisRestricted);
@@ -79,8 +82,10 @@ public class DraggablePage extends BasePages {
     }
 
     public void moveTopCursorOfCursorStyle(float width, float height){
+        final int VALUE_TO_DEDUCT_WITH = 54;
+        final int VALUE_TO_DEDUCT_HEIGHT = 55;
         scroll(topLeftStyleCursor);
-        moveElementToCoordinates(topLeftStyleCursor,subtractQuantityToParameter(width,54), subtractQuantityToParameter(height,55));
+        moveElementToCoordinates(topLeftStyleCursor,subtractQuantityToParameter(width,VALUE_TO_DEDUCT_WITH), subtractQuantityToParameter(height,VALUE_TO_DEDUCT_HEIGHT));
     }
 
     public void moveBottomCursorOfCursorStyle(float width, float height){
@@ -93,59 +98,59 @@ public class DraggablePage extends BasePages {
     }
 
     public String getSimpleBoxXPosition(){
-        return getElementCssValue(simpleBox,"left");
+        return getElementCssValue(simpleBox,LEFT);
     }
 
     public String getSimpleBoxYPosition(){
-        return getElementCssValue(simpleBox,"top");
+        return getElementCssValue(simpleBox,TOP);
     }
 
     public String getRestrictedXBoxPosition(){
-        return getElementCssValue(restrictedXBox,"left");
+        return getElementCssValue(restrictedXBox,LEFT);
     }
 
     public String getRestrictedYBoxPosition(){
-        return getElementCssValue(restrictedYBox,"top");
+        return getElementCssValue(restrictedYBox,TOP);
     }
 
     public String getContainedBoxXPosition(){
-        return getElementCssValue(containedBox,"left");
+        return getElementCssValue(containedBox,LEFT);
     }
 
     public String getContainedBoxYPosition(){
-        return getElementCssValue(containedBox,"top");
+        return getElementCssValue(containedBox,TOP);
     }
 
     public String getContainedTextXPosition(){
-        return getElementCssValue(containedText,"left");
+        return getElementCssValue(containedText,LEFT);
     }
 
     public String getContainedTextYPosition(){
-        return getElementCssValue(containedText,"top");
+        return getElementCssValue(containedText,TOP);
     }
 
     public String getElementOfCenterCursorXPosition(){
-        return changeFormatOfStringToReturnTextWithoutValueTypeFloat(getElementCssValue(centerStyleCursor,"left"));
+        return changeFormatOfStringToReturnTextWithoutValueTypeFloat(getElementCssValue(centerStyleCursor,LEFT));
     }
 
     public String getElementOfCenterCursorYPosition(){
-        return getElementCssValue(centerStyleCursor,"top");
+        return getElementCssValue(centerStyleCursor,TOP);
     }
 
     public String getElementOfTopCursorXPosition(){
-        return changeFormatOfStringToReturnTextWithoutValueTypeFloat(getElementCssValue(topLeftStyleCursor,"left"));
+        return changeFormatOfStringToReturnTextWithoutValueTypeFloat(getElementCssValue(topLeftStyleCursor,LEFT));
     }
 
     public String getElementOfTopCursorYPosition(){
-        return getElementCssValue(topLeftStyleCursor,"top");
+        return getElementCssValue(topLeftStyleCursor,TOP);
     }
 
     public String getElementOfBottomCursorXPosition(){
-        return getElementCssValue(bottomStyleCursor,"left");
+        return getElementCssValue(bottomStyleCursor,LEFT);
     }
 
     public String getElementOfBottomCursorYPosition(){
-        return getElementCssValue(bottomStyleCursor,"top");
+        return getElementCssValue(bottomStyleCursor,TOP);
     }
 
     public boolean isSimpleTabVisible(){

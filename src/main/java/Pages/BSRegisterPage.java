@@ -42,6 +42,9 @@ public class BSRegisterPage extends BasePages {
         PageFactory.initElements(driver,this);
     }
 
+    private final String BORDER_COLOR_ATTRIBUTE = "border-color";
+    private final String RGB_RED_COLOR = "rgb(220, 53, 69)";
+
     public void typeOnFirstnameInput(String firstname){
         waitForVisibleElement(firstNameInput);
         scroll(firstNameInput);
@@ -116,23 +119,23 @@ public class BSRegisterPage extends BasePages {
     }
 
     public String getFirstNameInputBorderColor(){
-        waitForElementAttributeToContain(firstNameInput,"border-color","rgb(220, 53, 69)");
-        return getElementCssValue(firstNameInput,"border-color");
+        waitForElementAttributeToContain(firstNameInput,BORDER_COLOR_ATTRIBUTE,RGB_RED_COLOR);
+        return getElementCssValue(firstNameInput,BORDER_COLOR_ATTRIBUTE);
     }
 
     public String getLastNameInputBorderColor(){
-        waitForElementAttributeToContain(lastNameInput,"border-color","rgb(220, 53, 69)");
-        return getElementCssValue(lastNameInput,"border-color");
+        waitForElementAttributeToContain(lastNameInput,BORDER_COLOR_ATTRIBUTE,RGB_RED_COLOR);
+        return getElementCssValue(lastNameInput,BORDER_COLOR_ATTRIBUTE);
     }
 
     public String getUsernameInputBorderColor(){
-        waitForElementAttributeToContain(usernameInput,"border-color","rgb(220, 53, 69)");
-        return getElementCssValue(usernameInput,"border-color");
+        waitForElementAttributeToContain(usernameInput,BORDER_COLOR_ATTRIBUTE,RGB_RED_COLOR);
+        return getElementCssValue(usernameInput,BORDER_COLOR_ATTRIBUTE);
     }
 
     public String getPasswordInputBorderColor(){
-        waitForElementAttributeToContain(passwordInput,"border-color","rgb(220, 53, 69)");
-        return getElementCssValue(passwordInput,"border-color");
+        waitForElementAttributeToContain(passwordInput,BORDER_COLOR_ATTRIBUTE,RGB_RED_COLOR);
+        return getElementCssValue(passwordInput,BORDER_COLOR_ATTRIBUTE);
     }
 
     public String getCurrentUrl(){

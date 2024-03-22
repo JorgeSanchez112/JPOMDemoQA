@@ -5,7 +5,6 @@ import TestComponents.TestBase;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -68,8 +67,8 @@ public class BSLoginPageTest extends TestBase {
     @Test
     public void isActiveRedBorderColorToNotFilledInputs(){
         bsLoginPage.clickOnLoginButton();
-        Assert.assertEquals(bsLoginPage.getUsernameInputBorderColor(), RGB_RED_COLOR);
-        Assert.assertEquals(bsLoginPage.getPasswordInputBorderColor(), RGB_RED_COLOR);
+        Assert.assertEquals(bsLoginPage.getUsernameInputBorderColor(),RGB_RED_COLOR);
+        Assert.assertEquals(bsLoginPage.getPasswordInputBorderColor(),RGB_RED_COLOR);
     }
 
     @Test
@@ -90,7 +89,7 @@ public class BSLoginPageTest extends TestBase {
 
     @Test
     public void newUserButtonUsDirectedToRegister(){
-        Assert.assertNotEquals(bsLoginPage.getCurrentUrl(), bsLoginPage.clickOnNewUserButton().getCurrentUrl());
+        Assert.assertNotEquals(bsLoginPage.getCurrentUrl(),bsLoginPage.clickOnNewUserButton().getCurrentUrl());
     }
 
     @DataProvider

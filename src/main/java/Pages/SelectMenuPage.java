@@ -1,13 +1,10 @@
 package Pages;
 
 import TestComponents.BasePages;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
@@ -72,10 +69,15 @@ public class SelectMenuPage extends BasePages {
     }
 
     public void selectAllOptionsInMultiSelectDropDown(){
-        typeAndSelectOptionInMultiSelectDropDown("Green");
-        typeAndSelectOptionInMultiSelectDropDown("Blue");
-        typeAndSelectOptionInMultiSelectDropDown("Black");
-        typeAndSelectOptionInMultiSelectDropDown("Red");
+        final String COLOR1 = "Green";
+        final String COLOR2 = "Blue";
+        final String COLOR3 = "Black";
+        final String COLOR4 = "Red";
+
+        typeAndSelectOptionInMultiSelectDropDown(COLOR1);
+        typeAndSelectOptionInMultiSelectDropDown(COLOR2);
+        typeAndSelectOptionInMultiSelectDropDown(COLOR3);
+        typeAndSelectOptionInMultiSelectDropDown(COLOR4);
     }
 
     public void selectValueOnOldStyleSelectMenu(String color){
@@ -113,7 +115,8 @@ public class SelectMenuPage extends BasePages {
     }
 
     public String getSelectValueOnOldStyleSelectMenuText(){
-        return getElementAttribute(oldStyleSelectMenu,"value");//this obtains the value of the selected option that is numeric
+        final String VALUE_ATTRIBUTE = "value";
+        return getElementAttribute(oldStyleSelectMenu,VALUE_ATTRIBUTE);//this obtains the value of the selected option that is numeric
     }
 
     public String RetrieveTextOfSelectedOptionFromOldStyleMenu(){

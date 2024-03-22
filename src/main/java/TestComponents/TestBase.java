@@ -65,6 +65,9 @@ public class TestBase{
     protected BSAPIPage bsapiPage;
 
     //BSProfilePage
+    //BookPage
+    //BSRegister
+    //Upload_Download
 
     public TestBase() {
         try {

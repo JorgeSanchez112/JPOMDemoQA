@@ -53,15 +53,15 @@ public class BasePages {
         driver.sendKeys(Keys.ENTER);
     }
 
-    public void backToPage(){
-        driver.navigate().back();
-    }
-
     public void scroll(WebElement element){
         try{
             try {
-                waitForVisibleElement(element);
-                ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+                try{
+                    waitForVisibleElement(element);
+                    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+                }catch (NoSuchElementException e){
+                    e.printStackTrace();
+                }
             }catch (IndexOutOfBoundsException e){
                 e.printStackTrace();
             }
@@ -309,10 +309,14 @@ public class BasePages {
 
     public boolean searchForVisibleElement(List<WebElement> elementsList, String value){
         try{
-            for (WebElement element: elementsList) {
-                if (Objects.equals(element.getText(), value)){
-                    return true;
+            try{
+                for (WebElement element: elementsList) {
+                    if (Objects.equals(element.getText(), value)){
+                        return true;
+                    }
                 }
+            }catch (StaleElementReferenceException e){
+                e.printStackTrace();
             }
         }catch (TimeoutException e){
             e.printStackTrace();

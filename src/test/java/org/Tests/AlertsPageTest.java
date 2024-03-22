@@ -5,7 +5,6 @@ import TestComponents.TestBase;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -72,7 +71,6 @@ public class AlertsPageTest extends TestBase {
         Assert.assertEquals(alertsPage.getConfirmResultText(),DISMISS_ALERT_MESSAGE);
     }
 
-    @Parameters({"inputAlert"})
     @Test(dataProvider = "testData")
     public void validateInputAlert(Object... data){
         String inputAlert = (String) data[0];

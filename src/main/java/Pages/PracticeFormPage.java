@@ -1,7 +1,6 @@
 package Pages;
 
 import TestComponents.BasePages;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -93,6 +92,13 @@ public class PracticeFormPage extends BasePages {
         super(driver);
         PageFactory.initElements(driver,this);
     }
+
+    private final String BORDER_COLOR_ATTRIBUTE = "border-color";
+    private final String PLACEHOLDER_ATTRIBUTE = "placeholder";
+    private final String COLOR_PROPERTY = "color";
+    private final String RGB_RED_COLOR = "rgb(220, 53, 69)";
+    private final String RGBA_RED_COLOR = "rgba(220, 53, 69, 1)";
+    private final String RGB_GREEN_COLOR = "rgb(40, 167, 69)";
 
     public void typeInFirstNameField(String firstName){
         sendKeysToElement(firstNameField,firstName);
@@ -200,22 +206,22 @@ public class PracticeFormPage extends BasePages {
 
     public String getPlaceholderFirstNameField(){
         scroll(firstNameField);
-        return getElementAttribute(firstNameField,"placeholder");
+        return getElementAttribute(firstNameField,PLACEHOLDER_ATTRIBUTE);
     }
 
     public String getCssAttributeFirstNameField(){
-        waitForElementAttributeToContain(firstNameField,"border-color","rgb(220, 53, 69)");
-        return getElementCssValue(firstNameField,"border-color");
+        waitForElementAttributeToContain(firstNameField,BORDER_COLOR_ATTRIBUTE,RGB_RED_COLOR);
+        return getElementCssValue(firstNameField,BORDER_COLOR_ATTRIBUTE);
     }
 
     public String getPlaceholderLastNameField(){
         scroll(lastNameField);
-        return getElementAttribute(lastNameField,"placeholder");
+        return getElementAttribute(lastNameField,PLACEHOLDER_ATTRIBUTE);
     }
 
     public String getCssAttributeLastNameField(){
-        waitForElementAttributeToContain(lastNameField,"border-color","rgb(220, 53, 69)");
-        return getElementCssValue(lastNameField,"border-color");
+        waitForElementAttributeToContain(lastNameField,BORDER_COLOR_ATTRIBUTE,RGB_RED_COLOR);
+        return getElementCssValue(lastNameField,BORDER_COLOR_ATTRIBUTE);
     }
 
     public String getTextOfLabelEmail(){
@@ -225,12 +231,12 @@ public class PracticeFormPage extends BasePages {
 
     public String getPlaceholderEmailField(){
         scroll(emailField);
-        return getElementAttribute(emailField,"placeholder");
+        return getElementAttribute(emailField,PLACEHOLDER_ATTRIBUTE);
     }
 
     public String getCssAttributeEmailField(){
-        waitForElementAttributeToContain(emailField,"border-color","rgb(40, 167, 69)");
-        return getElementCssValue(emailField,"border-color");
+        waitForElementAttributeToContain(emailField,BORDER_COLOR_ATTRIBUTE,RGB_GREEN_COLOR);
+        return getElementCssValue(emailField,BORDER_COLOR_ATTRIBUTE);
     }
 
     public String getTextOfLabelGender(){
@@ -239,8 +245,8 @@ public class PracticeFormPage extends BasePages {
     }
 
     public String getCssAttributeGenderRadioButtons(){
-        waitForElementAttributeToContain(radioButtonGenders.get(0),"border-color","rgba(220, 53, 69, 1)");
-        return getElementCssValue(radioButtonGenders.get(0),"color");
+        waitForElementAttributeToContain(radioButtonGenders.get(0),BORDER_COLOR_ATTRIBUTE,RGBA_RED_COLOR);
+        return getElementCssValue(radioButtonGenders.get(0),COLOR_PROPERTY);
     }
 
     public String getTextOfLabelMobile(){
@@ -250,12 +256,12 @@ public class PracticeFormPage extends BasePages {
 
     public String getPlaceholderMobileField(){
         scroll(mobileField);
-        return getElementAttribute(mobileField,"placeholder");
+        return getElementAttribute(mobileField,PLACEHOLDER_ATTRIBUTE);
     }
 
     public String getCssAttributeMobileField(){
-        waitForElementAttributeToContain(mobileField,"border-color","rgb(220, 53, 69)");
-        return getElementCssValue(mobileField,"border-color");
+        waitForElementAttributeToContain(mobileField,BORDER_COLOR_ATTRIBUTE,RGB_RED_COLOR);
+        return getElementCssValue(mobileField,BORDER_COLOR_ATTRIBUTE);
     }
 
     public String getTextOfLabelDateOfBirth(){
@@ -264,8 +270,8 @@ public class PracticeFormPage extends BasePages {
     }
 
     public String getCssAttributeBirthDateField(){
-        waitForElementAttributeToContain(emailField,"border-color","rgb(220, 53, 69)");
-        return getElementCssValue(emailField,"border-color");
+        waitForElementAttributeToContain(emailField,BORDER_COLOR_ATTRIBUTE,RGB_RED_COLOR);
+        return getElementCssValue(emailField,BORDER_COLOR_ATTRIBUTE);
     }
 
     public String getTextOfLabelSubjects(){
@@ -279,18 +285,18 @@ public class PracticeFormPage extends BasePages {
     }
 
     public String getCssAttributeSportsCheckboxButton(){
-        waitForElementAttributeToContain(checkboxes.get(0),"border-color","rgb(40, 167, 69)");
-        return getElementCssValue(checkboxes.get(0),"border-color");//intern
+        waitForElementAttributeToContain(checkboxes.get(0),BORDER_COLOR_ATTRIBUTE,RGB_GREEN_COLOR);
+        return getElementCssValue(checkboxes.get(0),BORDER_COLOR_ATTRIBUTE);//intern
     }
 
     public String getCssAttributeReadingCheckboxButton(){
-        waitForElementAttributeToContain(checkboxes.get(1),"border-color","rgb(40, 167, 69)");
-        return getElementCssValue(checkboxes.get(1),"border-color");//intern
+        waitForElementAttributeToContain(checkboxes.get(1),BORDER_COLOR_ATTRIBUTE,RGB_GREEN_COLOR);
+        return getElementCssValue(checkboxes.get(1),BORDER_COLOR_ATTRIBUTE);//intern
     }
 
     public String getCssAttributeMusicCheckboxButton(){
-        waitForElementAttributeToContain(checkboxes.get(2),"border-color","rgb(40, 167, 69)");
-        return getElementCssValue(checkboxes.get(2),"border-color");//intern
+        waitForElementAttributeToContain(checkboxes.get(2),BORDER_COLOR_ATTRIBUTE,RGB_GREEN_COLOR);
+        return getElementCssValue(checkboxes.get(2),BORDER_COLOR_ATTRIBUTE);//intern
     }
 
     public String getTextOfLabelPicture(){
@@ -305,12 +311,12 @@ public class PracticeFormPage extends BasePages {
 
     public String getPlaceholderCurrentAddressField(){
         scroll(currentAddressField);
-        return getElementAttribute(currentAddressField,"placeholder");
+        return getElementAttribute(currentAddressField,PLACEHOLDER_ATTRIBUTE);
     }
 
     public String getCssAttributeCurrentAddressField(){
-        waitForElementAttributeToContain(currentAddressField,"border-color","rgba(220, 53, 69, 1)");
-        return getElementCssValue(currentAddressField,"border-color");
+        waitForElementAttributeToContain(currentAddressField,BORDER_COLOR_ATTRIBUTE,RGBA_RED_COLOR);
+        return getElementCssValue(currentAddressField,BORDER_COLOR_ATTRIBUTE);
     }
 
     public String getTextOfLabelStateCity(){

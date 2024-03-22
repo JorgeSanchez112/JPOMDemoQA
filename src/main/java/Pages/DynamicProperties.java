@@ -35,8 +35,11 @@ public class DynamicProperties extends BasePages {
     }
 
     public String getButtonTextColor(){
-        waitForElementAttributeToContain(colorChangeButton,"border-color","rgba(220, 53, 69, 1)");
-        return getElementCssValue(colorChangeButton,"color");
+        final String COLOR_ATTRIBUTE = "color";
+        final String RGBA_RED_COLOR = "rgba(220, 53, 69, 1)";
+
+        waitForElementAttributeToContain(colorChangeButton,COLOR_ATTRIBUTE,RGBA_RED_COLOR);
+        return getElementCssValue(colorChangeButton,COLOR_ATTRIBUTE);
     }
 
     public boolean buttonIsVisible(){

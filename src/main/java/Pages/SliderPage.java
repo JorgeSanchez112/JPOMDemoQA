@@ -18,6 +18,8 @@ public class SliderPage extends BasePages {
         PageFactory.initElements(driver,this);
     }
 
+    private final String VALUE_ATTRIBUTE = "value";
+
     public void changeRangeInputToMinValue(){
         inputRange.sendKeys(Keys.HOME);
     }
@@ -31,11 +33,11 @@ public class SliderPage extends BasePages {
     }
 
     public String getContainerValueText(){
-        return getElementAttribute(containerValue,"value");
+        return getElementAttribute(containerValue,VALUE_ATTRIBUTE);
     }
 
     public String getValueTextOfInputRange(){
-        return getElementAttribute(inputRange,"value");
+        return getElementAttribute(inputRange,VALUE_ATTRIBUTE);
     }
 
 }

@@ -23,29 +23,39 @@ public class ToolTipsPage extends BasePages {
         PageFactory.initElements(driver,this);
     }
 
+    private final String ARIA_DESCRIBEDBY_ATTRIBUTE = "aria-describedby";
+
     public void moveClickerTOHoverButton(){
+        final String CONTENT_ATTRIBUTE_TEXT = "buttonToolTip";
+
         scroll(hoverMeButton);
         moveClickerToElement(hoverMeButton);
-        waitForElementAttributeToContain(hoverMeButton,"aria-describedby","buttonToolTip");
+        waitForElementAttributeToContain(hoverMeButton,ARIA_DESCRIBEDBY_ATTRIBUTE,CONTENT_ATTRIBUTE_TEXT);
     }
 
     public void moveClickerTOHoverInput(){
+        final String CONTENT_ATTRIBUTE_TEXT = "buttonToolTip";
+
         scroll(hoverMeInput);
         moveClickerToElement(hoverMeInput);
-        waitForElementAttributeToContain(hoverMeInput,"aria-describedby","textFieldToolTip");
+        waitForElementAttributeToContain(hoverMeInput,ARIA_DESCRIBEDBY_ATTRIBUTE,CONTENT_ATTRIBUTE_TEXT);
 
     }
 
     public void moveClickerTOContraryLink(){
+        final String CONTENT_ATTRIBUTE_TEXT = "buttonToolTip";
+
         scroll(hoverLink.get(0));
         moveClickerToElement(hoverLink.get(0));
-        waitForElementAttributeToContain(hoverLink.get(0),"aria-describedby","contraryTexToolTip");
+        waitForElementAttributeToContain(hoverLink.get(0),ARIA_DESCRIBEDBY_ATTRIBUTE,CONTENT_ATTRIBUTE_TEXT);
     }
 
     public void moveClickerTOVersionLink(){
+        final String CONTENT_ATTRIBUTE_TEXT = "buttonToolTip";
+
         scroll(hoverLink.get(1));
         moveClickerToElement(hoverLink.get(1));
-        waitForElementAttributeToContain(hoverLink.get(1),"aria-describedby","sectionToolTip");
+        waitForElementAttributeToContain(hoverLink.get(1),ARIA_DESCRIBEDBY_ATTRIBUTE,CONTENT_ATTRIBUTE_TEXT);
     }
 
     public String getPageTitleText(){
@@ -57,18 +67,18 @@ public class ToolTipsPage extends BasePages {
     }
 
     public String getTextFromButtonHoverAttribute(){
-        return getElementAttribute(hoverMeButton,"aria-describedby");
+        return getElementAttribute(hoverMeButton,ARIA_DESCRIBEDBY_ATTRIBUTE);
     }
 
     public String getTextFromInputHoverAttribute(){
-        return getElementAttribute(hoverMeInput,"aria-describedby");
+        return getElementAttribute(hoverMeInput,ARIA_DESCRIBEDBY_ATTRIBUTE);
     }
 
     public String getTextFromHoverContraryLinkAttribute(){
-        return getElementAttribute(hoverLink.get(0),"aria-describedby");
+        return getElementAttribute(hoverLink.get(0),ARIA_DESCRIBEDBY_ATTRIBUTE);
     }
 
     public String getTextFromHoverVersionLinkAttribute(){
-        return getElementAttribute(hoverLink.get(1),"aria-describedby");
+        return getElementAttribute(hoverLink.get(1),ARIA_DESCRIBEDBY_ATTRIBUTE);
     }
 }

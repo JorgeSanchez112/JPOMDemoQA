@@ -41,6 +41,8 @@ public class DatePickerPage extends BasePages {
         PageFactory.initElements(driver,this);
     }
 
+    private final String VALUE_ATTRIBUTE = "value";
+
     public void clickOnDateInput(){
         scroll(dateInput);
         clickWithWait(dateInput);
@@ -109,11 +111,11 @@ public class DatePickerPage extends BasePages {
     }
 
     public String getDateValueText(){
-        return getElementAttribute(dateInput,"value");
+        return getElementAttribute(dateInput,VALUE_ATTRIBUTE);
     }
 
     public String getDateTimeValueText(){
-        return getElementAttribute(dateAndTimeInput,"value");
+        return getElementAttribute(dateAndTimeInput,VALUE_ATTRIBUTE);
     }
 
 }

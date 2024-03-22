@@ -34,6 +34,9 @@ public class PracticeFormPageTest extends TestBase {
     private final String LABEL_STUDENT_EMAIL_FORM_SUBMIT = "Student Email";
     private final String LABEL_MOBILE_FORM_SUBMIT = "Mobile";
     private final String LABEL_ADDRESS_FORM_SUBMIT = "Address";
+    private final String RGB_RED_COLOR = "rgb(220, 53, 69)";
+    private final String RGBA_RED_COLOR = "rgba(220, 53, 69, 1)";
+    private final String RGB_GREEN_COLOR = "rgb(40, 167, 69)";
 
 
     @BeforeMethod
@@ -139,61 +142,61 @@ public class PracticeFormPageTest extends TestBase {
     @Test
     public void validateBorderColorOfFirstNameField(){
         practiceFormPage.enterToSubmitButton();
-        Assert.assertEquals(practiceFormPage.getCssAttributeFirstNameField(), prop.getProperty("RGBRedColor"));
+        Assert.assertEquals(practiceFormPage.getCssAttributeFirstNameField(), RGB_RED_COLOR);
     }
 
     @Test
     public void validateBorderColorOfLastNameField(){
         practiceFormPage.enterToSubmitButton();
-        Assert.assertEquals(practiceFormPage.getCssAttributeLastNameField(), prop.getProperty("RGBRedColor"));
+        Assert.assertEquals(practiceFormPage.getCssAttributeLastNameField(), RGB_RED_COLOR);
     }
 
     @Test
     public void validateBorderColorOfEmailField(){
         practiceFormPage.enterToSubmitButton();
-        Assert.assertEquals(practiceFormPage.getCssAttributeEmailField(), prop.getProperty("RGBGreenColor"));
+        Assert.assertEquals(practiceFormPage.getCssAttributeEmailField(), RGB_GREEN_COLOR);
     }
 
     @Test
     public void validateBorderColorOfGenderRadioButtonsField(){
         practiceFormPage.enterToSubmitButton();
-        Assert.assertEquals(practiceFormPage.getCssAttributeGenderRadioButtons(), prop.getProperty("RGBARedColor"));
+        Assert.assertEquals(practiceFormPage.getCssAttributeGenderRadioButtons(), RGBA_RED_COLOR);
     }
 
     @Test
     public void validateBorderColorOfMobileField(){
         practiceFormPage.enterToSubmitButton();
-        Assert.assertEquals(practiceFormPage.getCssAttributeMobileField(), prop.getProperty("RGBRedColor"));
+        Assert.assertEquals(practiceFormPage.getCssAttributeMobileField(), RGB_RED_COLOR);
     }
 
     @Test
     public void validateBorderColorOfBirthDateField(){
         practiceFormPage.enterToSubmitButton();
-        Assert.assertEquals(practiceFormPage.getCssAttributeBirthDateField(), prop.getProperty("RGBGreenColor"));
+        Assert.assertEquals(practiceFormPage.getCssAttributeBirthDateField(), RGB_GREEN_COLOR);
     }
 
     @Test
     public void validateBorderColorOfSportsCheckboxButton(){
         practiceFormPage.enterToSubmitButton();
-        Assert.assertEquals(practiceFormPage.getCssAttributeSportsCheckboxButton(), prop.getProperty("RGBGreenColor"));
+        Assert.assertEquals(practiceFormPage.getCssAttributeSportsCheckboxButton(), RGB_GREEN_COLOR);
     }
 
     @Test
     public void validateBorderColorOfReadingCheckboxButton(){
         practiceFormPage.enterToSubmitButton();
-        Assert.assertEquals(practiceFormPage.getCssAttributeReadingCheckboxButton(), prop.getProperty("RGBGreenColor"));
+        Assert.assertEquals(practiceFormPage.getCssAttributeReadingCheckboxButton(), RGB_GREEN_COLOR);
     }
 
     @Test
     public void validateBorderColorOfMusicCheckboxButton(){
         practiceFormPage.enterToSubmitButton();
-        Assert.assertEquals(practiceFormPage.getCssAttributeMusicCheckboxButton(), prop.getProperty("RGBGreenColor"));
+        Assert.assertEquals(practiceFormPage.getCssAttributeMusicCheckboxButton(), RGB_GREEN_COLOR);
     }
 
     @Test
     public void validateBorderColorOfCurrentAddressField(){
         practiceFormPage.enterToSubmitButton();
-        Assert.assertEquals(practiceFormPage.getCssAttributeCurrentAddressField(), prop.getProperty("RGBGreenColor"));
+        Assert.assertEquals(practiceFormPage.getCssAttributeCurrentAddressField(), RGB_GREEN_COLOR);
     }
 
     @Test(dataProvider = "testData")
