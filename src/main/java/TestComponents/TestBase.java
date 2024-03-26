@@ -37,7 +37,7 @@ public class TestBase{
     protected LinksPage linksPage;
     protected BrokenLinksPage brokenLinksPage;
     protected UploadDownloadPage uploadDownloadPage;
-    protected DynamicProperties dynamicProperties;
+    protected DynamicPropertiesPage dynamicPropertiesPage;
     protected PracticeFormPage practiceFormPage;
     protected BrowserWindowsPage browserWindowsPage;
     protected AlertsPage alertsPage;
@@ -64,8 +64,44 @@ public class TestBase{
     protected BSIBookPage bsiBookPage;
     protected BSAPIPage bsapiPage;
 
-    //BSProfilePage
-    //Upload_Download
+    /*ButtonsPageTest
+	ValidateRightClickInABtn
+
+LinksPage
+	ValidateNoContentLink
+
+Browser Windows
+	ValidateNewWindowMessage
+
+Frames
+	ValidateChangeToBigFrame
+
+AutoComplete
+	ValidateColorNamesInMultipleContainer
+	ValidateColorNameInSingleContainer
+
+DatePickerPageTest
+	ValidateDateTimeSelected
+
+Progress Bar
+	ValidateProgressBar
+
+ToolTipsPage
+	ValidateVersionLinkHover
+	ValidateInputHover
+
+Sortable
+	DragFirstElementAndDropItInSixthElementOfElementsGrid
+	DragThirdElementAndDropItInTheSecondToLastElementOfElementList
+
+Selectable
+	ValidateCrasJustoOdioListElementIsSelectable
+	ValidateSevenGridElementIsSelectable
+
+Droppable
+	IsNoRevertDraggableDroppedToTarget
+	IsPreventDraggableDroppedToGreedyInnerTarget
+	IsPreventDraggableDroppedToNotGreedyTarger*/
 
     public TestBase() {
         try {

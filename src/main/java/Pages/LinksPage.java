@@ -11,7 +11,7 @@ public class LinksPage extends BasePages {
     private WebElement  linkToHomePage;
     @FindBy(css = "#linkWrapper > P:nth-child(3) > a")
     private WebElement secondLinkToHomePage;
-    @FindBy(linkText = "Created")
+    @FindBy(id = "created")
     private WebElement http201;
     @FindBy(linkText = "No Content")
     private WebElement http204;
@@ -81,14 +81,17 @@ public class LinksPage extends BasePages {
     }
 
     public String getHrefOfHomeETgEzLink(){
+        scroll(secondLinkToHomePage);
         return getElementAttribute(secondLinkToHomePage,HREF_ATTRIBUTE);
     }
 
     public String getHttpMessage() {
+        scroll(httpMessage);
         return getElementTextWithWait(httpMessage);
     }
 
     public String getNameLinkMessage(){
+        scroll(linkMessage);
         return getElementTextWithWait(linkMessage);
     }
 }

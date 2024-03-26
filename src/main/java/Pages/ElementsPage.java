@@ -26,63 +26,111 @@ public class ElementsPage extends BasePages {
     }
 
     public TextBoxPage clickOnTextBoxSection(){
-        waitForChargedElementsOfAWebElementList(deployed_element_exercises);
-        clickWithWait(deployed_element_exercises.get(0));
+        try {
+            waitForChargedElementsOfAWebElementList(deployed_element_exercises);
+            scroll(deployed_element_exercises.get(0));
+            clickWithWait(deployed_element_exercises.get(0));
+        }catch (IndexOutOfBoundsException e){
+            System.out.println("Text Box Section has been not found");
+            e.printStackTrace();
+        }
         return new TextBoxPage(driver);
     }
 
     public CheckBoxPage clickOnCheckBoxSection(){
-        waitForChargedElementsOfAWebElementList(deployed_element_exercises);
-        clickWithWait(deployed_element_exercises.get(1));
+        try {
+            waitForChargedElementsOfAWebElementList(deployed_element_exercises);
+            scroll(deployed_element_exercises.get(1));
+            clickWithWait(deployed_element_exercises.get(1));
+        }catch (IndexOutOfBoundsException e){
+            System.out.println("Check Box Section has been not found");
+            e.printStackTrace();
+        }
         return new CheckBoxPage(driver);
     }
 
     public RadioButtonPage clickOnRadioButtonSection(){
-        waitForChargedElementsOfAWebElementList(deployed_element_exercises);
-        clickWithWait(deployed_element_exercises.get(2));
+        try {
+            waitForChargedElementsOfAWebElementList(deployed_element_exercises);
+            scroll(deployed_element_exercises.get(2));
+            clickWithWait(deployed_element_exercises.get(2));
+        }catch (IndexOutOfBoundsException e){
+            System.out.println("Radio Button Section has been not found");
+            e.printStackTrace();
+        }
         return new RadioButtonPage(driver);
     }
 
     public WebTablesPage clickOnWebTablesSection(){
-        waitForChargedElementsOfAWebElementList(deployed_element_exercises);
-        scroll(deployed_element_exercises.get(3));
-        clickWithWait(deployed_element_exercises.get(3));
+        try {
+            waitForChargedElementsOfAWebElementList(deployed_element_exercises);
+            scroll(deployed_element_exercises.get(3));
+            clickWithWait(deployed_element_exercises.get(3));
+        }catch (IndexOutOfBoundsException e){
+            System.out.println("Web Table Section has been not found");
+            e.printStackTrace();
+        }
         return new WebTablesPage(driver);
     }
 
     public ButtonsPage clickOnButtonsSection(){
-        waitForChargedElementsOfAWebElementList(deployed_element_exercises);
-        scroll(deployed_element_exercises.get(4));
-        clickWithWait(deployed_element_exercises.get(4));
+        try {
+            waitForChargedElementsOfAWebElementList(deployed_element_exercises);
+            scroll(deployed_element_exercises.get(4));
+            clickWithWait(deployed_element_exercises.get(4));
+        }catch (IndexOutOfBoundsException e) {
+            System.out.println("Buttons Section has been not found");
+            e.printStackTrace();
+        }
         return new ButtonsPage(driver);
     }
 
     public LinksPage clickOnLinksSection(){
-        waitForChargedElementsOfAWebElementList(deployed_element_exercises);
-        scroll(deployed_element_exercises.get(5));
-        clickWithWait(deployed_element_exercises.get(5));
+        try {
+            waitForChargedElementsOfAWebElementList(deployed_element_exercises);
+            scroll(deployed_element_exercises.get(5));
+            clickWithWait(deployed_element_exercises.get(5));
+        }catch (IndexOutOfBoundsException e){
+            System.out.println("Links Section has been not found");
+            e.printStackTrace();
+        }
         return new LinksPage(driver);
     }
 
     public BrokenLinksPage clickOnBrokenLinksImageSection(){
-        waitForChargedElementsOfAWebElementList(deployed_element_exercises);
-        scroll(deployed_element_exercises.get(6));
-        clickWithWait(deployed_element_exercises.get(6));
+        try {
+            waitForChargedElementsOfAWebElementList(deployed_element_exercises);
+            scroll(deployed_element_exercises.get(6));
+            clickWithWait(deployed_element_exercises.get(6));
+        }catch (IndexOutOfBoundsException e){
+            System.out.println("Broken Section has been not found");
+            e.printStackTrace();
+        }
         return new BrokenLinksPage(driver);
     }
 
     public UploadDownloadPage clickOnUploadDownloadSection(){
-        waitForChargedElementsOfAWebElementList(deployed_element_exercises);
-        scroll(deployed_element_exercises.get(7));
-        clickWithWait(deployed_element_exercises.get(7));
+        try {
+            waitForChargedElementsOfAWebElementList(deployed_element_exercises);
+            scroll(deployed_element_exercises.get(7));
+            clickWithWait(deployed_element_exercises.get(7));
+        }catch (IndexOutOfBoundsException e){
+            System.out.println("Upload and download Section has been not found");
+            e.printStackTrace();
+        }
         return new UploadDownloadPage(driver);
     }
 
-    public DynamicProperties clickOnDynamicPropertiesSection(){
-        waitForChargedElementsOfAWebElementList(deployed_element_exercises);
-        scroll(deployed_element_exercises.get(8));
-        clickWithWait(deployed_element_exercises.get(8));
-        return new DynamicProperties(driver);
+    public DynamicPropertiesPage clickOnDynamicPropertiesSection(){
+        try {
+            waitForChargedElementsOfAWebElementList(deployed_element_exercises);
+            scroll(deployed_element_exercises.get(8));
+            clickWithWait(deployed_element_exercises.get(8));
+        }catch (IndexOutOfBoundsException e){
+            System.out.println("Dynamic properties Section has been not found");
+            e.printStackTrace();
+        }
+        return new DynamicPropertiesPage(driver);
     }
 
 }

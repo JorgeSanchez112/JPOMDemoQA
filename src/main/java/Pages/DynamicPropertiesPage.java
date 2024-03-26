@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class DynamicProperties extends BasePages {
+public class DynamicPropertiesPage extends BasePages {
     @FindBy(css = "div.col-md-6 > div > p")
     private WebElement randomIdText;
     @FindBy(id = "enableAfter")
@@ -16,7 +16,7 @@ public class DynamicProperties extends BasePages {
     @FindBy(id = "visibleAfter")
     private WebElement visibleAfterButton;
 
-    public DynamicProperties(WebDriver driver) {
+    public DynamicPropertiesPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver,this);
     }

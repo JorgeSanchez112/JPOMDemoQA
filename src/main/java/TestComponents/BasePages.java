@@ -207,7 +207,11 @@ public class BasePages {
 
     public boolean hasElementBeenSelected(WebElement element){
         try {
-            return element.isSelected();
+            try{
+                return element.isSelected();
+            }catch (IndexOutOfBoundsException e){
+                handleException(MESSAGE_TO_INDEX_OUT_OF_BOUNDS_EXCEPTION,e);
+            }
         }catch (WebDriverException e){
             handleException(MESSAGE_TO_WEB_DRIVER_EXCEPTION,e);
         }

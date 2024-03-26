@@ -9,10 +9,8 @@ import org.openqa.selenium.support.PageFactory;
 public class UploadDownloadPage extends BasePages {
     @FindBy(id = "downloadButton")
     private WebElement downloadButton;
-
     @FindBy(id = "uploadFile")
     private WebElement uploadFileButton;
-
     @FindBy(id = "uploadedFilePath")
     private WebElement FilePathText;
 
@@ -26,7 +24,7 @@ public class UploadDownloadPage extends BasePages {
     }
 
     public void searchFileInSelectFile(){
-        sendKeysToElement(uploadFileButton, System.getProperty("user.home") + "Downloads\\sampleFile.jpeg");
+        sendKeysToElement(uploadFileButton, System.getProperty("user.home") + "\\Downloads\\sampleFile.jpeg");
     }
 
     public String getPageTitleText(){

@@ -33,6 +33,7 @@ public class ButtonsPage extends BasePages {
 
     public void clickOnRightBtn(){
         scroll(rightClickBtn);
+        waitForClick(rightClickBtn);
         rightClick(rightClickBtn);
     }
 

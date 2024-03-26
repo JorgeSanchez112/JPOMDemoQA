@@ -100,7 +100,7 @@
 
     <test name = "Dynamic Properties">
         <classes>
-            <class name = "org.Tests.DynamicPropertiesPageTest" />
+            <class name = "org.Tests.DynamicPropertiesPagePageTest" />
         </classes>
     </test>
     

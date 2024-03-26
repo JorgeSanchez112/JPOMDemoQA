@@ -60,6 +60,6 @@ public class RadioButtonPage extends BasePages {
     }
 
     public boolean isRadioButtonEnabled(){
-        return isElementEnabledWithEnableWait(disabledRadioButton);
+        return disabledRadioButton.isEnabled();
     }
 }
