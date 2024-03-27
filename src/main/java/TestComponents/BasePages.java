@@ -22,7 +22,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class BasePages {
-    private static final Logger logger = LogManager.getLogger();
+    Logger logger = LogManager.getLogger(BasePages.class);
 
     @FindBy(className = "text-center")
     protected WebElement pageTitle;
@@ -47,6 +47,7 @@ public class BasePages {
         waitAlert();
         try {
             driver.switchTo().alert().accept();
+            logger.info("Alert accepted");
         }catch (NoAlertPresentException e){
             handleException(MESSAGE_TO_NO_ALERT_PRESENT_EXCEPTION, e);
         }
@@ -56,6 +57,7 @@ public class BasePages {
         waitAlert();
         try{
             driver.switchTo().alert().dismiss();
+            logger.info("Alert Dismiss");
         }catch (NoAlertPresentException e){
             handleException(MESSAGE_TO_NO_ALERT_PRESENT_EXCEPTION,e);
         }
@@ -63,6 +65,7 @@ public class BasePages {
 
     public void pressEnterKey(WebElement driver){
         driver.sendKeys(Keys.ENTER);
+        logger.info("Enter key pressed");
     }
 
     public void scroll(WebElement element){
@@ -70,6 +73,7 @@ public class BasePages {
             try {
                 try{
                     waitForVisibleElement(element);
+                    logger.info("Scroll to: " + element);
                     ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
                 }catch (NoSuchElementException e){
                     handleException(MESSAGE_TO_NO_SUCH_ELEMENT_EXCEPTION,e);
@@ -85,6 +89,7 @@ public class BasePages {
     public void hidePublicity(WebElement element){
         waitForVisibleElement(element);
         try {
+            logger.info("Hide element: " + element);
             ((JavascriptExecutor) driver).executeScript("arguments[0].style.display = 'none';", element);
         }catch (WebDriverException e){
             handleException(MESSAGE_TO_WEB_DRIVER_EXCEPTION,e);
@@ -93,6 +98,8 @@ public class BasePages {
 
     public void sendKeysToElement(WebElement input,String text){
         try {
+            logger.info("Send keys to: " + input);
+            logger.info("value sent: " + text);
             input.sendKeys(text);
         }catch (WebDriverException e){
             handleException(MESSAGE_TO_WEB_DRIVER_EXCEPTION,e);
@@ -101,6 +108,7 @@ public class BasePages {
 
     public void waitForClick(WebElement element){
         try{
+            logger.info("Wait for element: " + element + " is clickable");
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             wait.until(ExpectedConditions.elementToBeClickable(element));
         }catch (WebDriverException e){
@@ -110,6 +118,7 @@ public class BasePages {
 
     public void waitForElementAttributeToContain(WebElement element, String attribute, String expectedValue) {
         try {
+            logger.info("Wait for element: " + element + " attribute: " + attribute + "contain: " + expectedValue);
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             wait.until(ExpectedConditions.attributeContains(element, attribute, expectedValue));
         } catch (TimeoutException e) {
@@ -120,6 +129,7 @@ public class BasePages {
     public void waitForEnableElement(WebElement element){
         try {
             try {
+                logger.info("Wait for enable element: " + element);
                 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
                 wait.until(ExpectedConditions.elementToBeClickable(element));
             }catch (TimeoutException e){
@@ -133,6 +143,7 @@ public class BasePages {
     public void waitForVisibleElement(WebElement element){
         try{
             try {
+                logger.info("wait for visible Element: " + element);
                 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
                 wait.until(ExpectedConditions.visibilityOf(element));
             }catch (NoSuchElementException e){
@@ -147,6 +158,7 @@ public class BasePages {
         Select select = new Select(options);
         try{
             select.selectByVisibleText(elementText);
+            logger.info("Value expected to be selected: " + elementText);
         }catch (NoSuchElementException e){
             handleException(MESSAGE_TO_NO_SUCH_ELEMENT_EXCEPTION + "The element Text should contain the same value that the option",e);
         }
@@ -155,8 +167,11 @@ public class BasePages {
     public String getElementTextAccordingToPositionReceived(List<WebElement> elements,int position){
         if (elements.size() != 0){
             try{
-                scroll(elements.get(position));
-                return elements.get(position).getText();
+                WebElement element = elements.get(position);
+                scroll(element);
+                String elementText = element.getText();
+                logger.info("Element text received " + elementText + "according to position: " + position);
+                return elementText;
             }catch (IndexOutOfBoundsException e){
                 handleException(MESSAGE_TO_INDEX_OUT_OF_BOUNDS_EXCEPTION,e);
             }
@@ -166,8 +181,11 @@ public class BasePages {
 
     public String getElementTextWithWait(WebElement element){
         try {
+            String elementText = element.getText();
+
             waitForVisibleElement(element);
-            return element.getText();
+            logger.info("Text received: " + elementText + " of element: " + element);
+            return elementText;
         }catch (WebDriverException e){
             handleException(MESSAGE_TO_WEB_DRIVER_EXCEPTION,e);
         }
@@ -176,7 +194,10 @@ public class BasePages {
 
     public String getElementAttribute(WebElement element, String attribute){
         try {
-            return element.getAttribute(attribute);
+            String elementAttribute = element.getAttribute(attribute);
+
+            logger.info("Attribute obtained: " + elementAttribute + "of element: " + element);
+            return elementAttribute;
         }catch (WebDriverException e){
             handleException(MESSAGE_TO_WEB_DRIVER_EXCEPTION,e);
         }
@@ -184,11 +205,13 @@ public class BasePages {
     }
 
     public String deleteAllLetters(String textWithLetters){
+        logger.info("All the letters in this string: " + textWithLetters + "were deleted");
         return textWithLetters.replaceAll("[a-zA-Z]","");
     }
 
     public String changeFormatOfStringToReturnTextWithoutValueTypeFloat(String textToChangeFormat){
         try {
+            logger.info("String format was changed to return value: " + textToChangeFormat + " without value tpe float");
             return String.format("%.0f", Double.parseDouble(deleteAllLetters(textToChangeFormat)));
         }catch (NumberFormatException e){
             handleException(MESSAGE_NUMBER_FORMAT_EXCEPTION,e);
@@ -198,6 +221,9 @@ public class BasePages {
 
     public String getElementCssValue(WebElement element, String propertyName){
         try {
+            String elementCSS = element.getCssValue(propertyName);
+
+            logger.info("Css value: " + elementCSS + " obtain with this property name: " + propertyName + " suing this element: " + element);
             return element.getCssValue(propertyName);
         }catch (WebDriverException e){
             handleException(MESSAGE_TO_WEB_DRIVER_EXCEPTION,e);
@@ -208,7 +234,10 @@ public class BasePages {
     public boolean hasElementBeenSelected(WebElement element){
         try {
             try{
-                return element.isSelected();
+                boolean elementSelected = element.isSelected();
+
+                logger.info("Element: " + "was selected: " + elementSelected);
+                return elementSelected;
             }catch (IndexOutOfBoundsException e){
                 handleException(MESSAGE_TO_INDEX_OUT_OF_BOUNDS_EXCEPTION,e);
             }
@@ -220,8 +249,11 @@ public class BasePages {
 
     public boolean isElementEnabledWithEnableWait(WebElement element){
         try {
+            boolean elementEnabled = element.isEnabled();
+
             waitForEnableElement(element);
-            return element.isEnabled();
+            logger.info("Is element: " + element + "enabled: " + elementEnabled);
+            return elementEnabled;
         }catch (WebDriverException e){
             handleException(MESSAGE_TO_WEB_DRIVER_EXCEPTION,e);
         }
@@ -230,8 +262,11 @@ public class BasePages {
 
     public boolean isElementDisplayedWithWait(WebElement element){
         try {
+            boolean elementDisplayed = element.isDisplayed();
+
             waitForVisibleElement(element);
-            return element.isDisplayed();
+            logger.info("Is element: " + element + "displayed: " + elementDisplayed);
+            return elementDisplayed;
         }catch (WebDriverException e){
             handleException(MESSAGE_TO_WEB_DRIVER_EXCEPTION,e);
         }
@@ -241,8 +276,11 @@ public class BasePages {
     public boolean isElementVisibleAccordingToPositionReceivedOfList(List<WebElement> elements, int position){
         if (elements.size() != 0){
             try{
+                WebElement element = elements.get(position);
                 scroll(elements.get(position));
-                return isElementDisplayedWithWait(elements.get(position));
+                boolean elementDisplayed = isElementDisplayedWithWait(elements.get(position));
+                logger.info("is Element" + element + "visible: " + elementDisplayed + "according to position: " + position);
+                return elementDisplayed;
             }catch (IndexOutOfBoundsException e){
                 handleException(MESSAGE_TO_INDEX_OUT_OF_BOUNDS_EXCEPTION,e);
             }
@@ -257,6 +295,7 @@ public class BasePages {
             try {
                 try {
                     try {
+                        logger.info("Fluent wait execution with this list elements: " + elementsList);
                         FluentWait wait = new FluentWait(driver);
                         wait.withTimeout(Duration.ofSeconds(10));
                         wait.pollingEvery(Duration.ofMillis(250));
@@ -278,6 +317,7 @@ public class BasePages {
     public void waitAlert(){
         try {
             try {
+                logger.info("Wait for alert");
                 WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
                 wait.until(ExpectedConditions.alertIsPresent());
             }catch (NoSuchElementException e){
@@ -296,6 +336,7 @@ public class BasePages {
             try {
                 waitForClick(element);
                 element.click();
+                logger.info("Click on element: " + element);
             }catch (ElementClickInterceptedException e){
                 handleException(MESSAGE_TO_ELEMENT_CLICK_INTERCEPTED_EXCEPTION,e);
             }
@@ -308,24 +349,29 @@ public class BasePages {
         String mainWindowHandle = driver.getWindowHandle();
         for (String windowHandle : driver.getWindowHandles()) {
             if (!windowHandle.equals(mainWindowHandle)) {
+                logger.info("Switch to tab: " + windowHandle);
                 driver.switchTo().window(windowHandle);
                 break;
             }
         }
     }
 
-    public boolean isListItemSelected(WebElement listItem) {
+    public boolean isListItemSelected(WebElement listItem) { //this and 'is Element Dropped could be replaced in just one method'
         String expectedClass = "active";
         String actualClass = listItem.getAttribute("class");
+        boolean elementContainsExpectedClass = actualClass.contains(expectedClass);
 
-        return actualClass.contains(expectedClass);
+        logger.info("Element: " + listItem + "contain: " + expectedClass + "in attribute: " + actualClass + " = " + elementContainsExpectedClass);
+        return elementContainsExpectedClass;
     }
 
     public boolean isElementDropped(WebElement listItem) {
         String expectedClass = "ui-state-highlight";
         String actualClass = listItem.getAttribute("class");
+        boolean elementContainsExpectedClass = actualClass.contains(expectedClass);
 
-        return actualClass.contains(expectedClass);
+        logger.info("Element: " + listItem + "contain: " + expectedClass + "in attribute: " + actualClass + " = " + elementContainsExpectedClass);
+        return elementContainsExpectedClass;
     }
 
     public boolean searchForVisibleElement(List<WebElement> elementsList, String value){
@@ -334,9 +380,12 @@ public class BasePages {
         try{
             try{
                 for (WebElement element: elementsList) {
+                    logger.info("Element: " + element);
                     if (Objects.equals(element.getText(), value)){
+                        logger.info("is visible");
                         return true;
                     }
+                    logger.info("is not visible");
                 }
             }catch (StaleElementReferenceException e){
                 handleException(MESSAGE_TO_STALE_ELEMENT_REFERENCE_EXCEPTION,e);
@@ -351,7 +400,9 @@ public class BasePages {
         WebElement element = runWebElementList(elementList);
         try {
             scroll(element);
-            return element.isDisplayed();
+            boolean elementDisplayed = isElementDisplayedWithWait(element);
+            logger.info("Element: " + element + "is visible: " + elementDisplayed);
+            return elementDisplayed;
         }catch (TimeoutException e){
             handleException(MESSAGE_TO_TIME_OUT_EXCEPTION,e);
         }
@@ -361,12 +412,15 @@ public class BasePages {
     public boolean validateResponseCodeIs200inAList(List<WebElement> elementList) throws IOException {
         WebElement element = runWebElementList(elementList);
         scroll(element);
-        return validateHTTPS_Response(element.getAttribute("src"));
+        boolean hTTPResponse = validateHTTPS_Response(element.getAttribute("src"));
+        logger.info("HTTP Code of element: " + element + " is 200: " + hTTPResponse);
+        return hTTPResponse;
     }
 
     public WebElement runWebElementList(List<WebElement> elementList){
         try {
             for (WebElement element: elementList) {
+                logger.info("Element: " + element + "was returned");
                 return element;
             }
         }catch (NoSuchElementException e){
@@ -379,6 +433,7 @@ public class BasePages {
         int count = 0;
         for (WebElement element: elementsList) {
             if (Objects.equals(element.getText(), value)){
+                logger.info("Element with this text: " + value + "is in the position: " + count);
                 return count;
             }
             count++;
@@ -387,13 +442,16 @@ public class BasePages {
     }
 
     public float subtractQuantityToParameter(float targetParameter,float valueToDeduct){
-        return  targetParameter - valueToDeduct;
+        float result = targetParameter - valueToDeduct;
+        logger.info("Subtract: " + targetParameter + " with: " + valueToDeduct + " = " + result);
+        return result;
     }
 
     public int searchNumberOne(List<WebElement> dateOfDaysList){
         try {
             for (int i = 0; i<= dateOfDaysList.size(); i++){
                 if (Objects.equals(dateOfDaysList.get(i).getText(), "1")){
+                    logger.info("Searching the number one in a list: " + dateOfDaysList);
                     return i;
                 }
             }
@@ -406,12 +464,15 @@ public class BasePages {
     public List<WebElement> addElementsToList(List<WebElement> daysList){
         int index = searchNumberOne(daysList);
 
+        logger.info("Creating a new WebElement List");
         ArrayList<WebElement> arrayNormalized = new ArrayList<>();
 
+        logger.info("Adding elements");
         for (int i = index; i < daysList.size(); i++) {
             arrayNormalized.add(daysList.get(i));
         }
 
+        logger.info("Return List");
         return arrayNormalized;
     }
 
@@ -419,6 +480,7 @@ public class BasePages {
         int sizeList = list.size();
         int x = 0;
 
+        logger.info("Searching element: " + valueToSearch + " in list: " + list);
         for (WebElement values: list) {
             x ++;
             try {
@@ -428,6 +490,7 @@ public class BasePages {
                     x--;
                     break;
                 } else if (x == sizeList) {
+                    logger.info("Value: " + valueToSearch + " did not find");
                     System.out.println("value does not available");
                 }
             }catch (WebDriverException e){
@@ -439,6 +502,7 @@ public class BasePages {
     public void selectDay(List<WebElement> daysaList, String day){
         int sizeList = daysaList.size();
         int x = 0;
+        logger.info("Searching day");
         for (WebElement daysOfList: addElementsToList(daysaList)) //one method is applied that return one list of days ordered.
         {
             x ++;
@@ -448,6 +512,7 @@ public class BasePages {
                     x--;
                     break;
                 }else if (x == sizeList){
+                    logger.info("Day: " + day + " did not find");
                     System.out.println("day does not exist");
                 }
             }catch (WebDriverException e){
@@ -463,6 +528,7 @@ public class BasePages {
                 .doubleClick()
                 .build()
                 .perform();
+        logger.info("Double click on element: " + element);
     }
 
     public void rightClick(WebElement element){
@@ -471,6 +537,7 @@ public class BasePages {
                 .contextClick()
                 .build()
                 .perform();
+        logger.info("Right click on element: " + element);
     }
 
     public void moveElementToCoordinates(WebElement element, float xCoordinate, float yCoordinate){
@@ -478,6 +545,7 @@ public class BasePages {
         try {
             try {
                 try {
+                    logger.info("Moving element to X coordinate: " + xCoordinate + " Y coordinate: " + yCoordinate);
                     actions.dragAndDropBy(element, (int) xCoordinate, (int) yCoordinate)
                             .build()
                             .perform();
@@ -499,6 +567,7 @@ public class BasePages {
                 actions.moveToElement(element)
                         .build()
                         .perform();
+                logger.info("Move clicker to element: " + element);
             }catch (ElementNotInteractableException e){
                 handleException(MESSAGE_ELEMENT_NOT_INTERACTABLE_EXCEPTION,e);
             }
@@ -510,6 +579,7 @@ public class BasePages {
     public void dragDropMoveElementToTarget(WebElement sourceElement, WebElement targetElement){
         Actions actions = new Actions(driver);
         try {
+            logger.info("Drag and Drop element to element: " + targetElement);
             actions.dragAndDrop(sourceElement, targetElement)
                     .build()
                     .perform();
@@ -521,6 +591,7 @@ public class BasePages {
     public void resizeElement(WebElement element, int sizeX, int sizeY){
         Actions actions = new Actions(driver);
         try {
+            logger.info("Resize element: " + element + " size X: " + sizeX + " size Y: " + sizeY);
             actions.clickAndHold(element)
                     .moveByOffset(sizeX, sizeY)
                     .release()
@@ -539,6 +610,7 @@ public class BasePages {
             http.setRequestMethod("HEAD");
             http.connect();
             int responseCode = http.getResponseCode();
+            logger.info("HTTP response: " + responseCode);
             return responseCode == 200;
         }catch (MalformedURLException e){
             handleException(MESSAGE_MALFORMED_URL_EXCEPTION,e);

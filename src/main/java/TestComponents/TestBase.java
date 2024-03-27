@@ -1,6 +1,8 @@
 package TestComponents;
 
 import Pages.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeOptions;
@@ -20,6 +22,7 @@ import java.util.Properties;
 public class TestBase{
 
     protected static final ThreadLocal<WebDriver> webDriverThreadLocal = new ThreadLocal<>();
+    protected Logger logger = LogManager.getLogger(TestBase.class);
     protected WebDriver driver;
     protected Properties prop;
     protected HomePage homePage;
@@ -186,6 +189,7 @@ Droppable
             if (driver != null) {
                 driver.quit();
                 webDriverThreadLocal.remove();
+                logger.info("Close Test Case");
             }
         } catch (WebDriverException e) {
             e.getMessage();

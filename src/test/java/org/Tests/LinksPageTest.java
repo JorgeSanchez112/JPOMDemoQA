@@ -1,15 +1,15 @@
 package org.Tests;
 
 import TestComponents.TestBase;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.logging.Logger;
-
 
 public class LinksPageTest extends TestBase {
-    Logger logger = Logger.getLogger("LinksPageTest");
+    Logger logger = LogManager.getLogger(LinksPageTest.class);
     private final String PAGE_TITLE = "Links";
     private final String URL_HOME = "https://demoqa.com/";
     private final String HTTP_201 = "201";
@@ -61,7 +61,6 @@ public class LinksPageTest extends TestBase {
     @Test
     public void validateCreatedLinkHTTPMessage(){
         logger.info("-------------------validateCreatedLinkHTTPMessage-----------------------");
-        logger.info("Click On Created Link");
         linksPage.clickOnCreatedLink();
         String hTTPMessage = linksPage.getHttpMessage();
         logger.info("HTTP message is: " + hTTPMessage);
@@ -73,7 +72,6 @@ public class LinksPageTest extends TestBase {
     public void validateCreatedLinkMessage(){
         logger.info("-------------------validateCreatedLinkMessage-----------------------");
         linksPage.clickOnCreatedLink();
-        logger.info("Click On Created Link");
         String message = linksPage.getNameLinkMessage();
         logger.info("message is: " + message);
         Assert.assertEquals(message,MESSAGE_201);
@@ -83,17 +81,15 @@ public class LinksPageTest extends TestBase {
     public void validateNoContentLinkHTTPMessage() {
         logger.info("-------------------validateNoContentLinkHTTPMessage-----------------------");
         linksPage.clickOnNoContentLink();
-        logger.info("Click On No Content Link");
         String hTTPMessage = linksPage.getHttpMessage();
         logger.info("HTTP message is: " + hTTPMessage);
-        Assert.assertEquals(linksPage.getHttpMessage(),HTTP_204);
+        Assert.assertEquals(hTTPMessage,HTTP_204);
     }
 
     @Test
     public void validateNoContentLinkMessage(){
         logger.info("-------------------validateNoContentLinkMessage-----------------------");
         linksPage.clickOnNoContentLink();
-        logger.info("Click On No Content Link");
         String message = linksPage.getNameLinkMessage();
         logger.info("Message is: " + message);
         Assert.assertEquals(message,MESSAGE_204);
@@ -103,99 +99,89 @@ public class LinksPageTest extends TestBase {
     public void validateMovedLinkHTTPMessage() {
         logger.info("-------------------validateMovedLinkHTTPMessage-----------------------");
         linksPage.clickOnMovedLink();
-        logger.info("Click On Moved Link");
         String hTTPMessage = linksPage.getHttpMessage();
         logger.info("HTTP message is: " + hTTPMessage);
-        Assert.assertEquals(linksPage.getHttpMessage(),HTTP_301);
+        Assert.assertEquals(hTTPMessage,HTTP_301);
     }
 
     @Test
     public void validateMovedLinkMessage(){
         logger.info("-------------------validateMovedLinkMessage-----------------------");
         linksPage.clickOnMovedLink();
-        logger.info("Click On Moved Link");
-        String message = linksPage.getHttpMessage();
+        String message = linksPage.getNameLinkMessage();
         logger.info("Message is: " + message);
-        Assert.assertEquals(linksPage.getNameLinkMessage(),MESSAGE_301);
+        Assert.assertEquals(message,MESSAGE_301);
     }
 
     @Test
     public void validateBadRequestLinkHTTPMessage() {
         logger.info("-------------------validateCreatedLinkMessage-----------------------");
         linksPage.clickOnBadRequestLink();
-        logger.info("Click On Bad Request Link");
         String hTTPMessage = linksPage.getHttpMessage();
         logger.info("HTTP message is: " + hTTPMessage);
-        Assert.assertEquals(linksPage.getHttpMessage(),HTTP_400);
+        Assert.assertEquals(hTTPMessage,HTTP_400);
     }
 
     @Test
     public void validateBadRequestLinkMessage(){
         logger.info("-------------------validateCreatedLinkMessage-----------------------");
         linksPage.clickOnBadRequestLink();
-        logger.info("Click On Bad Request Link");
-        String message = linksPage.getHttpMessage();
+        String message = linksPage.getNameLinkMessage();
         logger.info("Message is: " + message);
-        Assert.assertEquals(linksPage.getNameLinkMessage(),MESSAGE_400);
+        Assert.assertEquals(message,MESSAGE_400);
     }
 
     @Test
     public void validateUnauthorizedLinkHTTPMessage() {
         logger.info("-------------------validateUnauthorizedLinkHTTPMessage-----------------------");
         linksPage.clickOnUnauthorizedLink();
-        logger.info("Click On Unauthorized Link");
         String hTTPMessage = linksPage.getHttpMessage();
         logger.info("HTTP message is: " + hTTPMessage);
-        Assert.assertEquals(linksPage.getHttpMessage(),HTTP_401);
+        Assert.assertEquals(hTTPMessage,HTTP_401);
     }
 
     @Test
     public void validateUnauthorizedLinkMessage(){
         logger.info("-------------------validateUnauthorizedLinkMessage-----------------------");
         linksPage.clickOnUnauthorizedLink();
-        logger.info("Click On Unauthorized Link");
-        String message = linksPage.getHttpMessage();
+        String message = linksPage.getNameLinkMessage();
         logger.info("Message is: " + message);
-        Assert.assertEquals(linksPage.getNameLinkMessage(),MESSAGE_401);
+        Assert.assertEquals(message,MESSAGE_401);
     }
 
     @Test
     public void validateForbiddenLinkHTTPMessage() {
         logger.info("-------------------validateForbiddenLinkHTTPMessage-----------------------");
         linksPage.clickOnForbiddenLink();
-        logger.info("Click On Forbidden Link");
         String hTTPMessage = linksPage.getHttpMessage();
         logger.info("HTTP message is: " + hTTPMessage);
-        Assert.assertEquals(linksPage.getNameLinkMessage(),MESSAGE_403);
+        Assert.assertEquals(hTTPMessage,HTTP_403);
     }
 
     @Test
     public void validateForbiddenLinkMessage(){
         logger.info("-------------------validateForbiddenLinkMessage-----------------------");
         linksPage.clickOnForbiddenLink();
-        logger.info("Click On Forbidden Link");
-        String message = linksPage.getHttpMessage();
+        String message = linksPage.getNameLinkMessage();
         logger.info("Message is: " + message);
-        Assert.assertEquals(linksPage.getNameLinkMessage(),MESSAGE_403);
+        Assert.assertEquals(message,MESSAGE_403);
     }
 
     @Test
     public void validateNotFoundLinkHTTPMessage() {
         logger.info("-------------------validateNotFoundLinkHTTPMessage-----------------------");
         linksPage.clickOnNotFoundLink();
-        logger.info("Click On Not Found Link");
         String hTTPMessage = linksPage.getHttpMessage();
         logger.info("HTTP message is: " + hTTPMessage);
-        Assert.assertEquals(linksPage.getHttpMessage(),HTTP_404);
+        Assert.assertEquals(hTTPMessage,HTTP_404);
     }
 
     @Test
     public void validateNotFoundLinkMessage(){
         logger.info("-------------------validateNotFoundLinkMessage-----------------------");
         linksPage.clickOnNotFoundLink();
-        logger.info("Click On Not Found Link");
-        String message = linksPage.getHttpMessage();
+        String message = linksPage.getNameLinkMessage();
         logger.info("Message is: " + message);
-        Assert.assertEquals(linksPage.getNameLinkMessage(),MESSAGE_404);
+        Assert.assertEquals(message,MESSAGE_404);
     }
 }
