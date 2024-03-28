@@ -29,7 +29,7 @@ public class LinksPageTest extends TestBase {
 
     @BeforeMethod
     public void initializeClass(){
-        logger.info("-------------------Initializing Class------------------");
+        logger.info("-------------------Initializing LinksPageTest Class------------------");
         linksPage = homePage.clickOnSectionElements().clickOnLinksSection();
         logger.info("-------------------Starting Test-----------------------");
     }

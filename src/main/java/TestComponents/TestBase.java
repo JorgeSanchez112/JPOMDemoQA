@@ -171,8 +171,10 @@ Droppable
         System.out.println(driver);
 
         homePage = new HomePage(driver);
+        logger.info("Initializing homePage Class");
         try{
             try {
+                logger.info("Hiding publicity: " + prop.getProperty("publicityLocator"));
                 homePage.hidePublicity(driver.findElement(By.cssSelector(prop.getProperty("publicityLocator"))));
             }catch (TimeoutException e){
                 e.printStackTrace();
@@ -187,9 +189,9 @@ Droppable
         try {
             WebDriver driver = getDriver();
             if (driver != null) {
+                logger.info("Close Test Case and driver: " + driver);
                 driver.quit();
                 webDriverThreadLocal.remove();
-                logger.info("Close Test Case");
             }
         } catch (WebDriverException e) {
             e.getMessage();

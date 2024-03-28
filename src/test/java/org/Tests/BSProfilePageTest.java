@@ -2,6 +2,8 @@ package org.Tests;
 
 import Resources.ExcelReader;
 import TestComponents.TestBase;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
@@ -10,6 +12,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 public class BSProfilePageTest extends TestBase {
+    private Logger logger = LogManager.getLogger(BSProfilePageTest.class);
     private final String URL_REGISTER = "https://demoqa.com/register";
     private final String URL_LOGIN = "https://demoqa.com/login";
     private final String URL_BOOKS = "https://demoqa.com/books";
@@ -31,104 +34,123 @@ public class BSProfilePageTest extends TestBase {
 
     @BeforeMethod
     public void initializeClass(){
+        logger.info("-------------------Initializing BSProfilePageTest Class------------------");
         bsProfilePage = homePage.clickOnSectionBookStoreApplication().clickOnProfile();
+        logger.info("-------------------Starting Test-----------------------");
     }
 
     @Test
     public void isProfileTitleVisible(){
+        logger.info("-------------------isProfileTitleVisible-----------------------");
         Assert.assertTrue(bsProfilePage.isTitleVisible());
     }
 
     @Test
     public void validateLinkRegisterIsFunctional(){
+        logger.info("-------------------validateLinkRegisterIsFunctional-----------------------");
         Assert.assertEquals(bsProfilePage.clickOnRegisterLink().getCurrentUrl(),URL_REGISTER);
     }
 
     @Test
     public void isMessageDoNotLoginShowed(){
+        logger.info("-------------------isMessageDoNotLoginShowed-----------------------");
         Assert.assertTrue(bsProfilePage.isMessageDoNotLoginShowed());
     }
 
     @Test
     public void isUsernameCorrect() {
+        logger.info("-------------------isUsernameCorrect-----------------------");
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
         Assert.assertEquals(bsProfilePage.getUserNameValueText(),USERNAME);
     }
 
     @Test
     public void validateCorrectBooksLabelText() {
+        logger.info("-------------------validateCorrectBooksLabelText-----------------------");
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
         Assert.assertEquals(bsProfilePage.getBooksLabelText(),BOOKS_LABEL);
     }
 
     @Test
     public void validateCorrectPlaceHolderInSearchBook() {
+        logger.info("-------------------validateCorrectPlaceHolderInSearchBook-----------------------");
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME, PASSWORD);
         Assert.assertEquals(bsProfilePage.getSearchBoxPlaceholderText(), SEARCH_BOX_PLACEHOLDER);
     }
 
     @Test
     public void validateCorrectUsernameLabelText() {
+        logger.info("-------------------validateCorrectUsernameLabelText-----------------------");
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
         Assert.assertEquals(bsProfilePage.getUserNameLabelText(),USERNAME_LABEL);
     }
 
     @Test
     public void validateLogOutButtonRedirectToLogin() {
+        logger.info("-------------------validateLogOutButtonRedirectToLogin-----------------------");
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
         Assert.assertEquals(bsProfilePage.clickOnLogOutButton().getCurrentUrl(),URL_LOGIN);
     }
 
     @Test
     public void validateCorrectImageTitleText() {
+        logger.info("-------------------validateCorrectImageTitleText-----------------------");
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
         Assert.assertEquals(bsProfilePage.getTableTitleImageText(),TABLE_TITLE_IMAGE);
     }
 
     @Test
     public void validateCorrectTitleOfTitleTableText() {
+        logger.info("-------------------validateCorrectTitleOfTitleTableText-----------------------");
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
         Assert.assertEquals(bsProfilePage.getTableTitleTitleText(),TABLE_TITLE_TITLE);
     }
 
     @Test
     public void validateCorrectAuthorTitleOfTableText() {
+        logger.info("-------------------validateCorrectAuthorTitleOfTableText-----------------------");
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
         Assert.assertEquals(bsProfilePage.getTableTitleAuthorText(),TABLE_TITLE_AUTHOR);
     }
 
     @Test
     public void validateCorrectPublisherTitleOfTableText() {
+        logger.info("-------------------validateCorrectPublisherTitleOfTableText-----------------------");
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
         Assert.assertEquals(bsProfilePage.getTableTitlePublisherText(),TABLE_TITLE_PUBLISHER);
     }
 
     @Test
     public void validateCorrectActionTitleOfTableText() {
+        logger.info("-------------------validateCorrectActionTitleOfTableText-----------------------");
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
         Assert.assertEquals(bsProfilePage.getTableTitleActionText(),TABLE_TITLE_ACTION);
     }
 
     @Test
     public void validateNoDataMessageIsVisible() {
+        logger.info("-------------------validateNoDataMessageIsVisible-----------------------");
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
         Assert.assertTrue(bsProfilePage.isMessageNoDataVisible());
     }
 
     @Test
     public void validatePreviousButtonIsEnabled() {
+        logger.info("-------------------validatePreviousButtonIsEnabled-----------------------");
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
         Assert.assertFalse(bsProfilePage.isPreviousButtonEnabled());
     }
 
     @Test
     public void validateNextButtonIsEnabled() {
+        logger.info("-------------------validateNextButtonIsEnabled-----------------------");
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
         Assert.assertFalse(bsProfilePage.isNextButtonEnabled());
     }
 
     @Test(dataProvider = "books")
     public void isBookFoundBySearchBox(Object... data) {
+        logger.info("-------------------isBookFoundBySearchBox-----------------------");
         String titleBook = (String) data[0];
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
         bsProfilePage.typeOnSearchBox(titleBook);
@@ -137,18 +159,21 @@ public class BSProfilePageTest extends TestBase {
 
     @Test
     public void validateCorrectPageLabelText() {
+        logger.info("-------------------validateCorrectPageLabelText-----------------------");
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
         Assert.assertEquals(bsProfilePage.getPageText(),PAGE_OF_TABLE);
     }
 
     @Test
     public void validateCorrectTotalOfPages() {
+        logger.info("-------------------validateCorrectTotalOfPages-----------------------");
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
         Assert.assertEquals(bsProfilePage.getTotalOfPagesText(),TOTAL_PAGES_OF_TABLE);
     }
 
     @Test
     public void wereAllBooksDeleted() {
+        logger.info("-------------------wereAllBooksDeleted-----------------------");
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
         bsProfilePage.deleteAllBooks();
         Assert.assertTrue(bsProfilePage.isMessageNoDataVisible());
@@ -156,12 +181,14 @@ public class BSProfilePageTest extends TestBase {
 
     @Test
     public void validateGoToBookStoreRedirectToBookStorePage() {
+        logger.info("-------------------validateGoToBookStoreRedirectToBookStorePage-----------------------");
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
         Assert.assertEquals(bsProfilePage.clickOnGoToBookStoreButton().getBookStoreUrlText(),URL_BOOKS);
     }
 
     @Test
     public void validateCancelButtonOfDeleteAccountAlertIsFunctional() {
+        logger.info("-------------------validateCancelButtonOfDeleteAccountAlertIsFunctional-----------------------");
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
         bsProfilePage.tryToDeleteAccount();
         Assert.assertEquals(bsProfilePage.getUserNameValueText(),USERNAME);
@@ -169,6 +196,7 @@ public class BSProfilePageTest extends TestBase {
 
     @Test(dataProvider = "books")
     public void validateCancelButtonOfDeleteBooksAlertIsFunctional(Object... data) {
+        logger.info("-------------------validateCancelButtonOfDeleteBooksAlertIsFunctional-----------------------");
         String titleBook = (String) data[0];
 
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
@@ -179,6 +207,7 @@ public class BSProfilePageTest extends TestBase {
 
     @Test(dataProvider = "books")
     public void isAddedABookInTable(Object... data) {
+        logger.info("-------------------isAddedABookInTable-----------------------");
         String titleBook = (String) data[0];
 
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
@@ -188,12 +217,14 @@ public class BSProfilePageTest extends TestBase {
 
     @Test
     public void pageNumber() {
+        logger.info("-------------------pageNumber-----------------------");
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
         Assert.assertEquals(bsProfilePage.getPageNumber(),PAGE_NUMBER_BASE);
     }
 
     @Test(dataProvider = "books")
     public void validateCorrectAuthorRegardToTitleBook(Object... data) {
+        logger.info("-------------------validateCorrectAuthorRegardToTitleBook-----------------------");
         String bookTitle = (String) data[0];
         String authorAccordingTitle = (String) data[1];
 
@@ -203,6 +234,7 @@ public class BSProfilePageTest extends TestBase {
 
     @Test(dataProvider = "books")
     public void validateCorrectPublisherRegardToTitleBook(Object... data) {
+        logger.info("-------------------validateCorrectPublisherRegardToTitleBook-----------------------");
         String bookTitle = (String) data[0];
         String publisherAccordingTitle = (String) data[2];
 
@@ -212,6 +244,7 @@ public class BSProfilePageTest extends TestBase {
 
     @Test(dataProvider = "books")
     public void isNotImageWithBrokeLink(Object... data) throws IOException {
+        logger.info("-------------------isNotImageWithBrokeLink-----------------------");
         String bookTitle = (String) data[0];
 
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
@@ -220,6 +253,7 @@ public class BSProfilePageTest extends TestBase {
 
     @Test(dataProvider = "books")
     public void isABookDeleted(Object... data) {
+        logger.info("-------------------isABookDeleted-----------------------");
         String bookTitle = (String) data[0];
 
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
@@ -229,6 +263,7 @@ public class BSProfilePageTest extends TestBase {
 
     @Test
     public void isShowedDataWithNextButton() {
+        logger.info("-------------------isShowedDataWithNextButton-----------------------");
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
         bsProfilePage.addAllBooksToTableOfBooksCollection();
         bsProfilePage.clickOnNextButton();
@@ -237,6 +272,7 @@ public class BSProfilePageTest extends TestBase {
 
     @Test
     public void isShowedDataWithPreviousButton() {
+        logger.info("-------------------isShowedDataWithPreviousButton-----------------------");
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
         bsProfilePage.addAllBooksToTableOfBooksCollection();
         bsProfilePage.clickOnNextButton();
@@ -256,6 +292,7 @@ public class BSProfilePageTest extends TestBase {
     @DataProvider
     private Object[][] books() throws IOException {
         String sheetName = "bookStore";
+        logger.info("Accessing to: " + sheetName + " data");
         ExcelReader excelReader = new ExcelReader();
         return excelReader.readTestData(sheetName);
     }

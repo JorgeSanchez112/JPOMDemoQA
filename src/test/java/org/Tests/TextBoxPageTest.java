@@ -2,6 +2,8 @@ package org.Tests;
 
 import Resources.ExcelReader;
 import TestComponents.TestBase;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
@@ -10,6 +12,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 public class TextBoxPageTest extends TestBase {
+    private Logger logger = LogManager.getLogger(TextBoxPageTest.class);
     private final String PAGE_TITLE = "Text Box";
     private final String USER_NAME_MESSAGE = "Name:";
     private final String EMAIL_MESSAGE = "Email:";
@@ -18,16 +21,20 @@ public class TextBoxPageTest extends TestBase {
 
     @BeforeMethod
     public void initializeClass(){
-       textBoxPage = homePage.clickOnSectionElements().clickOnTextBoxSection();
+        logger.info("-------------------Initializing TextBoxPageTest Class------------------");
+        textBoxPage = homePage.clickOnSectionElements().clickOnTextBoxSection();
+        logger.info("-------------------Starting Test-----------------------");
     }
 
     @Test
     public void IsCorrectPageTitleText(){
+        logger.info("-------------------IsCorrectPageTitleText-----------------------");
         Assert.assertEquals(textBoxPage.getPageTitleText(),PAGE_TITLE);
     }
 
     @Test(dataProvider = "testData")
     public void validateNameAnswerVisibleIsCorrect(Object... data){
+        logger.info("-------------------validateNameAnswerVisibleIsCorrect-----------------------");
         String username = (String) data[0];
 
         textBoxPage.typeOnUsernameField(username);
@@ -37,6 +44,7 @@ public class TextBoxPageTest extends TestBase {
 
     @Test(dataProvider = "testData")
     public void validateEmailAnswerVisibleIsCorrect(Object... data){
+        logger.info("-------------------validateEmailAnswerVisibleIsCorrect-----------------------");
         String email = (String) data[1];
 
         textBoxPage.typeOnEmailField(email);
@@ -46,6 +54,7 @@ public class TextBoxPageTest extends TestBase {
 
     @Test(dataProvider = "testData")
     public void validateAddressAnswerVisibleIsCorrect(Object... data){
+        logger.info("-------------------validateAddressAnswerVisibleIsCorrect-----------------------");
         String address = (String) data[2];
 
         textBoxPage.typeOnAddressField(address);
@@ -55,6 +64,7 @@ public class TextBoxPageTest extends TestBase {
 
     @Test(dataProvider = "testData")
     public void validatePermanentAddressAnswerIsCorrect(Object... data){
+        logger.info("-------------------validatePermanentAddressAnswerIsCorrect-----------------------");
         String permanentAddress = (String) data[3];
 
         textBoxPage.typeOnPermanentAddressField(permanentAddress);
@@ -64,6 +74,7 @@ public class TextBoxPageTest extends TestBase {
 
     @Test(dataProvider = "testData")
     public void validateAnswers(Object... data){
+        logger.info("-------------------validateAnswers-----------------------");
         String username = (String) data[0];
         String email = (String) data[1];
         String address = (String) data[2];
@@ -79,6 +90,7 @@ public class TextBoxPageTest extends TestBase {
     @DataProvider(name = "testData")
     public Object[][] testData() throws IOException {
         String sheetName = "textBox";
+        logger.info("Accessing to: " + sheetName + " data");
         ExcelReader excelReader = new ExcelReader();
         return excelReader.readTestData(sheetName);
     }

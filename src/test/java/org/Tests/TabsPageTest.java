@@ -1,11 +1,14 @@
 package org.Tests;
 
 import TestComponents.TestBase;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class TabsPageTest extends TestBase {
+    private Logger logger = LogManager.getLogger(TabsPageTest.class);
     private final String PAGE_TITLE = "Tabs";
     private final String FIRST_TAB_TITLE = "What";
     private final String SECOND_TAB_TITLE = "Origin";
@@ -17,41 +20,50 @@ public class TabsPageTest extends TestBase {
 
     @BeforeMethod
     public void initializeClass(){
+        logger.info("-------------------Initializing TabsPageTest Class------------------");
         tabsPage = homePage.clickOnSectionWidgets().clickOnTabs();
+        logger.info("-------------------Starting Test-----------------------");
     }
 
     @Test
     public void validateCorrectPageTitle(){
+        logger.info("-------------------validateCorrectPageTitle-----------------------");
         Assert.assertEquals(tabsPage.getPageTitleText(),PAGE_TITLE);
     }
 
     @Test
     public void subtitleIsShowed(){
+        logger.info("-------------------subtitleIsShowed-----------------------");
         Assert.assertTrue(tabsPage.isSubTitleDisplayed());
     }
 
     @Test
     public void validateCorrectTitleOfFirstTab(){
+        logger.info("-------------------validateCorrectTitleOfFirstTab-----------------------");
         Assert.assertEquals(tabsPage.getFirstTitleTab(),FIRST_TAB_TITLE);
     }
 
     @Test
     public void validateCorrectTitleOfSecondTab(){
+        logger.info("-------------------validateCorrectTitleOfSecondTab-----------------------");
         Assert.assertEquals(tabsPage.getSecondTitleTab(),SECOND_TAB_TITLE);
     }
 
     @Test
     public void validateCorrectTitleOfThirdTab(){
+        logger.info("-------------------validateCorrectTitleOfThirdTab-----------------------");
         Assert.assertEquals(tabsPage.getThirdTitleTab(),THIRD_TAB_TITLE);
     }
 
     @Test
     public void tabWhatParagraphIsDisplayed(){
+        logger.info("-------------------tabWhatParagraphIsDisplayed-----------------------");
         Assert.assertEquals(tabsPage.getParagraphOfWhatText(), WHAT_TAB_TEXT);
     }
 
     @Test
     public void tabOriginParagraphIsDisplayed(){
+        logger.info("-------------------tabOriginParagraphIsDisplayed-----------------------");
         tabsPage.clickOnTabOrigin();
         Assert.assertEquals(tabsPage.getFirstParagraphsOfOriginText(), FIRST_PARAGRAPH_ORIGIN_TAB_TEXT);
 
@@ -59,6 +71,7 @@ public class TabsPageTest extends TestBase {
 
     @Test
     public void secondParagraphOfOriginIsDisplayed(){
+        logger.info("-------------------secondParagraphOfOriginIsDisplayed-----------------------");
         tabsPage.clickOnTabOrigin();
         Assert.assertEquals(tabsPage.getSecondParagraphsOfOriginText(),SECOND_PARAGRAPH_OF_ORIGIN_TAB_TEXT);
     }
@@ -66,12 +79,14 @@ public class TabsPageTest extends TestBase {
 
     @Test
     public void tabUseParagraphIsDisplayed(){
+        logger.info("-------------------tabUseParagraphIsDisplayed-----------------------");
         tabsPage.clickOnTabUse();
         Assert.assertEquals(tabsPage.getParagraphOfUseText(), USE_TAB_TEXT);
     }
 
     @Test
     public void tabMoreIsDisabled(){
+        logger.info("-------------------tabMoreIsDisabled-----------------------");
         Assert.assertTrue(tabsPage.isMoreTabEnabled());
     }
 }
