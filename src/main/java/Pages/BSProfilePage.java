@@ -268,13 +268,13 @@ public class BSProfilePage extends BasePages {
 
     public boolean isPreviousButtonEnabled(){
         scroll(previousButton);
-        return isElementEnabledWithEnableWait(previousButton);
+        return isElementEnabled(previousButton);
     }
 
     public boolean isNextButtonEnabled(){
         waitForVisibleElement(nextButton);
         scroll(nextButton);
-        return isElementEnabledWithEnableWait(nextButton);
+        return isElementEnabled(nextButton);
     }
 
     public BSLoginPage clickOnLoginLink(){
