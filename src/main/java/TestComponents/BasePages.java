@@ -420,8 +420,8 @@ public class BasePages {
 
     /**
      * Description: Wait for 10 second until an alert is present.
-     * @exception NoSuchElementException: it points out that element can't be found, likely an irregular locator or delay charge.
-     * @exception TimeoutException: it refers the action does not accomplish during to the wait expected.
+     * @exception NoSuchElementException: It points out that element can't be found, likely an irregular locator or delay charge.
+     * @exception TimeoutException: It refers the action does not accomplish during to the wait expected.
      * */
     public void waitAlert(){
         try {
@@ -439,10 +439,9 @@ public class BasePages {
     }
 
     /**
-     * Description: Wait for the visibility of target element and then scroll up or down until the element is into view.
-     * @param element WebElement target to do Scroll
-     * @exception NoSuchElementException: it points out that element can't be found, likely an irregular locator or delay charge.
-     * @exception IndexOutOfBoundsException: it points out an attempt to access or manipulate an element at an invalid index position within a collection or array.
+     * Description: Wait for 10 seconds until the element is clickable and then click on it.
+     * @param element WebElement target to do click.
+     * @exception ElementClickInterceptedException: Element has been intercepted, possibly other element no allowed the correct click.
      * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
      * */
     public void clickWithWait(WebElement element){
@@ -462,12 +461,8 @@ public class BasePages {
     }
 
     /**
-     * Description: Wait for the visibility of target element and then scroll up or down until the element is into view.
-     * @param element WebElement target to do Scroll
-     * @exception NoSuchElementException: it points out that element can't be found, likely an irregular locator or delay charge.
-     * @exception IndexOutOfBoundsException: it points out an attempt to access or manipulate an element at an invalid index position within a collection or array.
-     * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
-     * */
+     * Description: Switch from main tab to another tab.
+     */
     public void switchToTab(){
         String mainWindowHandle = driver.getWindowHandle();
         for (String windowHandle : driver.getWindowHandles()) {
@@ -480,8 +475,8 @@ public class BasePages {
     }
 
     /**
-     * Description: Wait for the visibility of target element and then scroll up or down until the element is into view.
-     * @param element WebElement target to do Scroll
+     * Description: c
+     * @param listItem WebElement target to do Scroll
      * @exception NoSuchElementException: it points out that element can't be found, likely an irregular locator or delay charge.
      * @exception IndexOutOfBoundsException: it points out an attempt to access or manipulate an element at an invalid index position within a collection or array.
      * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
@@ -497,7 +492,7 @@ public class BasePages {
 
     /**
      * Description: Wait for the visibility of target element and then scroll up or down until the element is into view.
-     * @param element WebElement target to do Scroll
+     * @param vs WebElement target to do Scroll
      * @exception NoSuchElementException: it points out that element can't be found, likely an irregular locator or delay charge.
      * @exception IndexOutOfBoundsException: it points out an attempt to access or manipulate an element at an invalid index position within a collection or array.
      * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
@@ -512,11 +507,12 @@ public class BasePages {
     }
 
     /**
-     * Description: Wait for the visibility of target element and then scroll up or down until the element is into view.
-     * @param element WebElement target to do Scroll
-     * @exception NoSuchElementException: it points out that element can't be found, likely an irregular locator or delay charge.
-     * @exception IndexOutOfBoundsException: it points out an attempt to access or manipulate an element at an invalid index position within a collection or array.
-     * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
+     * Description: Search in a List if an element is visible with a value.
+     * @param elementsList List webElement .
+     * @param value value of the element searched.
+     * @return Return true if the element searched is visible.
+     * @exception StaleElementReferenceException: Element could have been located and referenced, but then changes state.
+     * @exception TimeoutException: It refers the action does not accomplish during to the wait expected.
      * */
     public boolean searchForVisibleElement(List<WebElement> elementsList, String value){
         String MESSAGE_TO_STALE_ELEMENT_REFERENCE_EXCEPTION = "Element could have been located and referenced, but then changes state or is removed from the DOM before an action is performed on it.";
@@ -541,11 +537,10 @@ public class BasePages {
     }
 
     /**
-     * Description: Wait for the visibility of target element and then scroll up or down until the element is into view.
-     * @param element WebElement target to do Scroll
-     * @exception NoSuchElementException: it points out that element can't be found, likely an irregular locator or delay charge.
-     * @exception IndexOutOfBoundsException: it points out an attempt to access or manipulate an element at an invalid index position within a collection or array.
-     * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
+     * Description: Validate if all the elements in a Element List are visible.
+     * @param elementList List of WebElements.
+     * @return True if the elements are visible.
+     * @exception TimeoutException: It refers the action does not accomplish during to the wait expected.
      * */
     public boolean validateAllListItemsAreVisible(List<WebElement> elementList){
         WebElement element = runWebElementList(elementList);
@@ -561,11 +556,9 @@ public class BasePages {
     }
 
     /**
-     * Description: Wait for the visibility of target element and then scroll up or down until the element is into view.
-     * @param element WebElement target to do Scroll
-     * @exception NoSuchElementException: it points out that element can't be found, likely an irregular locator or delay charge.
-     * @exception IndexOutOfBoundsException: it points out an attempt to access or manipulate an element at an invalid index position within a collection or array.
-     * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
+     * Description: Validate that the HTTP response are 200 in a all the WebElements of a list, the Elements must have a src attribute.
+     * @param elementList List of WebElements.
+     * @return true if the HTTP WebElements response is 200.
      * */
     public boolean validateResponseCodeIs200inAList(List<WebElement> elementList) throws IOException {
         WebElement element = runWebElementList(elementList);
@@ -576,11 +569,10 @@ public class BasePages {
     }
 
     /**
-     * Description: Wait for the visibility of target element and then scroll up or down until the element is into view.
-     * @param element WebElement target to do Scroll
+     * Description: Run a Web Element List and return each WebElement.
+     * @param elementList List of WebElements.
+     * @return return a WebElement of the list.
      * @exception NoSuchElementException: it points out that element can't be found, likely an irregular locator or delay charge.
-     * @exception IndexOutOfBoundsException: it points out an attempt to access or manipulate an element at an invalid index position within a collection or array.
-     * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
      * */
     public WebElement runWebElementList(List<WebElement> elementList){
         try {
@@ -595,11 +587,9 @@ public class BasePages {
     }
 
     /**
-     * Description: Wait for the visibility of target element and then scroll up or down until the element is into view.
-     * @param element WebElement target to do Scroll
-     * @exception NoSuchElementException: it points out that element can't be found, likely an irregular locator or delay charge.
-     * @exception IndexOutOfBoundsException: it points out an attempt to access or manipulate an element at an invalid index position within a collection or array.
-     * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
+     * Description: Get a position of an element inside a List according to its value text.
+     * @param elementsList List of WebElements.
+     * @return Return the position of the desired element as a number.
      * */
     public int getPositionOfOneElementInAList(List<WebElement> elementsList, String value){
         int count = 0;
@@ -614,11 +604,10 @@ public class BasePages {
     }
 
     /**
-     * Description: Wait for the visibility of target element and then scroll up or down until the element is into view.
-     * @param element WebElement target to do Scroll
-     * @exception NoSuchElementException: it points out that element can't be found, likely an irregular locator or delay charge.
-     * @exception IndexOutOfBoundsException: it points out an attempt to access or manipulate an element at an invalid index position within a collection or array.
-     * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
+     * Description: Subtract a target value with the value desired.
+     * @param targetParameter It is a value type float.
+     * @param valueToDeduct It is the value desired to deduct.
+     * @return Return the result subtracted Between the targetParameter and ValueToDeduct as a float.
      * */
     public float subtractQuantityToParameter(float targetParameter,float valueToDeduct){
         float result = targetParameter - valueToDeduct;
@@ -627,11 +616,10 @@ public class BasePages {
     }
 
     /**
-     * Description: Wait for the visibility of target element and then scroll up or down until the element is into view.
-     * @param element WebElement target to do Scroll
-     * @exception NoSuchElementException: it points out that element can't be found, likely an irregular locator or delay charge.
+     * Description: Search in a list of WebElements an WebElement with the value 1.
+     * @param dateOfDaysList List of WebElements, it often contains the number of a month days.
+     * @return Return the position of the WebElement where it found the value 1.
      * @exception IndexOutOfBoundsException: it points out an attempt to access or manipulate an element at an invalid index position within a collection or array.
-     * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
      * */
     public int searchNumberOne(List<WebElement> dateOfDaysList){
         try {
@@ -648,11 +636,9 @@ public class BasePages {
     }
 
     /**
-     * Description: Wait for the visibility of target element and then scroll up or down until the element is into view.
-     * @param element WebElement target to do Scroll
-     * @exception NoSuchElementException: it points out that element can't be found, likely an irregular locator or delay charge.
-     * @exception IndexOutOfBoundsException: it points out an attempt to access or manipulate an element at an invalid index position within a collection or array.
-     * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
+     * Description: It first searches the value number 1 and then creates a new list to finally add the WebElements since the position got of searchNumberOne method.
+     * @param daysList List of WebElement that contains the days of a month.
+     * @return Return a new list beginning since the number one value of a month days.
      * */
     public List<WebElement> addElementsToList(List<WebElement> daysList){
         int index = searchNumberOne(daysList);
@@ -670,10 +656,9 @@ public class BasePages {
     }
 
     /**
-     * Description: Wait for the visibility of target element and then scroll up or down until the element is into view.
-     * @param element WebElement target to do Scroll
-     * @exception NoSuchElementException: it points out that element can't be found, likely an irregular locator or delay charge.
-     * @exception IndexOutOfBoundsException: it points out an attempt to access or manipulate an element at an invalid index position within a collection or array.
+     * Description: Click a WebElement inside a list according to the text value of the WebElement.
+     * @param list List of WebElements.
+     * @param valueToSearch Text value of the WebElement to search.
      * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
      * */
     public void selectListValue(List<WebElement> list, String valueToSearch){
@@ -700,17 +685,16 @@ public class BasePages {
     }
 
     /**
-     * Description: Wait for the visibility of target element and then scroll up or down until the element is into view.
-     * @param element WebElement target to do Scroll
-     * @exception NoSuchElementException: it points out that element can't be found, likely an irregular locator or delay charge.
-     * @exception IndexOutOfBoundsException: it points out an attempt to access or manipulate an element at an invalid index position within a collection or array.
+     * Description: Select the desired day of a WebElement List.
+     * @param daysList List of WebElements that contain the days of a month.
+     * @param day number of day searched.
      * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
      * */
-    public void selectDay(List<WebElement> daysaList, String day){
-        int sizeList = daysaList.size();
+    public void selectDay(List<WebElement> daysList, String day){
+        int sizeList = daysList.size();
         int x = 0;
         logger.info("Searching day");
-        for (WebElement daysOfList: addElementsToList(daysaList)) //one method is applied that return one list of days ordered.
+        for (WebElement daysOfList: addElementsToList(daysList)) //one method is applied that return one list of days ordered.
         {
             x ++;
             try {
@@ -730,11 +714,8 @@ public class BasePages {
     }
 
     /**
-     * Description: Wait for the visibility of target element and then scroll up or down until the element is into view.
-     * @param element WebElement target to do Scroll
-     * @exception NoSuchElementException: it points out that element can't be found, likely an irregular locator or delay charge.
-     * @exception IndexOutOfBoundsException: it points out an attempt to access or manipulate an element at an invalid index position within a collection or array.
-     * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
+     * Description: It does double-click on an element.
+     * @param element WebElement target to do double-click.
      * */
     public void doubleClick(WebElement element){
         Actions actions = new Actions(driver);
@@ -746,11 +727,8 @@ public class BasePages {
     }
 
     /**
-     * Description: Wait for the visibility of target element and then scroll up or down until the element is into view.
-     * @param element WebElement target to do Scroll
-     * @exception NoSuchElementException: it points out that element can't be found, likely an irregular locator or delay charge.
-     * @exception IndexOutOfBoundsException: it points out an attempt to access or manipulate an element at an invalid index position within a collection or array.
-     * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
+     * Description: It does right-click on an element.
+     * @param element WebElement target to do right-click.
      * */
     public void rightClick(WebElement element){
         Actions actions = new Actions(driver);
@@ -762,11 +740,11 @@ public class BasePages {
     }
 
     /**
-     * Description: Wait for the visibility of target element and then scroll up or down until the element is into view.
-     * @param element WebElement target to do Scroll
-     * @exception NoSuchElementException: it points out that element can't be found, likely an irregular locator or delay charge.
-     * @exception IndexOutOfBoundsException: it points out an attempt to access or manipulate an element at an invalid index position within a collection or array.
-     * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
+     * Description: It moves an element target to a specified coordinates.
+     * @param element WebElement target to move.
+     * @exception NumberFormatException: Method expects a string representation of a numeric.
+     * @exception MoveTargetOutOfBoundsException: It is indicating that the target element cannot be moved to the specified coordinates.
+     * @exception ElementNotInteractableException: Its possibles causes include elements being hidden, disabled, overlapped by other elements, or located outside the viewport.
      * */
     public void moveElementToCoordinates(WebElement element, float xCoordinate, float yCoordinate){
         Actions actions = new Actions(driver);
@@ -789,11 +767,10 @@ public class BasePages {
     }
 
     /**
-     * Description: Wait for the visibility of target element and then scroll up or down until the element is into view.
-     * @param element WebElement target to do Scroll
-     * @exception NoSuchElementException: it points out that element can't be found, likely an irregular locator or delay charge.
-     * @exception IndexOutOfBoundsException: it points out an attempt to access or manipulate an element at an invalid index position within a collection or array.
-     * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
+     * Description: It moves the clicker on an WebElement.
+     * @param element WebElement target to move clicker on it.
+     * @exception ElementNotInteractableException: Its possibles causes include elements being hidden, disabled, overlapped by other elements, or located outside the viewport.
+     * @exception IndexOutOfBoundsException: The operation encountered an IndexOutOfBoundsException, indicating an attempt to access or manipulate an element at an invalid index position within a collection or array.
      * */
     public void moveClickerToElement(WebElement element){
         try {
@@ -812,11 +789,10 @@ public class BasePages {
     }
 
     /**
-     * Description: Wait for the visibility of target element and then scroll up or down until the element is into view.
-     * @param element WebElement target to do Scroll
-     * @exception NoSuchElementException: it points out that element can't be found, likely an irregular locator or delay charge.
-     * @exception IndexOutOfBoundsException: it points out an attempt to access or manipulate an element at an invalid index position within a collection or array.
-     * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
+     * Description: It drags an element and then Drops it in a target element.
+     * @param sourceElement WebElement that is dragged.
+     * @param targetElement WebElement target to drop sourceElement.
+     * @exception ElementNotInteractableException: Its possibles causes include elements being hidden, disabled, overlapped by other elements, or located outside the viewport.
      * */
     public void dragDropMoveElementToTarget(WebElement sourceElement, WebElement targetElement){
         Actions actions = new Actions(driver);
@@ -831,11 +807,11 @@ public class BasePages {
     }
 
     /**
-     * Description: Wait for the visibility of target element and then scroll up or down until the element is into view.
-     * @param element WebElement target to do Scroll
-     * @exception NoSuchElementException: it points out that element can't be found, likely an irregular locator or delay charge.
-     * @exception IndexOutOfBoundsException: it points out an attempt to access or manipulate an element at an invalid index position within a collection or array.
-     * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
+     * Description: It Resizes an element that can change its size.
+     * @param element WebElement target to resize.
+     * @param sizeX It obtains the desired X value
+     * @param sizeY It obtains the desired Y value.
+     * @exception MoveTargetOutOfBoundsException: It is indicating that the target element cannot be moved or resize to the specified coordinates.
      * */
     public void resizeElement(WebElement element, int sizeX, int sizeY){
         Actions actions = new Actions(driver);
@@ -853,11 +829,10 @@ public class BasePages {
     }
 
     /**
-     * Description: Wait for the visibility of target element and then scroll up or down until the element is into view.
-     * @param element WebElement target to do Scroll
-     * @exception NoSuchElementException: it points out that element can't be found, likely an irregular locator or delay charge.
-     * @exception IndexOutOfBoundsException: it points out an attempt to access or manipulate an element at an invalid index position within a collection or array.
-     * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
+     * Description: It obtains the HTTP response code and validate that it is 200
+     * @param src It is the URL or src of the element or target to obtain the HTTP response.
+     * @return Return true if the HTTP response code is 200.
+     * @exception MalformedURLException: it indicates the URL is incorrect.
      * */
     public boolean validateHTTPS_Response(String src) throws IOException {
         String MESSAGE_MALFORMED_URL_EXCEPTION = "URL is incorrect";
@@ -875,12 +850,10 @@ public class BasePages {
     }
 
     /**
-     * Description: Wait for the visibility of target element and then scroll up or down until the element is into view.
-     * @param element WebElement target to do Scroll
-     * @exception NoSuchElementException: it points out that element can't be found, likely an irregular locator or delay charge.
-     * @exception IndexOutOfBoundsException: it points out an attempt to access or manipulate an element at an invalid index position within a collection or array.
-     * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
-     * */
+     * Description: It handles the message of the different exceptions throughout code.
+     * @param messageException It is the message desired when the exception is caught.
+     * @param e This is the type of exception caught.
+    * */
     private void handleException(String messageException,Exception e) {
         logger.error(messageException, e);
     }
