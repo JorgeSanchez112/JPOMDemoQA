@@ -16,8 +16,7 @@ public class ToolTipsPageTest extends TestBase {
     private final String CONTRARY_LINK_HOVER = "contraryTexToolTip";
     private final String VERSION_LINK_HOVER = "sectionToolTip";
 
-
-    @BeforeMethod
+    @BeforeMethod(groups = {"UI","Smoke","Integration"})
     public void initializeClass(){
         logger.info("-------------------Initializing ToolTipsPageTest Class------------------");
         toolTipsPage = homePage.clickOnSectionWidgets().clickOnToolTips();

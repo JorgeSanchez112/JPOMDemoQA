@@ -14,7 +14,7 @@ public class BrowserWindowsPagePageTest extends TestBase {
     private final String URL_SAMPLE_PAGE = "https://demoqa.com/sample";
     private final String MESSAGE_NEW_WINDOW = "Knowledge increases by sharing but not by saving. Please share this website with your friends and in your organization.";
 
-    @BeforeMethod
+    @BeforeMethod(groups = {"UI","Smoke","Integration"})
     public void InitializeClass(){
         logger.info("-------------------Initializing BrowserWindowsPagePageTest Class------------------");
         browserWindowsPage = homePage.clickOnSectionAlerts_Frame_Windows().clickOnBrowserWindows();

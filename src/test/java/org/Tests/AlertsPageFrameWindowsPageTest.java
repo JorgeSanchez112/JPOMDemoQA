@@ -12,7 +12,7 @@ public class AlertsPageFrameWindowsPageTest extends TestBase {
     private final String URL = "https://demoqa.com/alertsWindows";
     private final int ELEMENTS_LIST_SIZE = 5;
 
-    @BeforeMethod
+    @BeforeMethod(groups = {"UI","Smoke","Integration"})
     public void initializeClass(){
         logger.info("-------------------Initializing AccordianPageTest Class------------------");
         alertsFrameWindowsPage = homePage.clickOnSectionAlerts_Frame_Windows();

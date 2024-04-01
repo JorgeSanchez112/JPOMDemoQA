@@ -12,7 +12,7 @@ public class DynamicPropertiesPagePageTest extends TestBase {
     private final String PAGE_TITLE = "Dynamic Properties";
     private final String RGBA_RED_COLOR = "rgba(220, 53, 69, 1)";
 
-    @BeforeMethod
+    @BeforeMethod(groups = {"UI","Smoke","Integration"})
     public void initializeClass(){
         logger.info("-------------------Initializing DynamicPropertiesPagePageTest Class------------------");
         dynamicPropertiesPage = homePage.clickOnSectionElements().clickOnDynamicPropertiesSection();

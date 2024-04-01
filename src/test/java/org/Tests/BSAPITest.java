@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 public class BSAPITest extends TestBase {
     private final Logger logger = LogManager.getLogger(BSAPITest.class);
 
-    @BeforeMethod
+    @BeforeMethod(groups = {"UI","Smoke","Integration"})
     public void initializeClass(){
         logger.info("-------------------Initializing BSAPITest Class------------------");
         bsapiPage = homePage.clickOnSectionBookStoreApplication().clickOnBookstoreApi();

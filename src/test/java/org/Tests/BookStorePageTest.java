@@ -21,7 +21,7 @@ public class BookStorePageTest extends TestBase {
     private final String FOURTH_TITLE_TABLE  = "Publisher";
     private final String SEARCH_BAR_PLACEHOLDER = "Type to search";
 
-    @BeforeMethod
+    @BeforeMethod(groups = {"UI","Smoke","Integration"})
     public void initializeClass(){
         logger.info("-------------------Initializing BookStorePageTest Class------------------");
         bookStorePage = homePage.clickOnSectionBookStoreApplication();

@@ -13,7 +13,7 @@ public class NestedFramesPageTest extends TestBase {
     private final String PARENT_FRAME = "Parent frame";
     private final String CHILD_FRAME = "Child Iframe";
 
-    @BeforeMethod
+    @BeforeMethod(groups = {"UI","Smoke","Integration"})
     public void initializeClass(){
         logger.info("-------------------Initializing NestedFramesPageTest Class------------------");
         nestedFramesPage = homePage.clickOnSectionAlerts_Frame_Windows().clickOnNestedFrames();

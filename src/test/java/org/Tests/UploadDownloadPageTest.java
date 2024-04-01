@@ -11,7 +11,7 @@ public class UploadDownloadPageTest extends TestBase {
     private Logger logger = LogManager.getLogger(UploadDownloadPageTest.class);
     private final String PAGE_TITLE = "Upload and Download";
 
-    @BeforeMethod
+    @BeforeMethod(groups = {"UI","Smoke","Integration"})
     public void initializeClass(){
         logger.info("-------------------Initializing UploadDownloadPageTest Class------------------");
         uploadDownloadPage = homePage.clickOnSectionElements().clickOnUploadDownloadSection();

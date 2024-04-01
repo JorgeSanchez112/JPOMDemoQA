@@ -8,7 +8,7 @@
         <listener class-name="Resources.MyTransformer"/>
     </listeners>
 
-    <test name = "home">
+    <!--<test name = "home">
         <classes>
             <class name = "org.Tests.HomePageTest" />
         </classes>
@@ -132,15 +132,20 @@
         <classes>
             <class name = "org.Tests.ModalDialogsPageTest" />
         </classes>
-    </test>
+    </test>-->
 
     <test name = "Accordian">
+        <groups>
+            <run>
+                <include name="UI"/>
+            </run>
+        </groups>
         <classes>
             <class name = "org.Tests.AccordianPageTest" />
         </classes>
     </test>
 
-    <test name = "Auto Complete">
+   <!-- <test name = "Auto Complete">
         <classes>
             <class name = "org.Tests.AutoCompletePageTest" />
         </classes>
@@ -231,5 +236,5 @@
         <classes>
             <class name = "org.Tests.DraggablePageTest" />
         </classes>
-    </test>
+    </test>-->
 </suite>

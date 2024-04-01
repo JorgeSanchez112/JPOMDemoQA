@@ -12,7 +12,7 @@ public class ElementsPageTest extends TestBase {
     private final String URL = "https://demoqa.com/elements";
     private final int ELEMENTS_SIZE = 9;
 
-    @BeforeMethod
+    @BeforeMethod(groups = {"UI","Smoke","Integration"})
     public void initializeClass(){
         logger.info("-------------------Initializing ElementsPageTest Class------------------");
         elementsPage = homePage.clickOnSectionElements();

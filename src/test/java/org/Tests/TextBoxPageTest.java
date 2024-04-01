@@ -19,7 +19,7 @@ public class TextBoxPageTest extends TestBase {
     private final String ADDRESS_MESSAGE = "Current Address :";
     private final String PERMANENT_ADDRESS_MESSAGE = "Permananet Address :";
 
-    @BeforeMethod
+    @BeforeMethod(groups = {"UI","Smoke","Integration"})
     public void initializeClass(){
         logger.info("-------------------Initializing TextBoxPageTest Class------------------");
         textBoxPage = homePage.clickOnSectionElements().clickOnTextBoxSection();

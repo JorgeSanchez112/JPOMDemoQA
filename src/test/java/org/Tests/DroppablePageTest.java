@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 public class DroppablePageTest extends TestBase {
     private Logger logger = LogManager.getLogger(DroppablePageTest.class);
     private final String PAGE_TITLE = "Droppable";
-    @BeforeMethod
+    @BeforeMethod(groups = {"UI","Smoke","Integration"})
     public void initializeClass(){
         logger.info("-------------------Initializing DroppablePageTest Class------------------");
         droppablePage = homePage.clickOnSectionInteractions().clickOnDroppable();

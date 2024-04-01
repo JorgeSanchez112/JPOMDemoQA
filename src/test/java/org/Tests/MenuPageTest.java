@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 public class MenuPageTest extends TestBase {
     private Logger logger = LogManager.getLogger(AccordianPageTest.class);
     private final String PAGE_TITLE = "Menu";
-    @BeforeMethod
+    @BeforeMethod(groups = {"UI","Smoke","Integration"})
     public void initializeClassAndHideAdvertising(){
         logger.info("-------------------Initializing MenuPageTest Class------------------");
         menuPage = homePage.clickOnSectionWidgets().clickOnMenu();

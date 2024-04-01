@@ -117,7 +117,7 @@ public class BookStorePage extends BasePages {
     public boolean areNotBrokeLinkImages() throws IOException {
         scrollToRow(ONE);
         waitForChargedElementsOfAWebElementList(columnImages);
-        return validateResponseCodeIs200inAList(columnImages);
+        return validateResponseCodeIs200inAllAList(columnImages);
     }
 
     public boolean isBookTitleFound(String bookTitle, String textExpected){

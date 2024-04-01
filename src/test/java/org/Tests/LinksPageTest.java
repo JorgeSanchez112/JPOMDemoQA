@@ -27,7 +27,7 @@ public class LinksPageTest extends TestBase {
     private final String MESSAGE_403 = "Forbidden";
     private final String MESSAGE_404 = "Not Found";
 
-    @BeforeMethod
+    @BeforeMethod(groups = {"UI","Smoke","Integration"})
     public void initializeClass(){
         logger.info("-------------------Initializing LinksPageTest Class------------------");
         linksPage = homePage.clickOnSectionElements().clickOnLinksSection();

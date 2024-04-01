@@ -11,7 +11,7 @@ public class SelectablePageTest extends TestBase {
     private Logger logger = LogManager.getLogger(SelectablePageTest.class);
     private final String PAGE_TITLE = "Selectable";
 
-    @BeforeMethod
+    @BeforeMethod(groups = {"UI","Smoke","Integration"})
     public void initializeClass(){
         logger.info("-------------------Initializing SelectablePageTest Class------------------");
         selectablePage = homePage.clickOnSectionInteractions().clickOnSelectable();

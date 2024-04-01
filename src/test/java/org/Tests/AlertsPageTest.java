@@ -18,7 +18,7 @@ public class AlertsPageTest extends TestBase {
     private final String DISMISS_ALERT_MESSAGE = "You selected Cancel";
     private final String INPUT_ALERT_MESSAGE = "You entered ";
 
-    @BeforeMethod
+    @BeforeMethod(groups = {"UI","Smoke","Integration"})
     public void initializeClass(){
         logger.info("-------------------Initializing AlertsPageTest Class------------------");
         alertsPage = homePage.clickOnSectionAlerts_Frame_Windows().clickOnAlerts();

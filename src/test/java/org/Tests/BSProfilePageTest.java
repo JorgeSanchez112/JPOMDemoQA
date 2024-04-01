@@ -31,8 +31,7 @@ public class BSProfilePageTest extends TestBase {
     private final String USERNAME = "lola12";
     private final String PASSWORD = "P@ssw0rd";
 
-
-    @BeforeMethod
+    @BeforeMethod(groups = {"UI","Smoke","Integration"})
     public void initializeClass(){
         logger.info("-------------------Initializing BSProfilePageTest Class------------------");
         bsProfilePage = homePage.clickOnSectionBookStoreApplication().clickOnProfile();

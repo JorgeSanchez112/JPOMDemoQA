@@ -316,7 +316,7 @@ public class BasePages {
         try {
             try{
                 boolean elementSelected = element.isSelected();
-                logger.info("Element: " + " was selected: " + elementSelected);
+                logger.info("Element: " + element + " was selected: " + elementSelected);
                 return elementSelected;
             }catch (IndexOutOfBoundsException e){
                 handleException(MESSAGE_TO_INDEX_OUT_OF_BOUNDS_EXCEPTION,e);
@@ -364,7 +364,7 @@ public class BasePages {
 
     /**
      * Description: it validates if an webElement of a list WebElements is visible.
-     * @param elements List WebElement.
+     * @param elements It is a group of WebElements in a list.
      * @param position Position of the WebElement in the list.
      * @return true if the desired Element is visible.
      * @exception IndexOutOfBoundsException: it points out an attempt to access or manipulate an element at an invalid index position within a collection or array.
@@ -386,7 +386,7 @@ public class BasePages {
 
     /**
      * Description: Wait for 10 seconds with and interval of 250 millis that all elements of a WebElement List were charged.
-     * @param elementsList List WebElement.
+     * @param elementsList It is a group of WebElements in a list.
      * @exception RejectedExecutionException: It indicates that a task submission to an executor has been rejected for execution.
      * @exception NoSuchElementException: it points out that element can't be found, likely an irregular locator or delay charge.
      * @exception IndexOutOfBoundsException: it points out an attempt to access or manipulate an element at an invalid index position within a collection or array.
@@ -475,30 +475,16 @@ public class BasePages {
     }
 
     /**
-     * Description: c
-     * @param listItem WebElement target to do Scroll
+     * Description: This method examines a web element to ascertain whether it contains a specified CSS class.
+     * It retrieves the actual CSS classes assigned to the element, compares them with the expected class,
+     * logs the comparison result along with relevant attribute details, and returns a boolean indicating whether
+     * the expected class is present within the element's classes.
+     * @param listItem It is a group of WebElements in a list.
      * @exception NoSuchElementException: it points out that element can't be found, likely an irregular locator or delay charge.
      * @exception IndexOutOfBoundsException: it points out an attempt to access or manipulate an element at an invalid index position within a collection or array.
      * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
      * */
-    public boolean isListItemSelected(WebElement listItem) { //this and 'is Element Dropped could be replaced in just one method'
-        String expectedClass = "active";
-        String actualClass = listItem.getAttribute("class");
-        boolean elementContainsExpectedClass = actualClass.contains(expectedClass);
-
-        logger.info("Element: " + listItem + "contain: " + expectedClass + "in attribute: " + actualClass + " = " + elementContainsExpectedClass);
-        return elementContainsExpectedClass;
-    }
-
-    /**
-     * Description: Wait for the visibility of target element and then scroll up or down until the element is into view.
-     * @param vs WebElement target to do Scroll
-     * @exception NoSuchElementException: it points out that element can't be found, likely an irregular locator or delay charge.
-     * @exception IndexOutOfBoundsException: it points out an attempt to access or manipulate an element at an invalid index position within a collection or array.
-     * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
-     * */
-    public boolean isElementDropped(WebElement listItem) {
-        String expectedClass = "ui-state-highlight";
+    public boolean doesElementContainExpectedClass(WebElement listItem, String expectedClass) {
         String actualClass = listItem.getAttribute("class");
         boolean elementContainsExpectedClass = actualClass.contains(expectedClass);
 
@@ -543,12 +529,16 @@ public class BasePages {
      * @exception TimeoutException: It refers the action does not accomplish during to the wait expected.
      * */
     public boolean validateAllListItemsAreVisible(List<WebElement> elementList){
-        WebElement element = runWebElementList(elementList);
+        logger.info("Method: Validate all items are visible ----------Starting----------");
+        int c = 0;
         try {
-            scroll(element);
-            boolean elementDisplayed = isElementDisplayedWithWait(element);
-            logger.info("Element: " + element + "is visible: " + elementDisplayed);
-            return elementDisplayed;
+            for (WebElement item: elementList){
+                scroll(item);
+                boolean elementDisplayed = isElementDisplayedWithWait(item);
+                logger.info("Element: " + item + "is visible: " + elementDisplayed);
+                c++;
+            }
+            return c == elementList.size();
         }catch (TimeoutException e){
             handleException(MESSAGE_TO_TIME_OUT_EXCEPTION,e);
         }
@@ -560,30 +550,17 @@ public class BasePages {
      * @param elementList List of WebElements.
      * @return true if the HTTP WebElements response is 200.
      * */
-    public boolean validateResponseCodeIs200inAList(List<WebElement> elementList) throws IOException {
-        WebElement element = runWebElementList(elementList);
-        scroll(element);
-        boolean hTTPResponse = validateHTTPS_Response(element.getAttribute("src"));
-        logger.info("HTTP Code of element: " + element + " is 200: " + hTTPResponse);
-        return hTTPResponse;
-    }
-
-    /**
-     * Description: Run a Web Element List and return each WebElement.
-     * @param elementList List of WebElements.
-     * @return return a WebElement of the list.
-     * @exception NoSuchElementException: it points out that element can't be found, likely an irregular locator or delay charge.
-     * */
-    public WebElement runWebElementList(List<WebElement> elementList){
-        try {
-            for (WebElement element: elementList) {
-                logger.info("Element: " + element + "was returned");
-                return element;
+    public boolean validateResponseCodeIs200inAllAList(List<WebElement> elementList) throws IOException {
+        logger.info("Method: Validate response code is 200 in all a list ----------Starting----------");
+        int c = 0;
+        for (WebElement element : elementList){
+            scroll(element);
+            if (validateHTTPS_Response(element.getAttribute("src"))){
+                logger.info("HTTP Code of element: " + element + " is 200: True");
+                c++;
             }
-        }catch (NoSuchElementException e){
-            handleException(MESSAGE_TO_NO_SUCH_ELEMENT_EXCEPTION,e);
         }
-        return null;
+        return c == elementList.size();
     }
 
     /**

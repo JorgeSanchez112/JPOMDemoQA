@@ -17,7 +17,7 @@ public class DatePickerPageTest extends TestBase {
     private final String FIRST_LABEL  = "Select Date";
     private final String SECOND_LABEL  = "Date And Time";
 
-    @BeforeMethod
+    @BeforeMethod(groups = {"UI","Smoke","Integration"})
     public void initializeClass(){
         logger.info("-------------------Initializing DatePickerPageTest Class------------------");
         datePickerPage = homePage.clickOnSectionWidgets().clickOnDatePicker();

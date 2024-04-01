@@ -86,6 +86,7 @@ public class SelectMenuPage extends BasePages {
 
     public void scrollAndSelectAllValuesOnStandardMultiSelect(){
         for (WebElement element:standardMultiSelectValues) {
+            scroll(element);
             selectOneElementAccordingToText(standardMultiSelect,element.getText());
         }
     }
@@ -160,27 +161,12 @@ public class SelectMenuPage extends BasePages {
     }
 
     public boolean wereAllOptionsSelectedOfStandardMultiSelect(){
-        return hasElementBeenSelected(runWebElementList(standardMultiSelectValues));
+        int c = 0;
+        for (WebElement values: standardMultiSelectValues){
+            if ( hasElementBeenSelected(values)){
+                c++;
+            }
+        }
+        return c == standardMultiSelectValues.size();
     }
-
-    public boolean isVolvoSelectedOfStandardMultiSelect(){
-        waitForChargedElementsOfAWebElementList(standardMultiSelectValues);
-        return hasElementBeenSelected(standardMultiSelectValues.get(0));
-    }
-
-    public boolean isSaabSelectedOfStandardMultiSelect(){
-        waitForChargedElementsOfAWebElementList(standardMultiSelectValues);
-        return hasElementBeenSelected(standardMultiSelectValues.get(1));
-    }
-
-    public boolean isOpelSelectedOfStandardMultiSelect(){
-        waitForChargedElementsOfAWebElementList(standardMultiSelectValues);
-        return hasElementBeenSelected(standardMultiSelectValues.get(2));
-    }
-
-    public boolean isAudiSelectedOfStandardMultiSelect(){
-        waitForChargedElementsOfAWebElementList(standardMultiSelectValues);
-        return hasElementBeenSelected(standardMultiSelectValues.get(3));
-    }
-
 }

@@ -17,7 +17,7 @@ public class WebTablesPageTest extends TestBase {
     private final String MESSAGE_NO_ROWS_FOUND = "No rows found";
     private final String SEARCH_BOX = "Kierra";
 
-    @BeforeMethod
+    @BeforeMethod(groups = {"UI","Smoke","Integration"})
     public void initializeClass(){
         logger.info("-------------------Initializing WebTablesPageTest Class------------------");
         webTablesPage = homePage.clickOnSectionElements().clickOnWebTablesSection();

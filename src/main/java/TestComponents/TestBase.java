@@ -161,7 +161,7 @@ Droppable
         return driver;
     }
 
-    @BeforeMethod
+    @BeforeMethod(groups = {"UI","Smoke","Integration"})
     public void setUp() throws MalformedURLException {
         WebDriver driver = getDriver();
         if (driver == null) {
@@ -184,7 +184,7 @@ Droppable
         }
     }
 
-    @AfterMethod
+    @AfterMethod(groups = {"UI","Smoke","Integration"})
     public void tearDown(){
         try {
             WebDriver driver = getDriver();

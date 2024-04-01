@@ -14,52 +14,52 @@ public class AccordianPageTest extends TestBase {
     private final String SECOND_TOPIC_TITLE = "Where does it come from?";
     private final String THIRD_TOPIC_TITLE = "Why do we use it?";
 
-    @BeforeMethod
+    @BeforeMethod(groups = {"UI", "Smoke"})
     public void initializeClass(){
         logger.info("-------------------Initializing AccordianPageTest Class------------------");
         accordianPage = homePage.clickOnSectionWidgets().clickOnAccordian();
         logger.info("-------------------Starting Test-----------------------");
     }
 
-    @Test
+    @Test(groups = "UI")
     public void validateCorrectPageTitle(){
         logger.info("-------------------ValidateCorrectedPageTitle-----------------------");
         Assert.assertEquals(accordianPage.getPageTitleText(),PAGE_TITLE);
     }
 
-    @Test
+    @Test(groups = "UI")
     public void isFirstTopicTitleCorrect(){
         logger.info("-------------------isFirstTopicTitleCorrect-----------------------");
         Assert.assertEquals(accordianPage.getCard1TopicText(),FIRST_TOPIC_TITLE);
     }
 
-    @Test
+    @Test(groups = "UI")
     public void isSecondTopicTitleCorrect(){
         logger.info("-------------------isSecondTopicTitleCorrect-----------------------");
         Assert.assertEquals(accordianPage.getCard2TopicText(),SECOND_TOPIC_TITLE);
     }
 
-    @Test
+    @Test(groups = "UI")
     public void isThirdTopicTitleCorrect(){
         logger.info("-------------------isThirdTopicTitleCorrect-----------------------");
         Assert.assertEquals(accordianPage.getCard3TopicText(),THIRD_TOPIC_TITLE);
     }
 
-    @Test
+    @Test(groups = "Smoke")
     public void validateFirstContentCardIsShown(){
         logger.info("-------------------validateFirstContentCardIsShown-----------------------");
         accordianPage.clickOnFirstCard();
         Assert.assertTrue(accordianPage.firstContentIsVisible());
     }
 
-    @Test
+    @Test(groups = "Smoke")
     public void validateSecondContentCardIsShown(){
         logger.info("-------------------validateSecondContentCardIsShown-----------------------");
         accordianPage.clickOnSecondCard();
         Assert.assertTrue(accordianPage.secondContentIsVisible());
     }
 
-    @Test
+    @Test(groups = "Smoke")
     public void validateThirdContentCardIsShown(){
         logger.info("-------------------validateThirdContentCardIsShown-----------------------");
         accordianPage.clickOnThirdCard();

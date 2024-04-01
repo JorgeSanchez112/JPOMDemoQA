@@ -24,7 +24,7 @@ public class SelectMenuPageTest extends TestBase {
     private final String BLACK_COLOR = "Black";
     private final String RED_COLOR = "Red";
 
-    @BeforeMethod
+    @BeforeMethod(groups = {"UI","Smoke","Integration"})
     public void initializeClass(){
         logger.info("-------------------Initializing SelectMenuPageTest Class------------------");
         selectMenuPage = homePage.clickOnSectionWidgets().clickOnSelectMenu();
@@ -112,11 +112,6 @@ public class SelectMenuPageTest extends TestBase {
         logger.info("-------------------selectMultiplyValuesOnStandardMultiSelect-----------------------");
         selectMenuPage.scrollAndSelectAllValuesOnStandardMultiSelect();
         Assert.assertTrue(selectMenuPage.wereAllOptionsSelectedOfStandardMultiSelect());
-
-        Assert.assertTrue(selectMenuPage.isVolvoSelectedOfStandardMultiSelect());
-        Assert.assertTrue(selectMenuPage.isSaabSelectedOfStandardMultiSelect());
-        Assert.assertTrue(selectMenuPage.isOpelSelectedOfStandardMultiSelect());
-        Assert.assertTrue(selectMenuPage.isAudiSelectedOfStandardMultiSelect());
     }
 
     @DataProvider(name = "testData0")

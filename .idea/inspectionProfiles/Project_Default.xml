@@ -4,5 +4,16 @@
     <inspection_tool class="JavadocDeclaration" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="ADDITIONAL_TAGS" value="Exception,Param" />
     </inspection_tool>
+    <inspection_tool class="groupsTestNG" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="groups">
+        <value>
+          <list size="3">
+            <item index="0" class="java.lang.String" itemvalue="UI" />
+            <item index="1" class="java.lang.String" itemvalue="Smoke" />
+            <item index="2" class="java.lang.String" itemvalue="Integration" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
   </profile>
 </component>

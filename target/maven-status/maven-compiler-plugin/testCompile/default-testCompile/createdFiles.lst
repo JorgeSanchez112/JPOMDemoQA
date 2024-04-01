@@ -2,8 +2,6 @@ org\Tests\InteractionsPageTest.class
 org\Tests\BookStorePageTest.class
 org\Tests\PracticeFormPageTest.class
 org\Tests\LinksPageTest.class
-org\Tests\BSProfileTest.class
-org\Tests\BSRegisterTest.class
 org\Tests\FormsPageTest.class
 org\Tests\RadioButtonPageTest.class
 org\Tests\ElementsPageTest.class

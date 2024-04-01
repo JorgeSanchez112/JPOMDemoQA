@@ -14,7 +14,7 @@ public class ButtonsPageTest extends TestBase {
     private final String RIGHT_CLICK_MESSAGE = "You have done a right click";
     private final String RADIO_BUTTON = "You have done a dynamic click";
 
-    @BeforeMethod
+    @BeforeMethod(groups = {"UI","Smoke","Integration"})
     public void initializeClass(){
         logger.info("-------------------Initializing ButtonsPageTest Class------------------");
         buttonsPage = homePage.clickOnSectionElements().clickOnButtonsSection();

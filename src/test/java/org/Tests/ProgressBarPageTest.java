@@ -13,7 +13,7 @@ public class ProgressBarPageTest extends TestBase {
     private final String FULL_BAR_PERCENTAGE = "100%";
     private final String EMPTY_BAR_PERCENTAGE = "0%";
 
-    @BeforeMethod
+    @BeforeMethod(groups = {"UI","Smoke","Integration"})
     public void initializeClass(){
         logger.info("-------------------Initializing ProgressBarPageTest Class------------------");
         progressBarPage = homePage.clickOnSectionWidgets().clickOnProgressBar();

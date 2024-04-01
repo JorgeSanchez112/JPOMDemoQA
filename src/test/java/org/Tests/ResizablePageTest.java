@@ -17,7 +17,7 @@ public class ResizablePageTest extends TestBase {
     private final String WIDTH_MAX_OF_RESIZABLE_RESTRICTED = "500";
     private final String HEIGHT_MAX_OF_RESIZABLE_RESTRICTED = "300";
 
-    @BeforeMethod
+    @BeforeMethod(groups = {"UI","Smoke","Integration"})
     public void initializeClass(){
         logger.info("-------------------Initializing ResizablePageTest Class------------------");
         resizablePage = homePage.clickOnSectionInteractions().clickOnResizable();

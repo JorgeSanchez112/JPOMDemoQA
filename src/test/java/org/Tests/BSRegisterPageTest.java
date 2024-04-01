@@ -20,7 +20,7 @@ public class BSRegisterPageTest extends TestBase {
     private final String PASSWORD_LABEL = "Password :";
     private final String RGB_RED_COLOR = "rgb(220, 53, 69)";
 
-    @BeforeMethod
+    @BeforeMethod(groups = {"UI","Smoke","Integration"})
     public void initializeClass(){
         logger.info("-------------------Initializing BSRegisterPageTest Class------------------");
         bsRegisterPage = homePage.clickOnSectionBookStoreApplication().clickOnLoginTab().clickOnNewUserButton();

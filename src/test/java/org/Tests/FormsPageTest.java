@@ -12,7 +12,7 @@ public class FormsPageTest extends TestBase {
     private final String URL = "https://demoqa.com/forms";
     private final String MENU_LIST_TEXT = "Practice Form";
 
-    @BeforeMethod
+    @BeforeMethod(groups = {"UI","Smoke","Integration"})
     public void initializeClass(){
         logger.info("-------------------Initializing FormsPageTest Class------------------");
         formsPage = homePage.clickOnSectionForms();

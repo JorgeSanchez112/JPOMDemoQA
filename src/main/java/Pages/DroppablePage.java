@@ -49,6 +49,8 @@ public class DroppablePage extends BasePages {
         PageFactory.initElements(driver,this);
     }
 
+    private final String EXPECTED_CLASS = "ui-state-highlight";
+
     public void clickOnTabAccept(){
         clickWithWait(tabAccept);
     }
@@ -133,35 +135,35 @@ public class DroppablePage extends BasePages {
     }
 
     public boolean isSimpleDraggableDropped(){
-        return isElementDropped(simpleTarget);
+        return doesElementContainExpectedClass(simpleTarget,EXPECTED_CLASS);
     }
 
     public boolean isAcceptDraggableDropped(){
-        return isElementDropped(acceptTarget);
+        return doesElementContainExpectedClass(acceptTarget,EXPECTED_CLASS);
     }
 
     public boolean isNotAcceptDraggableDropped(){
-        return isElementDropped(acceptTarget);
+        return doesElementContainExpectedClass(acceptTarget,EXPECTED_CLASS);
     }
 
     public boolean isPreventDraggableToNotGreedyDropped(){
-        return isElementDropped(notGreedyTarget);
+        return doesElementContainExpectedClass(notGreedyTarget,EXPECTED_CLASS);
     }
 
     public boolean isPreventDraggableToNotGreedyInnerDropped(){
-        return isElementDropped(notGreedyInnerTarget);
+        return doesElementContainExpectedClass(notGreedyInnerTarget,EXPECTED_CLASS);
     }
 
     public boolean isPreventDraggableToGreedyDropped(){
-        return isElementDropped(greedyTarget);
+        return doesElementContainExpectedClass(greedyTarget,EXPECTED_CLASS);
     }
 
     public boolean isPreventDraggableToGreedyInnerDropped(){
-        return isElementDropped(greedyInnerTarget);
+        return doesElementContainExpectedClass(greedyInnerTarget,EXPECTED_CLASS);
     }
 
     public boolean isNotRevertDraggableDropped(){
-        return isElementDropped(revertTarget);
+        return doesElementContainExpectedClass(revertTarget,EXPECTED_CLASS);
     }
 
 }

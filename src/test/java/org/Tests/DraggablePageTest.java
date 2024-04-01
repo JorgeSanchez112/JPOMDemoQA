@@ -12,7 +12,7 @@ public class DraggablePageTest extends TestBase {
     private Logger logger = LogManager.getLogger(DraggablePageTest.class);
     private final String PAGE_TITLE = "Dragabble";
 
-    @BeforeMethod
+    @BeforeMethod(groups = {"UI","Smoke","Integration"})
     public void initializeClass(){
         logger.info("-------------------Initializing DraggablePageTest Class------------------");
         draggablePage = homePage.clickOnSectionInteractions().clickOnDragabble();

@@ -42,7 +42,7 @@ public class PracticeFormPageTest extends TestBase {
     private final String RGB_GREEN_COLOR = "rgb(40, 167, 69)";
 
 
-    @BeforeMethod
+    @BeforeMethod(groups = {"UI","Smoke","Integration"})
     public void initializeClass(){
         logger.info("-------------------Initializing PracticeFormPageTest Class------------------");
         practiceFormPage = homePage.clickOnSectionForms().clickOnPracticeFormSection();

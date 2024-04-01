@@ -17,7 +17,7 @@ public class AutoCompletePageTest extends TestBase {
     private final String FIRST_LABEL  = "Type multiple color names";
     private final String SECOND_LABEL  = "Type single color name";
 
-    @BeforeMethod
+    @BeforeMethod(groups = {"UI","Smoke","Integration"})
     public void initializeClass(){
         logger.info("-------------------Initializing AutoCompletePageTest Class------------------");
         autoCompletePage = homePage.clickOnSectionWidgets().clickOnAutoComplete();

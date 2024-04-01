@@ -21,7 +21,7 @@ public class BSLoginPageTest extends TestBase {
     private final String WRONG_USERNAME = "username1";
     private final String WRONG_PASSWORD = "password";
 
-    @BeforeMethod
+    @BeforeMethod(groups = {"UI","Smoke","Integration"})
     public void initializeClass(){
         logger.info("-------------------Initializing BSLoginPageTest Class------------------");
         bsLoginPage = homePage.clickOnSectionBookStoreApplication().clickOnLoginTab();

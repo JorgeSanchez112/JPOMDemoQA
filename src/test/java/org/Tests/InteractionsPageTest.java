@@ -12,7 +12,7 @@ public class InteractionsPageTest extends TestBase {
     private final String URL = "https://demoqa.com/interaction";
     private final int ELEMENTS_LIST_SIZE = 5;
 
-    @BeforeMethod
+    @BeforeMethod(groups = {"UI","Smoke","Integration"})
     public void initializeClass(){
         interactionsPage = homePage.clickOnSectionInteractions();
     }
