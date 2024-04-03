@@ -67,45 +67,6 @@ public class TestBase{
     protected BSIBookPage bsiBookPage;
     protected BSAPIPage bsapiPage;
 
-    /*ButtonsPageTest
-	ValidateRightClickInABtn
-
-LinksPage
-	ValidateNoContentLink
-
-Browser Windows
-	ValidateNewWindowMessage
-
-Frames
-	ValidateChangeToBigFrame
-
-AutoComplete
-	ValidateColorNamesInMultipleContainer
-	ValidateColorNameInSingleContainer
-
-DatePickerPageTest
-	ValidateDateTimeSelected
-
-Progress Bar
-	ValidateProgressBar
-
-ToolTipsPage
-	ValidateVersionLinkHover
-	ValidateInputHover
-
-Sortable
-	DragFirstElementAndDropItInSixthElementOfElementsGrid
-	DragThirdElementAndDropItInTheSecondToLastElementOfElementList
-
-Selectable
-	ValidateCrasJustoOdioListElementIsSelectable
-	ValidateSevenGridElementIsSelectable
-
-Droppable
-	IsNoRevertDraggableDroppedToTarget
-	IsPreventDraggableDroppedToGreedyInnerTarget
-	IsPreventDraggableDroppedToNotGreedyTarger*/
-
     public TestBase() {
         try {
             prop = new Properties();

@@ -1,14 +1,12 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name = "Suite1" parallel="methods" thread-count="4">
-    
+<suite name="crazy things" parallel="methods" thread-count="4">
     <listeners>
         <listener class-name="Resources.Listeners"/>
-        <listener class-name="Resources.MyTransformer"/>
     </listeners>
 
-    <test name = "Smoke test">
+    <test name = "UI - Functional test">
         <parameter name="simpleBoxXPositionExpected" value="10"/>
         <parameter name="simpleBoxYPositionExpected" value="10"/>
         <parameter name="restrictedXBoxPositionExpected" value="50"/>
@@ -26,7 +24,8 @@
 
         <groups>
             <run>
-                <include name="Smoke"/>
+                <include name="UI"/>
+                <include name="Functional"/>
             </run>
         </groups>
 
