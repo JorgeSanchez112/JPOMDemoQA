@@ -11,48 +11,48 @@ public class SelectablePageTest extends TestBase {
     private Logger logger = LogManager.getLogger(SelectablePageTest.class);
     private final String PAGE_TITLE = "Selectable";
 
-    @BeforeMethod(groups = {"UI","Smoke","Integration"})
+    @BeforeMethod(groups = {"UI","Smoke"})
     public void initializeClass(){
         logger.info("-------------------Initializing SelectablePageTest Class------------------");
         selectablePage = homePage.clickOnSectionInteractions().clickOnSelectable();
         logger.info("-------------------Starting Test-----------------------");
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateCorrectPageTitle(){
         logger.info("-------------------validateCorrectPageTitle-----------------------");
         Assert.assertEquals(selectablePage.getPageTitleText(),PAGE_TITLE);
 
     }
-    @Test
+    @Test(groups = {"Smoke"})
     public void validateCrasJustoOdioListElementIsSelectable(){
         logger.info("-------------------validateCrasJustoOdioListElementIsSelectable-----------------------");
         selectablePage.clickOnCrasJustoOdioListElement();
         Assert.assertTrue(selectablePage.isCrasJustoOdioListElementSelected());
     }
 
-    @Test
+    @Test(groups = {"Smoke"})
     public void validateDapibusAcFacilisisInListElementIsSelectable(){
         logger.info("-------------------validateDapibusAcFacilisisInListElementIsSelectable-----------------------");
         selectablePage.clickOnDapibusAcFacilisisInListElement();
         Assert.assertTrue(selectablePage.isDapibusAcFacilisisInListElementSelected());
     }
 
-    @Test
+    @Test(groups = {"Smoke"})
     public void validateMorbiLeoRisusListElementIsSelectable(){
         logger.info("-------------------validateMorbiLeoRisusListElementIsSelectable-----------------------");
         selectablePage.clickOnMorbiLeoRisusListElement();
         Assert.assertTrue(selectablePage.isMorbiLeoRisusListElementSelected());
     }
 
-    @Test
+    @Test(groups = {"Smoke"})
     public void validatePortaAcConsecteturAcListElementIsSelectable(){
         logger.info("-------------------validatePortaAcConsecteturAcListElementIsSelectable-----------------------");
         selectablePage.clickOnPortaAcConsecteturAcListElement();
         Assert.assertTrue(selectablePage.isPortaAcConsecteturAcListElementSelected());
     }
 
-    @Test
+    @Test(groups = {"Smoke"})
     public void validateOneGridElementIsSelectable(){
         logger.info("-------------------validateOneGridElementIsSelectable-----------------------");
         selectablePage.clickOnTabGrid();
@@ -60,7 +60,7 @@ public class SelectablePageTest extends TestBase {
         Assert.assertTrue(selectablePage.isOneGridElementSelected());
     }
 
-    @Test
+    @Test(groups = {"Smoke"})
     public void validateTwoGridElementIsSelectable(){
         logger.info("-------------------validateTwoGridElementIsSelectable-----------------------");
         selectablePage.clickOnTabGrid();
@@ -68,7 +68,7 @@ public class SelectablePageTest extends TestBase {
         Assert.assertTrue(selectablePage.isTwoGridElementSelected());
     }
 
-    @Test
+    @Test(groups = {"Smoke"})
     public void validateThreeGridElementIsSelectable(){
         logger.info("-------------------validateThreeGridElementIsSelectable-----------------------");
         selectablePage.clickOnTabGrid();
@@ -76,7 +76,7 @@ public class SelectablePageTest extends TestBase {
         Assert.assertTrue(selectablePage.isThreeGridElementSelected());
     }
 
-    @Test
+    @Test(groups = {"Smoke"})
     public void validateFourGridElementIsSelectable(){
         logger.info("-------------------validateFourGridElementIsSelectable-----------------------");
         selectablePage.clickOnTabGrid();
@@ -84,7 +84,7 @@ public class SelectablePageTest extends TestBase {
         Assert.assertTrue(selectablePage.isFourGridElementSelected());
     }
 
-    @Test
+    @Test(groups = {"Smoke"})
     public void validateFiveGridElementIsSelectable(){
         logger.info("-------------------validateFiveGridElementIsSelectable-----------------------");
         selectablePage.clickOnTabGrid();
@@ -92,7 +92,7 @@ public class SelectablePageTest extends TestBase {
         Assert.assertTrue(selectablePage.isFiveGridElementSelected());
     }
 
-    @Test
+    @Test(groups = {"Smoke"})
     public void validateSixGridElementIsSelectable(){
         logger.info("-------------------validateSixGridElementIsSelectable-----------------------");
         selectablePage.clickOnTabGrid();
@@ -100,7 +100,7 @@ public class SelectablePageTest extends TestBase {
         Assert.assertTrue(selectablePage.isSixGridElementSelected());
     }
 
-    @Test
+    @Test(groups = {"Smoke"})
     public void validateSevenGridElementIsSelectable(){
         logger.info("-------------------validateSevenGridElementIsSelectable-----------------------");
         selectablePage.clickOnTabGrid();
@@ -108,7 +108,7 @@ public class SelectablePageTest extends TestBase {
         Assert.assertTrue(selectablePage.isSevenGridElementSelected());
     }
 
-    @Test
+    @Test(groups = {"Smoke"})
     public void validateEightGridElementIsSelectable(){
         logger.info("-------------------validateEightGridElementIsSelectable-----------------------");
         selectablePage.clickOnTabGrid();
@@ -116,7 +116,7 @@ public class SelectablePageTest extends TestBase {
         Assert.assertTrue(selectablePage.isEightGridElementSelected());
     }
 
-    @Test
+    @Test(groups = {"Smoke"})
     public void validateNineGridElementIsSelectable(){
         logger.info("-------------------validateNineGridElementIsSelectable-----------------------");
         selectablePage.clickOnTabGrid();

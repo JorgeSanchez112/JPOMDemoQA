@@ -24,26 +24,26 @@ public class SelectMenuPageTest extends TestBase {
     private final String BLACK_COLOR = "Black";
     private final String RED_COLOR = "Red";
 
-    @BeforeMethod(groups = {"UI","Smoke","Integration"})
+    @BeforeMethod(groups = {"UI","Smoke"})
     public void initializeClass(){
         logger.info("-------------------Initializing SelectMenuPageTest Class------------------");
         selectMenuPage = homePage.clickOnSectionWidgets().clickOnSelectMenu();
         logger.info("-------------------Starting Test-----------------------");
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateCorrectPageTitle(){
         logger.info("-------------------validateCorrectPageTitle-----------------------");
         Assert.assertEquals(selectMenuPage.getPageTitleText(),PAGE_TITLE);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateCorrectSelectValueLabel(){
         logger.info("-------------------validateCorrectSelectValueLabel-----------------------");
         Assert.assertEquals(selectMenuPage.getValueLabelText(),FIRST_LABEL);
     }
 
-    @Test(dataProvider = "testData0")
+    @Test(dataProvider = "testData0",groups = {"Smoke"})
     public void selectValueByDropdown(Object... data){
         logger.info("-------------------selectValueByDropdown-----------------------");
         String groupOption = (String) data[0];
@@ -53,13 +53,13 @@ public class SelectMenuPageTest extends TestBase {
         Assert.assertEquals(selectMenuPage.getSelectValueContainerText(),groupOption);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateCorrectSelectOneLabel(){
         logger.info("-------------------validateCorrectSelectOneLabel-----------------------");
         Assert.assertEquals(selectMenuPage.getOneLabelText(),SECOND_LABEL);
     }
 
-    @Test(dataProvider = "testData0")
+    @Test(dataProvider = "testData0",groups = {"Smoke"})
     public void selectOneByDropdown(Object... data){
         logger.info("-------------------selectOneByDropdown-----------------------");
         String titleOption = (String) data[1];
@@ -69,13 +69,13 @@ public class SelectMenuPageTest extends TestBase {
         Assert.assertEquals(selectMenuPage.getSelectOneContainerText(),titleOption);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateCorrectOldStyleSelectLabel(){
         logger.info("-------------------validateCorrectOldStyleSelectLabel-----------------------");
         Assert.assertEquals(selectMenuPage.getOldStyleSelectLabelText(),THIRD_LABEL);
     }
 
-    @Test(dataProvider = "testData1")
+    @Test(dataProvider = "testData1",groups = {"Smoke"})
     public void selectValueInOldSelectMenu(Object... data){
         logger.info("-------------------selectValueInOldSelectMenu-----------------------");
         String optionOfColor = (String) data[0];
@@ -84,14 +84,14 @@ public class SelectMenuPageTest extends TestBase {
         Assert.assertEquals(selectMenuPage.RetrieveTextOfSelectedOptionFromOldStyleMenu(),optionOfColor);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateCorrectMultiselectDropdownLabel(){
         logger.info("-------------------validateCorrectMultiselectDropdownLabel-----------------------");
         Assert.assertEquals(selectMenuPage.getMultiSelectDropdownLabelText(),FOURTH_LABEL);
 
     }
 
-    @Test
+    @Test(groups = "Smoke")
     public void selectMultiplyValuesInDropdown(){
         logger.info("-------------------selectMultiplyValuesInDropdown-----------------------");
         selectMenuPage.selectAllOptionsInMultiSelectDropDown();
@@ -101,13 +101,13 @@ public class SelectMenuPageTest extends TestBase {
         Assert.assertEquals(selectMenuPage.getRedValueTextOfMultiplyDropdown(),RED_COLOR);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateCorrectStandardMultiSelectLabel(){
         logger.info("-------------------validateCorrectStandardMultiSelectLabel-----------------------");
         Assert.assertEquals(selectMenuPage.getStandardMultiSelectLabelText(),FIFTH_LABEL);
     }
 
-    @Test
+    @Test(groups = "Smoke")
     public void selectMultiplyValuesOnStandardMultiSelect(){
         logger.info("-------------------selectMultiplyValuesOnStandardMultiSelect-----------------------");
         selectMenuPage.scrollAndSelectAllValuesOnStandardMultiSelect();

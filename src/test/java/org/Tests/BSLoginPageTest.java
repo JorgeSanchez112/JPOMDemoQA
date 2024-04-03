@@ -21,44 +21,44 @@ public class BSLoginPageTest extends TestBase {
     private final String WRONG_USERNAME = "username1";
     private final String WRONG_PASSWORD = "password";
 
-    @BeforeMethod(groups = {"UI","Smoke","Integration"})
+    @BeforeMethod(groups = {"UI","Smoke","Integration","Functional"})
     public void initializeClass(){
         logger.info("-------------------Initializing BSLoginPageTest Class------------------");
         bsLoginPage = homePage.clickOnSectionBookStoreApplication().clickOnLoginTab();
         logger.info("-------------------Starting Test-----------------------");
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void isTitleLoginVisible(){
         logger.info("-------------------isTitleLoginVisible-----------------------");
         Assert.assertTrue(bsLoginPage.isTitleVisible());
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void isSubtitleCorrect(){
         logger.info("-------------------isSubtitleCorrect-----------------------");
         Assert.assertEquals(bsLoginPage.getSubTitleText(), SUB_TITLE);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void isSubSubtitleCorrect(){
         logger.info("-------------------isSubSubtitleCorrect-----------------------");
         Assert.assertEquals(bsLoginPage.getSubSubTitleText(), SUB_SUB_TITLE);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void isUsernameLabelCorrect(){
         logger.info("-------------------isUsernameLabelCorrect-----------------------");
         Assert.assertEquals(bsLoginPage.getUsernameLabelText(), USERNAME_LABEL);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void isPasswordLabelCorrect(){
         logger.info("-------------------isPasswordLabelCorrect-----------------------");
         Assert.assertEquals(bsLoginPage.getPasswordLabelText(), PASSWORD_LABEL);
     }
 
-    @Test(dataProvider = "dataTest")
+    @Test(dataProvider = "dataTest",groups = {"Functional"})
     public void isTheUsernameInputContainingTheFilledValue(Object... data){
         logger.info("-------------------isTheUsernameInputContainingTheFilledValue-----------------------");
         String usernameValue = (String) data[0];
@@ -67,7 +67,7 @@ public class BSLoginPageTest extends TestBase {
         Assert.assertEquals(bsLoginPage.getUsernameInputValue(),usernameValue);
     }
 
-    @Test(dataProvider = "dataTest")
+    @Test(dataProvider = "dataTest",groups = {"Functional"})
     public void isThePasswordInputContainingTheFilledValue(Object... data){
         logger.info("-------------------isThePasswordInputContainingTheFilledValue-----------------------");
         String passwordValue = (String) data[1];
@@ -76,7 +76,7 @@ public class BSLoginPageTest extends TestBase {
         Assert.assertEquals(bsLoginPage.getPasswordInputValue(),passwordValue);
     }
 
-    @Test
+    @Test(groups = {"UI","Functional"})
     public void isActiveRedBorderColorToNotFilledInputs(){
         logger.info("-------------------isActiveRedBorderColorToNotFilledInputs-----------------------");
         bsLoginPage.clickOnLoginButton();
@@ -84,7 +84,7 @@ public class BSLoginPageTest extends TestBase {
         Assert.assertEquals(bsLoginPage.getPasswordInputBorderColor(),RGB_RED_COLOR);
     }
 
-    @Test
+    @Test(groups = {"Functional","Smoke"})
     public void isShowedCredentialsErrorMessage(){
         logger.info("-------------------isShowedCredentialsErrorMessage-----------------------");
         bsLoginPage.typeOnUsernameInput(WRONG_USERNAME);
@@ -93,7 +93,7 @@ public class BSLoginPageTest extends TestBase {
         Assert.assertTrue(bsLoginPage.isErrorMessageVisible());
     }
 
-    @Test(dataProvider = "dataTest")
+    @Test(dataProvider = "dataTest",groups = {"Integration","Smoke","Functional"})
     public void isUserLoggedAimedToProfileDashboard(Object... data){
         logger.info("-------------------isUserLoggedAimedToProfileDashboard-----------------------");
         String usernameValue = (String) data[0];
@@ -102,9 +102,9 @@ public class BSLoginPageTest extends TestBase {
         Assert.assertTrue(bsLoginPage.userLogin(usernameValue,passwordValue).isTitleVisible());
     }
 
-    @Test
-    public void newUserButtonUsDirectedToRegister(){
-        logger.info("-------------------newUserButtonUsDirectedToRegister-----------------------");
+    @Test(groups = {"Functional"})
+    public void newUserButtonIsDirectedToRegister(){
+        logger.info("-------------------newUserButtonIsDirectedToRegister-----------------------");
         Assert.assertNotEquals(bsLoginPage.getCurrentUrl(),bsLoginPage.clickOnNewUserButton().getCurrentUrl());
     }
 

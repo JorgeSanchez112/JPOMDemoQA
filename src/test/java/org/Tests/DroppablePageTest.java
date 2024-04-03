@@ -10,51 +10,51 @@ import org.testng.annotations.Test;
 public class DroppablePageTest extends TestBase {
     private Logger logger = LogManager.getLogger(DroppablePageTest.class);
     private final String PAGE_TITLE = "Droppable";
-    @BeforeMethod(groups = {"UI","Smoke","Integration"})
+    @BeforeMethod(groups = {"UI","Functional"})
     public void initializeClass(){
         logger.info("-------------------Initializing DroppablePageTest Class------------------");
         droppablePage = homePage.clickOnSectionInteractions().clickOnDroppable();
         logger.info("-------------------Starting Test-----------------------");
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateCorrectPageTitle(){
         logger.info("-------------------validateCorrectPageTitle-----------------------");
         Assert.assertEquals(droppablePage.getPageTitleText(),PAGE_TITLE);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateSimpleTabIsVisible(){
         logger.info("-------------------validateSimpleTabIsVisible-----------------------");
         Assert.assertTrue(droppablePage.isSimpleTabVisible());
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateAcceptTabIsVisible(){
         logger.info("-------------------validateAcceptTabIsVisible-----------------------");
         Assert.assertTrue(droppablePage.isAcceptTabVisible());
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validatePreventTabIsVisible(){
         logger.info("-------------------validatePreventTabIsVisible-----------------------");
         Assert.assertTrue(droppablePage.isPreventTabVisible());
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateRevertTabIsVisible(){
         logger.info("-------------------validateRevertTabIsVisible-----------------------");
         Assert.assertTrue(droppablePage.isRevertTabVisible());
     }
 
-    @Test
+    @Test(groups = {"Functional"})
     public void isSimpleDraggableDroppedToTarget(){
         logger.info("-------------------isSimpleDraggableDroppedToTarget-----------------------");
         droppablePage.moveSimpleDraggableToTarget();
         Assert.assertTrue(droppablePage.isSimpleDraggableDropped());
     }
 
-    @Test
+    @Test(groups = {"Functional"})
     public void isAcceptableDraggableDroppedToTarget(){
         logger.info("-------------------isAcceptableDraggableDroppedToTarget-----------------------");
         droppablePage.clickOnTabAccept();
@@ -62,7 +62,7 @@ public class DroppablePageTest extends TestBase {
         Assert.assertTrue(droppablePage.isAcceptDraggableDropped());
     }
 
-    @Test
+    @Test(groups = {"Functional"})
     public void isNotAcceptableDraggableDroppedToTarget(){
         logger.info("-------------------isNotAcceptableDraggableDroppedToTarget-----------------------");
         droppablePage.clickOnTabAccept();
@@ -70,7 +70,7 @@ public class DroppablePageTest extends TestBase {
         Assert.assertFalse(droppablePage.isNotAcceptDraggableDropped());
     }
 
-    @Test
+    @Test(groups = {"Functional"})
     public void isPreventDraggableDroppedToNotGreedyTarget(){
         logger.info("-------------------isPreventDraggableDroppedToNotGreedyTarget-----------------------");
         droppablePage.clickOnTabPrevent();
@@ -78,7 +78,7 @@ public class DroppablePageTest extends TestBase {
         Assert.assertTrue(droppablePage.isPreventDraggableToNotGreedyDropped());
     }
 
-    @Test
+    @Test(groups = {"Functional"})
     public void isPreventDraggableDroppedToNotGreedyInnerTarget(){
         logger.info("-------------------isPreventDraggableDroppedToNotGreedyInnerTarget-----------------------");
         droppablePage.clickOnTabPrevent();
@@ -86,7 +86,7 @@ public class DroppablePageTest extends TestBase {
         Assert.assertTrue(droppablePage.isPreventDraggableToNotGreedyInnerDropped());
     }
 
-    @Test
+    @Test(groups = {"Functional"})
     public void isPreventDraggableDroppedToGreedyTarget(){
         logger.info("-------------------isPreventDraggableDroppedToGreedyTarget-----------------------");
         droppablePage.clickOnTabPrevent();
@@ -94,7 +94,7 @@ public class DroppablePageTest extends TestBase {
         Assert.assertTrue(droppablePage.isPreventDraggableToGreedyDropped());
     }
 
-    @Test
+    @Test(groups = {"Functional"})
     public void isPreventDraggableDroppedToGreedyInnerTarget(){
         logger.info("-------------------isPreventDraggableDroppedToGreedyInnerTarget-----------------------");
         droppablePage.clickOnTabPrevent();
@@ -102,7 +102,7 @@ public class DroppablePageTest extends TestBase {
         Assert.assertTrue(droppablePage.isPreventDraggableToGreedyInnerDropped());
     }
 
-    @Test
+    @Test(groups = {"Functional"})
     public void isRevertDraggableDroppedToTarget(){
         logger.info("-------------------isRevertDraggableDroppedToTarget-----------------------");
         droppablePage.clickOnTabRevert();
@@ -110,7 +110,7 @@ public class DroppablePageTest extends TestBase {
         Assert.assertTrue(droppablePage.isNotRevertDraggableDropped());
     }
 
-    @Test
+    @Test(groups = {"Functional"})
     public void isNoRevertDraggableDroppedToTarget(){
         logger.info("-------------------isNoRevertDraggableDroppedToTarget-----------------------");
         droppablePage.clickOnTabRevert();

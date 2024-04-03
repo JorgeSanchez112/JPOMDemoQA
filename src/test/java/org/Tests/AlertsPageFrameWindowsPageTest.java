@@ -12,20 +12,20 @@ public class AlertsPageFrameWindowsPageTest extends TestBase {
     private final String URL = "https://demoqa.com/alertsWindows";
     private final int ELEMENTS_LIST_SIZE = 5;
 
-    @BeforeMethod(groups = {"UI","Smoke","Integration"})
+    @BeforeMethod(groups = {"Functional"})
     public void initializeClass(){
         logger.info("-------------------Initializing AccordianPageTest Class------------------");
         alertsFrameWindowsPage = homePage.clickOnSectionAlerts_Frame_Windows();
         logger.info("-------------------Starting Test-----------------------");
     }
 
-    @Test
+    @Test(groups = "Functional")
     public void validateURL(){
         logger.info("-------------------validateURL-----------------------");
         Assert.assertEquals(alertsFrameWindowsPage.getAlertFrameWindowsUrl(),URL);
     }
 
-    @Test
+    @Test(groups = "Functional")
     public void validateSectionsSize(){
         logger.info("-------------------validateSectionsSize-----------------------");
         Assert.assertEquals(alertsFrameWindowsPage.getSizeSections(),ELEMENTS_LIST_SIZE);

@@ -13,34 +13,34 @@ public class NestedFramesPageTest extends TestBase {
     private final String PARENT_FRAME = "Parent frame";
     private final String CHILD_FRAME = "Child Iframe";
 
-    @BeforeMethod(groups = {"UI","Smoke","Integration"})
+    @BeforeMethod(groups = {"UI","Functional"})
     public void initializeClass(){
         logger.info("-------------------Initializing NestedFramesPageTest Class------------------");
         nestedFramesPage = homePage.clickOnSectionAlerts_Frame_Windows().clickOnNestedFrames();
         logger.info("-------------------Starting Test-----------------------");
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateCorrectPageTitle(){
         logger.info("-------------------validateCorrectPageTitle-----------------------");
         Assert.assertEquals(nestedFramesPage.getPageTitleText(),PAGE_TITLE);
 
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateUsesAdviceIsVisible(){
         logger.info("-------------------validateUsesAdviceIsVisible-----------------------");
         Assert.assertTrue(nestedFramesPage.isUseAdvicesVisible());
     }
 
-    @Test
+    @Test(groups = {"Functional"})
     public void validateSwitchToParentFrame(){
         logger.info("-------------------validateSwitchToParentFrame-----------------------");
         nestedFramesPage.switchToParentFrame();
         Assert.assertEquals(nestedFramesPage.getParentText(),PARENT_FRAME);
     }
 
-    @Test
+    @Test(groups = {"Functional"})
     public void validateSwitchToChildFrame(){
         logger.info("-------------------validateSwitchToChildFrame-----------------------");
         nestedFramesPage.switchToParentFrame();

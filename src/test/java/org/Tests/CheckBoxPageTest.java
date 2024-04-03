@@ -11,20 +11,20 @@ public class CheckBoxPageTest extends TestBase {
     private Logger logger = LogManager.getLogger(CheckBoxPageTest.class);
     private final String PAGE_TITLE = "Check Box";
 
-    @BeforeMethod(groups = {"UI","Smoke","Integration"})
+    @BeforeMethod(groups = {"UI","Functional"})
     public void initializeClass(){
         logger.info("-------------------Initializing CheckBoxPageTest Class------------------");
         checkBoxPage = homePage.clickOnSectionElements().clickOnCheckBoxSection();
         logger.info("-------------------Starting Test-----------------------");
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateCorrectPageTitle(){
         logger.info("-------------------validateCorrectPageTitle-----------------------");
         Assert.assertEquals(checkBoxPage.getPageTitleText(),PAGE_TITLE);
     }
 
-    @Test
+    @Test(groups = {"Functional"})
     public void ValidateDesktopIsClicked(){
         logger.info("-------------------ValidateDesktopIsClicked-----------------------");
         checkBoxPage.clickOnExpandButton();
@@ -33,7 +33,7 @@ public class CheckBoxPageTest extends TestBase {
 
     }
 
-    @Test
+    @Test(groups = {"Functional"})
     public void validateDocumentsIsClicked(){
         logger.info("-------------------validateDocumentsIsClicked-----------------------");
         checkBoxPage.clickOnExpandButton();
@@ -42,7 +42,7 @@ public class CheckBoxPageTest extends TestBase {
         Assert.assertTrue(checkBoxPage.checkDocumentsClicked());
     }
 
-    @Test
+    @Test(groups = {"Functional"})
     public void validateDownloadsIsClicked(){
         logger.info("-------------------validateDownloadsIsClicked-----------------------");
         checkBoxPage.clickOnExpandButton();

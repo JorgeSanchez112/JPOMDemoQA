@@ -12,17 +12,17 @@ public class InteractionsPageTest extends TestBase {
     private final String URL = "https://demoqa.com/interaction";
     private final int ELEMENTS_LIST_SIZE = 5;
 
-    @BeforeMethod(groups = {"UI","Smoke","Integration"})
+    @BeforeMethod(groups = {"Functional"})
     public void initializeClass(){
         interactionsPage = homePage.clickOnSectionInteractions();
     }
 
-    @Test
+    @Test(groups = {"Functional"})
     public void validateURL(){
         Assert.assertEquals(interactionsPage.getInteractionsUrlText(),URL);
     }
 
-    @Test
+    @Test(groups = {"Functional"})
     public void validateSectionsSize(){
         Assert.assertEquals(interactionsPage.getSizeSections(),ELEMENTS_LIST_SIZE);
     }

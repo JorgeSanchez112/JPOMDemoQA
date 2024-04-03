@@ -17,27 +17,27 @@ public class WebTablesPageTest extends TestBase {
     private final String MESSAGE_NO_ROWS_FOUND = "No rows found";
     private final String SEARCH_BOX = "Kierra";
 
-    @BeforeMethod(groups = {"UI","Smoke","Integration"})
+    @BeforeMethod(groups = {"UI","Smoke"})
     public void initializeClass(){
         logger.info("-------------------Initializing WebTablesPageTest Class------------------");
         webTablesPage = homePage.clickOnSectionElements().clickOnWebTablesSection();
         logger.info("-------------------Starting Test-----------------------");
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateCorrectPageTitle(){
         logger.info("-------------------validateCorrectPageTitle-----------------------");
         Assert.assertEquals(webTablesPage.getPageTitleText(), PAGE_TITLE);
     }
 
-    @Test
+    @Test(groups = {"Smoke"})
     public void validateSearchBoxResult(){
         logger.info("-------------------validateSearchBoxResult-----------------------");
         webTablesPage.typeOnSearchBox(SEARCH_BOX);
         Assert.assertEquals(webTablesPage.getFirstNameOfFirstRow(),SEARCH_BOX);
     }
 
-    @Test
+    @Test(groups = {"Smoke"})
     public void validateAllRowsEmpty(){
         logger.info("-------------------validateAllRowsEmpty-----------------------");
         webTablesPage.clickOnDeleteThirdRow();
@@ -47,7 +47,7 @@ public class WebTablesPageTest extends TestBase {
         Assert.assertEquals(webTablesPage.getTextOfMessageNoRowsFound(), MESSAGE_NO_ROWS_FOUND);
     }
 
-    @Test(dataProvider = "dataTest")
+    @Test(dataProvider = "dataTest",groups = {"Smoke"})
     public void validateCorrectNewRow(Object... data){
         logger.info("-------------------validateCorrectNewRow-----------------------");
         String name = (String) data[0];

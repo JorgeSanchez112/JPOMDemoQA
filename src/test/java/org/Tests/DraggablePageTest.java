@@ -12,45 +12,45 @@ public class DraggablePageTest extends TestBase {
     private Logger logger = LogManager.getLogger(DraggablePageTest.class);
     private final String PAGE_TITLE = "Dragabble";
 
-    @BeforeMethod(groups = {"UI","Smoke","Integration"})
+    @BeforeMethod(groups = {"UI","Functional"})
     public void initializeClass(){
         logger.info("-------------------Initializing DraggablePageTest Class------------------");
         draggablePage = homePage.clickOnSectionInteractions().clickOnDragabble();
         logger.info("-------------------Starting Test-----------------------");
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateCorrectPageTitle(){
         logger.info("-------------------validateCorrectPageTitle-----------------------");
         Assert.assertEquals(draggablePage.getPageTitleText(),PAGE_TITLE);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateSimpleTabIsVisible(){
         logger.info("-------------------validateSimpleTabIsVisible-----------------------");
         Assert.assertTrue(draggablePage.isSimpleTabVisible());
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateAxisTabIsVisible(){
         logger.info("-------------------validateAxisTabIsVisible-----------------------");
         Assert.assertTrue(draggablePage.isAxisTabVisible());
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateContainerIsVisible(){
         logger.info("-------------------validateContainerIsVisible-----------------------");
         Assert.assertTrue(draggablePage.isContainerTabVisible());
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateCursorTabIsVisible(){
         logger.info("-------------------validateCursorTabIsVisible-----------------------");
         Assert.assertTrue(draggablePage.isCursorTabVisible());
     }
 
     @Parameters({"simpleBoxXPositionExpected","simpleBoxYPositionExpected"})
-    @Test
+    @Test(groups = {"Functional"})
     public void isElementOfTabSimpleDroppedToCoordinates(String simpleBoxXPositionExpected, String simpleBoxYPositionExpected){
         logger.info("-------------------isElementOfTabSimpleDroppedToCoordinates-----------------------");
         draggablePage.moveSimpleElement(Integer.parseInt(simpleBoxXPositionExpected),Integer.parseInt(simpleBoxYPositionExpected));
@@ -59,7 +59,7 @@ public class DraggablePageTest extends TestBase {
     }
 
     @Parameters("restrictedXBoxPositionExpected")
-    @Test
+    @Test(groups = {"Functional"})
     public void isElementXOfTabAxisDroppedToCoordinates(String restrictedXBoxPositionExpected){
         logger.info("-------------------isElementXOfTabAxisDroppedToCoordinates-----------------------");
         draggablePage.clickOnTabAxisRestricted();
@@ -68,7 +68,7 @@ public class DraggablePageTest extends TestBase {
     }
 
     @Parameters("restrictedYBoxPositionExpected")
-    @Test
+    @Test(groups = {"Functional"})
     public void isElementYOfTabAxisDroppedToCoordinates(String restrictedYBoxPositionExpected){
         logger.info("-------------------isElementYOfTabAxisDroppedToCoordinates-----------------------");
         draggablePage.clickOnTabAxisRestricted();
@@ -77,7 +77,7 @@ public class DraggablePageTest extends TestBase {
     }
 
     @Parameters({"containedBoxXPositionExpected","containedBoxYPositionExpected"})
-    @Test
+    @Test(groups = {"Functional"})
     public void isElementContainedInBoxDroppedToCoordinates(String containedBoxXPositionExpected, String containedBoxYPositionExpected){
         logger.info("-------------------isElementContainedInBoxDroppedToCoordinates-----------------------");
         draggablePage.clickOnTabContainerRestricted();
@@ -87,7 +87,7 @@ public class DraggablePageTest extends TestBase {
     }
 
     @Parameters({"containedTextXPositionExpected","containedTextYPositionExpected"})
-    @Test
+    @Test(groups = {"Functional"})
     public void isTextContainedInBoxDroppedToCoordinates(String containedTextXPositionExpected, String containedTextYPositionExpected ){
         logger.info("-------------------isTextContainedInBoxDroppedToCoordinates-----------------------");
         draggablePage.clickOnTabContainerRestricted();
@@ -97,7 +97,7 @@ public class DraggablePageTest extends TestBase {
     }
 
     @Parameters({"elementOfCenterCursorXPositionExpected","elementOfCenterCursorYPositionExpected"})
-    @Test
+    @Test(groups = {"Functional"})
     public void isCenterCursorElementDroppedToCoordinates(String elementOfCenterCursorXPositionExpected, String elementOfCenterCursorYPositionExpected){
         logger.info("-------------------isCenterCursorElementDroppedToCoordinates-----------------------");
         draggablePage.clickOnTabCursorStyle();
@@ -108,7 +108,7 @@ public class DraggablePageTest extends TestBase {
 
 
     @Parameters({"elementOfTopCursorXPositionExpected","elementOfTopCursorYPositionExpected"})
-    @Test
+    @Test(groups = {"Functional"})
     public void isTopCursorElementDroppedToCoordinates(String elementOfTopCursorXPositionExpected, String elementOfTopCursorYPositionExpected){
         logger.info("-------------------isTopCursorElementDroppedToCoordinates-----------------------");
         draggablePage.clickOnTabCursorStyle();
@@ -118,7 +118,7 @@ public class DraggablePageTest extends TestBase {
     }
 
     @Parameters({"elementOfBottomCursorXPositionExpected","elementOfBottomCursorYPositionExpected"})
-    @Test
+    @Test(groups = {"Functional"})
     public void isBottomCursorElementDroppedToCoordinates(String elementOfBottomCursorXPositionExpected, String elementOfBottomCursorYPositionExpected){
         logger.info("-------------------isBottomCursorElementDroppedToCoordinates-----------------------");
         draggablePage.clickOnTabCursorStyle();

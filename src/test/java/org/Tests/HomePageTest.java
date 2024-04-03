@@ -11,7 +11,7 @@ public class HomePageTest extends TestBase {
     private Logger logger = LogManager.getLogger(AccordianPageTest.class);
     private final String URL = "https://demoqa.com/";
 
-    @Test
+    @Test(groups = {"Functional"})
     public void validateURL() {
         logger.info("-------------------validateURL-----------------------");
         Assert.assertEquals(homePage.getHomePageUrlText(), URL);

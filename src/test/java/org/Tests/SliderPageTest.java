@@ -11,28 +11,28 @@ public class SliderPageTest extends TestBase {
     private Logger logger = LogManager.getLogger(SliderPageTest.class);
     private final String PAGE_TITLE = "Slider";
 
-    @BeforeMethod(groups = {"UI","Smoke","Integration"})
+    @BeforeMethod(groups = {"UI","Smoke"})
     public void initializeClass(){
         logger.info("-------------------Initializing SliderPageTest Class------------------");
         sliderPage = homePage.clickOnSectionWidgets().clickOnSlider();
         logger.info("-------------------Starting Test-----------------------");
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateCorrectPageTitle(){
         logger.info("-------------------validateCorrectPageTitle-----------------------");
         Assert.assertEquals(sliderPage.getPageTitleText(),PAGE_TITLE);
 
     }
 
-    @Test
+    @Test(groups = {"Smoke"})
     public void validateRangeInputToMinValue(){
         logger.info("-------------------validateRangeInputToMinValue-----------------------");
         sliderPage.changeRangeInputToMinValue();
         Assert.assertEquals(sliderPage.getValueTextOfInputRange(),sliderPage.getContainerValueText());
     }
 
-    @Test
+    @Test(groups = {"Smoke"})
     public void validateRangeInputToMaxValue(){
         logger.info("-------------------validateRangeInputToMaxValue-----------------------");
         sliderPage.changeRangeInputToMaxValue();

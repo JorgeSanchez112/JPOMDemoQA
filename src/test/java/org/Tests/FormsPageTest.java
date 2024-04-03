@@ -12,20 +12,20 @@ public class FormsPageTest extends TestBase {
     private final String URL = "https://demoqa.com/forms";
     private final String MENU_LIST_TEXT = "Practice Form";
 
-    @BeforeMethod(groups = {"UI","Smoke","Integration"})
+    @BeforeMethod(groups = {"UI"})
     public void initializeClass(){
         logger.info("-------------------Initializing FormsPageTest Class------------------");
         formsPage = homePage.clickOnSectionForms();
         logger.info("-------------------Starting Test-----------------------");
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateURL(){
         logger.info("-------------------validateURL-----------------------");
         Assert.assertEquals(formsPage.getFormsUrlText(),URL);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateCorrectMenuListText(){
         logger.info("-------------------validateCorrectMenuListText-----------------------");
         Assert.assertEquals(formsPage.getMenuListText(),MENU_LIST_TEXT);

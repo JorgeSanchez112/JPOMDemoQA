@@ -135,6 +135,7 @@ public class PracticeFormPage extends BasePages {
     }
 
     public void selectHobbies(String hobby){
+        waitForChargedElementsOfAWebElementList(checkboxes);
         scroll(checkboxes.get(0));
         switch (hobby){
             case "Sports":

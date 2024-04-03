@@ -11,20 +11,20 @@ public class UploadDownloadPageTest extends TestBase {
     private Logger logger = LogManager.getLogger(UploadDownloadPageTest.class);
     private final String PAGE_TITLE = "Upload and Download";
 
-    @BeforeMethod(groups = {"UI","Smoke","Integration"})
+    @BeforeMethod(groups = {"UI","Functional"})
     public void initializeClass(){
         logger.info("-------------------Initializing UploadDownloadPageTest Class------------------");
         uploadDownloadPage = homePage.clickOnSectionElements().clickOnUploadDownloadSection();
         logger.info("-------------------Starting Test-----------------------");
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateCorrectPageTitle(){
         logger.info("-------------------validateCorrectPageTitle-----------------------");
         Assert.assertEquals(uploadDownloadPage.getPageTitleText(),PAGE_TITLE);
     }
 
-    @Test
+    @Test(groups = {"Functional"})
     public void validateArchiveDownloaded(){
         logger.info("-------------------validateArchiveDownloaded-----------------------");
         uploadDownloadPage.clickOnDownloadButton();

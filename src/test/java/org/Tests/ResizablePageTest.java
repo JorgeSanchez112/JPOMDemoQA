@@ -17,26 +17,26 @@ public class ResizablePageTest extends TestBase {
     private final String WIDTH_MAX_OF_RESIZABLE_RESTRICTED = "500";
     private final String HEIGHT_MAX_OF_RESIZABLE_RESTRICTED = "300";
 
-    @BeforeMethod(groups = {"UI","Smoke","Integration"})
+    @BeforeMethod(groups = {"UI","Functional"})
     public void initializeClass(){
         logger.info("-------------------Initializing ResizablePageTest Class------------------");
         resizablePage = homePage.clickOnSectionInteractions().clickOnResizable();
         logger.info("-------------------Starting Test-----------------------");
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateCorrectPageTitle(){
         logger.info("-------------------validateCorrectPageTitle-----------------------");
         Assert.assertEquals(resizablePage.getPageTitleText(),PAGE_TITLE);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateResizableRestrictedTextIsVisible(){
         logger.info("-------------------validateResizableRestrictedTextIsVisible-----------------------");
         Assert.assertTrue(resizablePage.isResizableRestrictedTextVisible());
     }
 
-    @Test
+    @Test(groups = {"Functional"})
     public void isResizableRestrictedToMax() {
         logger.info("-------------------isResizableRestrictedToMax-----------------------");
         resizablePage.resizeBoxRestrictedToMax(Integer.parseInt(WIDTH_MAX_OF_RESIZABLE_RESTRICTED),Integer.parseInt(HEIGHT_MAX_OF_RESIZABLE_RESTRICTED));
@@ -44,13 +44,13 @@ public class ResizablePageTest extends TestBase {
         Assert.assertEquals(resizablePage.getHeightOfBoxRestricted(),HEIGHT_MAX_OF_RESIZABLE_RESTRICTED + prop.getProperty("pxMeasurer"));
     }
 
-    @Test
+    @Test(groups = {"Functional"})
     public void validateResizableTextIsVisible(){
         logger.info("-------------------validateResizableTextIsVisible-----------------------");
         Assert.assertTrue(resizablePage.isResizableTextVisible());
     }
 
-    @Test(dataProvider = "testData")
+    @Test(dataProvider = "testData",groups = {"Functional"})
     public void isResizableBox(Object... data) {
         logger.info("-------------------isResizableBox-----------------------");
         String WidthOfResizeBox = (String) data[0];

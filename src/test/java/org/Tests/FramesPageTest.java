@@ -12,33 +12,33 @@ public class FramesPageTest extends TestBase {
     private final String PAGE_TITLE = "Frames";
     private final String FRAME_TEXT = "This is a sample page";
 
-    @BeforeMethod(groups = {"UI","Smoke","Integration"})
+    @BeforeMethod(groups = {"UI","Functional"})
     public void initializeClass(){
         logger.info("-------------------Initializing FramesPageTest Class------------------");
         framesPage = homePage.clickOnSectionAlerts_Frame_Windows().clickOnFrames();
         logger.info("-------------------Starting Test-----------------------");
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateCorrectPageTitle(){
         logger.info("-------------------validateCorrectPageTitle-----------------------");
         Assert.assertEquals(framesPage.getPageTitleText(),PAGE_TITLE);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateUseAdviceTextIsVisible(){
         logger.info("-------------------validateUseAdviceTextIsVisible-----------------------");
         Assert.assertTrue(framesPage.isUseAdvicesTextVisible());
     }
 
-    @Test
+    @Test(groups = {"Functional"})
     public void validateChangeToBigFrame(){
         logger.info("-------------------validateChangeToBigFrame-----------------------");
         framesPage.switchToBigFrame();
         Assert.assertEquals(framesPage.getFrameText(),FRAME_TEXT);
     }
 
-    @Test
+    @Test(groups = {"Functional"})
     public void validateChangeToShortFrame(){
         logger.info("-------------------validateChangeToShortFrame-----------------------");
         framesPage.switchToShortFrame();

@@ -13,33 +13,33 @@ public class ProgressBarPageTest extends TestBase {
     private final String FULL_BAR_PERCENTAGE = "100%";
     private final String EMPTY_BAR_PERCENTAGE = "0%";
 
-    @BeforeMethod(groups = {"UI","Smoke","Integration"})
+    @BeforeMethod(groups = {"UI","Smoke","Functional"})
     public void initializeClass(){
         logger.info("-------------------Initializing ProgressBarPageTest Class------------------");
         progressBarPage = homePage.clickOnSectionWidgets().clickOnProgressBar();
         logger.info("-------------------Starting Test-----------------------");
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateCorrectPageTitle(){
         logger.info("-------------------validateCorrectPageTitle-----------------------");
         Assert.assertEquals(progressBarPage.getPageTitleText(),PAGE_TITLE);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateCorrectLabelText(){
         logger.info("-------------------validateCorrectLabelText-----------------------");
         Assert.assertEquals(progressBarPage.getLabelText(), PAGE_TITLE);
     }
 
-    @Test
+    @Test(groups = {"Smoke"})
     public void validateProgressBar(){
         logger.info("-------------------validateProgressBar-----------------------");
         progressBarPage.startProgressBarAndWaitTo100Percent();
         Assert.assertEquals(progressBarPage.getPercentText(), FULL_BAR_PERCENTAGE);
     }
 
-    @Test
+    @Test(groups = {"Functional"})
     public void validateReturnToBasePage(){
         logger.info("-------------------validateReturnToBasePage-----------------------");
         progressBarPage.startProgressBarTillEndAndRestartBar();

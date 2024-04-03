@@ -13,38 +13,38 @@ public class BrokenLinksPageTest extends TestBase {
     private Logger logger = LogManager.getLogger(BrokenLinksPageTest.class);
     private final String PAGE_TITLE = "Broken Links - Images";
 
-    @BeforeMethod(groups = {"UI","Smoke","Integration"})
+    @BeforeMethod(groups = {"UI","Smoke","Functional"})
     public void initializeClass(){
         logger.info("-------------------Initializing BrokenLinksPageTest Class------------------");
         brokenLinksPage = homePage.clickOnSectionElements().clickOnBrokenLinksImageSection();
         logger.info("-------------------Starting Test-----------------------");
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateCorrectPageTitle(){
         logger.info("-------------------validateCorrectPageTitle-----------------------");
         Assert.assertEquals(brokenLinksPage.getPageTitleText(),PAGE_TITLE);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateImage() throws IOException {
         logger.info("-------------------validateImage-----------------------");
         Assert.assertTrue(brokenLinksPage.isDisplayedValidImage());
     }
 
-    @Test
+    @Test(groups = {"Smoke","Functional"})
     public void validateBrokeImage() throws IOException {
         logger.info("-------------------validateBrokeImage-----------------------");
         Assert.assertTrue(brokenLinksPage.isDisplayedBrokenImage());
     }
 
-    @Test
+    @Test(groups = {"Smoke","Functional"})
     public void validateLink() throws IOException {
         logger.info("-------------------validateLink-----------------------");
         Assert.assertFalse(brokenLinksPage.isAValidLink());
     }
 
-    @Test
+    @Test(groups = {"Smoke","Functional"})
     public void validateBrokenLink() throws IOException {
         logger.info("-------------------validateBrokenLink-----------------------");
         Assert.assertFalse(brokenLinksPage.isABrokenLink());

@@ -73,10 +73,15 @@ public class BasePages {
     /**
      * Description: This function press enter with SendKeys.
      * @param driver WebElement to send the Enter Action.
+     * @exception NoSuchElementException: It points out that element can't be found, likely an irregular locator or delay charge.
      * */
     public void pressEnterKey(WebElement driver){
-        driver.sendKeys(Keys.ENTER);
-        logger.info("Enter key pressed");
+        try {
+            driver.sendKeys(Keys.ENTER);
+            logger.info("Enter key pressed");
+        }catch (NoSuchElementException e){
+            handleException(MESSAGE_TO_NO_SUCH_ELEMENT_EXCEPTION,e);
+        }
     }
 
     /**

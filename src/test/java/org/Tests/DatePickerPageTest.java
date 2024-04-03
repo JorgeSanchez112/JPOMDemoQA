@@ -17,32 +17,32 @@ public class DatePickerPageTest extends TestBase {
     private final String FIRST_LABEL  = "Select Date";
     private final String SECOND_LABEL  = "Date And Time";
 
-    @BeforeMethod(groups = {"UI","Smoke","Integration"})
+    @BeforeMethod(groups = {"UI","Smoke"})
     public void initializeClass(){
         logger.info("-------------------Initializing DatePickerPageTest Class------------------");
         datePickerPage = homePage.clickOnSectionWidgets().clickOnDatePicker();
         logger.info("-------------------Starting Test-----------------------");
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateCorrectPageTitle(){
         logger.info("-------------------validateCorrectPageTitle-----------------------");
         Assert.assertEquals(datePickerPage.getPageTitleText(),PAGE_TITLE);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateCorrectDateLabel(){
         logger.info("-------------------validateCorrectDateLabel-----------------------");
         Assert.assertEquals(datePickerPage.getDateLabelText(),FIRST_LABEL);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateCorrectDateTimeLabel(){
         logger.info("-------------------validateCorrectDateTimeLabel-----------------------");
         Assert.assertEquals(datePickerPage.getDateTimeLabelText(),SECOND_LABEL);
     }
 
-    @Test(dataProvider = "testData")
+    @Test(dataProvider = "testData",groups = {"Smoke"})
     public void validateDateSelected(Object... data){
         logger.info("-------------------validateDateSelected-----------------------");
         String month = (String) data[0];
@@ -55,7 +55,7 @@ public class DatePickerPageTest extends TestBase {
         Assert.assertEquals(datePickerPage.getDateValueText(),dateExpected);
     }
 
-    @Test(dataProvider = "testData")
+    @Test(dataProvider = "testData",groups = {"Smoke"})
     public void validateDateTimeSelected(Object... data){
         logger.info("-------------------validateDateTimeSelected-----------------------");
         String month = (String) data[0];

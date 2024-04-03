@@ -18,58 +18,58 @@ public class AlertsPageTest extends TestBase {
     private final String DISMISS_ALERT_MESSAGE = "You selected Cancel";
     private final String INPUT_ALERT_MESSAGE = "You entered ";
 
-    @BeforeMethod(groups = {"UI","Smoke","Integration"})
+    @BeforeMethod(groups = {"UI","Smoke","Functional"})
     public void initializeClass(){
         logger.info("-------------------Initializing AlertsPageTest Class------------------");
         alertsPage = homePage.clickOnSectionAlerts_Frame_Windows().clickOnAlerts();
         logger.info("-------------------Starting Test-----------------------");
     }
 
-    @Test
+    @Test(groups = {"Functional"})
     public void validateCorrectPageTitle(){
         logger.info("-------------------validateCorrectPageTitle-----------------------");
         Assert.assertEquals(alertsPage.getPageTitleText(),PAGE_TITLE);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateFirstLabelIsVisible(){
         logger.info("-------------------validateFirstLabelIsVisible-----------------------");
         Assert.assertTrue(alertsPage.isFirstLabelVisible());
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateSecondLabelIsVisible(){
         logger.info("-------------------validateSecondLabelIsVisible-----------------------");
         Assert.assertTrue(alertsPage.isSecondLabelVisible());
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateThirdLabelIsVisible(){
         logger.info("-------------------validateThirdLabelIsVisible-----------------------");
         Assert.assertTrue(alertsPage.isThirdLabelVisible());
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateFourthLabelIsVisible(){
         logger.info("-------------------validateFourthLabelIsVisible-----------------------");
         Assert.assertTrue(alertsPage.isFourthLabelVisible());
     }
 
-    @Test
+    @Test(groups = {"Functional"})
     public void validateAlert(){
         logger.info("-------------------validateAlert-----------------------");
         alertsPage.clickOnFirstButton();
         alertsPage.confirmAlert();
     }
 
-    @Test
+    @Test(groups = {"Functional"})
     public void validateAlertAppear(){
         logger.info("-------------------validateAlertAppear-----------------------");
         alertsPage.clickOnSecondButton();
         alertsPage.confirmAlert();
     }
 
-    @Test
+    @Test(groups = {"Functional"})
     public void validateAcceptAlert(){
         logger.info("-------------------validateAcceptAlert-----------------------");
         alertsPage.clickOnThirdButton();
@@ -77,7 +77,7 @@ public class AlertsPageTest extends TestBase {
         Assert.assertEquals(alertsPage.getConfirmResultText(),ACCEPT_ALERT_MESSAGE);
     }
 
-    @Test
+    @Test(groups = {"Functional"})
     public void validateDismissAlert(){
         logger.info("-------------------validateDismissAlert-----------------------");
         alertsPage.clickOnThirdButton();
@@ -85,7 +85,7 @@ public class AlertsPageTest extends TestBase {
         Assert.assertEquals(alertsPage.getConfirmResultText(),DISMISS_ALERT_MESSAGE);
     }
 
-    @Test(dataProvider = "testData")
+    @Test(dataProvider = "testData",groups = {"Smoke","Functional"})
     public void validateInputAlert(Object... data){
         logger.info("-------------------validateInputAlert-----------------------");
         String inputAlert = (String) data[0];

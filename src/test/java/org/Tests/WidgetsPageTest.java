@@ -12,20 +12,20 @@ public class WidgetsPageTest extends TestBase {
     private final String URL = "https://demoqa.com/widgets";
     private final int ELEMENTS_LIST_SIZE = 9;
 
-    @BeforeMethod(groups = {"UI","Smoke","Integration"})
+    @BeforeMethod(groups = {"Functional"})
     public void initializeClass(){
         logger.info("-------------------Initializing WidgetsPageTest Class------------------");
         widgetsPage = homePage.clickOnSectionWidgets();
         logger.info("-------------------Starting Test-----------------------");
     }
 
-    @Test
+    @Test(groups = {"Functional"})
     public void validateURL(){
         logger.info("-------------------validateURL-----------------------");
         Assert.assertEquals(widgetsPage.getWidgetsUrlText(),URL);
     }
 
-    @Test
+    @Test(groups = {"Functional"})
     public void validateSectionsSize(){
         logger.info("-------------------validateSectionsSize-----------------------");
         Assert.assertEquals(widgetsPage.getSizeSections(),ELEMENTS_LIST_SIZE);

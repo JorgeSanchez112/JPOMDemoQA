@@ -33,7 +33,6 @@ public class ExcelReader {
         return dataList.toArray(new Object[0][]);
     }
 
-
     private Object getCellValue(Cell cell) {
         switch (cell.getCellType()) {
             case NUMERIC:

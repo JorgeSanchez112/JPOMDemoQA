@@ -21,50 +21,50 @@ public class BookStorePageTest extends TestBase {
     private final String FOURTH_TITLE_TABLE  = "Publisher";
     private final String SEARCH_BAR_PLACEHOLDER = "Type to search";
 
-    @BeforeMethod(groups = {"UI","Smoke","Integration"})
+    @BeforeMethod(groups = {"UI","Smoke","Functional"})
     public void initializeClass(){
         logger.info("-------------------Initializing BookStorePageTest Class------------------");
         bookStorePage = homePage.clickOnSectionBookStoreApplication();
         logger.info("-------------------Starting Test-----------------------");
     }
 
-    @Test
+    @Test(groups = {"Functional"})
     public void validateURL(){
         logger.info("-------------------validateURL-----------------------");
         Assert.assertEquals(bookStorePage.getBookStoreUrlText(),URL);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void isFirstTitleOfTableCorrect() {
         logger.info("-------------------isFirstTitleOfTableCorrect-----------------------");
         Assert.assertEquals(bookStorePage.getFirstTitleTableText(), FIRST_TITLE_TABLE);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void isSecondTitleOfTableCorrect() {
         logger.info("-------------------isSecondTitleOfTableCorrect-----------------------");
         Assert.assertEquals(bookStorePage.getSecondTitleTableText(),SECOND_TITLE_TABLE);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void isThirdTitleOfTableCorrect() {
         logger.info("-------------------isThirdTitleOfTableCorrect-----------------------");
         Assert.assertEquals(bookStorePage.getThirdTitleTableText(),THIRD_TITLE_TABLE);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void isFourthTitleOfTableCorrect() {
         logger.info("-------------------isFourthTitleOfTableCorrect-----------------------");
         Assert.assertEquals(bookStorePage.getFourthTitleTableText(),FOURTH_TITLE_TABLE);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void isFirstBookImageVisible() {
         logger.info("-------------------isFirstBookImageVisible-----------------------");
         Assert.assertTrue(bookStorePage.isVisibleFirstImage());
     }
 
-    @Test(dataProvider = "testData")
+    @Test(dataProvider = "testData",groups = {"UI"})
     public void areBookTitleCorrect(Object... data) {
         logger.info("-------------------areBookTitleCorrect-----------------------");
         String bookTitle = (String) data[0];
@@ -72,7 +72,7 @@ public class BookStorePageTest extends TestBase {
         Assert.assertEquals(bookStorePage.getTitleBookText(bookTitle),bookTitle);
     }
 
-    @Test(dataProvider = "testData")
+    @Test(dataProvider = "testData",groups = {"UI"})
     public void isFirstBookAuthorCorrect(Object... data) {
         logger.info("-------------------isFirstBookAuthorCorrect-----------------------");
         String bookTitle = (String) data[0];
@@ -90,19 +90,19 @@ public class BookStorePageTest extends TestBase {
         Assert.assertEquals(bookStorePage.getBookPublisherText(bookTitle),publisher);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateAllTheBooksImageAreVisible() {
         logger.info("-------------------validateAllTheBooksImageAreVisible-----------------------");
         Assert.assertTrue(bookStorePage.areTheImagesVisible());
     }
 
-    @Test
+    @Test(groups = {"Smoke"})
     public void validateAllTheImagesAreNotBroke() throws IOException {
         logger.info("-------------------validateAllTheImagesAreNotBroke-----------------------");
         Assert.assertTrue(bookStorePage.areNotBrokeLinkImages());
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void isSearchBarPlaceholderCorrect() {
         logger.info("-------------------isSearchBarPlaceholderCorrect-----------------------");
         bookStorePage.scrollToSearchBar();
@@ -110,7 +110,7 @@ public class BookStorePageTest extends TestBase {
     }
 
 
-    @Test(dataProvider = "testData")
+    @Test(dataProvider = "testData",groups = {"Smoke","Functional"})
     public void isBookSearchedBySearchBar(Object... data) {
         logger.info("-------------------isBookSearchedBySearchBar-----------------------");
         String bookTitle = (String) data[0];
@@ -121,7 +121,7 @@ public class BookStorePageTest extends TestBase {
         Assert.assertTrue(bookStorePage.isBookTitleFound(bookStorePage.getTitleBookText(bookTitle),bookTitle));
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateSectionsSize(){
         logger.info("-------------------validateSectionsSize-----------------------");
         Assert.assertEquals(bookStorePage.getSizeSections(),ELEMENTS_LIST_SIZE);

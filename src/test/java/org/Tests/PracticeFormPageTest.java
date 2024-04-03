@@ -42,50 +42,50 @@ public class PracticeFormPageTest extends TestBase {
     private final String RGB_GREEN_COLOR = "rgb(40, 167, 69)";
 
 
-    @BeforeMethod(groups = {"UI","Smoke","Integration"})
+    @BeforeMethod(groups = {"UI","Functional","Smoke"})
     public void initializeClass(){
         logger.info("-------------------Initializing PracticeFormPageTest Class------------------");
         practiceFormPage = homePage.clickOnSectionForms().clickOnPracticeFormSection();
         logger.info("-------------------Starting Test-----------------------");
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateCorrectPageTitle(){
         logger.info("-------------------validateCorrectPageTitle-----------------------");
         Assert.assertEquals(practiceFormPage.getPageTitleText(),PAGE_TITLE);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateTitle(){
         logger.info("-------------------validateTitle-----------------------");
         Assert.assertEquals(practiceFormPage.getTextFormTitle(),FORM_TITLE);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateLabelName(){
         logger.info("-------------------validateLabelName-----------------------");
         Assert.assertEquals(practiceFormPage.getTextOfLabelName(), LABEL_NAME);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateLabelEmail(){
         logger.info("-------------------validateLabelEmail-----------------------");
         Assert.assertEquals(practiceFormPage.getTextOfLabelEmail(), LABEL_EMAIL);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateLabelGender(){
         logger.info("-------------------validateLabelGender-----------------------");
         Assert.assertEquals(practiceFormPage.getTextOfLabelGender(), LABEL_GENDER);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateLabelMobile(){
         logger.info("-------------------validateLabelMobile-----------------------");
         Assert.assertEquals(practiceFormPage.getTextOfLabelMobile(), LABEL_MOBILE);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateLabelBirthDate(){
         logger.info("-------------------validateLabelBirthDate-----------------------");
         Assert.assertEquals(practiceFormPage.getTextOfLabelDateOfBirth(), LABEL_BIRTHDATE);
@@ -97,143 +97,143 @@ public class PracticeFormPageTest extends TestBase {
         Assert.assertEquals(practiceFormPage.getTextOfLabelSubjects(), LABEL_SUBJECTS);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateLabelHobbies(){
         logger.info("-------------------validateLabelHobbies-----------------------");
         Assert.assertEquals(practiceFormPage.getTextOfLabelHobbies(), LABEL_HOBBIES);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateLabelPicture(){
         logger.info("-------------------validateLabelPicture-----------------------");
         Assert.assertEquals(practiceFormPage.getTextOfLabelPicture(), LABEL_PICTURES);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateLabelCurrentAddress(){
         logger.info("-------------------validateLabelCurrentAddress-----------------------");
         Assert.assertEquals(practiceFormPage.getTextOfLabelCurrentAddress(), LABEL_CURRENT_ADDRESS);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateLabelsStateAndCity(){
         logger.info("-------------------validateLabelsStateAndCity-----------------------");
         Assert.assertEquals(practiceFormPage.getTextOfLabelStateCity(), LABEL_STATE_CITY);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validatePlaceholderFirstNameField(){
         logger.info("-------------------validatePlaceholderFirstNameField-----------------------");
         Assert.assertEquals(practiceFormPage.getPlaceholderFirstNameField(), PLACEHOLDER_FIRST_NAME_FIELD);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validatePlaceholderLastNameField(){
         logger.info("-------------------validatePlaceholderLastNameField-----------------------");
         Assert.assertEquals(practiceFormPage.getPlaceholderLastNameField(), PLACEHOLDER_LAST_NAME_FIELD);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validatePlaceholderEmailField(){
         logger.info("-------------------validatePlaceholderEmailField-----------------------");
         Assert.assertEquals(practiceFormPage.getPlaceholderEmailField(), PLACEHOLDER_EMAIL_FIELD);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validatePlaceholderMobileField(){
         logger.info("-------------------validatePlaceholderMobileField-----------------------");
         Assert.assertEquals(practiceFormPage.getPlaceholderMobileField(), PLACEHOLDER_MOBILE_FIELD);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validatePlaceholderCurrentAddressField(){
         logger.info("-------------------validatePlaceholderCurrentAddressField-----------------------");
         Assert.assertEquals(practiceFormPage.getPlaceholderCurrentAddressField(), PLACEHOLDER_CURRENT_ADDRESS_FIELD);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validatePlaceholderStateListBox(){
         logger.info("-------------------validatePlaceholderStateListBox-----------------------");
         Assert.assertEquals(practiceFormPage.getPlaceholderStatesListBox(), PLACEHOLDER_STATES_LIST_BOX);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validatePlaceholderCityListBox(){
         logger.info("-------------------validatePlaceholderCityListBox-----------------------");
         Assert.assertEquals(practiceFormPage.getPlaceholderCitiesListBox(), PLACEHOLDER_CITIES_LIST_BOX);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateBorderColorOfFirstNameField(){
         logger.info("-------------------validateBorderColorOfFirstNameField-----------------------");
         practiceFormPage.enterToSubmitButton();
         Assert.assertEquals(practiceFormPage.getCssAttributeFirstNameField(), RGB_RED_COLOR);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateBorderColorOfLastNameField(){
         logger.info("-------------------validateBorderColorOfLastNameField-----------------------");
         practiceFormPage.enterToSubmitButton();
         Assert.assertEquals(practiceFormPage.getCssAttributeLastNameField(), RGB_RED_COLOR);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateBorderColorOfEmailField(){
         logger.info("-------------------validateBorderColorOfEmailField-----------------------");
         practiceFormPage.enterToSubmitButton();
         Assert.assertEquals(practiceFormPage.getCssAttributeEmailField(), RGB_GREEN_COLOR);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateBorderColorOfGenderRadioButtonsField(){
         logger.info("-------------------validateBorderColorOfGenderRadioButtonsField-----------------------");
         practiceFormPage.enterToSubmitButton();
         Assert.assertEquals(practiceFormPage.getCssAttributeGenderRadioButtons(), RGBA_RED_COLOR);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateBorderColorOfMobileField(){
         logger.info("-------------------validateBorderColorOfMobileField-----------------------");
         practiceFormPage.enterToSubmitButton();
         Assert.assertEquals(practiceFormPage.getCssAttributeMobileField(), RGB_RED_COLOR);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateBorderColorOfBirthDateField(){
         logger.info("-------------------validateBorderColorOfBirthDateField-----------------------");
         practiceFormPage.enterToSubmitButton();
         Assert.assertEquals(practiceFormPage.getCssAttributeBirthDateField(), RGB_GREEN_COLOR);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateBorderColorOfSportsCheckboxButton(){
         logger.info("-------------------validateBorderColorOfSportsCheckboxButton-----------------------");
         practiceFormPage.enterToSubmitButton();
         Assert.assertEquals(practiceFormPage.getCssAttributeSportsCheckboxButton(), RGB_GREEN_COLOR);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateBorderColorOfReadingCheckboxButton(){
         logger.info("-------------------validateBorderColorOfReadingCheckboxButton-----------------------");
         practiceFormPage.enterToSubmitButton();
         Assert.assertEquals(practiceFormPage.getCssAttributeReadingCheckboxButton(), RGB_GREEN_COLOR);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateBorderColorOfMusicCheckboxButton(){
         logger.info("-------------------validateBorderColorOfMusicCheckboxButton-----------------------");
         practiceFormPage.enterToSubmitButton();
         Assert.assertEquals(practiceFormPage.getCssAttributeMusicCheckboxButton(), RGB_GREEN_COLOR);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateBorderColorOfCurrentAddressField(){
         logger.info("-------------------validateBorderColorOfCurrentAddressField-----------------------");
         practiceFormPage.enterToSubmitButton();
         Assert.assertEquals(practiceFormPage.getCssAttributeCurrentAddressField(), RGB_GREEN_COLOR);
     }
 
-    @Test(dataProvider = "testData")
+    @Test(dataProvider = "testData",groups = {"Smoke","Functional"})
     public void validateCorrectRegisterValues(Object... data) {
         logger.info("-------------------validateCorrectRegisterValues-----------------------");
         String nameValue = (String) data[0];

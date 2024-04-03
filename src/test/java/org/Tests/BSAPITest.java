@@ -10,26 +10,26 @@ import org.testng.annotations.Test;
 public class BSAPITest extends TestBase {
     private final Logger logger = LogManager.getLogger(BSAPITest.class);
 
-    @BeforeMethod(groups = {"UI","Smoke","Integration"})
+    @BeforeMethod(groups = {"UI"})
     public void initializeClass(){
         logger.info("-------------------Initializing BSAPITest Class------------------");
         bsapiPage = homePage.clickOnSectionBookStoreApplication().clickOnBookstoreApi();
         logger.info("-------------------Starting Test-----------------------");
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void isBookStoreAPITitleVisible(){
         logger.info("-------------------isBookStoreAPITitleVisible-----------------------");
         Assert.assertTrue(bsapiPage.isTitleVisible());
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void isAccountSubtitleVisible(){
         logger.info("-------------------isAccountSubtitleVisible-----------------------");
         Assert.assertTrue(bsapiPage.isAccountSubtitleVisible());
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void isBookstoreSubtitleVisible(){
         logger.info("-------------------isBookstoreSubtitleVisible-----------------------");
         Assert.assertTrue(bsapiPage.isBookstoreSubtitleVisible());

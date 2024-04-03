@@ -14,20 +14,20 @@ public class BrowserWindowsPagePageTest extends TestBase {
     private final String URL_SAMPLE_PAGE = "https://demoqa.com/sample";
     private final String MESSAGE_NEW_WINDOW = "Knowledge increases by sharing but not by saving. Please share this website with your friends and in your organization.";
 
-    @BeforeMethod(groups = {"UI","Smoke","Integration"})
+    @BeforeMethod(groups = {"UI","Smoke"})
     public void InitializeClass(){
         logger.info("-------------------Initializing BrowserWindowsPagePageTest Class------------------");
         browserWindowsPage = homePage.clickOnSectionAlerts_Frame_Windows().clickOnBrowserWindows();
         logger.info("-------------------Starting Test-----------------------");
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateCorrectPageTitle(){
         logger.info("-------------------validateCorrectPageTitle-----------------------");
         Assert.assertEquals(browserWindowsPage.getPageTitleText(), PAGE_TITLE);
     }
 
-    @Test
+    @Test(groups = {"Smoke"})
     public void validateChangeOfTab(){
         logger.info("-------------------validateChangeOfTab-----------------------");
         browserWindowsPage.clickOnNewTabButton();
@@ -36,7 +36,7 @@ public class BrowserWindowsPagePageTest extends TestBase {
         Assert.assertTrue(browserWindowsPage.newTabTextIsVisible());
     }
 
-    @Test
+    @Test(groups = {"Smoke"})
     public void validateNewWindowAppear(){
         logger.info("-------------------validateNewWindowAppear-----------------------");
         browserWindowsPage.clickOnNewWindowButton();
@@ -45,7 +45,7 @@ public class BrowserWindowsPagePageTest extends TestBase {
         Assert.assertTrue(browserWindowsPage.newTabTextIsVisible());
     }
 
-    @Test
+    @Test(groups = {"Smoke"})
     public void validateNewWindowMessage(){
         logger.info("-------------------validateNewWindowMessage-----------------------");
         browserWindowsPage.clickOnNewWindowMessageButton();

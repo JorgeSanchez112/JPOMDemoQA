@@ -14,34 +14,34 @@ public class ButtonsPageTest extends TestBase {
     private final String RIGHT_CLICK_MESSAGE = "You have done a right click";
     private final String RADIO_BUTTON = "You have done a dynamic click";
 
-    @BeforeMethod(groups = {"UI","Smoke","Integration"})
+    @BeforeMethod(groups = {"UI","Functional"})
     public void initializeClass(){
         logger.info("-------------------Initializing ButtonsPageTest Class------------------");
         buttonsPage = homePage.clickOnSectionElements().clickOnButtonsSection();
         logger.info("-------------------Starting Test-----------------------");
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateCorrectPageTitle(){
         logger.info("-------------------validateCorrectPageTitle-----------------------");
         Assert.assertEquals(buttonsPage.getPageTitleText(),PAGE_TITLE);
     }
 
-    @Test
+    @Test(groups = {"Functional"})
     public void validateDoubleClickInABtn(){
         logger.info("-------------------validateDoubleClickInABtn-----------------------");
         buttonsPage.clickOnDoubleBtn();
         Assert.assertEquals(buttonsPage.getDoubleClickMessageText(),DOUBLE_CLICK_MESSAGE);
     }
 
-    @Test
+    @Test(groups = {"Functional"})
     public void validateRightClickInABtn(){
         logger.info("-------------------validateRightClickInABtn-----------------------");
         buttonsPage.clickOnRightBtn();
         Assert.assertEquals(buttonsPage.getRightClickMessageText(),RIGHT_CLICK_MESSAGE);
     }
 
-    @Test
+    @Test(groups = {"Functional"})
     public void validateClickInABtn(){
         logger.info("-------------------validateClickInABtn-----------------------");
         buttonsPage.clickOnClickMe();

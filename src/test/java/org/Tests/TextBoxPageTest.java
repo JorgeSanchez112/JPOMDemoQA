@@ -19,20 +19,20 @@ public class TextBoxPageTest extends TestBase {
     private final String ADDRESS_MESSAGE = "Current Address :";
     private final String PERMANENT_ADDRESS_MESSAGE = "Permananet Address :";
 
-    @BeforeMethod(groups = {"UI","Smoke","Integration"})
+    @BeforeMethod(groups = {"UI","Smoke","Functional"})
     public void initializeClass(){
         logger.info("-------------------Initializing TextBoxPageTest Class------------------");
         textBoxPage = homePage.clickOnSectionElements().clickOnTextBoxSection();
         logger.info("-------------------Starting Test-----------------------");
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void IsCorrectPageTitleText(){
         logger.info("-------------------IsCorrectPageTitleText-----------------------");
         Assert.assertEquals(textBoxPage.getPageTitleText(),PAGE_TITLE);
     }
 
-    @Test(dataProvider = "testData")
+    @Test(dataProvider = "testData",groups = {"Functional"})
     public void validateNameAnswerVisibleIsCorrect(Object... data){
         logger.info("-------------------validateNameAnswerVisibleIsCorrect-----------------------");
         String username = (String) data[0];
@@ -42,7 +42,7 @@ public class TextBoxPageTest extends TestBase {
         Assert.assertEquals(textBoxPage.getTextNameAnswer(),USER_NAME_MESSAGE + username);
     }
 
-    @Test(dataProvider = "testData")
+    @Test(dataProvider = "testData",groups = "Functional")
     public void validateEmailAnswerVisibleIsCorrect(Object... data){
         logger.info("-------------------validateEmailAnswerVisibleIsCorrect-----------------------");
         String email = (String) data[1];
@@ -52,7 +52,7 @@ public class TextBoxPageTest extends TestBase {
         Assert.assertEquals(textBoxPage.getTextEmailAnswer(),EMAIL_MESSAGE + email);
     }
 
-    @Test(dataProvider = "testData")
+    @Test(dataProvider = "testData",groups = "Functional")
     public void validateAddressAnswerVisibleIsCorrect(Object... data){
         logger.info("-------------------validateAddressAnswerVisibleIsCorrect-----------------------");
         String address = (String) data[2];
@@ -62,7 +62,7 @@ public class TextBoxPageTest extends TestBase {
         Assert.assertEquals(textBoxPage.getTextAddressAnswer(),ADDRESS_MESSAGE + address);
     }
 
-    @Test(dataProvider = "testData")
+    @Test(dataProvider = "testData",groups = "Functional")
     public void validatePermanentAddressAnswerIsCorrect(Object... data){
         logger.info("-------------------validatePermanentAddressAnswerIsCorrect-----------------------");
         String permanentAddress = (String) data[3];
@@ -72,7 +72,7 @@ public class TextBoxPageTest extends TestBase {
         Assert.assertEquals(textBoxPage.getTextPermanentAddressAnswer(),PERMANENT_ADDRESS_MESSAGE + permanentAddress);
     }
 
-    @Test(dataProvider = "testData")
+    @Test(dataProvider = "testData",groups = {"Smoke"})
     public void validateAnswers(Object... data){
         logger.info("-------------------validateAnswers-----------------------");
         String username = (String) data[0];

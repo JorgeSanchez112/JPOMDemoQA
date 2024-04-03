@@ -16,47 +16,47 @@ public class ToolTipsPageTest extends TestBase {
     private final String CONTRARY_LINK_HOVER = "contraryTexToolTip";
     private final String VERSION_LINK_HOVER = "sectionToolTip";
 
-    @BeforeMethod(groups = {"UI","Smoke","Integration"})
+    @BeforeMethod(groups = {"UI","Functional"})
     public void initializeClass(){
         logger.info("-------------------Initializing ToolTipsPageTest Class------------------");
         toolTipsPage = homePage.clickOnSectionWidgets().clickOnToolTips();
         logger.info("-------------------Starting Test-----------------------");
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateCorrectPageTitle(){
         logger.info("-------------------validateCorrectPageTitle-----------------------");
         Assert.assertEquals(toolTipsPage.getPageTitleText(),PAGE_TITLE);
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateCorrectLabel(){
         logger.info("-------------------validateCorrectLabel-----------------------");
         Assert.assertEquals(toolTipsPage.getLabelText(),SUB_TITLE);
     }
 
-    @Test
+    @Test(groups = "Functional")
     public void validateButtonHover(){
         logger.info("-------------------validateButtonHover-----------------------");
         toolTipsPage.moveClickerTOHoverButton();
         Assert.assertEquals(toolTipsPage.getTextFromButtonHoverAttribute(),BUTTON_HOVER);
     }
 
-    @Test
+    @Test(groups = "Functional")
     public void validateInputHover(){
         logger.info("-------------------validateInputHover-----------------------");
         toolTipsPage.moveClickerTOHoverInput();
         Assert.assertEquals(toolTipsPage.getTextFromInputHoverAttribute(),INPUT_HOVER);
     }
 
-    @Test
+    @Test(groups = "Functional")
     public void validateContraryLinkHover(){
         logger.info("-------------------validateContraryLinkHover-----------------------");
         toolTipsPage.moveClickerTOContraryLink();
         Assert.assertEquals(toolTipsPage.getTextFromHoverContraryLinkAttribute(),CONTRARY_LINK_HOVER);
     }
 
-    @Test
+    @Test(groups = "Functional")
     public void validateVersionLinkHover(){
         logger.info("-------------------validateVersionLinkHover-----------------------");
         toolTipsPage.moveClickerTOVersionLink();

@@ -12,38 +12,38 @@ public class DynamicPropertiesPagePageTest extends TestBase {
     private final String PAGE_TITLE = "Dynamic Properties";
     private final String RGBA_RED_COLOR = "rgba(220, 53, 69, 1)";
 
-    @BeforeMethod(groups = {"UI","Smoke","Integration"})
+    @BeforeMethod(groups = {"UI","Functional"})
     public void initializeClass(){
         logger.info("-------------------Initializing DynamicPropertiesPagePageTest Class------------------");
         dynamicPropertiesPage = homePage.clickOnSectionElements().clickOnDynamicPropertiesSection();
         logger.info("-------------------Starting Test-----------------------");
     }
 
-    @Test
+    @Test(groups = "UI")
     public void validateCorrectPageTitle(){
         logger.info("-------------------validateCorrectPageTitle-----------------------");
         Assert.assertEquals(dynamicPropertiesPage.getPageTitleText(),PAGE_TITLE);
     }
 
-    @Test
+    @Test(groups = "UI")
     public void validateDynamicTextIsVisible(){
         logger.info("-------------------validateDynamicTextIsVisible-----------------------");
         Assert.assertTrue(dynamicPropertiesPage.isRandomIdVisible());
     }
 
-    @Test
+    @Test(groups = "Functional")
     public void validateFirstButtonIsEnable(){
         logger.info("-------------------validateFirstButtonIsEnable-----------------------");
         Assert.assertTrue(dynamicPropertiesPage.isButtonEnable());
     }
 
-    @Test
+    @Test(groups = "UI")
     public void validateSecondButtonTextColorChange(){
         logger.info("-------------------validateSecondButtonTextColorChange-----------------------");
         Assert.assertEquals(dynamicPropertiesPage.getButtonTextColor(), RGBA_RED_COLOR);
     }
 
-    @Test
+    @Test(groups = "UI")
     public void validateThirdButtonIsVisible(){
         logger.info("-------------------validateThirdButtonIsVisible-----------------------");
         Assert.assertTrue(dynamicPropertiesPage.buttonIsVisible());

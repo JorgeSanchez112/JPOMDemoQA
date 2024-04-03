@@ -16,20 +16,20 @@ public class SortablePageTest extends TestBase {
     private final String THREE = "Three";
     private final String FOUR = "Four";
 
-    @BeforeMethod(groups = {"UI","Smoke","Integration"})
+    @BeforeMethod(groups = {"UI","Functional"})
     public void initializeClassAndHidePublicity(){
         logger.info("-------------------Initializing SortablePageTest Class------------------");
         sortablePage = homePage.clickOnSectionInteractions().clickOnSortable();
         logger.info("-------------------Starting Test-----------------------");
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void validateCorrectPageTitle(){
         logger.info("-------------------validateCorrectPageTitle-----------------------");
         Assert.assertEquals(sortablePage.getPageTitleText(),PAGE_TITLE);
     }
 
-    @Test
+    @Test(groups = {"Functional"})
     public void dragFirstElementAndDropItInLastElementOfElementLists(){
         logger.info("-------------------dragFirstElementAndDropItInLastElementOfElementLists-----------------------");
         sortablePage.moveFirstElementListToLastElement();
@@ -38,7 +38,7 @@ public class SortablePageTest extends TestBase {
     }
 
     @Parameters({"numberTwo","numberThree"})
-    @Test
+    @Test(groups = {"Functional"})
     public void dragSecondElementAndDropItInPenultimateElementOfElementLists(){
         logger.info("-------------------dragSecondElementAndDropItInPenultimateElementOfElementLists-----------------------");
         sortablePage.moveSecondElementListToPenultimateElement();
@@ -46,7 +46,7 @@ public class SortablePageTest extends TestBase {
         Assert.assertEquals(sortablePage.getTextOfFifthElementValueOfElementsList(), TWO);
     }
 
-    @Test
+    @Test(groups = {"Functional"})
     public void dragThirdElementAndDropItInTheSecondToLastElementOfElementLists(){
         logger.info("-------------------dragThirdElementAndDropItInTheSecondToLastElementOfElementLists-----------------------");
         sortablePage.moveTheThirdElementListToTheSecondToLastElement();
@@ -54,7 +54,7 @@ public class SortablePageTest extends TestBase {
         Assert.assertEquals(sortablePage.getTextOfFourthElementValueOfElementsList(), THREE);
     }
 
-    @Test
+    @Test(groups = {"Functional"})
     public void dragFirstElementAndDropItInLastElementOfElementsGrid(){
         logger.info("-------------------dragFirstElementAndDropItInLastElementOfElementsGrid-----------------------");
         sortablePage.clickOnTabGrid();
@@ -63,7 +63,7 @@ public class SortablePageTest extends TestBase {
         Assert.assertEquals(sortablePage.getTextOfNinethElementValueOfElementsGrid(), ONE);
     }
 
-    @Test
+    @Test(groups = {"Functional"})
     public void dragSecondElementAndDropItInPenultimateElementOfElementsGrid(){
         logger.info("-------------------dragSecondElementAndDropItInPenultimateElementOfElementsGrid-----------------------");
         sortablePage.clickOnTabGrid();
@@ -72,7 +72,7 @@ public class SortablePageTest extends TestBase {
         Assert.assertEquals(sortablePage.getTextOfEighthElementValueOfElementsGrid(), TWO);
     }
 
-    @Test
+    @Test(groups = {"Functional"})
     public void dragThirdElementAndDropItInTheSecondToLastElementOfElementsGrid() {
         logger.info("-------------------dragThirdElementAndDropItInTheSecondToLastElementOfElementsGrid-----------------------");
         sortablePage.clickOnTabGrid();
@@ -81,7 +81,7 @@ public class SortablePageTest extends TestBase {
         Assert.assertEquals(sortablePage.getTextOfSeventhElementValueOfElementsGrid(), THREE);
     }
 
-    @Test
+    @Test(groups = {"Functional"})
     public void dragFirstElementAndDropItInFourthElementOfElementsGrid(){
         logger.info("-------------------dragFirstElementAndDropItInFourthElementOfElementsGrid-----------------------");
         sortablePage.clickOnTabGrid();
@@ -90,7 +90,7 @@ public class SortablePageTest extends TestBase {
         Assert.assertEquals(sortablePage.getTextOfFourthElementValueOfElementsGrid(), ONE);
     }
 
-    @Test
+    @Test(groups = {"Functional"})
     public void dragFirstElementAndDropItInFifthElementOfElementsGrid(){
         logger.info("-------------------dragFirstElementAndDropItInFifthElementOfElementsGrid-----------------------");
         sortablePage.clickOnTabGrid();
@@ -99,7 +99,7 @@ public class SortablePageTest extends TestBase {
         Assert.assertEquals(sortablePage.getTextOfFifthElementValueOfElementsGrid(), ONE);
     }
 
-    @Test
+    @Test(groups = {"Functional"})
     public void dragFirstElementAndDropItInSixthElementOfElementsGrid(){
         logger.info("-------------------dragFirstElementAndDropItInSixthElementOfElementsGrid-----------------------");
         sortablePage.clickOnTabGrid();
