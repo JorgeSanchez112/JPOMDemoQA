@@ -25,8 +25,7 @@ public class DynamicProperties extends BasePages {
     }
 
     public boolean isButtonEnable(){
-        waitForEnableElement(willEnableButton);
-        return willEnableButton.isEnabled();
+        return isElementEnabled(willEnableButton);
     }
 
     public String getPageTitleText(){

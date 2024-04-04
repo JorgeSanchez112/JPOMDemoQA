@@ -1,6 +1,8 @@
 package TestComponents;
 
 import Pages.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeOptions;
@@ -18,7 +20,7 @@ import java.util.Objects;
 import java.util.Properties;
 
 public class TestBase extends WebDriverManager{
-
+    Logger logger = LogManager.getLogger(BasePages.class);
     protected Properties prop;
     protected HomePage homePage;
     protected ElementsPage elementsPage;
@@ -62,25 +64,6 @@ public class TestBase extends WebDriverManager{
     protected BSIBookPage bsiBookPage;
     protected BSAPIPage bsapiPage;
 
-//    BsProfileTest -Laking Do the Delete Account method
-//      Draggable
-//
-//
-
-///////
-//elements
-//Text Box
-//Check Box
-//Radio Button
-//Browser Windows
-//Alerts
-//Frames
-//Nested Frames
-//Menu
-//Select Menu
-//Droppable
-//Accordian
-
     public TestBase() {
         try {
             prop = new Properties();
@@ -94,7 +77,7 @@ public class TestBase extends WebDriverManager{
 
     public MutableCapabilities chooseBrowser(){
         String browserName = prop.getProperty("browser");
-
+        logger.info("Choosing browser");
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
 
         if (browserName == null){
@@ -141,8 +124,8 @@ public class TestBase extends WebDriverManager{
             driver = getDriver();
         }
         System.out.println(driver);
-
-        homePage = new HomePage(driver);
+        logger.info("Initializing class: " + driver);
+        homePage = new HomePage();
         homePage.hidePublicity(driver.findElement(By.cssSelector(prop.getProperty("publicityLocator"))));
     }
 
@@ -150,6 +133,7 @@ public class TestBase extends WebDriverManager{
     public void tearDown(){
         try {
             quitDriver();
+            logger.info("Removing class");
         } catch (WebDriverException e) {
             e.getMessage();
         }

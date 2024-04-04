@@ -12,8 +12,8 @@ public class HomePage extends BasePages {
     @FindBy (className = "top-card")
     private List<WebElement> sections;
 
-    public HomePage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
+    public HomePage() {
+        PageFactory.initElements(getDriver(),this);
     }
 
     public String getHomePageUrlText(){

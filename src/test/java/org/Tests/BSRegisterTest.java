@@ -91,6 +91,5 @@ public class BSRegisterTest extends TestBase {
     @Test
     public void isBackToLoginButtonReturnUsToLogin(){
         Assert.assertNotEquals(bsRegisterPage.getCurrentUrl(), bsRegisterPage.clickOnBackToLogin().getCurrentUrl());
-        bsRegisterPage.backToPage();
     }
 }

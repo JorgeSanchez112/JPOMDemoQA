@@ -30,61 +30,100 @@ public class ElementsPage extends BasePages {
 
     public TextBoxPage clickOnTextBoxSection(){
         waitForChargedElementsOfAWebElementList(deployed_element_exercises);
-        clickWithWait(deployed_element_exercises.get(0));
+        try{
+            scroll(deployed_element_exercises.get(0));
+            clickWithWait(deployed_element_exercises.get(0));
+        }catch (IndexOutOfBoundsException e){
+            e.printStackTrace();
+        }
         return new TextBoxPage(getDriver());
     }
 
     public CheckBoxPage clickOnCheckBoxSection(){
         waitForChargedElementsOfAWebElementList(deployed_element_exercises);
-        clickWithWait(deployed_element_exercises.get(1));
+        try{
+            scroll(deployed_element_exercises.get(1));
+            clickWithWait(deployed_element_exercises.get(1));
+        }catch (IndexOutOfBoundsException e){
+            e.printStackTrace();
+        }
         return new CheckBoxPage(getDriver());
     }
 
     public RadioButtonPage clickOnRadioButtonSection(){
         waitForChargedElementsOfAWebElementList(deployed_element_exercises);
-        clickWithWait(deployed_element_exercises.get(2));
+        try{
+            scroll(deployed_element_exercises.get(2));
+            clickWithWait(deployed_element_exercises.get(2));
+        }catch (IndexOutOfBoundsException e){
+            e.printStackTrace();
+        }
         return new RadioButtonPage(getDriver());
     }
 
     public WebTablesPage clickOnWebTablesSection(){
         waitForChargedElementsOfAWebElementList(deployed_element_exercises);
-        scroll(deployed_element_exercises.get(3));
-        clickWithWait(deployed_element_exercises.get(3));
+        try{
+            scroll(deployed_element_exercises.get(3));
+            clickWithWait(deployed_element_exercises.get(3));
+        }catch (IndexOutOfBoundsException e){
+            e.printStackTrace();
+        }
         return new WebTablesPage(getDriver());
     }
 
     public ButtonsPage clickOnButtonsSection(){
         waitForChargedElementsOfAWebElementList(deployed_element_exercises);
-        scroll(deployed_element_exercises.get(4));
-        clickWithWait(deployed_element_exercises.get(4));
+        try{
+            scroll(deployed_element_exercises.get(4));
+            clickWithWait(deployed_element_exercises.get(4));
+        }catch (IndexOutOfBoundsException e){
+            e.printStackTrace();
+        }
         return new ButtonsPage(getDriver());
     }
 
     public LinksPage clickOnLinksSection(){
         waitForChargedElementsOfAWebElementList(deployed_element_exercises);
-        scroll(deployed_element_exercises.get(5));
-        clickWithWait(deployed_element_exercises.get(5));
+        try{
+            scroll(deployed_element_exercises.get(5));
+            clickWithWait(deployed_element_exercises.get(5));
+        }catch (IndexOutOfBoundsException e){
+            e.printStackTrace();
+        }
         return new LinksPage(getDriver());
     }
 
     public BrokenLinksPage clickOnBrokenLinksImageSection(){
         waitForChargedElementsOfAWebElementList(deployed_element_exercises);
-        scroll(deployed_element_exercises.get(6));
-        clickWithWait(deployed_element_exercises.get(6));
+        try{
+            scroll(deployed_element_exercises.get(6));
+            clickWithWait(deployed_element_exercises.get(6));
+        }catch (IndexOutOfBoundsException e){
+            e.printStackTrace();
+        }
         return new BrokenLinksPage(getDriver());
     }
 
     public UploadDownloadPage clickOnUploadDownloadSection(){
         waitForChargedElementsOfAWebElementList(deployed_element_exercises);
-        scroll(deployed_element_exercises.get(7));
-        clickWithWait(deployed_element_exercises.get(7));
+        try{
+            scroll(deployed_element_exercises.get(7));
+            clickWithWait(deployed_element_exercises.get(7));
+        }catch (IndexOutOfBoundsException e){
+            e.printStackTrace();
+        }
         return new UploadDownloadPage(getDriver());
     }
 
     public DynamicProperties clickOnDynamicPropertiesSection(){
         waitForChargedElementsOfAWebElementList(deployed_element_exercises);
-        scroll(deployed_element_exercises.get(8));
-        clickWithWait(deployed_element_exercises.get(8));
+        try{
+            scroll(deployed_element_exercises.get(8));
+            clickWithWait(deployed_element_exercises.get(8));
+        }catch (IndexOutOfBoundsException e){
+            e.printStackTrace();
+        }
         return new DynamicProperties(getDriver());
     }
 

@@ -48,6 +48,8 @@ public class DroppablePage extends BasePages {
         PageFactory.initElements(driver,this);
     }
 
+    private final String EXPECTED_CLASS = "ui-state-highlight";
+
     public void clickOnTabAccept(){
         clickWithWait(tabAccept);
     }
@@ -61,36 +63,44 @@ public class DroppablePage extends BasePages {
     }
 
     public void moveSimpleDraggableToTarget(){
+        scroll(draggable);
+        waitForVisibleElement(draggable);
         dragDropMoveElementToTarget(draggable,simpleTarget);
     }
 
     public void moveDraggableAcceptableToTarget(){
         scroll(dragAcceptable);
+        waitForVisibleElement(dragAcceptable);
         dragDropMoveElementToTarget(dragAcceptable,acceptTarget);
     }
 
     public void moveDraggableNotAcceptableToTarget(){
         scroll(dragNotAcceptable);
+        waitForVisibleElement(dragNotAcceptable);
         dragDropMoveElementToTarget(dragNotAcceptable,acceptTarget);
     }
 
     public void movePreventDraggableToNotGreedyTarget(){
         scroll(notGreedyTarget);
+        waitForVisibleElement(notGreedyTarget);
         dragDropMoveElementToTarget(dragPrevent,notGreedyTarget);
     }
 
     public void movePreventDraggableToNotGreedyInnerTarget(){
         scroll(dragPrevent);
+        waitForVisibleElement(dragPrevent);
         dragDropMoveElementToTarget(dragPrevent,notGreedyInnerTarget);
     }
 
     public void movePreventDraggableToGreedyTarget(){
         scroll(greedyTarget);
+        waitForVisibleElement(greedyTarget);
         dragDropMoveElementToTarget(dragPrevent,greedyTargetSubtitle);
     }
 
     public void movePreventDraggableToGreedyInnerTarget(){
         scroll(greedyInnerTarget);
+        waitForVisibleElement(greedyInnerTarget);
         dragDropMoveElementToTarget(dragPrevent,greedyInnerTarget);
     }
 
@@ -104,55 +114,55 @@ public class DroppablePage extends BasePages {
     }
 
     public String getPageTitleText(){
-        return pageTitle.getText();
+        return getElementTextWithWait(pageTitle);
     }
 
     public boolean isSimpleTabVisible(){
-        return tabSimple.isDisplayed();
+        return isElementDisplayedWithWait(tabSimple);
     }
 
     public boolean isAcceptTabVisible(){
-        return tabAccept.isDisplayed();
+        return isElementDisplayedWithWait(tabAccept);
     }
 
     public boolean isPreventTabVisible(){
-        return tabPreventPropogation.isDisplayed();
+        return isElementDisplayedWithWait(tabPreventPropogation);
     }
 
     public boolean isRevertTabVisible(){
-        return tabRevert.isDisplayed();
+        return isElementDisplayedWithWait(tabRevert);
     }
 
     public boolean isSimpleDraggableDropped(){
-        return isElementDropped(simpleTarget);
+        return doesElementContainExpectedClass(simpleTarget,EXPECTED_CLASS);
     }
 
     public boolean isAcceptDraggableDropped(){
-        return isElementDropped(acceptTarget);
+        return doesElementContainExpectedClass(acceptTarget,EXPECTED_CLASS);
     }
 
     public boolean isNotAcceptDraggableDropped(){
-        return isElementDropped(acceptTarget);
+        return doesElementContainExpectedClass(acceptTarget,EXPECTED_CLASS);
     }
 
     public boolean isPreventDraggableToNotGreedyDropped(){
-        return isElementDropped(notGreedyTarget);
+        return doesElementContainExpectedClass(notGreedyTarget,EXPECTED_CLASS);
     }
 
     public boolean isPreventDraggableToNotGreedyInnerDropped(){
-        return isElementDropped(notGreedyInnerTarget);
+        return doesElementContainExpectedClass(notGreedyInnerTarget,EXPECTED_CLASS);
     }
 
     public boolean isPreventDraggableToGreedyDropped(){
-        return isElementDropped(greedyTarget);
+        return doesElementContainExpectedClass(greedyTarget,EXPECTED_CLASS);
     }
 
     public boolean isPreventDraggableToGreedyInnerDropped(){
-        return isElementDropped(greedyInnerTarget);
+        return doesElementContainExpectedClass(greedyInnerTarget,EXPECTED_CLASS);
     }
 
     public boolean isNotRevertDraggableDropped(){
-        return isElementDropped(revertTarget);
+        return doesElementContainExpectedClass(revertTarget,EXPECTED_CLASS);
     }
 
 }

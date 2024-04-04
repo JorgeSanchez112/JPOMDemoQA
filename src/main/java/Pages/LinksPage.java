@@ -34,6 +34,8 @@ public class LinksPage extends BasePages {
         PageFactory.initElements(driver,this);
     }
 
+    final String HREF_ATTRIBUTE = "href";
+
     public void clickOnCreatedLink(){
         scroll(http201);
         clickWithWait(http201);
@@ -70,25 +72,25 @@ public class LinksPage extends BasePages {
     }
 
     public String getPageTitleText(){
-        return pageTitle.getText();
+        return getElementTextWithWait(pageTitle);
     }
 
     public String getHrefOfHomeLink(){
-        return linkToHomePage.getAttribute("href");
+        return getElementAttribute(linkToHomePage,HREF_ATTRIBUTE);
     }
 
     public String getHrefOfHomeETgEzLink(){
-        return secondLinkToHomePage.getAttribute("href");
+        scroll(secondLinkToHomePage);
+        return getElementAttribute(secondLinkToHomePage,HREF_ATTRIBUTE);
     }
 
     public String getHttpMessage() {
-        waitForVisibleElement(httpMessage);
-        return httpMessage.getText();
+        scroll(httpMessage);
+        return getElementTextWithWait(httpMessage);
     }
 
     public String getNameLinkMessage(){
-        waitForVisibleElement(linkMessage);
-        return linkMessage.getText();
+        scroll(linkMessage);
+        return getElementTextWithWait(linkMessage);
     }
-
 }

@@ -22,29 +22,39 @@ public class ToolTipsPage extends BasePages {
         PageFactory.initElements(driver,this);
     }
 
+    private final String ARIA_DESCRIBEDBY_ATTRIBUTE = "aria-describedby";
+
     public void moveClickerTOHoverButton(){
+        final String CONTENT_ATTRIBUTE_TEXT = "buttonToolTip";
+
         scroll(hoverMeButton);
         moveClickerToElement(hoverMeButton);
-        waitForAttributeAriaDescribedByEqualToValue(hoverMeButton, "buttonToolTip");
+        waitForElementAttributeToContain(hoverMeButton,ARIA_DESCRIBEDBY_ATTRIBUTE,CONTENT_ATTRIBUTE_TEXT);
     }
 
     public void moveClickerTOHoverInput(){
+        final String CONTENT_ATTRIBUTE_TEXT = "buttonToolTip";
+
         scroll(hoverMeInput);
         moveClickerToElement(hoverMeInput);
-        waitForAttributeAriaDescribedByEqualToValue(hoverMeInput, "textFieldToolTip");
+        waitForElementAttributeToContain(hoverMeInput,ARIA_DESCRIBEDBY_ATTRIBUTE,CONTENT_ATTRIBUTE_TEXT);
 
     }
 
     public void moveClickerTOContraryLink(){
+        final String CONTENT_ATTRIBUTE_TEXT = "buttonToolTip";
+
         scroll(hoverLink.get(0));
         moveClickerToElement(hoverLink.get(0));
-        waitForAttributeAriaDescribedByEqualToValue(hoverLink.get(0), "contraryTexToolTip");
+        waitForElementAttributeToContain(hoverLink.get(0),ARIA_DESCRIBEDBY_ATTRIBUTE,CONTENT_ATTRIBUTE_TEXT);
     }
 
     public void moveClickerTOVersionLink(){
+        final String CONTENT_ATTRIBUTE_TEXT = "buttonToolTip";
+
         scroll(hoverLink.get(1));
         moveClickerToElement(hoverLink.get(1));
-        waitForAttributeAriaDescribedByEqualToValue(hoverLink.get(1), "sectionToolTip");
+        waitForElementAttributeToContain(hoverLink.get(1),ARIA_DESCRIBEDBY_ATTRIBUTE,CONTENT_ATTRIBUTE_TEXT);
     }
 
     public String getPageTitleText(){

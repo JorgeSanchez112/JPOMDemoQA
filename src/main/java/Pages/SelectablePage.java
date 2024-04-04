@@ -19,6 +19,7 @@ public class SelectablePage extends BasePages {
     public SelectablePage(WebDriver driver) {
         PageFactory.initElements(driver,this);
     }
+    private final String EXPECTED_CLASS = "active";
 
     public void clickOnTabGrid(){
         clickWithWait(tabGrid);
@@ -108,67 +109,67 @@ public class SelectablePage extends BasePages {
 
     public boolean isCrasJustoOdioListElementSelected(){
         waitForChargedElementsOfAWebElementList(elementsList);
-        return isListItemSelected(elementsList.get(0));
+        return doesElementContainExpectedClass(elementsList.get(0),EXPECTED_CLASS);
     }
 
     public boolean isDapibusAcFacilisisInListElementSelected(){
         waitForChargedElementsOfAWebElementList(elementsList);
-        return isListItemSelected(elementsList.get(1));
+        return doesElementContainExpectedClass(elementsList.get(0),EXPECTED_CLASS);
     }
 
     public boolean isMorbiLeoRisusListElementSelected(){
         waitForChargedElementsOfAWebElementList(elementsList);
-        return isListItemSelected(elementsList.get(2));
+        return doesElementContainExpectedClass(elementsList.get(0),EXPECTED_CLASS);
     }
 
     public boolean isPortaAcConsecteturAcListElementSelected(){
         waitForChargedElementsOfAWebElementList(elementsList);
-        return isListItemSelected(elementsList.get(3));
+        return doesElementContainExpectedClass(elementsList.get(0),EXPECTED_CLASS);
     }
 
     public boolean isOneGridElementSelected(){
         waitForChargedElementsOfAWebElementList(elementsList);
-        return isListItemSelected(elementsGrid.get(0));
+        return doesElementContainExpectedClass(elementsList.get(0),EXPECTED_CLASS);
     }
 
     public boolean isTwoGridElementSelected(){
         waitForChargedElementsOfAWebElementList(elementsGrid);
-        return isListItemSelected(elementsGrid.get(1));
+        return doesElementContainExpectedClass(elementsList.get(0),EXPECTED_CLASS);
     }
 
     public boolean isThreeGridElementSelected(){
         waitForChargedElementsOfAWebElementList(elementsGrid);
-        return isListItemSelected(elementsGrid.get(2));
+        return doesElementContainExpectedClass(elementsList.get(0),EXPECTED_CLASS);
     }
 
     public boolean isFourGridElementSelected(){
         waitForChargedElementsOfAWebElementList(elementsGrid);
-        return isListItemSelected(elementsGrid.get(3));
+        return doesElementContainExpectedClass(elementsList.get(0),EXPECTED_CLASS);
     }
 
     public boolean isFiveGridElementSelected(){
         waitForChargedElementsOfAWebElementList(elementsGrid);
-        return isListItemSelected(elementsGrid.get(4));
+        return doesElementContainExpectedClass(elementsList.get(0),EXPECTED_CLASS);
     }
 
     public boolean isSixGridElementSelected(){
         waitForChargedElementsOfAWebElementList(elementsGrid);
-        return isListItemSelected(elementsGrid.get(5));
+        return doesElementContainExpectedClass(elementsList.get(0),EXPECTED_CLASS);
     }
 
     public boolean isSevenGridElementSelected(){
         waitForChargedElementsOfAWebElementList(elementsGrid);
-        return isListItemSelected(elementsGrid.get(6));
+        return doesElementContainExpectedClass(elementsList.get(0),EXPECTED_CLASS);
     }
 
     public boolean isEightGridElementSelected(){
         waitForChargedElementsOfAWebElementList(elementsGrid);
-        return isListItemSelected(elementsGrid.get(7));
+        return doesElementContainExpectedClass(elementsList.get(0),EXPECTED_CLASS);
     }
 
     public boolean isNineGridElementSelected(){
         waitForChargedElementsOfAWebElementList(elementsGrid);
-        return isListItemSelected(elementsGrid.get(8));
+        return doesElementContainExpectedClass(elementsList.get(0),EXPECTED_CLASS);
     }
 
 }
