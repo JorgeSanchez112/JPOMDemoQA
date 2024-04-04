@@ -9,10 +9,6 @@ import org.testng.annotations.Test;
 
 public class AccordianPageTest extends TestBase {
     private final Logger logger = LogManager.getLogger(AccordianPageTest.class);
-    private final String PAGE_TITLE = "Accordian";
-    private final String FIRST_TOPIC_TITLE = "What is Lorem Ipsum?";
-    private final String SECOND_TOPIC_TITLE = "Where does it come from?";
-    private final String THIRD_TOPIC_TITLE = "Why do we use it?";
 
     @BeforeMethod(groups = {"UI", "Smoke"})
     public void initializeClass(){
@@ -23,26 +19,34 @@ public class AccordianPageTest extends TestBase {
 
     @Test(groups = "UI")
     public void validateCorrectPageTitle(){
+        String PAGE_TITLE = "Accordian";
+
         logger.info("-------------------ValidateCorrectedPageTitle-----------------------");
-        Assert.assertEquals(accordianPage.getPageTitleText(),PAGE_TITLE);
+        Assert.assertEquals(accordianPage.getPageTitleText(), PAGE_TITLE);
     }
 
     @Test(groups = "UI")
     public void isFirstTopicTitleCorrect(){
+        String FIRST_TOPIC_TITLE = "What is Lorem Ipsum?";
+
         logger.info("-------------------isFirstTopicTitleCorrect-----------------------");
-        Assert.assertEquals(accordianPage.getCard1TopicText(),FIRST_TOPIC_TITLE);
+        Assert.assertEquals(accordianPage.getCard1TopicText(), FIRST_TOPIC_TITLE);
     }
 
     @Test(groups = "UI")
     public void isSecondTopicTitleCorrect(){
+        String SECOND_TOPIC_TITLE = "Where does it come from?";
+
         logger.info("-------------------isSecondTopicTitleCorrect-----------------------");
-        Assert.assertEquals(accordianPage.getCard2TopicText(),SECOND_TOPIC_TITLE);
+        Assert.assertEquals(accordianPage.getCard2TopicText(), SECOND_TOPIC_TITLE);
     }
 
     @Test(groups = "UI")
     public void isThirdTopicTitleCorrect(){
+        String THIRD_TOPIC_TITLE = "Why do we use it?";
+
         logger.info("-------------------isThirdTopicTitleCorrect-----------------------");
-        Assert.assertEquals(accordianPage.getCard3TopicText(),THIRD_TOPIC_TITLE);
+        Assert.assertEquals(accordianPage.getCard3TopicText(), THIRD_TOPIC_TITLE);
     }
 
     @Test(groups = "Smoke")

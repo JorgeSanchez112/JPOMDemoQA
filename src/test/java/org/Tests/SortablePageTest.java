@@ -9,8 +9,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class SortablePageTest extends TestBase {
-    private Logger logger = LogManager.getLogger(SortablePageTest.class);
-    private final String PAGE_TITLE = "Sortable";
+    private final Logger logger = LogManager.getLogger(SortablePageTest.class);
     private final String ONE = "One";
     private final String TWO = "Two";
     private final String THREE = "Three";
@@ -25,8 +24,10 @@ public class SortablePageTest extends TestBase {
 
     @Test(groups = {"UI"})
     public void validateCorrectPageTitle(){
+        String PAGE_TITLE = "Sortable";
+
         logger.info("-------------------validateCorrectPageTitle-----------------------");
-        Assert.assertEquals(sortablePage.getPageTitleText(),PAGE_TITLE);
+        Assert.assertEquals(sortablePage.getPageTitleText(), PAGE_TITLE);
     }
 
     @Test(groups = {"Functional"})

@@ -18,12 +18,12 @@ public class ToolTipsPage extends BasePages {
     @FindBy(css = "#texToolTopContainer > a")
     private List<WebElement> hoverLink;
 
+    private final String ARIA_DESCRIBEDBY_ATTRIBUTE = "aria-describedby";
+
     public ToolTipsPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver,this);
     }
-
-    private final String ARIA_DESCRIBEDBY_ATTRIBUTE = "aria-describedby";
 
     public void moveClickerTOHoverButton(){
         final String CONTENT_ATTRIBUTE_TEXT = "buttonToolTip";

@@ -8,8 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class SliderPageTest extends TestBase {
-    private Logger logger = LogManager.getLogger(SliderPageTest.class);
-    private final String PAGE_TITLE = "Slider";
+    private final Logger logger = LogManager.getLogger(SliderPageTest.class);
 
     @BeforeMethod(groups = {"UI","Smoke"})
     public void initializeClass(){
@@ -20,8 +19,10 @@ public class SliderPageTest extends TestBase {
 
     @Test(groups = {"UI"})
     public void validateCorrectPageTitle(){
+        String PAGE_TITLE = "Slider";
+
         logger.info("-------------------validateCorrectPageTitle-----------------------");
-        Assert.assertEquals(sliderPage.getPageTitleText(),PAGE_TITLE);
+        Assert.assertEquals(sliderPage.getPageTitleText(), PAGE_TITLE);
 
     }
 

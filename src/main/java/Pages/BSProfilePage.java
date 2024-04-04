@@ -63,12 +63,6 @@ public class BSProfilePage extends BasePages {
         super(driver);
         PageFactory.initElements(driver,this);
     }
-    private final String SPEAKING_JAVASCRIPT_TITLE_BOOK = "Speaking JavaScript";
-    private final String YOU_NOT_KNOW_JS_TITLE_BOOK = "You Don't Know JS";
-    private final String PROGRAMMING_JAVASCRIPT_APPLICATIONS_TITLE_BOOK = "Programming JavaScript Applications";
-    private final String ELOQUENT_JAVASCRIPT_SECOND_EDITION_TITLE_BOOK = "Eloquent JavaScript, Second Edition";
-    private final String UNDERSTANDING_ECMASCRIPT_6_TITLE_BOOK = "Understanding ECMAScript 6";
-    private final String DESIGNING_EVOLVABLE_WEB_APIS_WITH_ASPNET_TITLE_BOOK = "Designing Evolvable Web APIs with ASP.NET";
 
     public void typeOnSearchBox(String text){
         waitForVisibleElement(searchBox);
@@ -140,11 +134,17 @@ public class BSProfilePage extends BasePages {
     }
 
     public void addAllBooksToTableOfBooksCollection(){
+        String SPEAKING_JAVASCRIPT_TITLE_BOOK = "Speaking JavaScript";
         addBookToTableOfBooksCollection(SPEAKING_JAVASCRIPT_TITLE_BOOK);
+        String YOU_NOT_KNOW_JS_TITLE_BOOK = "You Don't Know JS";
         addBookToTableOfBooksCollection(YOU_NOT_KNOW_JS_TITLE_BOOK);
+        String PROGRAMMING_JAVASCRIPT_APPLICATIONS_TITLE_BOOK = "Programming JavaScript Applications";
         addBookToTableOfBooksCollection(PROGRAMMING_JAVASCRIPT_APPLICATIONS_TITLE_BOOK);
+        String ELOQUENT_JAVASCRIPT_SECOND_EDITION_TITLE_BOOK = "Eloquent JavaScript, Second Edition";
         addBookToTableOfBooksCollection(ELOQUENT_JAVASCRIPT_SECOND_EDITION_TITLE_BOOK);
+        String UNDERSTANDING_ECMASCRIPT_6_TITLE_BOOK = "Understanding ECMAScript 6";
         addBookToTableOfBooksCollection(UNDERSTANDING_ECMASCRIPT_6_TITLE_BOOK);
+        String DESIGNING_EVOLVABLE_WEB_APIS_WITH_ASPNET_TITLE_BOOK = "Designing Evolvable Web APIs with ASP.NET";
         addBookToTableOfBooksCollection(DESIGNING_EVOLVABLE_WEB_APIS_WITH_ASPNET_TITLE_BOOK);
     }
 
@@ -293,10 +293,11 @@ public class BSProfilePage extends BasePages {
         try {
             scroll(linkRegisterAndLogin.get(1));
             clickWithWait(linkRegisterAndLogin.get(1));
+            return new BSRegisterPage(driver);
         }catch (IndexOutOfBoundsException e){
             e.printStackTrace();
         }
-        return new BSRegisterPage(driver);
+        return null;
     }
 
     public BSLoginPage clickOnLogOutButton(){

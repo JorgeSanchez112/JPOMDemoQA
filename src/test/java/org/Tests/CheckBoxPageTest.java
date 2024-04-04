@@ -8,8 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class CheckBoxPageTest extends TestBase {
-    private Logger logger = LogManager.getLogger(CheckBoxPageTest.class);
-    private final String PAGE_TITLE = "Check Box";
+    private final Logger logger = LogManager.getLogger(CheckBoxPageTest.class);
 
     @BeforeMethod(groups = {"UI","Functional"})
     public void initializeClass(){
@@ -20,8 +19,10 @@ public class CheckBoxPageTest extends TestBase {
 
     @Test(groups = {"UI"})
     public void validateCorrectPageTitle(){
+        String PAGE_TITLE = "Check Box";
+
         logger.info("-------------------validateCorrectPageTitle-----------------------");
-        Assert.assertEquals(checkBoxPage.getPageTitleText(),PAGE_TITLE);
+        Assert.assertEquals(checkBoxPage.getPageTitleText(), PAGE_TITLE);
     }
 
     @Test(groups = {"Functional"})

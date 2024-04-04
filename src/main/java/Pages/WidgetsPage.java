@@ -30,11 +30,11 @@ public class WidgetsPage extends BasePages {
             waitForChargedElementsOfAWebElementList(deployed_form_exercise);
             scroll(deployed_form_exercise.get(0));
             clickWithWait(deployed_form_exercise.get(0));
+            return new AccordianPage(driver);
         }catch (IndexOutOfBoundsException e){
             e.printStackTrace();
         }
-
-        return new AccordianPage(driver);
+        return null;
     }
 
     public AutoCompletePage clickOnAutoComplete(){
@@ -42,10 +42,11 @@ public class WidgetsPage extends BasePages {
             waitForChargedElementsOfAWebElementList(deployed_form_exercise);
             scroll(deployed_form_exercise.get(1));
             clickWithWait(deployed_form_exercise.get(1));
+            return new AutoCompletePage(driver);
         }catch (IndexOutOfBoundsException e){
             e.printStackTrace();
         }
-        return new AutoCompletePage(driver);
+        return null;
     }
 
     public DatePickerPage clickOnDatePicker(){
@@ -53,10 +54,11 @@ public class WidgetsPage extends BasePages {
             waitForChargedElementsOfAWebElementList(deployed_form_exercise);
             scroll(deployed_form_exercise.get(2));
             clickWithWait(deployed_form_exercise.get(2));
+            return new DatePickerPage(driver);
         }catch (IndexOutOfBoundsException e){
             e.printStackTrace();
         }
-        return new DatePickerPage(driver);
+        return null;
     }
 
     public SliderPage clickOnSlider(){
@@ -64,10 +66,11 @@ public class WidgetsPage extends BasePages {
             waitForChargedElementsOfAWebElementList(deployed_form_exercise);
             scroll(deployed_form_exercise.get(3));
             clickWithWait(deployed_form_exercise.get(3));
+            return new SliderPage(driver);
         }catch (IndexOutOfBoundsException e){
             e.printStackTrace();
         }
-        return new SliderPage(driver);
+        return null;
     }
 
     public ProgressBarPage clickOnProgressBar(){
@@ -75,10 +78,11 @@ public class WidgetsPage extends BasePages {
             waitForChargedElementsOfAWebElementList(deployed_form_exercise);
             scroll(deployed_form_exercise.get(4));
             clickWithWait(deployed_form_exercise.get(4));
+            return new ProgressBarPage(driver);
         }catch (IndexOutOfBoundsException e){
             e.printStackTrace();
         }
-        return new ProgressBarPage(driver);
+        return null;
     }
 
     public TabsPage clickOnTabs(){
@@ -97,10 +101,11 @@ public class WidgetsPage extends BasePages {
             waitForChargedElementsOfAWebElementList(deployed_form_exercise);
             scroll(deployed_form_exercise.get(6));
             clickWithWait(deployed_form_exercise.get(6));
+            return new ToolTipsPage(driver);
         }catch (IndexOutOfBoundsException e){
             e.printStackTrace();
         }
-        return new ToolTipsPage(driver);
+        return null;
     }
 
     public MenuPage clickOnMenu(){
@@ -108,10 +113,11 @@ public class WidgetsPage extends BasePages {
             waitForChargedElementsOfAWebElementList(deployed_form_exercise);
             scroll(deployed_form_exercise.get(7));
             clickWithWait(deployed_form_exercise.get(7));
+            return new MenuPage(driver);
         }catch (IndexOutOfBoundsException e){
             e.printStackTrace();
         }
-        return new MenuPage(driver);
+        return null;
     }
 
     public SelectMenuPage clickOnSelectMenu(){
@@ -119,9 +125,10 @@ public class WidgetsPage extends BasePages {
             waitForChargedElementsOfAWebElementList(deployed_form_exercise);
             scroll(deployed_form_exercise.get(8));
             clickWithWait(deployed_form_exercise.get(8));
+            return new SelectMenuPage(driver);
         }catch (IndexOutOfBoundsException e){
             e.printStackTrace();
         }
-        return new SelectMenuPage(driver);
+        return null;
     }
 }

@@ -16,12 +16,12 @@ public class SelectablePage extends BasePages {
     @FindBy(css = "#gridContainer >* li.list-group-item")
     private List<WebElement> elementsGrid;
 
+    private final String EXPECTED_CLASS = "active";
+
     public SelectablePage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver,this);
     }
-
-    private final String EXPECTED_CLASS = "active";
 
     public void clickOnTabGrid(){
         scroll(tabGrid);

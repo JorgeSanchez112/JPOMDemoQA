@@ -10,8 +10,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 public class BrokenLinksPageTest extends TestBase {
-    private Logger logger = LogManager.getLogger(BrokenLinksPageTest.class);
-    private final String PAGE_TITLE = "Broken Links - Images";
+    private final Logger logger = LogManager.getLogger(BrokenLinksPageTest.class);
 
     @BeforeMethod(groups = {"UI","Smoke","Functional"})
     public void initializeClass(){
@@ -22,8 +21,10 @@ public class BrokenLinksPageTest extends TestBase {
 
     @Test(groups = {"UI"})
     public void validateCorrectPageTitle(){
+        String PAGE_TITLE = "Broken Links - Images";
+
         logger.info("-------------------validateCorrectPageTitle-----------------------");
-        Assert.assertEquals(brokenLinksPage.getPageTitleText(),PAGE_TITLE);
+        Assert.assertEquals(brokenLinksPage.getPageTitleText(), PAGE_TITLE);
     }
 
     @Test(groups = {"UI"})

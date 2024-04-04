@@ -8,8 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class FramesPageTest extends TestBase {
-    private Logger logger = LogManager.getLogger(FramesPageTest.class);
-    private final String PAGE_TITLE = "Frames";
+    private final Logger logger = LogManager.getLogger(FramesPageTest.class);
     private final String FRAME_TEXT = "This is a sample page";
 
     @BeforeMethod(groups = {"UI","Functional"})
@@ -21,8 +20,10 @@ public class FramesPageTest extends TestBase {
 
     @Test(groups = {"UI"})
     public void validateCorrectPageTitle(){
+        String PAGE_TITLE = "Frames";
+
         logger.info("-------------------validateCorrectPageTitle-----------------------");
-        Assert.assertEquals(framesPage.getPageTitleText(),PAGE_TITLE);
+        Assert.assertEquals(framesPage.getPageTitleText(), PAGE_TITLE);
     }
 
     @Test(groups = {"UI"})

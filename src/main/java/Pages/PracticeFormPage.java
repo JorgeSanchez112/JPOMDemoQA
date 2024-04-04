@@ -88,17 +88,16 @@ public class PracticeFormPage extends BasePages {
     @FindBy(css = "tbody > tr:nth-child(10) > td")
     private List<WebElement> tenthRowOfFormTable;
 
+    private final String BORDER_COLOR_ATTRIBUTE = "border-color";
+    private final String PLACEHOLDER_ATTRIBUTE = "placeholder";
+    private final String RGB_RED_COLOR = "rgb(220, 53, 69)";
+    private final String RGBA_RED_COLOR = "rgba(220, 53, 69, 1)";
+    private final String RGB_GREEN_COLOR = "rgb(40, 167, 69)";
+
     public PracticeFormPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver,this);
     }
-
-    private final String BORDER_COLOR_ATTRIBUTE = "border-color";
-    private final String PLACEHOLDER_ATTRIBUTE = "placeholder";
-    private final String COLOR_PROPERTY = "color";
-    private final String RGB_RED_COLOR = "rgb(220, 53, 69)";
-    private final String RGBA_RED_COLOR = "rgba(220, 53, 69, 1)";
-    private final String RGB_GREEN_COLOR = "rgb(40, 167, 69)";
 
     public void typeInFirstNameField(String firstName){
         sendKeysToElement(firstNameField,firstName);
@@ -247,7 +246,8 @@ public class PracticeFormPage extends BasePages {
 
     public String getCssAttributeGenderRadioButtons(){
         waitForElementAttributeToContain(radioButtonGenders.get(0),BORDER_COLOR_ATTRIBUTE,RGBA_RED_COLOR);
-        return getElementCssValue(radioButtonGenders.get(0),COLOR_PROPERTY);
+        String COLOR_PROPERTY = "color";
+        return getElementCssValue(radioButtonGenders.get(0), COLOR_PROPERTY);
     }
 
     public String getTextOfLabelMobile(){

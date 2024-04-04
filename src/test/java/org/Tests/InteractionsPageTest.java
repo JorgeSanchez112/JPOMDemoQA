@@ -8,22 +8,28 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class InteractionsPageTest extends TestBase {
-    private Logger logger = LogManager.getLogger(AccordianPageTest.class);
-    private final String URL = "https://demoqa.com/interaction";
-    private final int ELEMENTS_LIST_SIZE = 5;
+    private final Logger logger = LogManager.getLogger(AccordianPageTest.class);
 
     @BeforeMethod(groups = {"Functional"})
     public void initializeClass(){
+        logger.info("-------------------Initializing FramesPageTest Class------------------");
         interactionsPage = homePage.clickOnSectionInteractions();
+        logger.info("-------------------Starting Test-----------------------");
     }
 
     @Test(groups = {"Functional"})
     public void validateURL(){
-        Assert.assertEquals(interactionsPage.getInteractionsUrlText(),URL);
+        String URL = "https://demoqa.com/interaction";
+
+        logger.info("-------------------validateURL-----------------------");
+        Assert.assertEquals(interactionsPage.getInteractionsUrlText(), URL);
     }
 
     @Test(groups = {"Functional"})
     public void validateSectionsSize(){
-        Assert.assertEquals(interactionsPage.getSizeSections(),ELEMENTS_LIST_SIZE);
+        int ELEMENTS_LIST_SIZE = 5;
+        
+        logger.info("-------------------validateSizeElements-----------------------");
+        Assert.assertEquals(interactionsPage.getSizeSections(), ELEMENTS_LIST_SIZE);
     }
 }

@@ -27,8 +27,6 @@ public class ResizablePage extends BasePages {
 
     private final String WIDTH_PROPERTY_NAME = "width";
     private final String HEIGHT_PROPERTY_NAME = "height";
-    private final float WIDTH_BASE_OF_RESIZABLE_FREE = 200;
-    private final float HEIGHT_BASE_OF_RESIZABLE_FREE = 200;
 
     public void resizeBoxRestrictedToMax(int width, int height){
         scroll(resizableBoxRestricted);
@@ -37,9 +35,12 @@ public class ResizablePage extends BasePages {
     }
 
     public void resizeFreeBox(float width, float height){
+        float WIDTH_BASE_OF_RESIZABLE_FREE = 200;
+        float HEIGHT_BASE_OF_RESIZABLE_FREE = 200;
+
         scroll(resizableBox);
         hidePublicity(rightSidePublicity);
-        resizeElement(resizeIcon, (int) (subtractQuantityToParameter(width,WIDTH_BASE_OF_RESIZABLE_FREE)), (int) subtractQuantityToParameter(height,HEIGHT_BASE_OF_RESIZABLE_FREE));
+        resizeElement(resizeIcon, (int) (subtractQuantityToParameter(width, WIDTH_BASE_OF_RESIZABLE_FREE)), (int) subtractQuantityToParameter(height, HEIGHT_BASE_OF_RESIZABLE_FREE));
     }
 
     public String getPageTitleText(){

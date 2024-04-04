@@ -8,11 +8,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class RadioButtonPageTest extends TestBase {
-    private Logger logger = LogManager.getLogger(RadioButtonPageTest.class);
-    private final String PAGE_TITLE = "Radio Button";
+    private final Logger logger = LogManager.getLogger(RadioButtonPageTest.class);
     private final String YES_RADIO_BUTTON = "Yes";
     private final String IMPRESSIVE_RADIO_BUTTON = "Impressive";
-    private final String NO_RADIO_BUTTON = "No";
 
     @BeforeMethod(groups = {"UI","Functional"})
     public void initializeClass(){
@@ -23,6 +21,8 @@ public class RadioButtonPageTest extends TestBase {
 
     @Test(groups = {"UI"})
     public void validateCorrectPageTitle(){
+        String PAGE_TITLE = "Radio Button";
+
         logger.info("-------------------validateCorrectPageTitle-----------------------");
         Assert.assertEquals(radioButtonPage.getPageTitleText(), PAGE_TITLE);
     }
@@ -47,8 +47,10 @@ public class RadioButtonPageTest extends TestBase {
 
     @Test(groups = {"UI"})
     public void validateNoLabelIsCorrect(){
+        String NO_RADIO_BUTTON = "No";
+
         logger.info("-------------------validateNoLabelIsCorrect-----------------------");
-        Assert.assertEquals(radioButtonPage.getNoLabelText(),NO_RADIO_BUTTON);
+        Assert.assertEquals(radioButtonPage.getNoLabelText(), NO_RADIO_BUTTON);
     }
 
     @Test(groups = {"UI"})

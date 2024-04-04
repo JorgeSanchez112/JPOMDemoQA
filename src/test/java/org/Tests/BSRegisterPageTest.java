@@ -12,12 +12,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 public class BSRegisterPageTest extends TestBase {
-    private Logger logger = LogManager.getLogger(BSRegisterPageTest.class);
-    private final String SUB_TITLE = "Register to Book Store";
-    private final String FIRST_NAME_LABEL = "First Name :";
-    private final String LAST_NAME_LABEL = "Last Name :";
-    private final String USER_NAME_LABEL = "UserName :";
-    private final String PASSWORD_LABEL = "Password :";
+    private final Logger logger = LogManager.getLogger(BSRegisterPageTest.class);
     private final String RGB_RED_COLOR = "rgb(220, 53, 69)";
 
     @BeforeMethod(groups = {"UI","Smoke","Functional"})
@@ -35,32 +30,42 @@ public class BSRegisterPageTest extends TestBase {
 
     @Test(groups = {"UI"})
     public void isSubtitleCorrect(){
+        String SUB_TITLE = "Register to Book Store";
+
         logger.info("-------------------isSubtitleCorrect-----------------------");
         Assert.assertEquals(bsRegisterPage.getSubtitleText(), SUB_TITLE);
     }
 
     @Test(groups = {"UI"})
     public void isFirstNameLabelCorrect(){
+        String FIRST_NAME_LABEL = "First Name :";
+
         logger.info("-------------------isFirstNameLabelCorrect-----------------------");
-        Assert.assertEquals(bsRegisterPage.getFirstNameLabelText(),FIRST_NAME_LABEL);
+        Assert.assertEquals(bsRegisterPage.getFirstNameLabelText(), FIRST_NAME_LABEL);
     }
 
     @Test(groups = {"UI"})
     public void isLastNameLabelCorrect(){
+        String LAST_NAME_LABEL = "Last Name :";
+
         logger.info("-------------------isLastNameLabelCorrect-----------------------");
         Assert.assertEquals(bsRegisterPage.getLastNameLabelText(), LAST_NAME_LABEL);
     }
 
     @Test(groups = {"UI"})
     public void isUserNameLabelCorrect(){
+        String USER_NAME_LABEL = "UserName :";
+
         logger.info("-------------------isUserNameLabelCorrect-----------------------");
-        Assert.assertEquals(bsRegisterPage.getUsernameLabelText(),USER_NAME_LABEL);
+        Assert.assertEquals(bsRegisterPage.getUsernameLabelText(), USER_NAME_LABEL);
     }
 
     @Test(groups = {"UI"})
     public void isPasswordLabelCorrect(){
+        String PASSWORD_LABEL = "Password :";
+
         logger.info("-------------------isPasswordLabelCorrect-----------------------");
-        Assert.assertEquals(bsRegisterPage.getPasswordLabelText(),PASSWORD_LABEL);
+        Assert.assertEquals(bsRegisterPage.getPasswordLabelText(), PASSWORD_LABEL);
     }
 
     @Test(dataProvider = "dataTest",groups = {"Functional"})

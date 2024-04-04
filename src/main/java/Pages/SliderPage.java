@@ -13,12 +13,12 @@ public class SliderPage extends BasePages {
     @FindBy(id = "sliderValue")
     private WebElement containerValue;
 
+    private final String VALUE_ATTRIBUTE = "value";
+
     public SliderPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver,this);
     }
-
-    private final String VALUE_ATTRIBUTE = "value";
 
     public void changeRangeInputToMinValue(){
         inputRange.sendKeys(Keys.HOME);

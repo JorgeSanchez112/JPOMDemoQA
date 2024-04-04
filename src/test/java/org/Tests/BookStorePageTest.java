@@ -12,14 +12,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 public class BookStorePageTest extends TestBase {
-    private Logger logger = LogManager.getLogger(BookStorePageTest.class);
-    private final String URL = "https://demoqa.com/books";
-    private final int ELEMENTS_LIST_SIZE = 4;
-    private final String FIRST_TITLE_TABLE = "Image";
-    private final String SECOND_TITLE_TABLE  = "Title";
-    private final String THIRD_TITLE_TABLE  = "Author";
-    private final String FOURTH_TITLE_TABLE  = "Publisher";
-    private final String SEARCH_BAR_PLACEHOLDER = "Type to search";
+    private final Logger logger = LogManager.getLogger(BookStorePageTest.class);
 
     @BeforeMethod(groups = {"UI","Smoke","Functional"})
     public void initializeClass(){
@@ -31,31 +24,40 @@ public class BookStorePageTest extends TestBase {
     @Test(groups = {"Functional"})
     public void validateURL(){
         logger.info("-------------------validateURL-----------------------");
-        Assert.assertEquals(bookStorePage.getBookStoreUrlText(),URL);
+        String URL = "https://demoqa.com/books";
+        Assert.assertEquals(bookStorePage.getBookStoreUrlText(), URL);
     }
 
     @Test(groups = {"UI"})
     public void isFirstTitleOfTableCorrect() {
+        String FIRST_TITLE_TABLE = "Image";
+
         logger.info("-------------------isFirstTitleOfTableCorrect-----------------------");
         Assert.assertEquals(bookStorePage.getFirstTitleTableText(), FIRST_TITLE_TABLE);
     }
 
     @Test(groups = {"UI"})
     public void isSecondTitleOfTableCorrect() {
+        String SECOND_TITLE_TABLE = "Title";
+
         logger.info("-------------------isSecondTitleOfTableCorrect-----------------------");
-        Assert.assertEquals(bookStorePage.getSecondTitleTableText(),SECOND_TITLE_TABLE);
+        Assert.assertEquals(bookStorePage.getSecondTitleTableText(), SECOND_TITLE_TABLE);
     }
 
     @Test(groups = {"UI"})
     public void isThirdTitleOfTableCorrect() {
+        String THIRD_TITLE_TABLE = "Author";
+
         logger.info("-------------------isThirdTitleOfTableCorrect-----------------------");
-        Assert.assertEquals(bookStorePage.getThirdTitleTableText(),THIRD_TITLE_TABLE);
+        Assert.assertEquals(bookStorePage.getThirdTitleTableText(), THIRD_TITLE_TABLE);
     }
 
     @Test(groups = {"UI"})
     public void isFourthTitleOfTableCorrect() {
+        String FOURTH_TITLE_TABLE = "Publisher";
+
         logger.info("-------------------isFourthTitleOfTableCorrect-----------------------");
-        Assert.assertEquals(bookStorePage.getFourthTitleTableText(),FOURTH_TITLE_TABLE);
+        Assert.assertEquals(bookStorePage.getFourthTitleTableText(), FOURTH_TITLE_TABLE);
     }
 
     @Test(groups = {"UI"})
@@ -104,9 +106,11 @@ public class BookStorePageTest extends TestBase {
 
     @Test(groups = {"UI"})
     public void isSearchBarPlaceholderCorrect() {
+        String SEARCH_BAR_PLACEHOLDER = "Type to search";
+
         logger.info("-------------------isSearchBarPlaceholderCorrect-----------------------");
         bookStorePage.scrollToSearchBar();
-        Assert.assertEquals(bookStorePage.getSearchBarPlaceholderText(),SEARCH_BAR_PLACEHOLDER);
+        Assert.assertEquals(bookStorePage.getSearchBarPlaceholderText(), SEARCH_BAR_PLACEHOLDER);
     }
 
 
@@ -123,8 +127,10 @@ public class BookStorePageTest extends TestBase {
 
     @Test(groups = {"UI"})
     public void validateSectionsSize(){
+        int ELEMENTS_LIST_SIZE = 4;
+
         logger.info("-------------------validateSectionsSize-----------------------");
-        Assert.assertEquals(bookStorePage.getSizeSections(),ELEMENTS_LIST_SIZE);
+        Assert.assertEquals(bookStorePage.getSizeSections(), ELEMENTS_LIST_SIZE);
     }
 
     @DataProvider(name = "testData")

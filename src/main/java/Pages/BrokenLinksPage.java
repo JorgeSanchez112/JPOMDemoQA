@@ -15,13 +15,13 @@ public class BrokenLinksPage extends BasePages {
     @FindBy (tagName = "a")
     private List<WebElement> links;
 
+    private final String SRC_ATTRIBUTE = "src";
+    private final String HREF_ATTRIBUTE = "href";
+
     public BrokenLinksPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver,this);
     }
-
-    private final String SRC_ATTRIBUTE = "src";
-    private final String HREF_ATTRIBUTE = "href";
 
     public String getPageTitleText(){
         return getElementTextWithWait(pageTitle);

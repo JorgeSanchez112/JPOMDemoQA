@@ -37,13 +37,13 @@ public class BSRegisterPage extends BasePages {
     @FindBy(id = "gotologin")
     private WebElement loginButton;
 
+    private final String BORDER_COLOR_ATTRIBUTE = "border-color";
+    private final String RGB_RED_COLOR = "rgb(220, 53, 69)";
+
     public BSRegisterPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver,this);
     }
-
-    private final String BORDER_COLOR_ATTRIBUTE = "border-color";
-    private final String RGB_RED_COLOR = "rgb(220, 53, 69)";
 
     public void typeOnFirstnameInput(String firstname){
         waitForVisibleElement(firstNameInput);

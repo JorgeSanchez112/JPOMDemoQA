@@ -8,11 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class ButtonsPageTest extends TestBase {
-    private Logger logger = LogManager.getLogger(ButtonsPageTest.class);
-    private final String PAGE_TITLE = "Buttons";
-    private final String DOUBLE_CLICK_MESSAGE = "You have done a double click";
-    private final String RIGHT_CLICK_MESSAGE = "You have done a right click";
-    private final String RADIO_BUTTON = "You have done a dynamic click";
+    private final Logger logger = LogManager.getLogger(ButtonsPageTest.class);
 
     @BeforeMethod(groups = {"UI","Functional"})
     public void initializeClass(){
@@ -23,28 +19,36 @@ public class ButtonsPageTest extends TestBase {
 
     @Test(groups = {"UI"})
     public void validateCorrectPageTitle(){
+        String PAGE_TITLE = "Buttons";
+
         logger.info("-------------------validateCorrectPageTitle-----------------------");
-        Assert.assertEquals(buttonsPage.getPageTitleText(),PAGE_TITLE);
+        Assert.assertEquals(buttonsPage.getPageTitleText(), PAGE_TITLE);
     }
 
     @Test(groups = {"Functional"})
     public void validateDoubleClickInABtn(){
+        String DOUBLE_CLICK_MESSAGE = "You have done a double click";
+
         logger.info("-------------------validateDoubleClickInABtn-----------------------");
         buttonsPage.clickOnDoubleBtn();
-        Assert.assertEquals(buttonsPage.getDoubleClickMessageText(),DOUBLE_CLICK_MESSAGE);
+        Assert.assertEquals(buttonsPage.getDoubleClickMessageText(), DOUBLE_CLICK_MESSAGE);
     }
 
     @Test(groups = {"Functional"})
     public void validateRightClickInABtn(){
+        String RIGHT_CLICK_MESSAGE = "You have done a right click";
+
         logger.info("-------------------validateRightClickInABtn-----------------------");
         buttonsPage.clickOnRightBtn();
-        Assert.assertEquals(buttonsPage.getRightClickMessageText(),RIGHT_CLICK_MESSAGE);
+        Assert.assertEquals(buttonsPage.getRightClickMessageText(), RIGHT_CLICK_MESSAGE);
     }
 
     @Test(groups = {"Functional"})
     public void validateClickInABtn(){
+        String RADIO_BUTTON = "You have done a dynamic click";
+
         logger.info("-------------------validateClickInABtn-----------------------");
         buttonsPage.clickOnClickMe();
-        Assert.assertEquals(buttonsPage.getClickMeMessageText(),RADIO_BUTTON);
+        Assert.assertEquals(buttonsPage.getClickMeMessageText(), RADIO_BUTTON);
     }
 }

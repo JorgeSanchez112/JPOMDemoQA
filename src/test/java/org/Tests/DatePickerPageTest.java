@@ -12,10 +12,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 public class DatePickerPageTest extends TestBase {
-    private Logger logger = LogManager.getLogger(DatePickerPageTest.class);
-    private final String PAGE_TITLE = "Date Picker";
-    private final String FIRST_LABEL  = "Select Date";
-    private final String SECOND_LABEL  = "Date And Time";
+    private final Logger logger = LogManager.getLogger(DatePickerPageTest.class);
 
     @BeforeMethod(groups = {"UI","Smoke"})
     public void initializeClass(){
@@ -26,20 +23,26 @@ public class DatePickerPageTest extends TestBase {
 
     @Test(groups = {"UI"})
     public void validateCorrectPageTitle(){
+        String PAGE_TITLE = "Date Picker";
+
         logger.info("-------------------validateCorrectPageTitle-----------------------");
-        Assert.assertEquals(datePickerPage.getPageTitleText(),PAGE_TITLE);
+        Assert.assertEquals(datePickerPage.getPageTitleText(), PAGE_TITLE);
     }
 
     @Test(groups = {"UI"})
     public void validateCorrectDateLabel(){
+        String FIRST_LABEL = "Select Date";
+
         logger.info("-------------------validateCorrectDateLabel-----------------------");
-        Assert.assertEquals(datePickerPage.getDateLabelText(),FIRST_LABEL);
+        Assert.assertEquals(datePickerPage.getDateLabelText(), FIRST_LABEL);
     }
 
     @Test(groups = {"UI"})
     public void validateCorrectDateTimeLabel(){
+        String SECOND_LABEL = "Date And Time";
+
         logger.info("-------------------validateCorrectDateTimeLabel-----------------------");
-        Assert.assertEquals(datePickerPage.getDateTimeLabelText(),SECOND_LABEL);
+        Assert.assertEquals(datePickerPage.getDateTimeLabelText(), SECOND_LABEL);
     }
 
     @Test(dataProvider = "testData",groups = {"Smoke"})

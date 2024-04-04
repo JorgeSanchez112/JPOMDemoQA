@@ -28,14 +28,14 @@ public class BSLoginPage extends BasePages {
     @FindBy(css = "#adplus-anchor > div")
     private WebElement advertisement;
 
+    private final String VALUE_ATTRIBUTE = "value";
+    private final String BORDER_COLOR_ATTRIBUTE = "border-color";
+    private final String RGB_RED_COLOR = "rgb(220, 53, 69)";
+
     public BSLoginPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver,this);
     }
-
-    private final String VALUE_ATTRIBUTE = "value";
-    private final String BORDER_COLOR_ATTRIBUTE = "border-color";
-    private final String RGB_RED_COLOR = "rgb(220, 53, 69)";
 
     public void typeOnUsernameInput(String name){
         waitForVisibleElement(usernameInput);

@@ -1,17 +1,14 @@
 <component name="InspectionProjectProfileManager">
   <profile version="1.0">
     <option name="myName" value="Project Default" />
-    <inspection_tool class="JavadocDeclaration" enabled="true" level="WARNING" enabled_by_default="true">
-      <option name="ADDITIONAL_TAGS" value="Exception,Param" />
-    </inspection_tool>
     <inspection_tool class="groupsTestNG" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="groups">
         <value>
           <list size="4">
-            <item index="0" class="java.lang.String" itemvalue="UI" />
-            <item index="1" class="java.lang.String" itemvalue="Smoke" />
-            <item index="2" class="java.lang.String" itemvalue="Integration" />
-            <item index="3" class="java.lang.String" itemvalue="Functional" />
+            <item index="0" class="java.lang.String" itemvalue="Functional" />
+            <item index="1" class="java.lang.String" itemvalue="Integration" />
+            <item index="2" class="java.lang.String" itemvalue="UI" />
+            <item index="3" class="java.lang.String" itemvalue="Smoke" />
           </list>
         </value>
       </option>

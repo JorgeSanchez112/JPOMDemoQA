@@ -8,10 +8,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class ProgressBarPageTest extends TestBase {
-    private Logger logger = LogManager.getLogger(ProgressBarPageTest.class);
+    private final Logger logger = LogManager.getLogger(ProgressBarPageTest.class);
     private final String PAGE_TITLE = "Progress Bar";
-    private final String FULL_BAR_PERCENTAGE = "100%";
-    private final String EMPTY_BAR_PERCENTAGE = "0%";
 
     @BeforeMethod(groups = {"UI","Smoke","Functional"})
     public void initializeClass(){
@@ -34,6 +32,8 @@ public class ProgressBarPageTest extends TestBase {
 
     @Test(groups = {"Smoke"})
     public void validateProgressBar(){
+        String FULL_BAR_PERCENTAGE = "100%";
+
         logger.info("-------------------validateProgressBar-----------------------");
         progressBarPage.startProgressBarAndWaitTo100Percent();
         Assert.assertEquals(progressBarPage.getPercentText(), FULL_BAR_PERCENTAGE);
@@ -41,6 +41,8 @@ public class ProgressBarPageTest extends TestBase {
 
     @Test(groups = {"Functional"})
     public void validateReturnToBasePage(){
+        String EMPTY_BAR_PERCENTAGE = "0%";
+
         logger.info("-------------------validateReturnToBasePage-----------------------");
         progressBarPage.startProgressBarTillEndAndRestartBar();
         Assert.assertEquals(progressBarPage.getPercentText(), EMPTY_BAR_PERCENTAGE);

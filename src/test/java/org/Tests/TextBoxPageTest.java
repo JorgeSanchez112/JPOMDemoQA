@@ -12,8 +12,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 public class TextBoxPageTest extends TestBase {
-    private Logger logger = LogManager.getLogger(TextBoxPageTest.class);
-    private final String PAGE_TITLE = "Text Box";
+    private final Logger logger = LogManager.getLogger(TextBoxPageTest.class);
     private final String USER_NAME_MESSAGE = "Name:";
     private final String EMAIL_MESSAGE = "Email:";
     private final String ADDRESS_MESSAGE = "Current Address :";
@@ -28,8 +27,10 @@ public class TextBoxPageTest extends TestBase {
 
     @Test(groups = {"UI"})
     public void IsCorrectPageTitleText(){
+        String PAGE_TITLE = "Text Box";
+
         logger.info("-------------------IsCorrectPageTitleText-----------------------");
-        Assert.assertEquals(textBoxPage.getPageTitleText(),PAGE_TITLE);
+        Assert.assertEquals(textBoxPage.getPageTitleText(), PAGE_TITLE);
     }
 
     @Test(dataProvider = "testData",groups = {"Functional"})

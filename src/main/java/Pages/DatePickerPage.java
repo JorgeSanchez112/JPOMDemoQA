@@ -36,12 +36,12 @@ public class DatePickerPage extends BasePages {
     @FindBy(className = "react-datepicker__time-list-item")
     private List<WebElement> timeOfDateTimeInput;
 
+    private final String VALUE_ATTRIBUTE = "value";
+
     public DatePickerPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver,this);
     }
-
-    private final String VALUE_ATTRIBUTE = "value";
 
     public void clickOnDateInput(){
         scroll(dateInput);

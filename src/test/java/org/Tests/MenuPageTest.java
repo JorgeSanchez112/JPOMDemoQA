@@ -8,8 +8,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class MenuPageTest extends TestBase {
-    private Logger logger = LogManager.getLogger(AccordianPageTest.class);
-    private final String PAGE_TITLE = "Menu";
+    private final Logger logger = LogManager.getLogger(AccordianPageTest.class);
+
     @BeforeMethod(groups = {"UI"})
     public void initializeClassAndHideAdvertising(){
         logger.info("-------------------Initializing MenuPageTest Class------------------");
@@ -19,8 +19,10 @@ public class MenuPageTest extends TestBase {
 
     @Test(groups = {"UI"})
     public void validateCorrectPageTitle(){
+        String PAGE_TITLE = "Menu";
+
         logger.info("-------------------validateCorrectPageTitle-----------------------");
-        Assert.assertEquals(menuPage.getPageTitleText(),PAGE_TITLE);
+        Assert.assertEquals(menuPage.getPageTitleText(), PAGE_TITLE);
     }
 
     @Test(groups = {"UI"})

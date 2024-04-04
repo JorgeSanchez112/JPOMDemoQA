@@ -12,10 +12,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 public class ResizablePageTest extends TestBase {
-    private Logger logger = LogManager.getLogger(ResizablePageTest.class);
-    private final String PAGE_TITLE = "Resizable";
-    private final String WIDTH_MAX_OF_RESIZABLE_RESTRICTED = "500";
-    private final String HEIGHT_MAX_OF_RESIZABLE_RESTRICTED = "300";
+    private final Logger logger = LogManager.getLogger(ResizablePageTest.class);
 
     @BeforeMethod(groups = {"UI","Functional"})
     public void initializeClass(){
@@ -26,8 +23,10 @@ public class ResizablePageTest extends TestBase {
 
     @Test(groups = {"UI"})
     public void validateCorrectPageTitle(){
+        String PAGE_TITLE = "Resizable";
+
         logger.info("-------------------validateCorrectPageTitle-----------------------");
-        Assert.assertEquals(resizablePage.getPageTitleText(),PAGE_TITLE);
+        Assert.assertEquals(resizablePage.getPageTitleText(), PAGE_TITLE);
     }
 
     @Test(groups = {"UI"})
@@ -38,10 +37,13 @@ public class ResizablePageTest extends TestBase {
 
     @Test(groups = {"Functional"})
     public void isResizableRestrictedToMax() {
+        String WIDTH_MAX_OF_RESIZABLE_RESTRICTED = "500";
+        String HEIGHT_MAX_OF_RESIZABLE_RESTRICTED = "300";
+
         logger.info("-------------------isResizableRestrictedToMax-----------------------");
         resizablePage.resizeBoxRestrictedToMax(Integer.parseInt(WIDTH_MAX_OF_RESIZABLE_RESTRICTED),Integer.parseInt(HEIGHT_MAX_OF_RESIZABLE_RESTRICTED));
-        Assert.assertEquals(resizablePage.getWidthOfBoxRestricted(),WIDTH_MAX_OF_RESIZABLE_RESTRICTED + prop.getProperty("pxMeasurer"));
-        Assert.assertEquals(resizablePage.getHeightOfBoxRestricted(),HEIGHT_MAX_OF_RESIZABLE_RESTRICTED + prop.getProperty("pxMeasurer"));
+        Assert.assertEquals(resizablePage.getWidthOfBoxRestricted(), WIDTH_MAX_OF_RESIZABLE_RESTRICTED + prop.getProperty("pxMeasurer"));
+        Assert.assertEquals(resizablePage.getHeightOfBoxRestricted(), HEIGHT_MAX_OF_RESIZABLE_RESTRICTED + prop.getProperty("pxMeasurer"));
     }
 
     @Test(groups = {"Functional"})

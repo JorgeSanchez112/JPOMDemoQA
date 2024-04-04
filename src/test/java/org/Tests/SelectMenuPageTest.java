@@ -12,17 +12,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 public class SelectMenuPageTest extends TestBase {
-    private Logger logger = LogManager.getLogger(SelectMenuPageTest.class);
-    private final String PAGE_TITLE = "Select Menu";
-    private final String FIRST_LABEL = "Select Value";
-    private final String SECOND_LABEL = "Select One";
-    private final String THIRD_LABEL = "Old Style Select Menu";
-    private final String FOURTH_LABEL = "Multiselect drop down";
-    private final String FIFTH_LABEL = "Standard multi select";
-    private final String GREEN_COLOR = "Green";
-    private final String BLUE_COLOR = "Blue";
-    private final String BLACK_COLOR = "Black";
-    private final String RED_COLOR = "Red";
+    private final Logger logger = LogManager.getLogger(SelectMenuPageTest.class);
 
     @BeforeMethod(groups = {"UI","Smoke"})
     public void initializeClass(){
@@ -33,14 +23,18 @@ public class SelectMenuPageTest extends TestBase {
 
     @Test(groups = {"UI"})
     public void validateCorrectPageTitle(){
+        String PAGE_TITLE = "Select Menu";
+
         logger.info("-------------------validateCorrectPageTitle-----------------------");
-        Assert.assertEquals(selectMenuPage.getPageTitleText(),PAGE_TITLE);
+        Assert.assertEquals(selectMenuPage.getPageTitleText(), PAGE_TITLE);
     }
 
     @Test(groups = {"UI"})
     public void validateCorrectSelectValueLabel(){
+        String FIRST_LABEL = "Select Value";
+
         logger.info("-------------------validateCorrectSelectValueLabel-----------------------");
-        Assert.assertEquals(selectMenuPage.getValueLabelText(),FIRST_LABEL);
+        Assert.assertEquals(selectMenuPage.getValueLabelText(), FIRST_LABEL);
     }
 
     @Test(dataProvider = "testData0",groups = {"Smoke"})
@@ -55,8 +49,10 @@ public class SelectMenuPageTest extends TestBase {
 
     @Test(groups = {"UI"})
     public void validateCorrectSelectOneLabel(){
+        String SECOND_LABEL = "Select One";
+
         logger.info("-------------------validateCorrectSelectOneLabel-----------------------");
-        Assert.assertEquals(selectMenuPage.getOneLabelText(),SECOND_LABEL);
+        Assert.assertEquals(selectMenuPage.getOneLabelText(), SECOND_LABEL);
     }
 
     @Test(dataProvider = "testData0",groups = {"Smoke"})
@@ -71,8 +67,10 @@ public class SelectMenuPageTest extends TestBase {
 
     @Test(groups = {"UI"})
     public void validateCorrectOldStyleSelectLabel(){
+        String THIRD_LABEL = "Old Style Select Menu";
+
         logger.info("-------------------validateCorrectOldStyleSelectLabel-----------------------");
-        Assert.assertEquals(selectMenuPage.getOldStyleSelectLabelText(),THIRD_LABEL);
+        Assert.assertEquals(selectMenuPage.getOldStyleSelectLabelText(), THIRD_LABEL);
     }
 
     @Test(dataProvider = "testData1",groups = {"Smoke"})
@@ -86,25 +84,33 @@ public class SelectMenuPageTest extends TestBase {
 
     @Test(groups = {"UI"})
     public void validateCorrectMultiselectDropdownLabel(){
+        String FOURTH_LABEL = "Multiselect drop down";
+
         logger.info("-------------------validateCorrectMultiselectDropdownLabel-----------------------");
-        Assert.assertEquals(selectMenuPage.getMultiSelectDropdownLabelText(),FOURTH_LABEL);
+        Assert.assertEquals(selectMenuPage.getMultiSelectDropdownLabelText(), FOURTH_LABEL);
 
     }
 
     @Test(groups = "Smoke")
     public void selectMultiplyValuesInDropdown(){
+        String GREEN_COLOR = "Green";
+        String BLUE_COLOR = "Blue";
+        String BLACK_COLOR = "Black";
+        String RED_COLOR = "Red";
+
         logger.info("-------------------selectMultiplyValuesInDropdown-----------------------");
         selectMenuPage.selectAllOptionsInMultiSelectDropDown();
-        Assert.assertEquals(selectMenuPage.getGreenValueTextOfMultiplyDropdown(),GREEN_COLOR);
-        Assert.assertEquals(selectMenuPage.getBlueValueTextOfMultiplyDropdown(),BLUE_COLOR);
-        Assert.assertEquals(selectMenuPage.getBlackValueTextOfMultiplyDropdown(),BLACK_COLOR);
-        Assert.assertEquals(selectMenuPage.getRedValueTextOfMultiplyDropdown(),RED_COLOR);
+        Assert.assertEquals(selectMenuPage.getGreenValueTextOfMultiplyDropdown(), GREEN_COLOR);
+        Assert.assertEquals(selectMenuPage.getBlueValueTextOfMultiplyDropdown(), BLUE_COLOR);
+        Assert.assertEquals(selectMenuPage.getBlackValueTextOfMultiplyDropdown(), BLACK_COLOR);
+        Assert.assertEquals(selectMenuPage.getRedValueTextOfMultiplyDropdown(), RED_COLOR);
     }
 
     @Test(groups = {"UI"})
     public void validateCorrectStandardMultiSelectLabel(){
         logger.info("-------------------validateCorrectStandardMultiSelectLabel-----------------------");
-        Assert.assertEquals(selectMenuPage.getStandardMultiSelectLabelText(),FIFTH_LABEL);
+        String FIFTH_LABEL = "Standard multi select";
+        Assert.assertEquals(selectMenuPage.getStandardMultiSelectLabelText(), FIFTH_LABEL);
     }
 
     @Test(groups = "Smoke")

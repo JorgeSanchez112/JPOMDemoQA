@@ -12,10 +12,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 public class WebTablesPageTest extends TestBase {
-    private Logger logger = LogManager.getLogger(AccordianPageTest.class);
-    private final String PAGE_TITLE = "Web Tables";
-    private final String MESSAGE_NO_ROWS_FOUND = "No rows found";
-    private final String SEARCH_BOX = "Kierra";
+    private final Logger logger = LogManager.getLogger(AccordianPageTest.class);
 
     @BeforeMethod(groups = {"UI","Smoke"})
     public void initializeClass(){
@@ -26,19 +23,25 @@ public class WebTablesPageTest extends TestBase {
 
     @Test(groups = {"UI"})
     public void validateCorrectPageTitle(){
+        String PAGE_TITLE = "Web Tables";
+
         logger.info("-------------------validateCorrectPageTitle-----------------------");
         Assert.assertEquals(webTablesPage.getPageTitleText(), PAGE_TITLE);
     }
 
     @Test(groups = {"Smoke"})
     public void validateSearchBoxResult(){
+        String SEARCH_BOX = "Kierra";
+
         logger.info("-------------------validateSearchBoxResult-----------------------");
         webTablesPage.typeOnSearchBox(SEARCH_BOX);
-        Assert.assertEquals(webTablesPage.getFirstNameOfFirstRow(),SEARCH_BOX);
+        Assert.assertEquals(webTablesPage.getFirstNameOfFirstRow(), SEARCH_BOX);
     }
 
     @Test(groups = {"Smoke"})
     public void validateAllRowsEmpty(){
+        String MESSAGE_NO_ROWS_FOUND = "No rows found";
+
         logger.info("-------------------validateAllRowsEmpty-----------------------");
         webTablesPage.clickOnDeleteThirdRow();
         webTablesPage.clickOnDeleteSecondRow();

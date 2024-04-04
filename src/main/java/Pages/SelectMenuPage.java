@@ -163,7 +163,7 @@ public class SelectMenuPage extends BasePages {
     public boolean wereAllOptionsSelectedOfStandardMultiSelect(){
         int c = 0;
         for (WebElement values: standardMultiSelectValues){
-            if ( hasElementBeenSelected(values)){
+            if (hasElementBeenSelected(values)){
                 c++;
             }
         }

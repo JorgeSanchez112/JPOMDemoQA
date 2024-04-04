@@ -30,10 +30,6 @@ public class BasePages {
     protected WebElement rightSidePublicity;
     protected WebDriver driver ;
 
-    public BasePages(WebDriver driver) {
-        this.driver = driver;
-    }
-
     private final String MESSAGE_TO_NO_ALERT_PRESENT_EXCEPTION = "NoAlertPresentException: No alert present to accept";
     private final String MESSAGE_TO_NO_SUCH_ELEMENT_EXCEPTION = "NoSuchElementException: Element can not be found";
     private final String MESSAGE_TO_WEB_DRIVER_EXCEPTION = "WebDriverException: An unexpected error occurred while interacting with the WebDriver. This could be due to various reasons such as network issues, browser compatibility issues, or invalid WebDriver configurations.";
@@ -42,6 +38,19 @@ public class BasePages {
     private final String MESSAGE_ELEMENT_NOT_INTERACTABLE_EXCEPTION = "ElementNotInteractableException: Possible causes include elements being hidden, disabled, overlapped by other elements, or located outside the viewport.";
     private final String MESSAGE_MOVE_TARGET_OUT_OF_BOUNDS_EXCEPTION = "MoveTargetOutOfBoundsException: MoveTargetOutOfBoundsException occurred, indicating that the target element cannot be moved to the specified coordinates.";
     private final String MESSAGE_TO_TIME_OUT_EXCEPTION = "TimeOutException: The presence of a web element or the completion of an action, does not occur within the specified time frame.";
+
+    public BasePages(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    /**
+     * Description: It handles the message of the different exceptions throughout code.
+     * @param messageException It is the message desired when the exception is caught.
+     * @param e This is the type of exception caught.
+     * */
+    private void handleException(String messageException,Exception e) {
+        logger.error(messageException, e);
+    }
 
     /**
      * Description: This function wait to appear or detect an alert and then accept it.
@@ -207,6 +216,271 @@ public class BasePages {
         }catch (NoSuchElementException e){
             handleException(MESSAGE_TO_NO_SUCH_ELEMENT_EXCEPTION + "The element Text should contain the same value that the option",e);
         }
+    }
+
+
+    /**
+     * Description: Wait for 10 seconds with and interval of 250 millis that all elements of a WebElement List were charged.
+     * @param elementsList It is a group of WebElements in a list.
+     * @exception RejectedExecutionException: It indicates that a task submission to an executor has been rejected for execution.
+     * @exception NoSuchElementException: it points out that element can't be found, likely an irregular locator or delay charge.
+     * @exception IndexOutOfBoundsException: it points out an attempt to access or manipulate an element at an invalid index position within a collection or array.
+     * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
+     * */
+    public void waitForChargedElementsOfAWebElementList(List<WebElement> elementsList){
+        String MESSAGE_TO_REJECTED_EXECUTION_EXCEPTION = "RejectedExecutionException occurred, indicating that a task submission to an executor has been rejected for execution.";
+
+        try {
+            try {
+                try {
+                    try {
+                        logger.info("Fluent wait execution with this list elements: " + elementsList);
+                        FluentWait wait = new FluentWait(driver);
+                        wait.withTimeout(Duration.ofSeconds(10));
+                        wait.pollingEvery(Duration.ofMillis(250));
+                        wait.until(ExpectedConditions.visibilityOfAllElements(elementsList));
+                    }catch (RejectedExecutionException e){
+                        handleException(MESSAGE_TO_REJECTED_EXECUTION_EXCEPTION,e);
+                    }
+                }catch (IndexOutOfBoundsException e){
+                    handleException(MESSAGE_TO_INDEX_OUT_OF_BOUNDS_EXCEPTION,e);
+                }
+            }catch (NoSuchElementException e){
+                handleException(MESSAGE_TO_NO_SUCH_ELEMENT_EXCEPTION,e);
+            }
+        }catch (WebDriverException e){
+            handleException(MESSAGE_TO_WEB_DRIVER_EXCEPTION,e);
+        }
+    }
+
+    /**
+     * Description: Wait for 10 second until an alert is present.
+     * @exception NoSuchElementException: It points out that element can't be found, likely an irregular locator or delay charge.
+     * @exception TimeoutException: It refers the action does not accomplish during to the wait expected.
+     * */
+    public void waitAlert(){
+        try {
+            try {
+                logger.info("Wait for alert");
+                WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
+                wait.until(ExpectedConditions.alertIsPresent());
+            }catch (NoSuchElementException e){
+                handleException(MESSAGE_TO_NO_SUCH_ELEMENT_EXCEPTION,e);
+            }
+        }catch (TimeoutException e){
+            handleException(MESSAGE_TO_TIME_OUT_EXCEPTION,e);
+        }
+
+    }
+
+    /**
+     * Description: Wait for 10 seconds until the element is clickable and then click on it.
+     * @param element WebElement target to do click.
+     * @exception ElementClickInterceptedException: Element has been intercepted, possibly other element no allowed the correct click.
+     * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
+     * */
+    public void clickWithWait(WebElement element){
+        String MESSAGE_TO_ELEMENT_CLICK_INTERCEPTED_EXCEPTION = "Element has been intercepted, possibly other element no allowed the correct click";
+
+        try {
+            try {
+                waitForClick(element);
+                element.click();
+                logger.info("Click on element: " + element);
+            }catch (ElementClickInterceptedException e){
+                handleException(MESSAGE_TO_ELEMENT_CLICK_INTERCEPTED_EXCEPTION,e);
+            }
+        }catch (WebDriverException e){
+            handleException(MESSAGE_TO_WEB_DRIVER_EXCEPTION,e);
+        }
+    }
+
+    /**
+     * Description: Switch from main tab to another tab.
+     */
+    public void switchToTab(){
+        String mainWindowHandle = driver.getWindowHandle();
+        for (String windowHandle : driver.getWindowHandles()) {
+            if (!windowHandle.equals(mainWindowHandle)) {
+                logger.info("Switch to tab: " + windowHandle);
+                driver.switchTo().window(windowHandle);
+                break;
+            }
+        }
+    }
+
+
+    /**
+     * Description: Click a WebElement inside a list according to the text value of the WebElement.
+     * @param list List of WebElements.
+     * @param valueToSearch Text value of the WebElement to search.
+     * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
+     * */
+    public void selectListValue(List<WebElement> list, String valueToSearch){
+        int sizeList = list.size();
+        int x = 0;
+
+        logger.info("Searching element: " + valueToSearch + " in list: " + list);
+        for (WebElement values: list) {
+            x ++;
+            try {
+                if (Objects.equals(values.getText(), valueToSearch)){
+                    scroll(values);
+                    clickWithWait(values);
+                    x--;
+                    break;
+                } else if (x == sizeList) {
+                    logger.info("Value: " + valueToSearch + " did not find");
+                    System.out.println("value does not available");
+                }
+            }catch (WebDriverException e){
+                handleException(MESSAGE_TO_WEB_DRIVER_EXCEPTION,e);
+            }
+        }
+    }
+
+    /**
+     * Description: Select the desired day of a WebElement List.
+     * @param daysList List of WebElements that contain the days of a month.
+     * @param day number of day searched.
+     * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
+     * */
+    public void selectDay(List<WebElement> daysList, String day){
+        int sizeList = daysList.size();
+        int x = 0;
+        logger.info("Searching day");
+        for (WebElement daysOfList: addElementsToList(daysList)) //one method is applied that return one list of days ordered.
+        {
+            x ++;
+            try {
+                if (Objects.equals(daysOfList.getText(), day)){
+                    clickWithWait(daysOfList);
+                    x--;
+                    break;
+                }else if (x == sizeList){
+                    logger.info("Day: " + day + " did not find");
+                    System.out.println("day does not exist");
+                }
+            }catch (WebDriverException e){
+                handleException(MESSAGE_TO_WEB_DRIVER_EXCEPTION,e);
+            }
+
+        }
+    }
+
+    /**
+     * Description: It does double-click on an element.
+     * @param element WebElement target to do double-click.
+     * */
+    public void doubleClick(WebElement element){
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element)
+                .doubleClick()
+                .build()
+                .perform();
+        logger.info("Double click on element: " + element);
+    }
+
+    /**
+     * Description: It does right-click on an element.
+     * @param element WebElement target to do right-click.
+     * */
+    public void rightClick(WebElement element){
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element)
+                .contextClick()
+                .build()
+                .perform();
+        logger.info("Right click on element: " + element);
+    }
+
+    /**
+     * Description: It moves an element target to a specified coordinates.
+     * @param element WebElement target to move.
+     * @exception NumberFormatException: Method expects a string representation of a numeric.
+     * @exception MoveTargetOutOfBoundsException: It is indicating that the target element cannot be moved to the specified coordinates.
+     * @exception ElementNotInteractableException: Its possibles causes include elements being hidden, disabled, overlapped by other elements, or located outside the viewport.
+     * */
+    public void moveElementToCoordinates(WebElement element, float xCoordinate, float yCoordinate){
+        Actions actions = new Actions(driver);
+        try {
+            try {
+                try {
+                    logger.info("Moving element to X coordinate: " + xCoordinate + " Y coordinate: " + yCoordinate);
+                    actions.dragAndDropBy(element, (int) xCoordinate, (int) yCoordinate)
+                            .build()
+                            .perform();
+                }catch (NumberFormatException e){
+                    handleException(MESSAGE_NUMBER_FORMAT_EXCEPTION,e);
+                }
+            }catch (MoveTargetOutOfBoundsException e){
+                handleException(MESSAGE_MOVE_TARGET_OUT_OF_BOUNDS_EXCEPTION,e);
+            }
+        }catch (ElementNotInteractableException e){
+            handleException(MESSAGE_ELEMENT_NOT_INTERACTABLE_EXCEPTION,e);
+        }
+    }
+
+    /**
+     * Description: It moves the clicker on an WebElement.
+     * @param element WebElement target to move clicker on it.
+     * @exception ElementNotInteractableException: Its possibles causes include elements being hidden, disabled, overlapped by other elements, or located outside the viewport.
+     * @exception IndexOutOfBoundsException: The operation encountered an IndexOutOfBoundsException, indicating an attempt to access or manipulate an element at an invalid index position within a collection or array.
+     * */
+    public void moveClickerToElement(WebElement element){
+        try {
+            try {
+                Actions actions = new Actions(driver);
+                actions.moveToElement(element)
+                        .build()
+                        .perform();
+                logger.info("Move clicker to element: " + element);
+            }catch (ElementNotInteractableException e){
+                handleException(MESSAGE_ELEMENT_NOT_INTERACTABLE_EXCEPTION,e);
+            }
+        }catch (IndexOutOfBoundsException e){
+            handleException(MESSAGE_TO_INDEX_OUT_OF_BOUNDS_EXCEPTION,e);
+        }
+    }
+
+    /**
+     * Description: It drags an element and then Drops it in a target element.
+     * @param sourceElement WebElement that is dragged.
+     * @param targetElement WebElement target to drop sourceElement.
+     * @exception ElementNotInteractableException: Its possibles causes include elements being hidden, disabled, overlapped by other elements, or located outside the viewport.
+     * */
+    public void dragDropMoveElementToTarget(WebElement sourceElement, WebElement targetElement){
+        Actions actions = new Actions(driver);
+        try {
+            logger.info("Drag and Drop element to element: " + targetElement);
+            actions.dragAndDrop(sourceElement, targetElement)
+                    .build()
+                    .perform();
+        }catch (ElementNotInteractableException e){
+            handleException(MESSAGE_ELEMENT_NOT_INTERACTABLE_EXCEPTION,e);
+        }
+    }
+
+    /**
+     * Description: It Resizes an element that can change its size.
+     * @param element WebElement target to resize.
+     * @param sizeX It obtains the desired X value
+     * @param sizeY It obtains the desired Y value.
+     * @exception MoveTargetOutOfBoundsException: It is indicating that the target element cannot be moved or resize to the specified coordinates.
+     * */
+    public void resizeElement(WebElement element, int sizeX, int sizeY){
+        Actions actions = new Actions(driver);
+        try {
+            logger.info("Resize element: " + element + " size X: " + sizeX + " size Y: " + sizeY);
+            actions.clickAndHold(element)
+                    .moveByOffset(sizeX, sizeY)
+                    .release()
+                    .build()
+                    .perform();
+        }catch (MoveTargetOutOfBoundsException e){
+            handleException(MESSAGE_MOVE_TARGET_OUT_OF_BOUNDS_EXCEPTION,e);
+        }
+
     }
 
     /**
@@ -389,95 +663,6 @@ public class BasePages {
         return false;
     }
 
-    /**
-     * Description: Wait for 10 seconds with and interval of 250 millis that all elements of a WebElement List were charged.
-     * @param elementsList It is a group of WebElements in a list.
-     * @exception RejectedExecutionException: It indicates that a task submission to an executor has been rejected for execution.
-     * @exception NoSuchElementException: it points out that element can't be found, likely an irregular locator or delay charge.
-     * @exception IndexOutOfBoundsException: it points out an attempt to access or manipulate an element at an invalid index position within a collection or array.
-     * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
-     * */
-    public void waitForChargedElementsOfAWebElementList(List<WebElement> elementsList){
-        String MESSAGE_TO_REJECTED_EXECUTION_EXCEPTION = "RejectedExecutionException occurred, indicating that a task submission to an executor has been rejected for execution.";
-
-        try {
-            try {
-                try {
-                    try {
-                        logger.info("Fluent wait execution with this list elements: " + elementsList);
-                        FluentWait wait = new FluentWait(driver);
-                        wait.withTimeout(Duration.ofSeconds(10));
-                        wait.pollingEvery(Duration.ofMillis(250));
-                        wait.until(ExpectedConditions.visibilityOfAllElements(elementsList));
-                    }catch (RejectedExecutionException e){
-                        handleException(MESSAGE_TO_REJECTED_EXECUTION_EXCEPTION,e);
-                    }
-                }catch (IndexOutOfBoundsException e){
-                    handleException(MESSAGE_TO_INDEX_OUT_OF_BOUNDS_EXCEPTION,e);
-                }
-            }catch (NoSuchElementException e){
-                handleException(MESSAGE_TO_NO_SUCH_ELEMENT_EXCEPTION,e);
-            }
-        }catch (WebDriverException e){
-            handleException(MESSAGE_TO_WEB_DRIVER_EXCEPTION,e);
-        }
-    }
-
-    /**
-     * Description: Wait for 10 second until an alert is present.
-     * @exception NoSuchElementException: It points out that element can't be found, likely an irregular locator or delay charge.
-     * @exception TimeoutException: It refers the action does not accomplish during to the wait expected.
-     * */
-    public void waitAlert(){
-        try {
-            try {
-                logger.info("Wait for alert");
-                WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
-                wait.until(ExpectedConditions.alertIsPresent());
-            }catch (NoSuchElementException e){
-                handleException(MESSAGE_TO_NO_SUCH_ELEMENT_EXCEPTION,e);
-            }
-        }catch (TimeoutException e){
-            handleException(MESSAGE_TO_TIME_OUT_EXCEPTION,e);
-        }
-
-    }
-
-    /**
-     * Description: Wait for 10 seconds until the element is clickable and then click on it.
-     * @param element WebElement target to do click.
-     * @exception ElementClickInterceptedException: Element has been intercepted, possibly other element no allowed the correct click.
-     * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
-     * */
-    public void clickWithWait(WebElement element){
-        String MESSAGE_TO_ELEMENT_CLICK_INTERCEPTED_EXCEPTION = "Element has been intercepted, possibly other element no allowed the correct click";
-
-        try {
-            try {
-                waitForClick(element);
-                element.click();
-                logger.info("Click on element: " + element);
-            }catch (ElementClickInterceptedException e){
-                handleException(MESSAGE_TO_ELEMENT_CLICK_INTERCEPTED_EXCEPTION,e);
-            }
-        }catch (WebDriverException e){
-            handleException(MESSAGE_TO_WEB_DRIVER_EXCEPTION,e);
-        }
-    }
-
-    /**
-     * Description: Switch from main tab to another tab.
-     */
-    public void switchToTab(){
-        String mainWindowHandle = driver.getWindowHandle();
-        for (String windowHandle : driver.getWindowHandles()) {
-            if (!windowHandle.equals(mainWindowHandle)) {
-                logger.info("Switch to tab: " + windowHandle);
-                driver.switchTo().window(windowHandle);
-                break;
-            }
-        }
-    }
 
     /**
      * Description: This method examines a web element to ascertain whether it contains a specified CSS class.
@@ -551,6 +736,27 @@ public class BasePages {
     }
 
     /**
+     * Description: It obtains the HTTP response code and validate that it is 200
+     * @param src It is the URL or src of the element or target to obtain the HTTP response.
+     * @return Return true if the HTTP response code is 200.
+     * @exception MalformedURLException: it indicates the URL is incorrect.
+     * */
+    public boolean validateHTTPS_Response(String src) throws IOException {
+        String MESSAGE_MALFORMED_URL_EXCEPTION = "URL is incorrect";
+        try {
+            HttpURLConnection http = (HttpURLConnection) (new URL(src).openConnection());
+            http.setRequestMethod("HEAD");
+            http.connect();
+            int responseCode = http.getResponseCode();
+            logger.info("HTTP response: " + responseCode);
+            return responseCode == 200;
+        }catch (MalformedURLException e){
+            handleException(MESSAGE_MALFORMED_URL_EXCEPTION,e);
+        }
+        return false;
+    }
+
+    /**
      * Description: Validate that the HTTP response are 200 in a all the WebElements of a list, the Elements must have a src attribute.
      * @param elementList List of WebElements.
      * @return true if the HTTP WebElements response is 200.
@@ -586,18 +792,6 @@ public class BasePages {
     }
 
     /**
-     * Description: Subtract a target value with the value desired.
-     * @param targetParameter It is a value type float.
-     * @param valueToDeduct It is the value desired to deduct.
-     * @return Return the result subtracted Between the targetParameter and ValueToDeduct as a float.
-     * */
-    public float subtractQuantityToParameter(float targetParameter,float valueToDeduct){
-        float result = targetParameter - valueToDeduct;
-        logger.info("Subtract: " + targetParameter + " with: " + valueToDeduct + " = " + result);
-        return result;
-    }
-
-    /**
      * Description: Search in a list of WebElements an WebElement with the value 1.
      * @param dateOfDaysList List of WebElements, it often contains the number of a month days.
      * @return Return the position of the WebElement where it found the value 1.
@@ -618,6 +812,18 @@ public class BasePages {
     }
 
     /**
+     * Description: Subtract a target value with the value desired.
+     * @param targetParameter It is a value type float.
+     * @param valueToDeduct It is the value desired to deduct.
+     * @return Return the result subtracted Between the targetParameter and ValueToDeduct as a float.
+     * */
+    public float subtractQuantityToParameter(float targetParameter,float valueToDeduct){
+        float result = targetParameter - valueToDeduct;
+        logger.info("Subtract: " + targetParameter + " with: " + valueToDeduct + " = " + result);
+        return result;
+    }
+
+    /**
      * Description: It first searches the value number 1 and then creates a new list to finally add the WebElements since the position got of searchNumberOne method.
      * @param daysList List of WebElement that contains the days of a month.
      * @return Return a new list beginning since the number one value of a month days.
@@ -635,208 +841,5 @@ public class BasePages {
 
         logger.info("Return List");
         return arrayNormalized;
-    }
-
-    /**
-     * Description: Click a WebElement inside a list according to the text value of the WebElement.
-     * @param list List of WebElements.
-     * @param valueToSearch Text value of the WebElement to search.
-     * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
-     * */
-    public void selectListValue(List<WebElement> list, String valueToSearch){
-        int sizeList = list.size();
-        int x = 0;
-
-        logger.info("Searching element: " + valueToSearch + " in list: " + list);
-        for (WebElement values: list) {
-            x ++;
-            try {
-                if (Objects.equals(values.getText(), valueToSearch)){
-                    scroll(values);
-                    clickWithWait(values);
-                    x--;
-                    break;
-                } else if (x == sizeList) {
-                    logger.info("Value: " + valueToSearch + " did not find");
-                    System.out.println("value does not available");
-                }
-            }catch (WebDriverException e){
-                handleException(MESSAGE_TO_WEB_DRIVER_EXCEPTION,e);
-            }
-        }
-    }
-
-    /**
-     * Description: Select the desired day of a WebElement List.
-     * @param daysList List of WebElements that contain the days of a month.
-     * @param day number of day searched.
-     * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
-     * */
-    public void selectDay(List<WebElement> daysList, String day){
-        int sizeList = daysList.size();
-        int x = 0;
-        logger.info("Searching day");
-        for (WebElement daysOfList: addElementsToList(daysList)) //one method is applied that return one list of days ordered.
-        {
-            x ++;
-            try {
-                if (Objects.equals(daysOfList.getText(), day)){
-                    clickWithWait(daysOfList);
-                    x--;
-                    break;
-                }else if (x == sizeList){
-                    logger.info("Day: " + day + " did not find");
-                    System.out.println("day does not exist");
-                }
-            }catch (WebDriverException e){
-                handleException(MESSAGE_TO_WEB_DRIVER_EXCEPTION,e);
-            }
-
-        }
-    }
-
-    /**
-     * Description: It does double-click on an element.
-     * @param element WebElement target to do double-click.
-     * */
-    public void doubleClick(WebElement element){
-        Actions actions = new Actions(driver);
-        actions.moveToElement(element)
-                .doubleClick()
-                .build()
-                .perform();
-        logger.info("Double click on element: " + element);
-    }
-
-    /**
-     * Description: It does right-click on an element.
-     * @param element WebElement target to do right-click.
-     * */
-    public void rightClick(WebElement element){
-        Actions actions = new Actions(driver);
-        actions.moveToElement(element)
-                .contextClick()
-                .build()
-                .perform();
-        logger.info("Right click on element: " + element);
-    }
-
-    /**
-     * Description: It moves an element target to a specified coordinates.
-     * @param element WebElement target to move.
-     * @exception NumberFormatException: Method expects a string representation of a numeric.
-     * @exception MoveTargetOutOfBoundsException: It is indicating that the target element cannot be moved to the specified coordinates.
-     * @exception ElementNotInteractableException: Its possibles causes include elements being hidden, disabled, overlapped by other elements, or located outside the viewport.
-     * */
-    public void moveElementToCoordinates(WebElement element, float xCoordinate, float yCoordinate){
-        Actions actions = new Actions(driver);
-        try {
-            try {
-                try {
-                    logger.info("Moving element to X coordinate: " + xCoordinate + " Y coordinate: " + yCoordinate);
-                    actions.dragAndDropBy(element, (int) xCoordinate, (int) yCoordinate)
-                            .build()
-                            .perform();
-                }catch (NumberFormatException e){
-                    handleException(MESSAGE_NUMBER_FORMAT_EXCEPTION,e);
-                }
-            }catch (MoveTargetOutOfBoundsException e){
-                handleException(MESSAGE_MOVE_TARGET_OUT_OF_BOUNDS_EXCEPTION,e);
-            }
-        }catch (ElementNotInteractableException e){
-            handleException(MESSAGE_ELEMENT_NOT_INTERACTABLE_EXCEPTION,e);
-        }
-    }
-
-    /**
-     * Description: It moves the clicker on an WebElement.
-     * @param element WebElement target to move clicker on it.
-     * @exception ElementNotInteractableException: Its possibles causes include elements being hidden, disabled, overlapped by other elements, or located outside the viewport.
-     * @exception IndexOutOfBoundsException: The operation encountered an IndexOutOfBoundsException, indicating an attempt to access or manipulate an element at an invalid index position within a collection or array.
-     * */
-    public void moveClickerToElement(WebElement element){
-        try {
-            try {
-                Actions actions = new Actions(driver);
-                actions.moveToElement(element)
-                        .build()
-                        .perform();
-                logger.info("Move clicker to element: " + element);
-            }catch (ElementNotInteractableException e){
-                handleException(MESSAGE_ELEMENT_NOT_INTERACTABLE_EXCEPTION,e);
-            }
-        }catch (IndexOutOfBoundsException e){
-            handleException(MESSAGE_TO_INDEX_OUT_OF_BOUNDS_EXCEPTION,e);
-        }
-    }
-
-    /**
-     * Description: It drags an element and then Drops it in a target element.
-     * @param sourceElement WebElement that is dragged.
-     * @param targetElement WebElement target to drop sourceElement.
-     * @exception ElementNotInteractableException: Its possibles causes include elements being hidden, disabled, overlapped by other elements, or located outside the viewport.
-     * */
-    public void dragDropMoveElementToTarget(WebElement sourceElement, WebElement targetElement){
-        Actions actions = new Actions(driver);
-        try {
-            logger.info("Drag and Drop element to element: " + targetElement);
-            actions.dragAndDrop(sourceElement, targetElement)
-                    .build()
-                    .perform();
-        }catch (ElementNotInteractableException e){
-            handleException(MESSAGE_ELEMENT_NOT_INTERACTABLE_EXCEPTION,e);
-        }
-    }
-
-    /**
-     * Description: It Resizes an element that can change its size.
-     * @param element WebElement target to resize.
-     * @param sizeX It obtains the desired X value
-     * @param sizeY It obtains the desired Y value.
-     * @exception MoveTargetOutOfBoundsException: It is indicating that the target element cannot be moved or resize to the specified coordinates.
-     * */
-    public void resizeElement(WebElement element, int sizeX, int sizeY){
-        Actions actions = new Actions(driver);
-        try {
-            logger.info("Resize element: " + element + " size X: " + sizeX + " size Y: " + sizeY);
-            actions.clickAndHold(element)
-                    .moveByOffset(sizeX, sizeY)
-                    .release()
-                    .build()
-                    .perform();
-        }catch (MoveTargetOutOfBoundsException e){
-            handleException(MESSAGE_MOVE_TARGET_OUT_OF_BOUNDS_EXCEPTION,e);
-        }
-
-    }
-
-    /**
-     * Description: It obtains the HTTP response code and validate that it is 200
-     * @param src It is the URL or src of the element or target to obtain the HTTP response.
-     * @return Return true if the HTTP response code is 200.
-     * @exception MalformedURLException: it indicates the URL is incorrect.
-     * */
-    public boolean validateHTTPS_Response(String src) throws IOException {
-        String MESSAGE_MALFORMED_URL_EXCEPTION = "URL is incorrect";
-        try {
-            HttpURLConnection http = (HttpURLConnection) (new URL(src).openConnection());
-            http.setRequestMethod("HEAD");
-            http.connect();
-            int responseCode = http.getResponseCode();
-            logger.info("HTTP response: " + responseCode);
-            return responseCode == 200;
-        }catch (MalformedURLException e){
-            handleException(MESSAGE_MALFORMED_URL_EXCEPTION,e);
-        }
-        return false;
-    }
-
-    /**
-     * Description: It handles the message of the different exceptions throughout code.
-     * @param messageException It is the message desired when the exception is caught.
-     * @param e This is the type of exception caught.
-    * */
-    private void handleException(String messageException,Exception e) {
-        logger.error(messageException, e);
     }
 }

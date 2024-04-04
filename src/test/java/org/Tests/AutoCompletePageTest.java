@@ -12,10 +12,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 public class AutoCompletePageTest extends TestBase {
-    private Logger logger = LogManager.getLogger(AutoCompletePageTest.class);
-    private final String PAGE_TITLE = "Auto Complete";
-    private final String FIRST_LABEL  = "Type multiple color names";
-    private final String SECOND_LABEL  = "Type single color name";
+    private final Logger logger = LogManager.getLogger(AutoCompletePageTest.class);
 
     @BeforeMethod(groups = {"UI","Smoke"})
     public void initializeClass(){
@@ -26,20 +23,26 @@ public class AutoCompletePageTest extends TestBase {
 
     @Test(groups = {"UI"})
     public void validateCorrectPageTitle(){
+        String PAGE_TITLE = "Auto Complete";
+
         logger.info("-------------------validateCorrectPageTitle-----------------------");
-        Assert.assertEquals(autoCompletePage.getPageTitleText(),PAGE_TITLE);
+        Assert.assertEquals(autoCompletePage.getPageTitleText(), PAGE_TITLE);
     }
 
     @Test(groups = {"UI"})
     public void validateCorrectMultipleContainerLabel(){
+        String FIRST_LABEL = "Type multiple color names";
+
         logger.info("-------------------validateCorrectMultipleContainerLabel-----------------------");
-        Assert.assertEquals(autoCompletePage.getMultipleContainerLabelText(),FIRST_LABEL);
+        Assert.assertEquals(autoCompletePage.getMultipleContainerLabelText(), FIRST_LABEL);
     }
 
     @Test(groups = {"UI"})
     public void validateCorrectSingleContainerLabel(){
+        String SECOND_LABEL = "Type single color name";
+
         logger.info("-------------------validateCorrectSingleContainerLabel-----------------------");
-        Assert.assertEquals(autoCompletePage.getSingleContainerLabelText(),SECOND_LABEL);
+        Assert.assertEquals(autoCompletePage.getSingleContainerLabelText(), SECOND_LABEL);
     }
 
     @Test(dataProvider = "testData",groups = {"Smoke"})

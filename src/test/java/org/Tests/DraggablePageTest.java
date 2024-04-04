@@ -9,8 +9,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class DraggablePageTest extends TestBase {
-    private Logger logger = LogManager.getLogger(DraggablePageTest.class);
-    private final String PAGE_TITLE = "Dragabble";
+    private final Logger logger = LogManager.getLogger(DraggablePageTest.class);
 
     @BeforeMethod(groups = {"UI","Functional"})
     public void initializeClass(){
@@ -21,8 +20,10 @@ public class DraggablePageTest extends TestBase {
 
     @Test(groups = {"UI"})
     public void validateCorrectPageTitle(){
+        String PAGE_TITLE = "Dragabble";
+
         logger.info("-------------------validateCorrectPageTitle-----------------------");
-        Assert.assertEquals(draggablePage.getPageTitleText(),PAGE_TITLE);
+        Assert.assertEquals(draggablePage.getPageTitleText(), PAGE_TITLE);
     }
 
     @Test(groups = {"UI"})

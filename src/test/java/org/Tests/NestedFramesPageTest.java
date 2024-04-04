@@ -8,10 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class NestedFramesPageTest extends TestBase {
-    private Logger logger = LogManager.getLogger(NestedFramesPageTest.class);
-    private final String PAGE_TITLE = "Nested Frames";
-    private final String PARENT_FRAME = "Parent frame";
-    private final String CHILD_FRAME = "Child Iframe";
+    private final Logger logger = LogManager.getLogger(NestedFramesPageTest.class);
 
     @BeforeMethod(groups = {"UI","Functional"})
     public void initializeClass(){
@@ -22,8 +19,10 @@ public class NestedFramesPageTest extends TestBase {
 
     @Test(groups = {"UI"})
     public void validateCorrectPageTitle(){
+        String PAGE_TITLE = "Nested Frames";
+
         logger.info("-------------------validateCorrectPageTitle-----------------------");
-        Assert.assertEquals(nestedFramesPage.getPageTitleText(),PAGE_TITLE);
+        Assert.assertEquals(nestedFramesPage.getPageTitleText(), PAGE_TITLE);
 
     }
 
@@ -35,16 +34,20 @@ public class NestedFramesPageTest extends TestBase {
 
     @Test(groups = {"Functional"})
     public void validateSwitchToParentFrame(){
+        String PARENT_FRAME = "Parent frame";
+
         logger.info("-------------------validateSwitchToParentFrame-----------------------");
         nestedFramesPage.switchToParentFrame();
-        Assert.assertEquals(nestedFramesPage.getParentText(),PARENT_FRAME);
+        Assert.assertEquals(nestedFramesPage.getParentText(), PARENT_FRAME);
     }
 
     @Test(groups = {"Functional"})
     public void validateSwitchToChildFrame(){
+        String CHILD_FRAME = "Child Iframe";
+
         logger.info("-------------------validateSwitchToChildFrame-----------------------");
         nestedFramesPage.switchToParentFrame();
         nestedFramesPage.switchToChildFrame();
-        Assert.assertEquals(nestedFramesPage.getChildText(),CHILD_FRAME);
+        Assert.assertEquals(nestedFramesPage.getChildText(), CHILD_FRAME);
     }
 }

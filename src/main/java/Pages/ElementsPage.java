@@ -30,11 +30,12 @@ public class ElementsPage extends BasePages {
             waitForChargedElementsOfAWebElementList(deployed_element_exercises);
             scroll(deployed_element_exercises.get(0));
             clickWithWait(deployed_element_exercises.get(0));
+            return new TextBoxPage(driver);
         }catch (IndexOutOfBoundsException e){
             System.out.println("Text Box Section has been not found");
             e.printStackTrace();
         }
-        return new TextBoxPage(driver);
+        return null;
     }
 
     public CheckBoxPage clickOnCheckBoxSection(){
@@ -42,11 +43,12 @@ public class ElementsPage extends BasePages {
             waitForChargedElementsOfAWebElementList(deployed_element_exercises);
             scroll(deployed_element_exercises.get(1));
             clickWithWait(deployed_element_exercises.get(1));
+            return new CheckBoxPage(driver);
         }catch (IndexOutOfBoundsException e){
             System.out.println("Check Box Section has been not found");
             e.printStackTrace();
         }
-        return new CheckBoxPage(driver);
+        return null;
     }
 
     public RadioButtonPage clickOnRadioButtonSection(){
@@ -54,11 +56,12 @@ public class ElementsPage extends BasePages {
             waitForChargedElementsOfAWebElementList(deployed_element_exercises);
             scroll(deployed_element_exercises.get(2));
             clickWithWait(deployed_element_exercises.get(2));
+            return new RadioButtonPage(driver);
         }catch (IndexOutOfBoundsException e){
             System.out.println("Radio Button Section has been not found");
             e.printStackTrace();
         }
-        return new RadioButtonPage(driver);
+        return null;
     }
 
     public WebTablesPage clickOnWebTablesSection(){
@@ -66,11 +69,12 @@ public class ElementsPage extends BasePages {
             waitForChargedElementsOfAWebElementList(deployed_element_exercises);
             scroll(deployed_element_exercises.get(3));
             clickWithWait(deployed_element_exercises.get(3));
+            return new WebTablesPage(driver);
         }catch (IndexOutOfBoundsException e){
             System.out.println("Web Table Section has been not found");
             e.printStackTrace();
         }
-        return new WebTablesPage(driver);
+        return null;
     }
 
     public ButtonsPage clickOnButtonsSection(){
@@ -78,11 +82,12 @@ public class ElementsPage extends BasePages {
             waitForChargedElementsOfAWebElementList(deployed_element_exercises);
             scroll(deployed_element_exercises.get(4));
             clickWithWait(deployed_element_exercises.get(4));
+            return new ButtonsPage(driver);
         }catch (IndexOutOfBoundsException e) {
             System.out.println("Buttons Section has been not found");
             e.printStackTrace();
         }
-        return new ButtonsPage(driver);
+        return null;
     }
 
     public LinksPage clickOnLinksSection(){
@@ -90,11 +95,12 @@ public class ElementsPage extends BasePages {
             waitForChargedElementsOfAWebElementList(deployed_element_exercises);
             scroll(deployed_element_exercises.get(5));
             clickWithWait(deployed_element_exercises.get(5));
+            return new LinksPage(driver);
         }catch (IndexOutOfBoundsException e){
             System.out.println("Links Section has been not found");
             e.printStackTrace();
         }
-        return new LinksPage(driver);
+        return null;
     }
 
     public BrokenLinksPage clickOnBrokenLinksImageSection(){
@@ -102,11 +108,12 @@ public class ElementsPage extends BasePages {
             waitForChargedElementsOfAWebElementList(deployed_element_exercises);
             scroll(deployed_element_exercises.get(6));
             clickWithWait(deployed_element_exercises.get(6));
+            return new BrokenLinksPage(driver);
         }catch (IndexOutOfBoundsException e){
             System.out.println("Broken Section has been not found");
             e.printStackTrace();
         }
-        return new BrokenLinksPage(driver);
+        return null;
     }
 
     public UploadDownloadPage clickOnUploadDownloadSection(){
@@ -114,11 +121,12 @@ public class ElementsPage extends BasePages {
             waitForChargedElementsOfAWebElementList(deployed_element_exercises);
             scroll(deployed_element_exercises.get(7));
             clickWithWait(deployed_element_exercises.get(7));
+            return new UploadDownloadPage(driver);
         }catch (IndexOutOfBoundsException e){
             System.out.println("Upload and download Section has been not found");
             e.printStackTrace();
         }
-        return new UploadDownloadPage(driver);
+        return null;
     }
 
     public DynamicPropertiesPage clickOnDynamicPropertiesSection(){
@@ -126,11 +134,11 @@ public class ElementsPage extends BasePages {
             waitForChargedElementsOfAWebElementList(deployed_element_exercises);
             scroll(deployed_element_exercises.get(8));
             clickWithWait(deployed_element_exercises.get(8));
+            return new DynamicPropertiesPage(driver);
         }catch (IndexOutOfBoundsException e){
             System.out.println("Dynamic properties Section has been not found");
             e.printStackTrace();
         }
-        return new DynamicPropertiesPage(driver);
+        return null;
     }
-
 }

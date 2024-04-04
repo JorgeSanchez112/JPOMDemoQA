@@ -8,8 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class UploadDownloadPageTest extends TestBase {
-    private Logger logger = LogManager.getLogger(UploadDownloadPageTest.class);
-    private final String PAGE_TITLE = "Upload and Download";
+    private final Logger logger = LogManager.getLogger(UploadDownloadPageTest.class);
 
     @BeforeMethod(groups = {"UI","Functional"})
     public void initializeClass(){
@@ -20,8 +19,10 @@ public class UploadDownloadPageTest extends TestBase {
 
     @Test(groups = {"UI"})
     public void validateCorrectPageTitle(){
+        String PAGE_TITLE = "Upload and Download";
+
         logger.info("-------------------validateCorrectPageTitle-----------------------");
-        Assert.assertEquals(uploadDownloadPage.getPageTitleText(),PAGE_TITLE);
+        Assert.assertEquals(uploadDownloadPage.getPageTitleText(), PAGE_TITLE);
     }
 
     @Test(groups = {"Functional"})

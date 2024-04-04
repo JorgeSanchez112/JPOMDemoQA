@@ -12,22 +12,8 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 public class BSProfilePageTest extends TestBase {
-    private Logger logger = LogManager.getLogger(BSProfilePageTest.class);
-    private final String URL_REGISTER = "https://demoqa.com/register";
-    private final String URL_LOGIN = "https://demoqa.com/login";
-    private final String URL_BOOKS = "https://demoqa.com/books";
-    private final String BOOKS_LABEL= "https://demoqa.com/books";
-    private final String SEARCH_BOX_PLACEHOLDER = "Type to search";
-    private final String USERNAME_LABEL = "User Name :";
-    private final String TABLE_TITLE_IMAGE = "Image";
-    private final String TABLE_TITLE_TITLE = "Title";
-    private final String TABLE_TITLE_AUTHOR = "Author";
-    private final String TABLE_TITLE_PUBLISHER = "Publisher";
-    private final String TABLE_TITLE_ACTION = "Action";
-    private final String PAGE_OF_TABLE = "Page of 1";
-    private final String TOTAL_PAGES_OF_TABLE = "1";
+    private final Logger logger = LogManager.getLogger(BSProfilePageTest.class);
     private final String PAGE_NUMBER_BASE = "1";
-    private final String PAGE_NUMBER_EXPECTED = "2";
     private final String USERNAME = "lola12";
     private final String PASSWORD = "P@ssw0rd";
 
@@ -46,8 +32,10 @@ public class BSProfilePageTest extends TestBase {
 
     @Test(groups = {"Functional"})
     public void validateLinkRegisterIsFunctional(){
+        String URL_REGISTER = "https://demoqa.com/register";
+
         logger.info("-------------------validateLinkRegisterIsFunctional-----------------------");
-        Assert.assertEquals(bsProfilePage.clickOnRegisterLink().getCurrentUrl(),URL_REGISTER);
+        Assert.assertEquals(bsProfilePage.clickOnRegisterLink().getCurrentUrl(), URL_REGISTER);
     }
 
     @Test(groups = {"Functional"})
@@ -65,13 +53,17 @@ public class BSProfilePageTest extends TestBase {
 
     @Test(groups = {"Integration","UI"})
     public void validateCorrectBooksLabelText() {
+        String BOOKS_LABEL = "https://demoqa.com/books";
+
         logger.info("-------------------validateCorrectBooksLabelText-----------------------");
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
-        Assert.assertEquals(bsProfilePage.getBooksLabelText(),BOOKS_LABEL);
+        Assert.assertEquals(bsProfilePage.getBooksLabelText(), BOOKS_LABEL);
     }
 
     @Test(groups = {"Integration","Functional"})
     public void validateCorrectPlaceHolderInSearchBook() {
+        String SEARCH_BOX_PLACEHOLDER = "Type to search";
+
         logger.info("-------------------validateCorrectPlaceHolderInSearchBook-----------------------");
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME, PASSWORD);
         Assert.assertEquals(bsProfilePage.getSearchBoxPlaceholderText(), SEARCH_BOX_PLACEHOLDER);
@@ -79,51 +71,65 @@ public class BSProfilePageTest extends TestBase {
 
     @Test(groups = {"Integration","UI"})
     public void validateCorrectUsernameLabelText() {
+        String USERNAME_LABEL = "User Name :";
+
         logger.info("-------------------validateCorrectUsernameLabelText-----------------------");
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
-        Assert.assertEquals(bsProfilePage.getUserNameLabelText(),USERNAME_LABEL);
+        Assert.assertEquals(bsProfilePage.getUserNameLabelText(), USERNAME_LABEL);
     }
 
     @Test(groups = {"Integration","Functional"})
     public void validateLogOutButtonRedirectToLogin() {
+        String URL_LOGIN = "https://demoqa.com/login";
+
         logger.info("-------------------validateLogOutButtonRedirectToLogin-----------------------");
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
-        Assert.assertEquals(bsProfilePage.clickOnLogOutButton().getCurrentUrl(),URL_LOGIN);
+        Assert.assertEquals(bsProfilePage.clickOnLogOutButton().getCurrentUrl(), URL_LOGIN);
     }
 
     @Test(groups = {"Integration","UI"})
     public void validateCorrectImageTitleText() {
+        String TABLE_TITLE_IMAGE = "Image";
+
         logger.info("-------------------validateCorrectImageTitleText-----------------------");
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
-        Assert.assertEquals(bsProfilePage.getTableTitleImageText(),TABLE_TITLE_IMAGE);
+        Assert.assertEquals(bsProfilePage.getTableTitleImageText(), TABLE_TITLE_IMAGE);
     }
 
     @Test(groups = {"Integration","UI"})
     public void validateCorrectTitleOfTitleTableText() {
+        String TABLE_TITLE_TITLE = "Title";
+
         logger.info("-------------------validateCorrectTitleOfTitleTableText-----------------------");
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
-        Assert.assertEquals(bsProfilePage.getTableTitleTitleText(),TABLE_TITLE_TITLE);
+        Assert.assertEquals(bsProfilePage.getTableTitleTitleText(), TABLE_TITLE_TITLE);
     }
 
     @Test(groups = {"Integration","UI"})
     public void validateCorrectAuthorTitleOfTableText() {
+        String TABLE_TITLE_AUTHOR = "Author";
+
         logger.info("-------------------validateCorrectAuthorTitleOfTableText-----------------------");
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
-        Assert.assertEquals(bsProfilePage.getTableTitleAuthorText(),TABLE_TITLE_AUTHOR);
+        Assert.assertEquals(bsProfilePage.getTableTitleAuthorText(), TABLE_TITLE_AUTHOR);
     }
 
     @Test(groups = {"Integration","UI"})
     public void validateCorrectPublisherTitleOfTableText() {
+        String TABLE_TITLE_PUBLISHER = "Publisher";
+
         logger.info("-------------------validateCorrectPublisherTitleOfTableText-----------------------");
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
-        Assert.assertEquals(bsProfilePage.getTableTitlePublisherText(),TABLE_TITLE_PUBLISHER);
+        Assert.assertEquals(bsProfilePage.getTableTitlePublisherText(), TABLE_TITLE_PUBLISHER);
     }
 
     @Test(groups = {"Integration","UI"})
     public void validateCorrectActionTitleOfTableText() {
+        String TABLE_TITLE_ACTION = "Action";
+
         logger.info("-------------------validateCorrectActionTitleOfTableText-----------------------");
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
-        Assert.assertEquals(bsProfilePage.getTableTitleActionText(),TABLE_TITLE_ACTION);
+        Assert.assertEquals(bsProfilePage.getTableTitleActionText(), TABLE_TITLE_ACTION);
     }
 
     @Test(groups = {"Integration","UI"})
@@ -158,16 +164,20 @@ public class BSProfilePageTest extends TestBase {
 
     @Test(groups = {"Integration","UI"})
     public void validateCorrectPageLabelText() {
+        String PAGE_OF_TABLE = "Page of 1";
+
         logger.info("-------------------validateCorrectPageLabelText-----------------------");
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
-        Assert.assertEquals(bsProfilePage.getPageText(),PAGE_OF_TABLE);
+        Assert.assertEquals(bsProfilePage.getPageText(), PAGE_OF_TABLE);
     }
 
     @Test(groups = {"Integration","UI"})
     public void validateCorrectTotalOfPages() {
+        String TOTAL_PAGES_OF_TABLE = "1";
+
         logger.info("-------------------validateCorrectTotalOfPages-----------------------");
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
-        Assert.assertEquals(bsProfilePage.getTotalOfPagesText(),TOTAL_PAGES_OF_TABLE);
+        Assert.assertEquals(bsProfilePage.getTotalOfPagesText(), TOTAL_PAGES_OF_TABLE);
     }
 
     @Test(groups = {"Integration","Functional","Smoke"})
@@ -180,9 +190,11 @@ public class BSProfilePageTest extends TestBase {
 
     @Test(groups = {"Integration","Functional","Smoke"})
     public void validateGoToBookStoreRedirectToBookStorePage() {
+        String URL_BOOKS = "https://demoqa.com/books";
+
         logger.info("-------------------validateGoToBookStoreRedirectToBookStorePage-----------------------");
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
-        Assert.assertEquals(bsProfilePage.clickOnGoToBookStoreButton().getBookStoreUrlText(),URL_BOOKS);
+        Assert.assertEquals(bsProfilePage.clickOnGoToBookStoreButton().getBookStoreUrlText(), URL_BOOKS);
     }
 
     @Test(groups = {"Integration","Smoke","Functional"})
@@ -262,11 +274,13 @@ public class BSProfilePageTest extends TestBase {
 
     @Test(groups = {"Integration","Functional"})
     public void isShowedDataWithNextButton() {
+        String PAGE_NUMBER_EXPECTED = "2";
+
         logger.info("-------------------isShowedDataWithNextButton-----------------------");
         bsProfilePage.clickOnLoginLink().userLogin(USERNAME,PASSWORD);
         bsProfilePage.addAllBooksToTableOfBooksCollection();
         bsProfilePage.clickOnNextButton();
-        Assert.assertEquals(bsProfilePage.getPageNumber(),PAGE_NUMBER_EXPECTED);
+        Assert.assertEquals(bsProfilePage.getPageNumber(), PAGE_NUMBER_EXPECTED);
     }
 
     @Test(groups = {"Integration","Functional"})
@@ -279,14 +293,6 @@ public class BSProfilePageTest extends TestBase {
         Assert.assertEquals(bsProfilePage.getPageNumber(),PAGE_NUMBER_BASE);
 
     }
-
-    /*
-    @Test
-    public void validateAccountIsDeleted() {
-        bsProfilePage.clickOnLoginLink().userLogin(usernameValue,PASSWORD);
-        bsProfilePage.deleteAccount().userLogin(prop.getProperty("BSUsername"),prop.getProperty("BSPassword"));
-        Assert.assertTrue(bsProfilePage.isTitleVisible());
-    }*/
 
     @DataProvider
     private Object[][] books() throws IOException {

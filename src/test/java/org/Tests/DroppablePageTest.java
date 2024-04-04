@@ -8,8 +8,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class DroppablePageTest extends TestBase {
-    private Logger logger = LogManager.getLogger(DroppablePageTest.class);
-    private final String PAGE_TITLE = "Droppable";
+    private final Logger logger = LogManager.getLogger(DroppablePageTest.class);
+
     @BeforeMethod(groups = {"UI","Functional"})
     public void initializeClass(){
         logger.info("-------------------Initializing DroppablePageTest Class------------------");
@@ -19,8 +19,10 @@ public class DroppablePageTest extends TestBase {
 
     @Test(groups = {"UI"})
     public void validateCorrectPageTitle(){
+        String PAGE_TITLE = "Droppable";
+
         logger.info("-------------------validateCorrectPageTitle-----------------------");
-        Assert.assertEquals(droppablePage.getPageTitleText(),PAGE_TITLE);
+        Assert.assertEquals(droppablePage.getPageTitleText(), PAGE_TITLE);
     }
 
     @Test(groups = {"UI"})

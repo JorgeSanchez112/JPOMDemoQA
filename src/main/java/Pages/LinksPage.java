@@ -30,12 +30,12 @@ public class LinksPage extends BasePages {
     @FindBy(css = "#linkResponse > b:nth-child(2)")
     private WebElement linkMessage;
 
+    final String HREF_ATTRIBUTE = "href";
+
     public LinksPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver,this);
     }
-
-    final String HREF_ATTRIBUTE = "href";
 
     public void clickOnCreatedLink(){
         scroll(http201);

@@ -12,14 +12,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 public class BSLoginPageTest extends TestBase {
-    private Logger logger = LogManager.getLogger(BSLoginPageTest.class);
-    private final String SUB_TITLE = "Welcome,";
-    private final String SUB_SUB_TITLE = "Login in Book Store";
-    private final String USERNAME_LABEL= "UserName :";
-    private final String PASSWORD_LABEL = "Password :";
-    private final String RGB_RED_COLOR = "rgb(220, 53, 69)";
-    private final String WRONG_USERNAME = "username1";
-    private final String WRONG_PASSWORD = "password";
+    private final Logger logger = LogManager.getLogger(BSLoginPageTest.class);
 
     @BeforeMethod(groups = {"UI","Smoke","Integration","Functional"})
     public void initializeClass(){
@@ -36,24 +29,32 @@ public class BSLoginPageTest extends TestBase {
 
     @Test(groups = {"UI"})
     public void isSubtitleCorrect(){
+        String SUB_TITLE = "Welcome,";
+
         logger.info("-------------------isSubtitleCorrect-----------------------");
         Assert.assertEquals(bsLoginPage.getSubTitleText(), SUB_TITLE);
     }
 
     @Test(groups = {"UI"})
     public void isSubSubtitleCorrect(){
+        String SUB_SUB_TITLE = "Login in Book Store";
+
         logger.info("-------------------isSubSubtitleCorrect-----------------------");
         Assert.assertEquals(bsLoginPage.getSubSubTitleText(), SUB_SUB_TITLE);
     }
 
     @Test(groups = {"UI"})
     public void isUsernameLabelCorrect(){
+        String USERNAME_LABEL = "UserName :";
+
         logger.info("-------------------isUsernameLabelCorrect-----------------------");
         Assert.assertEquals(bsLoginPage.getUsernameLabelText(), USERNAME_LABEL);
     }
 
     @Test(groups = {"UI"})
     public void isPasswordLabelCorrect(){
+        String PASSWORD_LABEL = "Password :";
+
         logger.info("-------------------isPasswordLabelCorrect-----------------------");
         Assert.assertEquals(bsLoginPage.getPasswordLabelText(), PASSWORD_LABEL);
     }
@@ -78,14 +79,19 @@ public class BSLoginPageTest extends TestBase {
 
     @Test(groups = {"UI","Functional"})
     public void isActiveRedBorderColorToNotFilledInputs(){
+        String RGB_RED_COLOR = "rgb(220, 53, 69)";
+
         logger.info("-------------------isActiveRedBorderColorToNotFilledInputs-----------------------");
         bsLoginPage.clickOnLoginButton();
-        Assert.assertEquals(bsLoginPage.getUsernameInputBorderColor(),RGB_RED_COLOR);
-        Assert.assertEquals(bsLoginPage.getPasswordInputBorderColor(),RGB_RED_COLOR);
+        Assert.assertEquals(bsLoginPage.getUsernameInputBorderColor(), RGB_RED_COLOR);
+        Assert.assertEquals(bsLoginPage.getPasswordInputBorderColor(), RGB_RED_COLOR);
     }
 
     @Test(groups = {"Functional","Smoke"})
     public void isShowedCredentialsErrorMessage(){
+        String WRONG_USERNAME = "username1";
+        String WRONG_PASSWORD = "password";
+
         logger.info("-------------------isShowedCredentialsErrorMessage-----------------------");
         bsLoginPage.typeOnUsernameInput(WRONG_USERNAME);
         bsLoginPage.typeOnPasswordInput(WRONG_PASSWORD);

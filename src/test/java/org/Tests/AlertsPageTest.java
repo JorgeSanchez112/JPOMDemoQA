@@ -12,11 +12,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 public class AlertsPageTest extends TestBase {
-    private Logger logger = LogManager.getLogger(AlertsPageTest.class);
-    private final String PAGE_TITLE = "Alerts";
-    private final String ACCEPT_ALERT_MESSAGE = "You selected Ok";
-    private final String DISMISS_ALERT_MESSAGE = "You selected Cancel";
-    private final String INPUT_ALERT_MESSAGE = "You entered ";
+    private final Logger logger = LogManager.getLogger(AlertsPageTest.class);
 
     @BeforeMethod(groups = {"UI","Smoke","Functional"})
     public void initializeClass(){
@@ -28,7 +24,8 @@ public class AlertsPageTest extends TestBase {
     @Test(groups = {"Functional"})
     public void validateCorrectPageTitle(){
         logger.info("-------------------validateCorrectPageTitle-----------------------");
-        Assert.assertEquals(alertsPage.getPageTitleText(),PAGE_TITLE);
+        String PAGE_TITLE = "Alerts";
+        Assert.assertEquals(alertsPage.getPageTitleText(), PAGE_TITLE);
     }
 
     @Test(groups = {"UI"})
@@ -71,22 +68,28 @@ public class AlertsPageTest extends TestBase {
 
     @Test(groups = {"Functional"})
     public void validateAcceptAlert(){
+        String ACCEPT_ALERT_MESSAGE = "You selected Ok";
+
         logger.info("-------------------validateAcceptAlert-----------------------");
         alertsPage.clickOnThirdButton();
         alertsPage.confirmAlert();
-        Assert.assertEquals(alertsPage.getConfirmResultText(),ACCEPT_ALERT_MESSAGE);
+        Assert.assertEquals(alertsPage.getConfirmResultText(), ACCEPT_ALERT_MESSAGE);
     }
 
     @Test(groups = {"Functional"})
     public void validateDismissAlert(){
+        String DISMISS_ALERT_MESSAGE = "You selected Cancel";
+
         logger.info("-------------------validateDismissAlert-----------------------");
         alertsPage.clickOnThirdButton();
         alertsPage.cancelAlert();
-        Assert.assertEquals(alertsPage.getConfirmResultText(),DISMISS_ALERT_MESSAGE);
+        Assert.assertEquals(alertsPage.getConfirmResultText(), DISMISS_ALERT_MESSAGE);
     }
 
     @Test(dataProvider = "testData",groups = {"Smoke","Functional"})
     public void validateInputAlert(Object... data){
+        String INPUT_ALERT_MESSAGE = "You entered ";
+
         logger.info("-------------------validateInputAlert-----------------------");
         String inputAlert = (String) data[0];
 

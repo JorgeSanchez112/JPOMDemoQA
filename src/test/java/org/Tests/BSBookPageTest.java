@@ -12,10 +12,8 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 public class BSBookPageTest extends TestBase {
-    private Logger logger = LogManager.getLogger(BSBookPageTest.class);
-    private final String PAGE_TITLE = "Book Store";
+    private final Logger logger = LogManager.getLogger(BSBookPageTest.class);
     private final String URL_LOGIN = "https://demoqa.com/login";
-    private final String URL_BOOKS = "Books :";
 
     public void initializeClass(String bookTitle){
         try{
@@ -29,10 +27,12 @@ public class BSBookPageTest extends TestBase {
 
     @Test(dataProvider = "dataTest",groups = {"Integration","UI","Functional","Smoke"})
     public void validateCorrectPageTitle(Object... data){
+        String PAGE_TITLE = "Book Store";
+
         String bookTitle = (String) data[0];
         initializeClass(bookTitle);
         logger.info("-------------------validateCorrectPageTitle-----------------------");
-        Assert.assertEquals(bsiBookPage.getPageTitleText(),PAGE_TITLE);
+        Assert.assertEquals(bsiBookPage.getPageTitleText(), PAGE_TITLE);
     }
 
     @Test(dataProvider = "dataTest",groups = {"Integration","UI"})
@@ -187,10 +187,12 @@ public class BSBookPageTest extends TestBase {
 
     @Test(dataProvider = "dataTest",groups = {"Integration","Functional"})
     public void isRedirectHome(Object... data){
+        String URL_BOOKS = "Books :";
+
         String bookTitle = (String) data[0];
         initializeClass(bookTitle);
         logger.info("-------------------isRedirectHome-----------------------");
-        Assert.assertEquals(bsiBookPage.clickOnBackToBookStoreBookButton().getBookStoreUrlText(),URL_BOOKS);
+        Assert.assertEquals(bsiBookPage.clickOnBackToBookStoreBookButton().getBookStoreUrlText(), URL_BOOKS);
     }
 
     @Test(dataProvider = "dataTest",groups = {"Integration","UI"})

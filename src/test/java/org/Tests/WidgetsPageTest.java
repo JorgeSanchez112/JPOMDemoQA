@@ -8,9 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class WidgetsPageTest extends TestBase {
-    private Logger logger = LogManager.getLogger(WidgetsPageTest.class);
-    private final String URL = "https://demoqa.com/widgets";
-    private final int ELEMENTS_LIST_SIZE = 9;
+    private final Logger logger = LogManager.getLogger(WidgetsPageTest.class);
 
     @BeforeMethod(groups = {"Functional"})
     public void initializeClass(){
@@ -21,13 +19,17 @@ public class WidgetsPageTest extends TestBase {
 
     @Test(groups = {"Functional"})
     public void validateURL(){
+        String URL = "https://demoqa.com/widgets";
+
         logger.info("-------------------validateURL-----------------------");
-        Assert.assertEquals(widgetsPage.getWidgetsUrlText(),URL);
+        Assert.assertEquals(widgetsPage.getWidgetsUrlText(), URL);
     }
 
     @Test(groups = {"Functional"})
     public void validateSectionsSize(){
+        int ELEMENTS_LIST_SIZE = 9;
+
         logger.info("-------------------validateSectionsSize-----------------------");
-        Assert.assertEquals(widgetsPage.getSizeSections(),ELEMENTS_LIST_SIZE);
+        Assert.assertEquals(widgetsPage.getSizeSections(), ELEMENTS_LIST_SIZE);
     }
 }

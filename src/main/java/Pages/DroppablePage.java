@@ -44,12 +44,12 @@ public class DroppablePage extends BasePages {
     @FindBy(css = "#droppableExample-tabpane-revertable >* #droppable")
     private WebElement revertTarget;
 
+    private final String EXPECTED_CLASS = "ui-state-highlight";
+
     public DroppablePage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver,this);
     }
-
-    private final String EXPECTED_CLASS = "ui-state-highlight";
 
     public void clickOnTabAccept(){
         clickWithWait(tabAccept);

@@ -10,9 +10,7 @@ import org.testng.annotations.Test;
 
 public class BrowserWindowsPagePageTest extends TestBase {
     private final Logger logger = LogManager.getLogger(BrowserWindowsPagePageTest.class);
-    private final String PAGE_TITLE = "Browser Windows";
     private final String URL_SAMPLE_PAGE = "https://demoqa.com/sample";
-    private final String MESSAGE_NEW_WINDOW = "Knowledge increases by sharing but not by saving. Please share this website with your friends and in your organization.";
 
     @BeforeMethod(groups = {"UI","Smoke"})
     public void InitializeClass(){
@@ -23,6 +21,8 @@ public class BrowserWindowsPagePageTest extends TestBase {
 
     @Test(groups = {"UI"})
     public void validateCorrectPageTitle(){
+        String PAGE_TITLE = "Browser Windows";
+
         logger.info("-------------------validateCorrectPageTitle-----------------------");
         Assert.assertEquals(browserWindowsPage.getPageTitleText(), PAGE_TITLE);
     }
@@ -47,6 +47,8 @@ public class BrowserWindowsPagePageTest extends TestBase {
 
     @Test(groups = {"Smoke"})
     public void validateNewWindowMessage(){
+        String MESSAGE_NEW_WINDOW = "Knowledge increases by sharing but not by saving. Please share this website with your friends and in your organization.";
+
         logger.info("-------------------validateNewWindowMessage-----------------------");
         browserWindowsPage.clickOnNewWindowMessageButton();
         browserWindowsPage.switchToTab();

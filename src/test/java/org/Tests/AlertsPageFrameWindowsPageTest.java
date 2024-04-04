@@ -8,9 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class AlertsPageFrameWindowsPageTest extends TestBase {
-    private Logger logger = LogManager.getLogger(AlertsPageFrameWindowsPageTest.class);
-    private final String URL = "https://demoqa.com/alertsWindows";
-    private final int ELEMENTS_LIST_SIZE = 5;
+    private final Logger logger = LogManager.getLogger(AlertsPageFrameWindowsPageTest.class);
 
     @BeforeMethod(groups = {"Functional"})
     public void initializeClass(){
@@ -22,12 +20,14 @@ public class AlertsPageFrameWindowsPageTest extends TestBase {
     @Test(groups = "Functional")
     public void validateURL(){
         logger.info("-------------------validateURL-----------------------");
-        Assert.assertEquals(alertsFrameWindowsPage.getAlertFrameWindowsUrl(),URL);
+        String URL = "https://demoqa.com/alertsWindows";
+        Assert.assertEquals(alertsFrameWindowsPage.getAlertFrameWindowsUrl(), URL);
     }
 
     @Test(groups = "Functional")
     public void validateSectionsSize(){
         logger.info("-------------------validateSectionsSize-----------------------");
-        Assert.assertEquals(alertsFrameWindowsPage.getSizeSections(),ELEMENTS_LIST_SIZE);
+        int ELEMENTS_LIST_SIZE = 5;
+        Assert.assertEquals(alertsFrameWindowsPage.getSizeSections(), ELEMENTS_LIST_SIZE);
     }
 }

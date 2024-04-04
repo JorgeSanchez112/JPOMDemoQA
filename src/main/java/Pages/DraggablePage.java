@@ -33,13 +33,13 @@ public class DraggablePage extends BasePages {
     @FindBy(id = "cursorBottom")
     private WebElement bottomStyleCursor;
 
+    private final String LEFT = "left";
+    private final String TOP = "top";
+
     public DraggablePage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver,this);
     }
-
-    private final String LEFT = "left";
-    private final String TOP = "top";
 
     public void clickOnTabAxisRestricted(){
         scroll(tabAxisRestricted);
@@ -172,7 +172,5 @@ public class DraggablePage extends BasePages {
     public float addQuantityToParameter(float targetParameter,float valueToAdd){
         return targetParameter + valueToAdd;
     }
-
-
 
 }

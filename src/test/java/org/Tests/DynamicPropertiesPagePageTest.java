@@ -8,9 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class DynamicPropertiesPagePageTest extends TestBase {
-    private Logger logger = LogManager.getLogger(DynamicPropertiesPagePageTest.class);
-    private final String PAGE_TITLE = "Dynamic Properties";
-    private final String RGBA_RED_COLOR = "rgba(220, 53, 69, 1)";
+    private final Logger logger = LogManager.getLogger(DynamicPropertiesPagePageTest.class);
 
     @BeforeMethod(groups = {"UI","Functional"})
     public void initializeClass(){
@@ -21,8 +19,10 @@ public class DynamicPropertiesPagePageTest extends TestBase {
 
     @Test(groups = "UI")
     public void validateCorrectPageTitle(){
+        String PAGE_TITLE = "Dynamic Properties";
+
         logger.info("-------------------validateCorrectPageTitle-----------------------");
-        Assert.assertEquals(dynamicPropertiesPage.getPageTitleText(),PAGE_TITLE);
+        Assert.assertEquals(dynamicPropertiesPage.getPageTitleText(), PAGE_TITLE);
     }
 
     @Test(groups = "UI")
@@ -39,6 +39,8 @@ public class DynamicPropertiesPagePageTest extends TestBase {
 
     @Test(groups = "UI")
     public void validateSecondButtonTextColorChange(){
+        String RGBA_RED_COLOR = "rgba(220, 53, 69, 1)";
+
         logger.info("-------------------validateSecondButtonTextColorChange-----------------------");
         Assert.assertEquals(dynamicPropertiesPage.getButtonTextColor(), RGBA_RED_COLOR);
     }

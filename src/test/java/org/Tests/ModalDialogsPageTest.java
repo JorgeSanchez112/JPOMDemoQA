@@ -8,10 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class ModalDialogsPageTest extends TestBase {
-    private Logger logger = LogManager.getLogger(ModalDialogsPageTest.class);
-    private final String PAGE_TITLE = "Modal Dialogs";
-    private final String SMALL_MODAL = "This is a small modal. It has very less content";
-    private final String LARGE_MODAL = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
+    private final Logger logger = LogManager.getLogger(ModalDialogsPageTest.class);
 
     @BeforeMethod(groups = {"UI","Functional"})
     public void initializeClass(){
@@ -22,8 +19,10 @@ public class ModalDialogsPageTest extends TestBase {
 
     @Test(groups = {"UI"})
     public void validateCorrectPageTitle(){
+        String PAGE_TITLE = "Modal Dialogs";
+
         logger.info("-------------------validateCorrectPageTitle-----------------------");
-        Assert.assertEquals(modalDialogsPage.getPageTitleText(),PAGE_TITLE);
+        Assert.assertEquals(modalDialogsPage.getPageTitleText(), PAGE_TITLE);
     }
 
     @Test(groups = {"UI"})
@@ -34,6 +33,8 @@ public class ModalDialogsPageTest extends TestBase {
 
     @Test(groups = {"Functional"})
     public void validateSmallModalShowed(){
+        String SMALL_MODAL = "This is a small modal. It has very less content";
+
         logger.info("-------------------validateSmallModalShowed-----------------------");
         modalDialogsPage.clickOnSmallModalButton();
         Assert.assertEquals(modalDialogsPage.getSmallModalText(), SMALL_MODAL);
@@ -41,6 +42,8 @@ public class ModalDialogsPageTest extends TestBase {
 
     @Test(groups = {"Functional"})
     public void validateLargeModalShowed(){
+        String LARGE_MODAL = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
+
         logger.info("-------------------validateLargeModalShowed-----------------------");
         modalDialogsPage.clickOnLargeModalButton();
         Assert.assertEquals(modalDialogsPage.getLargeModalText(), LARGE_MODAL);
