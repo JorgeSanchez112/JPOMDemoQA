@@ -1,0 +1,78 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name = "Suite2" parallel="methods" thread-count="4">
+
+    <listeners>
+        <listener class-name="testComponents.utilities.report.listeners"/>
+        <listener class-name="testComponents.utilities.retry.myTransformer"/>
+    </listeners>
+
+    <test name = "Integration test">
+        <parameter name="browser" value="chrome"/>
+        <parameter name="simpleBoxXPositionExpected" value="10"/>
+        <parameter name="simpleBoxYPositionExpected" value="10"/>
+        <parameter name="restrictedXBoxPositionExpected" value="50"/>
+        <parameter name="restrictedYBoxPositionExpected" value="50"/>
+        <parameter name="containedBoxXPositionExpected" value="100"/>
+        <parameter name="containedBoxYPositionExpected" value="50"/>
+        <parameter name="containedTextXPositionExpected" value="2"/>
+        <parameter name="containedTextYPositionExpected" value="10"/>
+        <parameter name="elementOfCenterCursorXPositionExpected" value="43"/>
+        <parameter name="elementOfCenterCursorYPositionExpected" value="44"/>
+        <parameter name="elementOfTopCursorXPositionExpected" value="154"/>
+        <parameter name="elementOfTopCursorYPositionExpected" value="105"/>
+        <parameter name="elementOfBottomCursorXPositionExpected" value="150"/>
+        <parameter name="elementOfBottomCursorYPositionExpected" value="0"/>
+
+        <groups>
+            <run>
+                <include name="Integration"/>
+            </run>
+        </groups>
+
+        <classes>
+            <class name = "org.Tests.homePageTest" />
+            <class name = "org.Tests.elementsPageTest" />
+            <class name = "org.Tests.formsPageTest" />
+            <class name = "org.Tests.alertsPageFrameWindowsPageTest" />
+            <class name = "org.Tests.widgetsPageTest" />
+            <class name = "org.Tests.interactionsPageTest" />
+            <class name = "org.Tests.bookStorePageTest" />
+            <class name = "org.Tests.textBoxPageTest" />
+            <class name = "org.Tests.checkBoxPageTest" />
+            <class name = "org.Tests.radioButtonPageTest" />
+            <class name = "org.Tests.webTablesPageTest" />
+            <class name = "org.Tests.buttonsPageTest" />
+            <class name = "org.Tests.linksPageTest" />
+            <class name = "org.Tests.brokenLinksPageTest" />
+            <class name = "org.Tests.uploadDownloadPageTest" />
+            <class name = "org.Tests.dynamicPropertiesPagePageTest" />
+            <class name = "org.Tests.browserWindowsPagePageTest"/>
+            <class name = "org.Tests.alertsPageTest" />
+            <class name = "org.Tests.framesPageTest" />
+            <class name = "org.Tests.nestedFramesPageTest" />
+            <class name = "org.Tests.modalDialogsPageTest" />
+            <class name = "org.Tests.accordianPageTest" />
+            <class name = "org.Tests.autoCompletePageTest" />
+            <class name = "org.Tests.datePickerPageTest" />
+            <class name = "org.Tests.sliderPageTest" />
+            <class name = "org.Tests.progressBarPageTest" />
+            <class name = "org.Tests.tabsPageTest"/>
+            <class name = "org.Tests.toolTipsPageTest"/>
+            <class name = "org.Tests.menuPageTest"/>
+            <class name = "org.Tests.selectMenuPageTest" />
+            <class name = "org.Tests.sortablePageTest" />
+            <class name = "org.Tests.selectablePageTest" />
+            <class name = "org.Tests.resizablePageTest" />
+            <class name = "org.Tests.droppablePageTest" />
+            <class name = "org.Tests.draggablePageTest" />
+            <class name = "org.Tests.practiceFormPageTest" />
+            <class name = "org.Tests.bSAPITest"/>
+            <class name = "org.Tests.bSLoginPageTest"/>
+            <class name = "org.Tests.bSRegisterPageTest"/>
+            <class name = "org.Tests.bSProfilePageTest"/>
+            <class name = "org.Tests.bSBookPageTest"/>
+        </classes>
+    </test>
+</suite>
