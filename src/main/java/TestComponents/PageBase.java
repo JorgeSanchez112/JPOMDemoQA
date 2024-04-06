@@ -21,8 +21,8 @@ import java.util.concurrent.RejectedExecutionException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class BasePages {
-    Logger logger = LogManager.getLogger(BasePages.class);
+public class PageBase {
+    Logger logger = LogManager.getLogger(PageBase.class);
 
     @FindBy(className = "text-center")
     protected WebElement pageTitle;
@@ -39,7 +39,7 @@ public class BasePages {
     private final String MESSAGE_MOVE_TARGET_OUT_OF_BOUNDS_EXCEPTION = "MoveTargetOutOfBoundsException: MoveTargetOutOfBoundsException occurred, indicating that the target element cannot be moved to the specified coordinates.";
     private final String MESSAGE_TO_TIME_OUT_EXCEPTION = "TimeOutException: The presence of a web element or the completion of an action, does not occur within the specified time frame.";
 
-    public BasePages(WebDriver driver) {
+    public PageBase(WebDriver driver) {
         this.driver = driver;
     }
 

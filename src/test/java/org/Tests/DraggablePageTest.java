@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 
 public class DraggablePageTest extends TestBase {
     private final Logger logger = LogManager.getLogger(DraggablePageTest.class);
+    private final String PX_MEASURER = "px";
 
     @BeforeMethod(groups = {"UI","Functional"})
     public void initializeClass(){
@@ -55,8 +56,8 @@ public class DraggablePageTest extends TestBase {
     public void isElementOfTabSimpleDroppedToCoordinates(String simpleBoxXPositionExpected, String simpleBoxYPositionExpected){
         logger.info("-------------------isElementOfTabSimpleDroppedToCoordinates-----------------------");
         draggablePage.moveSimpleElement(Integer.parseInt(simpleBoxXPositionExpected),Integer.parseInt(simpleBoxYPositionExpected));
-        Assert.assertEquals(draggablePage.getSimpleBoxXPosition(), simpleBoxXPositionExpected + prop.getProperty("pxMeasurer"));
-        Assert.assertEquals(draggablePage.getSimpleBoxYPosition(), simpleBoxYPositionExpected + prop.getProperty("pxMeasurer"));
+        Assert.assertEquals(draggablePage.getSimpleBoxXPosition(), simpleBoxXPositionExpected + PX_MEASURER);
+        Assert.assertEquals(draggablePage.getSimpleBoxYPosition(), simpleBoxYPositionExpected + PX_MEASURER);
     }
 
     @Parameters("restrictedXBoxPositionExpected")
@@ -65,7 +66,7 @@ public class DraggablePageTest extends TestBase {
         logger.info("-------------------isElementXOfTabAxisDroppedToCoordinates-----------------------");
         draggablePage.clickOnTabAxisRestricted();
         draggablePage.moveXElement(Integer.parseInt(restrictedXBoxPositionExpected),0);
-        Assert.assertEquals(draggablePage.getRestrictedXBoxPosition(), restrictedXBoxPositionExpected + prop.getProperty("pxMeasurer"));
+        Assert.assertEquals(draggablePage.getRestrictedXBoxPosition(), restrictedXBoxPositionExpected + PX_MEASURER);
     }
 
     @Parameters("restrictedYBoxPositionExpected")
@@ -74,7 +75,7 @@ public class DraggablePageTest extends TestBase {
         logger.info("-------------------isElementYOfTabAxisDroppedToCoordinates-----------------------");
         draggablePage.clickOnTabAxisRestricted();
         draggablePage.moveYElement(0,Integer.parseInt(restrictedYBoxPositionExpected));
-        Assert.assertEquals(draggablePage.getRestrictedYBoxPosition(), restrictedYBoxPositionExpected + prop.getProperty("pxMeasurer"));
+        Assert.assertEquals(draggablePage.getRestrictedYBoxPosition(), restrictedYBoxPositionExpected + PX_MEASURER);
     }
 
     @Parameters({"containedBoxXPositionExpected","containedBoxYPositionExpected"})
@@ -83,8 +84,8 @@ public class DraggablePageTest extends TestBase {
         logger.info("-------------------isElementContainedInBoxDroppedToCoordinates-----------------------");
         draggablePage.clickOnTabContainerRestricted();
         draggablePage.moveContainedBox(Integer.parseInt(containedBoxXPositionExpected),Integer.parseInt(containedBoxYPositionExpected));
-        Assert.assertEquals(draggablePage.getContainedBoxXPosition(), containedBoxXPositionExpected + prop.getProperty("pxMeasurer"));
-        Assert.assertEquals(draggablePage.getContainedBoxYPosition(), containedBoxYPositionExpected + prop.getProperty("pxMeasurer"));
+        Assert.assertEquals(draggablePage.getContainedBoxXPosition(), containedBoxXPositionExpected + PX_MEASURER);
+        Assert.assertEquals(draggablePage.getContainedBoxYPosition(), containedBoxYPositionExpected + PX_MEASURER);
     }
 
     @Parameters({"containedTextXPositionExpected","containedTextYPositionExpected"})
@@ -93,8 +94,8 @@ public class DraggablePageTest extends TestBase {
         logger.info("-------------------isTextContainedInBoxDroppedToCoordinates-----------------------");
         draggablePage.clickOnTabContainerRestricted();
         draggablePage.moveContainedText(Integer.parseInt(containedTextXPositionExpected),Integer.parseInt(containedTextYPositionExpected));
-        Assert.assertEquals(draggablePage.getContainedTextXPosition(), containedTextXPositionExpected + prop.getProperty("pxMeasurer"));
-        Assert.assertEquals(draggablePage.getContainedTextYPosition(), containedTextYPositionExpected + prop.getProperty("pxMeasurer"));
+        Assert.assertEquals(draggablePage.getContainedTextXPosition(), containedTextXPositionExpected + PX_MEASURER);
+        Assert.assertEquals(draggablePage.getContainedTextYPosition(), containedTextYPositionExpected + PX_MEASURER);
     }
 
     @Parameters({"elementOfCenterCursorXPositionExpected","elementOfCenterCursorYPositionExpected"})
@@ -115,7 +116,7 @@ public class DraggablePageTest extends TestBase {
         draggablePage.clickOnTabCursorStyle();
         draggablePage.moveTopCursorOfCursorStyle(Float.parseFloat(elementOfTopCursorXPositionExpected),Float.parseFloat(elementOfTopCursorYPositionExpected));
         Assert.assertEquals(draggablePage.getElementOfTopCursorXPosition(), elementOfTopCursorXPositionExpected);
-        Assert.assertEquals(draggablePage.getElementOfTopCursorYPosition(), elementOfTopCursorYPositionExpected + prop.getProperty("pxMeasurer"));
+        Assert.assertEquals(draggablePage.getElementOfTopCursorYPosition(), elementOfTopCursorYPositionExpected + PX_MEASURER);
     }
 
     @Parameters({"elementOfBottomCursorXPositionExpected","elementOfBottomCursorYPositionExpected"})
@@ -124,7 +125,7 @@ public class DraggablePageTest extends TestBase {
         logger.info("-------------------isBottomCursorElementDroppedToCoordinates-----------------------");
         draggablePage.clickOnTabCursorStyle();
         draggablePage.moveBottomCursorOfCursorStyle(Integer.parseInt(elementOfBottomCursorXPositionExpected),Integer.parseInt(elementOfBottomCursorYPositionExpected));
-        Assert.assertEquals(draggablePage.getElementOfBottomCursorXPosition(), elementOfBottomCursorXPositionExpected + prop.getProperty("pxMeasurer"));
-        Assert.assertEquals(draggablePage.getElementOfBottomCursorYPosition(), elementOfBottomCursorYPositionExpected + prop.getProperty("pxMeasurer"));
+        Assert.assertEquals(draggablePage.getElementOfBottomCursorXPosition(), elementOfBottomCursorXPositionExpected + PX_MEASURER);
+        Assert.assertEquals(draggablePage.getElementOfBottomCursorYPosition(), elementOfBottomCursorYPositionExpected + PX_MEASURER);
     }
 }

@@ -13,6 +13,7 @@ import java.io.IOException;
 
 public class ResizablePageTest extends TestBase {
     private final Logger logger = LogManager.getLogger(ResizablePageTest.class);
+    private final String PX_MEASURER = "px";
 
     @BeforeMethod(groups = {"UI","Functional"})
     public void initializeClass(){
@@ -42,8 +43,8 @@ public class ResizablePageTest extends TestBase {
 
         logger.info("-------------------isResizableRestrictedToMax-----------------------");
         resizablePage.resizeBoxRestrictedToMax(Integer.parseInt(WIDTH_MAX_OF_RESIZABLE_RESTRICTED),Integer.parseInt(HEIGHT_MAX_OF_RESIZABLE_RESTRICTED));
-        Assert.assertEquals(resizablePage.getWidthOfBoxRestricted(), WIDTH_MAX_OF_RESIZABLE_RESTRICTED + prop.getProperty("pxMeasurer"));
-        Assert.assertEquals(resizablePage.getHeightOfBoxRestricted(), HEIGHT_MAX_OF_RESIZABLE_RESTRICTED + prop.getProperty("pxMeasurer"));
+        Assert.assertEquals(resizablePage.getWidthOfBoxRestricted(), WIDTH_MAX_OF_RESIZABLE_RESTRICTED + PX_MEASURER);
+        Assert.assertEquals(resizablePage.getHeightOfBoxRestricted(), HEIGHT_MAX_OF_RESIZABLE_RESTRICTED + PX_MEASURER);
     }
 
     @Test(groups = {"Functional"})
@@ -59,8 +60,8 @@ public class ResizablePageTest extends TestBase {
         String HeightOfResizeBox = (String) data[1];
 
         resizablePage.resizeFreeBox(Integer.parseInt(WidthOfResizeBox),Integer.parseInt(HeightOfResizeBox));
-        Assert.assertEquals(resizablePage.getWidthOfResizeBox(),WidthOfResizeBox + prop.getProperty("pxMeasurer"));
-        Assert.assertEquals(resizablePage.getHeightOfResizeBox(),HeightOfResizeBox + prop.getProperty("pxMeasurer"));
+        Assert.assertEquals(resizablePage.getWidthOfResizeBox(),WidthOfResizeBox + PX_MEASURER);
+        Assert.assertEquals(resizablePage.getHeightOfResizeBox(),HeightOfResizeBox + PX_MEASURER);
     }
 
     @DataProvider(name = "testData")
