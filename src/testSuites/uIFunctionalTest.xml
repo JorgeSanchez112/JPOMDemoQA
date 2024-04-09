@@ -1,14 +1,12 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name = "Suite1" parallel="classes" thread-count="4">
-    
+<suite name="crazy things" parallel="classes" thread-count="4">
     <listeners>
         <listener class-name="TestComponents.utilities.report.Listeners"/>
-        <listener class-name="TestComponents.utilities.retry.MyTransformer"/>
     </listeners>
 
-    <test name = "Smoke test">
+    <test name = "UI - Functional test">
         <parameter name="simpleBoxXPositionExpected" value="10"/>
         <parameter name="simpleBoxYPositionExpected" value="10"/>
         <parameter name="restrictedXBoxPositionExpected" value="50"/>
@@ -26,7 +24,8 @@
 
         <groups>
             <run>
-                <include name="Smoke"/>
+                <include name="UI"/>
+                <include name="Functional"/>
             </run>
         </groups>
 
@@ -47,7 +46,7 @@
             <class name = "org.Tests.BrokenLinksPageTest" />
             <class name = "org.Tests.UploadDownloadPageTest" />
             <class name = "org.Tests.DynamicPropertiesPagePageTest" />
-            <class name = "org.Tests.BrowserWindowsPagePageTest"/>
+            <class name="org.Tests.BrowserWindowsPagePageTest"/>
             <class name = "org.Tests.AlertsPageTest" />
             <class name = "org.Tests.FramesPageTest" />
             <class name = "org.Tests.NestedFramesPageTest" />
@@ -67,11 +66,11 @@
             <class name = "org.Tests.DroppablePageTest" />
             <class name = "org.Tests.DraggablePageTest" />
             <class name = "org.Tests.PracticeFormPageTest" />
-            <class name = "org.Tests.BSAPITest"/>
-            <class name = "org.Tests.BSLoginPageTest"/>
-            <class name = "org.Tests.BSRegisterPageTest"/>
-            <class name = "org.Tests.BSProfilePageTest"/>
-            <class name = "org.Tests.BSBookPageTest"/>
+            <class name="org.Tests.BSAPITest"/>
+            <class name="org.Tests.BSLoginPageTest"/>
+            <class name="org.Tests.BSRegisterPageTest"/>
+            <class name="org.Tests.BSProfilePageTest"/>
+            <class name="org.Tests.BSBookPageTest"/>
         </classes>
     </test>
 </suite>

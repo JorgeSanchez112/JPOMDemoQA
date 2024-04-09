@@ -19,7 +19,7 @@ import java.time.Duration;
 import java.util.Objects;
 import java.util.Properties;
 
-public class TestBase{
+public class TestBase {
 
     protected static final ThreadLocal<WebDriver> webDriverThreadLocal = new ThreadLocal<>();
     protected Logger logger = LogManager.getLogger(TestBase.class);

@@ -13,7 +13,7 @@ This project is a QA automation framework designed to test the functionality of 
     ├── src/
     │   ├── main/
     │   │   └── java/
-    │   │       ├── pages/
+    │   │       ├── Pages/
     │   │       │   ├── HomePage.java
     │   │       │   ├── AlertsPage.java       
     │   │       │   ├── AutoCompletePage.java
