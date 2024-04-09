@@ -1,12 +1,12 @@
 package Pages;
 
-import TestComponents.BasePages;
+import TestComponents.config.PageBase;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class BSLoginPage extends BasePages {
+public class BSLoginPage extends PageBase {
     @FindBy(tagName = "h2")
     private WebElement subtitle;
     @FindBy(tagName = "h5")
@@ -108,7 +108,7 @@ public class BSLoginPage extends BasePages {
     }
 
     public BSProfilePage userLogin(String username,String password){
-        waitForVisibleElement(loginButton);
+        waitForVisibleElement(pageTitle);
         typeOnUsernameInput(username);
         typeOnPasswordInput(password);
         clickOnLoginButton();

@@ -1,7 +1,7 @@
 package org.Tests;
 
-import Resources.ExcelReader;
-import TestComponents.TestBase;
+import TestComponents.utilities.dataDriven.ExcelReader;
+import TestComponents.config.TestBase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
@@ -285,7 +285,7 @@ public class PracticeFormPageTest extends TestBase {
         Assert.assertEquals(practiceFormPage.getHobbiesText(),LABEL_HOBBIES);
         Assert.assertEquals(practiceFormPage.getValueOfHobbiesRow(),hobbies);
         Assert.assertEquals(practiceFormPage.getPictureText(),LABEL_PICTURES);
-        Assert.assertEquals(practiceFormPage.getValueOfPictureRow(),"Captura.png");
+        Assert.assertEquals(practiceFormPage.getValueOfPictureRow(),practiceFormPage.obtainPictureNameOfPath(picturePatch));
         Assert.assertEquals(practiceFormPage.getAddressText(), LABEL_ADDRESS_FORM_SUBMIT);
         Assert.assertEquals(practiceFormPage.getValueOfAddressRow(),addressValue);
         Assert.assertEquals(practiceFormPage.getStateCityText(),LABEL_STATE_CITY);

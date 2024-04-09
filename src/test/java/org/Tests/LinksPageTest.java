@@ -1,6 +1,6 @@
 package org.Tests;
 
-import TestComponents.TestBase;
+import TestComponents.config.TestBase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
@@ -21,10 +21,11 @@ public class LinksPageTest extends TestBase {
 
     @Test(groups = {"UI"})
     public void validateCorrectedTitle(){
-        logger.info("-------------------ValidateCorrectedTitle-----------------------");
-        String title = linksPage.getPageTitleText();
-        logger.info("Title is: " + title);
         String PAGE_TITLE = "Links";
+        String title = linksPage.getPageTitleText();
+
+        logger.info("-------------------ValidateCorrectedTitle-----------------------");
+        logger.info("Title is: " + title);
         Assert.assertEquals(title, PAGE_TITLE);
     }
 

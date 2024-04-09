@@ -1,12 +1,12 @@
 package Pages;
 
-import TestComponents.BasePages;
+import TestComponents.config.PageBase;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class UploadDownloadPage extends BasePages {
+public class UploadDownloadPage extends PageBase {
     @FindBy(id = "downloadButton")
     private WebElement downloadButton;
     @FindBy(id = "uploadFile")

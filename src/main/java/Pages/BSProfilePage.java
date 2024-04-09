@@ -1,6 +1,6 @@
 package Pages;
 
-import TestComponents.BasePages;
+import TestComponents.config.PageBase;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 import java.io.IOException;
 import java.util.List;
 
-public class BSProfilePage extends BasePages {
+public class BSProfilePage extends PageBase {
     @FindBy(id = "notLoggin-label") //not login
     private WebElement doNotLoginMessage;
     @FindBy(css = "#notLoggin-wrapper >* a")
@@ -120,7 +120,10 @@ public class BSProfilePage extends BasePages {
     }
 
     public void addBookToTableOfBooksCollection(String bookTitle){
-        clickOnGoToBookStoreButton().searchAndClickOnATitle(bookTitle).addBookAndReturnToBookStore().clickOnProfile();
+        clickOnGoToBookStoreButton().
+                searchAndClickOnATitle(bookTitle).
+                addBookAndReturnToBookStore().
+                clickOnProfile();
     }
 
     public void deleteABook(String titleBook){
@@ -278,19 +281,20 @@ public class BSProfilePage extends BasePages {
     }
 
     public BSLoginPage clickOnLoginLink(){
-        waitForChargedElementsOfAWebElementList(linkRegisterAndLogin);
         try {
+            waitForChargedElementsOfAWebElementList(linkRegisterAndLogin);
             scroll(linkRegisterAndLogin.get(0));
             clickWithWait(linkRegisterAndLogin.get(0));
+            return new BSLoginPage(driver);
         }catch (IndexOutOfBoundsException e){
             e.printStackTrace();
         }
-        return new BSLoginPage(driver);
+        return null;
     }
 
     public BSRegisterPage clickOnRegisterLink(){
-        waitForChargedElementsOfAWebElementList(linkRegisterAndLogin);
         try {
+            waitForChargedElementsOfAWebElementList(linkRegisterAndLogin);
             scroll(linkRegisterAndLogin.get(1));
             clickWithWait(linkRegisterAndLogin.get(1));
             return new BSRegisterPage(driver);

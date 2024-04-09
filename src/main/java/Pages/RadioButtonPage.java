@@ -1,12 +1,12 @@
 package Pages;
 
-import TestComponents.BasePages;
+import TestComponents.config.PageBase;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class RadioButtonPage extends BasePages {
+public class RadioButtonPage extends PageBase {
     @FindBy(className = "mb-3")
     private WebElement subtitle;
     @FindBy (css = "label[for='yesRadio']")

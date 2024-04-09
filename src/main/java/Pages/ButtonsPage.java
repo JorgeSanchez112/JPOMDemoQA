@@ -1,13 +1,13 @@
 package Pages;
 
-import TestComponents.BasePages;
+import TestComponents.config.PageBase;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
-public class ButtonsPage extends BasePages {
+public class ButtonsPage extends PageBase {
     @FindBy (id = "doubleClickBtn")
     private WebElement doubleClickBtn;
     @FindBy (id = "rightClickBtn")

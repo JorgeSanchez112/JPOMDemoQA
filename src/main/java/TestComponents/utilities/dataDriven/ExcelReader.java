@@ -1,4 +1,4 @@
-package Resources;
+package TestComponents.utilities.dataDriven;
 
 import org.apache.poi.ss.usermodel.*;
 
@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ExcelReader {
     public Object[][] readTestData(String sheetName) throws IOException {
-        FileInputStream file = new FileInputStream("src\\main\\java\\ExcelFile\\DDTDemoQA.xlsx");
+        FileInputStream file = new FileInputStream("src/main/java/TestComponents/utilities/dataDriven/DDTDemoQA.xlsx");
         Workbook workbook = WorkbookFactory.create(file);
         Sheet sheet = workbook.getSheet(sheetName);
 

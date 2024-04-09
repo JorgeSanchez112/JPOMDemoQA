@@ -1,4 +1,4 @@
-package Resources;
+package TestComponents.utilities.retry;
 
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;

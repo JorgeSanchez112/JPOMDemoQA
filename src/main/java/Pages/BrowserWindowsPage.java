@@ -1,12 +1,12 @@
 package Pages;
 
-import TestComponents.BasePages;
+import TestComponents.config.PageBase;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class BrowserWindowsPage extends BasePages {
+public class BrowserWindowsPage extends PageBase {
     @FindBy(id = "tabButton")
     private WebElement newTabButton;
     @FindBy(id = "windowButton")

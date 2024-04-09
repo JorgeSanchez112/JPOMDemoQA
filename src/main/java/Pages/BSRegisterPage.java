@@ -1,13 +1,13 @@
 package Pages;
 
-import TestComponents.BasePages;
+import TestComponents.config.PageBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class BSRegisterPage extends BasePages {
+public class BSRegisterPage extends PageBase {
     @FindBy(tagName = "h4")
     private WebElement subTitle;
     @FindBy(id = "firstname-label")

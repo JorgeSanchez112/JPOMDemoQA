@@ -1,7 +1,7 @@
 package org.Tests;
 
-import Resources.ExcelReader;
-import TestComponents.TestBase;
+import TestComponents.utilities.dataDriven.ExcelReader;
+import TestComponents.config.TestBase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
@@ -10,6 +10,9 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class SelectMenuPageTest extends TestBase {
     private final Logger logger = LogManager.getLogger(SelectMenuPageTest.class);
@@ -93,17 +96,11 @@ public class SelectMenuPageTest extends TestBase {
 
     @Test(groups = "Smoke")
     public void selectMultiplyValuesInDropdown(){
-        String GREEN_COLOR = "Green";
-        String BLUE_COLOR = "Blue";
-        String BLACK_COLOR = "Black";
-        String RED_COLOR = "Red";
+
 
         logger.info("-------------------selectMultiplyValuesInDropdown-----------------------");
         selectMenuPage.selectAllOptionsInMultiSelectDropDown();
-        Assert.assertEquals(selectMenuPage.getGreenValueTextOfMultiplyDropdown(), GREEN_COLOR);
-        Assert.assertEquals(selectMenuPage.getBlueValueTextOfMultiplyDropdown(), BLUE_COLOR);
-        Assert.assertEquals(selectMenuPage.getBlackValueTextOfMultiplyDropdown(), BLACK_COLOR);
-        Assert.assertEquals(selectMenuPage.getRedValueTextOfMultiplyDropdown(), RED_COLOR);
+        Assert.assertTrue(selectMenuPage.ValidateThatAllOptionsOfMultipleDropdownWereSelected());
     }
 
     @Test(groups = {"UI"})

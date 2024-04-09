@@ -4,8 +4,8 @@
 <suite name = "Suite1" parallel="classes" thread-count="4">
     
     <listeners>
-        <listener class-name="Resources.Listeners"/>
-        <listener class-name="Resources.MyTransformer"/>
+        <listener class-name="TestComponents.utilities.report.Listeners"/>
+        <listener class-name="TestComponents.utilities.retry.MyTransformer"/>
     </listeners>
 
     <test name = "Smoke test">

@@ -1,4 +1,4 @@
-package TestComponents;
+package TestComponents.config;
 
 import Pages.*;
 import org.apache.logging.log4j.LogManager;
@@ -70,7 +70,7 @@ public class TestBase{
     public TestBase() {
         try {
             prop = new Properties();
-            FileInputStream ip = new FileInputStream(System.getProperty("user.dir") + "\\src\\main\\java\\config\\config.properties");
+            FileInputStream ip = new FileInputStream(System.getProperty("user.dir") + "\\src\\main\\resources\\config.properties");
             prop.load(ip);
         } catch (IOException e) {
             e.printStackTrace();

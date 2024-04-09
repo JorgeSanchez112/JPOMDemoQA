@@ -1,7 +1,7 @@
 package org.Tests;
 
-import Resources.ExcelReader;
-import TestComponents.TestBase;
+import TestComponents.utilities.dataDriven.ExcelReader;
+import TestComponents.config.TestBase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriverException;

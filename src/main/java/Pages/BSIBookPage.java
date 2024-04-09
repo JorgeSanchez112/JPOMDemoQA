@@ -1,12 +1,12 @@
 package Pages;
 
-import TestComponents.BasePages;
+import TestComponents.config.PageBase;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class BSIBookPage extends BasePages {
+public class BSIBookPage extends PageBase {
     @FindBy(id = "login")
     private WebElement loginButton;
     @FindBy(id = "userName-label")

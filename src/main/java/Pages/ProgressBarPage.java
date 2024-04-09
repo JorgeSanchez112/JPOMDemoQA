@@ -1,12 +1,12 @@
 package Pages;
 
-import TestComponents.BasePages;
+import TestComponents.config.PageBase;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class ProgressBarPage extends BasePages {
+public class ProgressBarPage extends PageBase {
     @FindBy(className = "mb-3")
     private WebElement label;
     @FindBy(id = "progressBar")

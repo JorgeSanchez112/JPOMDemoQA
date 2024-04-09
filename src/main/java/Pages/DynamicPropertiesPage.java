@@ -1,12 +1,12 @@
 package Pages;
 
-import TestComponents.BasePages;
+import TestComponents.config.PageBase;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class DynamicPropertiesPage extends BasePages {
+public class DynamicPropertiesPage extends PageBase {
     @FindBy(css = "div.col-md-6 > div > p")
     private WebElement randomIdText;
     @FindBy(id = "enableAfter")

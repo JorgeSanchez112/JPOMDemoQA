@@ -1,14 +1,15 @@
 package Pages;
 
-import TestComponents.BasePages;
+import TestComponents.config.PageBase;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.Arrays;
 import java.util.List;
 
-public class SelectMenuPage extends BasePages {
+public class SelectMenuPage extends PageBase {
     @FindBy(css = "#selectMenuContainer > div:nth-child(2) > div")
     private WebElement valueLabel;
     @FindBy(className = "css-1uccc91-singleValue")
@@ -38,7 +39,7 @@ public class SelectMenuPage extends BasePages {
     @FindBy(css = "#cars > option")
     private List<WebElement> standardMultiSelectValues;
 
-    public SelectMenuPage(WebDriver driver) {
+    protected SelectMenuPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver,this);
     }
@@ -69,10 +70,10 @@ public class SelectMenuPage extends BasePages {
     }
 
     public void selectAllOptionsInMultiSelectDropDown(){
-        final String COLOR1 = "Green";
-        final String COLOR2 = "Blue";
-        final String COLOR3 = "Black";
-        final String COLOR4 = "Red";
+        String COLOR1 = "Green";
+        String COLOR2 = "Blue";
+        String COLOR3 = "Black";
+        String COLOR4 = "Red";
 
         typeAndSelectOptionInMultiSelectDropDown(COLOR1);
         typeAndSelectOptionInMultiSelectDropDown(COLOR2);
@@ -116,7 +117,7 @@ public class SelectMenuPage extends BasePages {
     }
 
     public String getSelectValueOnOldStyleSelectMenuText(){
-        final String VALUE_ATTRIBUTE = "value";
+        String VALUE_ATTRIBUTE = "value";
         return getElementAttribute(oldStyleSelectMenu,VALUE_ATTRIBUTE);//this obtains the value of the selected option that is numeric
     }
 
@@ -135,24 +136,17 @@ public class SelectMenuPage extends BasePages {
         return getElementTextWithWait(fourthAndFifthLabels.get(0));
     }
 
-    public String getGreenValueTextOfMultiplyDropdown(){
-        waitForChargedElementsOfAWebElementList(multiSelectDropDownValues);
-        return getElementTextWithWait(multiSelectDropDownValues.get(0));
-    }
+    public boolean ValidateThatAllOptionsOfMultipleDropdownWereSelected(){
+        int j = 0;
+        String colorList[] = {"Green","Blue","Black","Red"};
 
-    public String getBlueValueTextOfMultiplyDropdown(){
-        waitForChargedElementsOfAWebElementList(multiSelectDropDownValues);
-        return getElementTextWithWait(multiSelectDropDownValues.get(1));
-    }
+        for (WebElement value: multiSelectDropDownValues) {
+            if (Arrays.stream(colorList).anyMatch(i -> i.equals(getElementTextWithWait(value)))){
+                j++;
+            }
+        }
 
-    public String getBlackValueTextOfMultiplyDropdown(){
-        waitForChargedElementsOfAWebElementList(multiSelectDropDownValues);
-        return getElementTextWithWait(multiSelectDropDownValues.get(2));
-    }
-
-    public String getRedValueTextOfMultiplyDropdown(){
-        waitForChargedElementsOfAWebElementList(multiSelectDropDownValues);
-        return getElementTextWithWait(multiSelectDropDownValues.get(3));
+        return j == 4;
     }
 
     public String getStandardMultiSelectLabelText(){

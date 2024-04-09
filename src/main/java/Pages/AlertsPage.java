@@ -1,6 +1,6 @@
 package Pages;
 
-import TestComponents.BasePages;
+import TestComponents.config.PageBase;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
@@ -10,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class AlertsPage extends BasePages {
+public class AlertsPage extends PageBase {
     @FindBy(className = "mr-3")
     private List<WebElement> labels;
     @FindBy(id = "alertButton")

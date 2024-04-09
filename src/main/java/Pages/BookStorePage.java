@@ -1,6 +1,6 @@
 package Pages;
 
-import TestComponents.BasePages;
+import TestComponents.config.PageBase;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import java.io.IOException;
 import java.util.List;
 
-public class BookStorePage extends BasePages {
+public class BookStorePage extends PageBase {
     @FindBy(css = ".collapse.show > .menu-list > *")
     private List<WebElement> deployed_form_exercise;
     @FindBy(id = "searchBox")

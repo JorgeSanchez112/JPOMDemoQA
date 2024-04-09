@@ -1,13 +1,13 @@
 package Pages;
 
-import TestComponents.BasePages;
+import TestComponents.config.PageBase;
 import java.lang.String;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class DraggablePage extends BasePages {
+public class DraggablePage extends PageBase {
     @FindBy(id = "draggableExample-tab-simple")
     private WebElement tabSimple;
     @FindBy(id = "draggableExample-tab-axisRestriction")

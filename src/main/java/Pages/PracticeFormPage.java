@@ -1,14 +1,17 @@
 package Pages;
 
-import TestComponents.BasePages;
+import TestComponents.config.PageBase;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.file.Path;
 import java.util.List;
 
-public class PracticeFormPage extends BasePages {
+public class PracticeFormPage extends PageBase {
     @FindBy(css = "div.practice-form-wrapper > h5")
     private WebElement titleForm;
     @FindBy(id = "userName-label")
@@ -452,5 +455,9 @@ public class PracticeFormPage extends BasePages {
 
     public String removeBeginZero(String originalValue){
         return originalValue.replaceAll("^0+", ""); // Remove leading zeros
+    }
+
+    public String obtainPictureNameOfPath(String picturePath) {
+        return Path.of(picturePath).getFileName().toString();
     }
 }

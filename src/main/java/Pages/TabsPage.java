@@ -1,6 +1,6 @@
 package Pages;
 
-import TestComponents.BasePages;
+import TestComponents.config.PageBase;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class TabsPage extends BasePages {
+public class TabsPage extends PageBase {
     @FindBy(className = "mb-3")
     private WebElement subTitle;
     @FindBy(id = "demo-tab-what")

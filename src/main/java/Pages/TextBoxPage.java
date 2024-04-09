@@ -1,12 +1,12 @@
 package Pages;
 
-import TestComponents.BasePages;
+import TestComponents.config.PageBase;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class TextBoxPage extends BasePages {
+public class TextBoxPage extends PageBase {
     @FindBy(id = "userName")
     private WebElement fullNameField;
     @FindBy(id = "userEmail")

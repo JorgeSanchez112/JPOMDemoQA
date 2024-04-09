@@ -3,7 +3,7 @@
 
 <suite name="crazy things" parallel="classes" thread-count="4">
     <listeners>
-        <listener class-name="Resources.Listeners"/>
+        <listener class-name="TestComponents.utilities.report.Listeners"/>
     </listeners>
 
     <test name = "UI - Functional test">

@@ -1,6 +1,6 @@
 package Pages;
 
-import TestComponents.BasePages;
+import TestComponents.config.PageBase;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 import java.util.Objects;
 
-public class DatePickerPage extends BasePages {
+public class DatePickerPage extends PageBase {
     @FindBy(css = ".col-md-3.col-sm-12")
     private List<WebElement> labels;
     @FindBy(id = "datePickerMonthYearInput")
