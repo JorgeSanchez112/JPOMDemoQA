@@ -365,7 +365,7 @@ public class PracticeFormPage extends PageBase {
         return getElementTextWithWait(secondRowOfFormTable.get(0));
     }
 
-    public String getValueOfStudentEmailRow(){
+    public String getValueOfStudentEmailRow() throws IndexOutOfBoundsException{
         scroll(secondRowOfFormTable.get(1));
         return getElementTextWithWait(secondRowOfFormTable.get(1));
     }

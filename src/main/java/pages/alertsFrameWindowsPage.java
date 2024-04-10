@@ -25,61 +25,27 @@ public class AlertsFrameWindowsPage extends PageBase {
     }
 
     public BrowserWindowsPage clickOnBrowserWindows(){
-        try{
-            waitForChargedElementsOfAWebElementList(deployed_form_exercise);
-            scroll(deployed_form_exercise.get(0));
-            clickWithWait(deployed_form_exercise.get(0));
-            return new BrowserWindowsPage(driver);
-        }catch(IndexOutOfBoundsException e){
-            e.printStackTrace();
-        }
-        return null;
+        clickOnSection(deployed_form_exercise,0);
+        return new BrowserWindowsPage(driver);
     }
 
     public AlertsPage clickOnAlerts(){
-        try{
-            waitForChargedElementsOfAWebElementList(deployed_form_exercise);
-            scroll(deployed_form_exercise.get(1));
-            clickWithWait(deployed_form_exercise.get(1));
-            return new AlertsPage(driver);
-        }catch (IndexOutOfBoundsException e){
-            e.printStackTrace();
-        }
-        return null;
+        clickOnSection(deployed_form_exercise,1);
+        return new AlertsPage(driver);
     }
 
     public FramesPage clickOnFrames(){
-        try{
-            waitForChargedElementsOfAWebElementList(deployed_form_exercise);
-            scroll(deployed_form_exercise.get(2));
-            clickWithWait(deployed_form_exercise.get(2));
-            return new FramesPage(driver);
-        }catch (IndexOutOfBoundsException e){
-            e.printStackTrace();
-        }
-        return null;
+        clickOnSection(deployed_form_exercise,2);
+        return new FramesPage(driver);
     }
 
     public NestedFramesPage clickOnNestedFrames(){
-        try {
-            waitForChargedElementsOfAWebElementList(deployed_form_exercise);
-            scroll(deployed_form_exercise.get(3));
-            clickWithWait(deployed_form_exercise.get(3));
-            return new NestedFramesPage(driver);
-        }catch (IndexOutOfBoundsException e){
-            e.printStackTrace();
-        }
-        return null;
+        clickOnSection(deployed_form_exercise,3);
+        return new NestedFramesPage(driver);
     }
 
     public ModalDialogsPage clickOnModalDialogs(){
-        try{
-            waitForChargedElementsOfAWebElementList(deployed_form_exercise);
-            scroll(deployed_form_exercise.get(4));
-            clickWithWait(deployed_form_exercise.get(4));
-        }catch (IndexOutOfBoundsException e){
-            e.printStackTrace();
-        }
+        clickOnSection(deployed_form_exercise,4);
         return new ModalDialogsPage(driver);
     }
 

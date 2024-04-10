@@ -55,6 +55,21 @@ public class BookStorePage extends PageBase {
         sendKeysToElement(searchBox,text);
     }
 
+    public void clickElementByLinkText(String linkText){
+        try {
+            try {
+                waitForChargedElementsOfAWebElementList(columnTitle);
+                WebElement tryOne = driver.findElement(By.linkText(linkText));
+                scroll(tryOne);
+                clickWithWait(tryOne);
+            }catch (IndexOutOfBoundsException e){
+                e.printStackTrace();
+            }
+        }catch (NoSuchElementException e){
+            e.printStackTrace();
+        }
+    }
+
     public String getSearchBarPlaceholderText(){
         return searchBox.getAttribute("placeholder");
     }
@@ -134,56 +149,22 @@ public class BookStorePage extends PageBase {
     }
 
     public BSIBookPage searchAndClickOnATitle(String bookTitle){
-        try {
-            try {
-                waitForChargedElementsOfAWebElementList(columnTitle);
-                WebElement tryOne = driver.findElement(By.linkText(bookTitle));
-                scroll(tryOne);
-                clickWithWait(tryOne);
-                return new BSIBookPage(driver);
-            }catch (IndexOutOfBoundsException e){
-                e.printStackTrace();
-            }
-        }catch (NoSuchElementException e){
-            e.printStackTrace();
-            System.out.println("Error on line 303 BookstorePage" + e.getMessage());
-        }
-        return null;
+        clickElementByLinkText(bookTitle);
+        return new BSIBookPage(driver);
     }
 
     public BSLoginPage clickOnLoginTab(){
-        try{
-            waitForChargedElementsOfAWebElementList(deployed_form_exercise);
-            scroll(deployed_form_exercise.get(ZERO));
-            clickWithWait(deployed_form_exercise.get(ZERO));
-            return new BSLoginPage(driver);
-        }catch (IndexOutOfBoundsException e){
-            e.printStackTrace();
-        }
-        return null;
+        clickOnSection(deployed_form_exercise,ZERO);
+        return new BSLoginPage(driver);
     }
 
     public BSProfilePage clickOnProfile(){
-        try{
-            waitForChargedElementsOfAWebElementList(deployed_form_exercise);
-            scroll(deployed_form_exercise.get(TWO));
-            clickWithWait(deployed_form_exercise.get(TWO));
-            return new BSProfilePage(driver);
-        }catch (IndexOutOfBoundsException e){
-            e.printStackTrace();
-        }
-        return null;
+        clickOnSection(deployed_form_exercise,TWO);
+        return new BSProfilePage(driver);
     }
 
     public BSAPIPage clickOnBookstoreApi(){
-        try {
-            waitForChargedElementsOfAWebElementList(deployed_form_exercise);
-            scroll(deployed_form_exercise.get(THREE));
-            clickWithWait(deployed_form_exercise.get(THREE));
-            return new BSAPIPage(driver);
-        }catch (IndexOutOfBoundsException e){
-            e.printStackTrace();
-        }
-        return null;
+        clickOnSection(deployed_form_exercise,THREE);
+        return new BSAPIPage(driver);
     }
 }

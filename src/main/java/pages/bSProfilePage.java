@@ -281,27 +281,13 @@ public class BSProfilePage extends PageBase {
     }
 
     public BSLoginPage clickOnLoginLink(){
-        try {
-            waitForChargedElementsOfAWebElementList(linkRegisterAndLogin);
-            scroll(linkRegisterAndLogin.get(0));
-            clickWithWait(linkRegisterAndLogin.get(0));
-            return new BSLoginPage(driver);
-        }catch (IndexOutOfBoundsException e){
-            e.printStackTrace();
-        }
-        return null;
+        clickOnSection(linkRegisterAndLogin,0);
+        return new BSLoginPage(driver);
     }
 
     public BSRegisterPage clickOnRegisterLink(){
-        try {
-            waitForChargedElementsOfAWebElementList(linkRegisterAndLogin);
-            scroll(linkRegisterAndLogin.get(1));
-            clickWithWait(linkRegisterAndLogin.get(1));
-            return new BSRegisterPage(driver);
-        }catch (IndexOutOfBoundsException e){
-            e.printStackTrace();
-        }
-        return null;
+        clickOnSection(linkRegisterAndLogin,1);
+        return new BSRegisterPage(driver);
     }
 
     public BSLoginPage clickOnLogOutButton(){

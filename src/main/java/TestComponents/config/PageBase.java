@@ -340,6 +340,22 @@ public class PageBase {
     }
 
     /**
+     * Description: It clicks in a web element of a list according to the index give. It is most specifically build to click that redirect to other page(Class)
+     * @param sections List of WebElements that contain all the elements to go to other page.
+     * @param index It indicates the position of the web element.
+     * @exception IndexOutOfBoundsException: The operation encountered an IndexOutOfBoundsException, indicating an attempt to access or manipulate an element at an invalid index position within a collection or array.
+     * */
+    public void clickOnSection(List<WebElement> sections,int index){
+        try {
+            waitForChargedElementsOfAWebElementList(sections);
+            scroll(sections.get(index));
+            clickWithWait(sections.get(index));
+        }catch (IndexOutOfBoundsException e){
+            handleException(MESSAGE_TO_INDEX_OUT_OF_BOUNDS_EXCEPTION,e);
+        }
+    }
+
+    /**
      * Description: Select the desired day of a WebElement List.
      * @param daysList List of WebElements that contain the days of a month.
      * @param day number of day searched.

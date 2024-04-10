@@ -22,74 +22,32 @@ public class HomePage extends PageBase {
     }
 
     public ElementsPage clickOnSectionElements(){
-        try{
-            waitForChargedElementsOfAWebElementList(sections);
-            scroll(sections.get(0));
-            clickWithWait(sections.get(0));
-            return new ElementsPage(driver);
-        }catch (IndexOutOfBoundsException e){
-            e.printStackTrace();
-        }
-        return null;
+        clickOnSection(sections,0);
+        return new ElementsPage(driver);
     }
 
     public FormsPage clickOnSectionForms(){
-        try {
-            waitForChargedElementsOfAWebElementList(sections);
-            scroll(sections.get(1));
-            clickWithWait(sections.get(1));
-            return new FormsPage(driver);
-        }catch (IndexOutOfBoundsException e){
-            e.printStackTrace();
-        }
-        return null;
+        clickOnSection(sections,1);
+        return new FormsPage(driver);
     }
 
     public AlertsFrameWindowsPage clickOnSectionAlerts_Frame_Windows(){
-        try{
-            waitForChargedElementsOfAWebElementList(sections);
-            scroll(sections.get(2));
-            clickWithWait(sections.get(2));
-            return new AlertsFrameWindowsPage(driver);
-        }catch (IndexOutOfBoundsException e){
-            e.printStackTrace();
-        }
-        return null;
+        clickOnSection(sections,2);
+        return new AlertsFrameWindowsPage(driver);
     }
 
     public WidgetsPage clickOnSectionWidgets(){
-        try {
-            waitForChargedElementsOfAWebElementList(sections);
-            scroll(sections.get(3));
-            clickWithWait(sections.get(3));
-            return new WidgetsPage(driver);
-        }catch (IndexOutOfBoundsException e){
-            e.printStackTrace();
-        }
-        return null;
+        clickOnSection(sections,3);
+        return new WidgetsPage(driver);
     }
 
     public InteractionsPage clickOnSectionInteractions(){
-        waitForChargedElementsOfAWebElementList(sections);
-        try {
-            scroll(sections.get(4));
-            clickWithWait(sections.get(4));
-            return new InteractionsPage(driver);
-        }catch (IndexOutOfBoundsException e){
-            e.printStackTrace();
-        }
-        return null;
+        clickOnSection(sections,4);
+        return new InteractionsPage(driver);
     }
 
     public BookStorePage clickOnSectionBookStoreApplication(){
-        waitForChargedElementsOfAWebElementList(sections);
-        try{
-            scroll(sections.get(5));
-            clickWithWait(sections.get(5));
-            return new BookStorePage(driver);
-        }catch (IndexOutOfBoundsException e){
-            e.printStackTrace();
-        }
-        return null;
+        clickOnSection(sections,5);
+        return new BookStorePage(driver);
     }
 }
