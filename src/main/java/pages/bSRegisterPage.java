@@ -2,6 +2,7 @@ package Pages;
 
 import TestComponents.config.PageBase;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -88,7 +89,12 @@ public class BSRegisterPage extends PageBase {
         clickOnRecaptcha();
         driver.switchTo().parentFrame();
         clickOnRegisterButton();
-        return driver.switchTo().alert().getText();
+        try {
+            return driver.switchTo().alert().getText();
+        }catch (NoAlertPresentException e){
+            System.out.println("It happens because is possible that the register was not well(Captcha)" + e.getMessage());
+        }
+        return "";
     }
 
     public void acceptAlertOfSuccessRegister(){

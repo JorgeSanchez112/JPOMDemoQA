@@ -58,8 +58,8 @@ public class PageBase {
     public void acceptAlertWithWait(){
         waitAlert();
         try {
-            logger.info("Alert accepted");
             driver.switchTo().alert().accept();
+            logger.info("Alert accepted");
         }catch (NoAlertPresentException e){
             handleException(MESSAGE_TO_NO_ALERT_PRESENT_EXCEPTION, e);
         }

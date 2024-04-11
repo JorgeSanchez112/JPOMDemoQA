@@ -1,10 +1,7 @@
 package Pages;
 
 import TestComponents.config.PageBase;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.NoAlertPresentException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -49,6 +46,7 @@ public class AlertsPage extends PageBase {
     public void clickOnFourthButton(){
         scroll(inputAlertButton);
         clickWithWait(inputAlertButton);
+
     }
 
     public void confirmAlert(){
@@ -61,8 +59,7 @@ public class AlertsPage extends PageBase {
 
     public void typeInAlert(String text){
         try{
-            Alert alert = driver.switchTo().alert();
-            alert.sendKeys(text);
+            driver.switchTo().alert().sendKeys(text);
             confirmAlert();
         }catch (NoAlertPresentException e){
             e.printStackTrace();

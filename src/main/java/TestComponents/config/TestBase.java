@@ -7,6 +7,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.*;
@@ -88,18 +89,21 @@ public class TestBase {
 
         if (browserName == null){
             System.out.println("browser is: " + null);
-            return null;
+            browserName = "chrome";
         }
 
         switch (Objects.requireNonNull(browserName)){
             case "chrome":
                 ChromeOptions chromeOptions = new ChromeOptions();
+                chromeOptions.setCapability(CapabilityType.UNHANDLED_PROMPT_BEHAVIOUR, UnexpectedAlertBehaviour.IGNORE);
                 return chromeOptions.merge(desiredCapabilities);
             case "firefox":
                 FirefoxOptions firefoxOptions= new FirefoxOptions();
+                firefoxOptions.setCapability(CapabilityType.UNHANDLED_PROMPT_BEHAVIOUR, UnexpectedAlertBehaviour.IGNORE);
                 return firefoxOptions.merge(desiredCapabilities);
             case "edge":
                 EdgeOptions edgeOptions = new EdgeOptions();
+                edgeOptions.setCapability(CapabilityType.UNHANDLED_PROMPT_BEHAVIOUR, UnexpectedAlertBehaviour.IGNORE);
                 return edgeOptions.merge(desiredCapabilities);
             default:
                 System.out.println("selected browser is not available");
@@ -110,13 +114,9 @@ public class TestBase {
     public WebDriver initialization() throws MalformedURLException {
         WebDriver driver = new RemoteWebDriver(new URL(prop.getProperty("urlServer")), chooseBrowser());
         driver.manage().window().maximize();
-        try{
-            driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
-            driver.get(prop.getProperty("url"));
-            driver.manage().deleteAllCookies();
-        }catch (TimeoutException e){
-            e.printStackTrace();
-        }
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
+        driver.manage().deleteAllCookies();
+        driver.get(prop.getProperty("url"));
 
         webDriverThreadLocal.set(driver);// Set the driver in ThreadLocal
         return driver;
@@ -129,7 +129,6 @@ public class TestBase {
             webDriverThreadLocal.set(initialization());
             driver = getDriver();
         }
-        System.out.println(driver);
 
         homePage = new HomePage(driver);
         logger.info("Initializing homePage Class");
