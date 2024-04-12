@@ -9,21 +9,7 @@
     </listeners>
 
     <test name = "Smoke test">
-        <parameter name="simpleBoxXPositionExpected" value="10"/>
-        <parameter name="simpleBoxYPositionExpected" value="10"/>
-        <parameter name="restrictedXBoxPositionExpected" value="50"/>
-        <parameter name="restrictedYBoxPositionExpected" value="50"/>
-        <parameter name="containedBoxXPositionExpected" value="100"/>
-        <parameter name="containedBoxYPositionExpected" value="50"/>
-        <parameter name="containedTextXPositionExpected" value="2"/>
-        <parameter name="containedTextYPositionExpected" value="10"/>
-        <parameter name="elementOfCenterCursorXPositionExpected" value="43"/>
-        <parameter name="elementOfCenterCursorYPositionExpected" value="44"/>
-        <parameter name="elementOfTopCursorXPositionExpected" value="154"/>
-        <parameter name="elementOfTopCursorYPositionExpected" value="105"/>
-        <parameter name="elementOfBottomCursorXPositionExpected" value="150"/>
-        <parameter name="elementOfBottomCursorYPositionExpected" value="0"/>
-
+        <parameter name="browserName" value="chrome"/>
         <groups>
             <run>
                 <include name="Smoke"/>

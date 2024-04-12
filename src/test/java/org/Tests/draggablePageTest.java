@@ -1,12 +1,16 @@
 package org.Tests;
 
 import TestComponents.config.TestBase;
+import TestComponents.utilities.dataDriven.ExcelReader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 public class DraggablePageTest extends TestBase {
     private final Logger logger = LogManager.getLogger(DraggablePageTest.class);
@@ -51,27 +55,31 @@ public class DraggablePageTest extends TestBase {
         Assert.assertTrue(draggablePage.isCursorTabVisible());
     }
 
-    @Parameters({"simpleBoxXPositionExpected","simpleBoxYPositionExpected"})
-    @Test(groups = {"Functional"})
-    public void isElementOfTabSimpleDroppedToCoordinates(String simpleBoxXPositionExpected, String simpleBoxYPositionExpected){
+    @Test(groups = {"Functional"},dataProvider = "data")
+    public void isElementOfTabSimpleDroppedToCoordinates(Object... data){
+        String simpleBoxXPositionExpected = (String) data[0];
+        String simpleBoxYPositionExpected = (String) data[1];
+
         logger.info("-------------------isElementOfTabSimpleDroppedToCoordinates-----------------------");
         draggablePage.moveSimpleElement(Integer.parseInt(simpleBoxXPositionExpected),Integer.parseInt(simpleBoxYPositionExpected));
         Assert.assertEquals(draggablePage.getSimpleBoxXPosition(), simpleBoxXPositionExpected + PX_MEASURER);
         Assert.assertEquals(draggablePage.getSimpleBoxYPosition(), simpleBoxYPositionExpected + PX_MEASURER);
     }
 
-    @Parameters("restrictedXBoxPositionExpected")
     @Test(groups = {"Functional"})
-    public void isElementXOfTabAxisDroppedToCoordinates(String restrictedXBoxPositionExpected){
+    public void isElementXOfTabAxisDroppedToCoordinates(Object... data){
+        String restrictedXBoxPositionExpected = (String) data[2];
+
         logger.info("-------------------isElementXOfTabAxisDroppedToCoordinates-----------------------");
         draggablePage.clickOnTabAxisRestricted();
         draggablePage.moveXElement(Integer.parseInt(restrictedXBoxPositionExpected),0);
         Assert.assertEquals(draggablePage.getRestrictedXBoxPosition(), restrictedXBoxPositionExpected + PX_MEASURER);
     }
 
-    @Parameters("restrictedYBoxPositionExpected")
     @Test(groups = {"Functional"})
-    public void isElementYOfTabAxisDroppedToCoordinates(String restrictedYBoxPositionExpected){
+    public void isElementYOfTabAxisDroppedToCoordinates(Object... data){
+        String restrictedYBoxPositionExpected = (String) data[3];
+
         logger.info("-------------------isElementYOfTabAxisDroppedToCoordinates-----------------------");
         draggablePage.clickOnTabAxisRestricted();
         draggablePage.moveYElement(0,Integer.parseInt(restrictedYBoxPositionExpected));
@@ -80,7 +88,10 @@ public class DraggablePageTest extends TestBase {
 
     @Parameters({"containedBoxXPositionExpected","containedBoxYPositionExpected"})
     @Test(groups = {"Functional"})
-    public void isElementContainedInBoxDroppedToCoordinates(String containedBoxXPositionExpected, String containedBoxYPositionExpected){
+    public void isElementContainedInBoxDroppedToCoordinates(Object... data){
+        String containedBoxXPositionExpected = (String) data[4];
+        String containedBoxYPositionExpected = (String) data[5];
+
         logger.info("-------------------isElementContainedInBoxDroppedToCoordinates-----------------------");
         draggablePage.clickOnTabContainerRestricted();
         draggablePage.moveContainedBox(Integer.parseInt(containedBoxXPositionExpected),Integer.parseInt(containedBoxYPositionExpected));
@@ -88,9 +99,11 @@ public class DraggablePageTest extends TestBase {
         Assert.assertEquals(draggablePage.getContainedBoxYPosition(), containedBoxYPositionExpected + PX_MEASURER);
     }
 
-    @Parameters({"containedTextXPositionExpected","containedTextYPositionExpected"})
     @Test(groups = {"Functional"})
-    public void isTextContainedInBoxDroppedToCoordinates(String containedTextXPositionExpected, String containedTextYPositionExpected ){
+    public void isTextContainedInBoxDroppedToCoordinates(Object... data){
+        String containedTextXPositionExpected = (String) data[6];
+        String containedTextYPositionExpected = (String) data[7];
+
         logger.info("-------------------isTextContainedInBoxDroppedToCoordinates-----------------------");
         draggablePage.clickOnTabContainerRestricted();
         draggablePage.moveContainedText(Integer.parseInt(containedTextXPositionExpected),Integer.parseInt(containedTextYPositionExpected));
@@ -98,9 +111,11 @@ public class DraggablePageTest extends TestBase {
         Assert.assertEquals(draggablePage.getContainedTextYPosition(), containedTextYPositionExpected + PX_MEASURER);
     }
 
-    @Parameters({"elementOfCenterCursorXPositionExpected","elementOfCenterCursorYPositionExpected"})
     @Test(groups = {"Functional"})
-    public void isCenterCursorElementDroppedToCoordinates(String elementOfCenterCursorXPositionExpected, String elementOfCenterCursorYPositionExpected){
+    public void isCenterCursorElementDroppedToCoordinates(Object... data){
+        String elementOfCenterCursorXPositionExpected = (String) data[8];
+        String elementOfCenterCursorYPositionExpected = (String) data[9];
+
         logger.info("-------------------isCenterCursorElementDroppedToCoordinates-----------------------");
         draggablePage.clickOnTabCursorStyle();
         draggablePage.moveCenterCursorOfCursorStyle(Float.parseFloat(elementOfCenterCursorXPositionExpected),Float.parseFloat(elementOfCenterCursorYPositionExpected));
@@ -109,9 +124,11 @@ public class DraggablePageTest extends TestBase {
     }
 
 
-    @Parameters({"elementOfTopCursorXPositionExpected","elementOfTopCursorYPositionExpected"})
     @Test(groups = {"Functional"})
-    public void isTopCursorElementDroppedToCoordinates(String elementOfTopCursorXPositionExpected, String elementOfTopCursorYPositionExpected){
+    public void isTopCursorElementDroppedToCoordinates(Object... data){
+        String elementOfTopCursorXPositionExpected = (String) data[10];
+        String elementOfTopCursorYPositionExpected = (String) data[11];
+
         logger.info("-------------------isTopCursorElementDroppedToCoordinates-----------------------");
         draggablePage.clickOnTabCursorStyle();
         draggablePage.moveTopCursorOfCursorStyle(Float.parseFloat(elementOfTopCursorXPositionExpected),Float.parseFloat(elementOfTopCursorYPositionExpected));
@@ -121,11 +138,22 @@ public class DraggablePageTest extends TestBase {
 
     @Parameters({"elementOfBottomCursorXPositionExpected","elementOfBottomCursorYPositionExpected"})
     @Test(groups = {"Functional"})
-    public void isBottomCursorElementDroppedToCoordinates(String elementOfBottomCursorXPositionExpected, String elementOfBottomCursorYPositionExpected){
+    public void isBottomCursorElementDroppedToCoordinates(Object... data){
+        String elementOfBottomCursorXPositionExpected = (String) data[12];
+        String elementOfBottomCursorYPositionExpected = (String) data[13];
+
         logger.info("-------------------isBottomCursorElementDroppedToCoordinates-----------------------");
         draggablePage.clickOnTabCursorStyle();
         draggablePage.moveBottomCursorOfCursorStyle(Integer.parseInt(elementOfBottomCursorXPositionExpected),Integer.parseInt(elementOfBottomCursorYPositionExpected));
         Assert.assertEquals(draggablePage.getElementOfBottomCursorXPosition(), elementOfBottomCursorXPositionExpected + PX_MEASURER);
         Assert.assertEquals(draggablePage.getElementOfBottomCursorYPosition(), elementOfBottomCursorYPositionExpected + PX_MEASURER);
+    }
+
+    @DataProvider(name = "data")
+    private Object[][] testData() throws IOException {
+        String sheetName = "draggable";
+
+        ExcelReader excelReader = new ExcelReader();
+        return excelReader.readTestData(sheetName);
     }
 }

@@ -291,7 +291,6 @@ public class BSProfilePageTest extends TestBase {
         bsProfilePage.clickOnNextButton();
         bsProfilePage.clickOnPreviousButton();
         Assert.assertEquals(bsProfilePage.getPageNumber(),PAGE_NUMBER_BASE);
-
     }
 
     @DataProvider

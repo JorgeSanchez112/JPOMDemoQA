@@ -82,9 +82,7 @@ public class TestBase {
        return webDriverThreadLocal.get();
     }
 
-    public MutableCapabilities chooseBrowser(){
-        String browserName = prop.getProperty("browser");
-
+    public MutableCapabilities chooseBrowser(String browserName){
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
 
         if (browserName == null){
@@ -111,8 +109,8 @@ public class TestBase {
         }
     }
 
-    public WebDriver initialization() throws MalformedURLException {
-        WebDriver driver = new RemoteWebDriver(new URL(prop.getProperty("urlServer")), chooseBrowser());
+    public WebDriver initialization(String browserName) throws MalformedURLException {
+        WebDriver driver = new RemoteWebDriver(new URL(prop.getProperty("urlServer")), chooseBrowser(browserName));
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
         driver.manage().deleteAllCookies();
@@ -122,11 +120,12 @@ public class TestBase {
         return driver;
     }
 
+    @Parameters("browserName")
     @BeforeMethod(groups = {"UI","Smoke","Integration","Functional"})
-    public void setUp() throws MalformedURLException {
+    public void setUp(String browserName) throws MalformedURLException {
         WebDriver driver = getDriver();
         if (driver == null) {
-            webDriverThreadLocal.set(initialization());
+            webDriverThreadLocal.set(initialization(browserName));
             driver = getDriver();
         }
 
