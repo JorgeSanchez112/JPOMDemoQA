@@ -1,27 +1,14 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="crazy things" parallel="classes" thread-count="4">
+<suite name="crazy things" parallel="methods" thread-count="1">
     <listeners>
         <listener class-name="TestComponents.utilities.report.Listeners"/>
+        <listener class-name="TestComponents.utilities.retry.MyTransformer"/>
     </listeners>
 
     <test name = "UI - Functional test">
-        <parameter name="simpleBoxXPositionExpected" value="10"/>
-        <parameter name="simpleBoxYPositionExpected" value="10"/>
-        <parameter name="restrictedXBoxPositionExpected" value="50"/>
-        <parameter name="restrictedYBoxPositionExpected" value="50"/>
-        <parameter name="containedBoxXPositionExpected" value="100"/>
-        <parameter name="containedBoxYPositionExpected" value="50"/>
-        <parameter name="containedTextXPositionExpected" value="2"/>
-        <parameter name="containedTextYPositionExpected" value="10"/>
-        <parameter name="elementOfCenterCursorXPositionExpected" value="43"/>
-        <parameter name="elementOfCenterCursorYPositionExpected" value="44"/>
-        <parameter name="elementOfTopCursorXPositionExpected" value="154"/>
-        <parameter name="elementOfTopCursorYPositionExpected" value="105"/>
-        <parameter name="elementOfBottomCursorXPositionExpected" value="150"/>
-        <parameter name="elementOfBottomCursorYPositionExpected" value="0"/>
-
+        <parameter name="browserName" value="chrome"/>
         <groups>
             <run>
                 <include name="UI"/>
@@ -46,7 +33,7 @@
             <class name = "org.Tests.BrokenLinksPageTest" />
             <class name = "org.Tests.UploadDownloadPageTest" />
             <class name = "org.Tests.DynamicPropertiesPagePageTest" />
-            <class name="org.Tests.BrowserWindowsPagePageTest"/>
+            <class name = "org.Tests.BrowserWindowsPagePageTest"/>
             <class name = "org.Tests.AlertsPageTest" />
             <class name = "org.Tests.FramesPageTest" />
             <class name = "org.Tests.NestedFramesPageTest" />
@@ -66,11 +53,11 @@
             <class name = "org.Tests.DroppablePageTest" />
             <class name = "org.Tests.DraggablePageTest" />
             <class name = "org.Tests.PracticeFormPageTest" />
-            <class name="org.Tests.BSAPITest"/>
-            <class name="org.Tests.BSLoginPageTest"/>
-            <class name="org.Tests.BSRegisterPageTest"/>
-            <class name="org.Tests.BSProfilePageTest"/>
-            <class name="org.Tests.BSBookPageTest"/>
+            <class name = "org.Tests.BSAPITest"/>
+            <class name = "org.Tests.BSLoginPageTest"/>
+            <class name = "org.Tests.BSRegisterPageTest"/>
+            <class name = "org.Tests.BSProfilePageTest"/>
+            <class name = "org.Tests.BSBookPageTest"/>
         </classes>
     </test>
 </suite>
