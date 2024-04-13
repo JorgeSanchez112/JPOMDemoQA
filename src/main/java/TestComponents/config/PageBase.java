@@ -156,9 +156,9 @@ public class PageBase {
      * */
     public void waitForClick(WebElement element){
         try{
-            logger.info("Wait for element: " + element + " is clickable");
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             wait.until(ExpectedConditions.elementToBeClickable(element));
+            logger.info("Wait for element: " + element + " is clickable");
         }catch (WebDriverException e){
             handleException(MESSAGE_TO_WEB_DRIVER_EXCEPTION,e);
         }

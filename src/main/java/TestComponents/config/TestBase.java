@@ -1,6 +1,7 @@
 package TestComponents.config;
 
 import Pages.*;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
@@ -22,9 +23,8 @@ import java.util.Properties;
 
 public class TestBase {
 
-    protected static final ThreadLocal<WebDriver> webDriverThreadLocal = new ThreadLocal<>();
+    protected static ThreadLocal<WebDriver> webDriverThreadLocal = new ThreadLocal<>();
     protected Logger logger = LogManager.getLogger(TestBase.class);
-    protected WebDriver driver;
     protected Properties prop;
     protected HomePage homePage;
     protected ElementsPage elementsPage;
@@ -85,21 +85,19 @@ public class TestBase {
     public MutableCapabilities chooseBrowser(String browserName){
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
 
-        if (browserName == null){
-            System.out.println("browser is: " + null);
-            browserName = "chrome";
-        }
-
-        switch (Objects.requireNonNull(browserName)){
+        switch (Objects.requireNonNull(browserName).toLowerCase()){
             case "chrome":
+                WebDriverManager.chromedriver().setup();
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.setCapability(CapabilityType.UNHANDLED_PROMPT_BEHAVIOUR, UnexpectedAlertBehaviour.IGNORE);
                 return chromeOptions.merge(desiredCapabilities);
             case "firefox":
+                WebDriverManager.firefoxdriver().setup();
                 FirefoxOptions firefoxOptions= new FirefoxOptions();
                 firefoxOptions.setCapability(CapabilityType.UNHANDLED_PROMPT_BEHAVIOUR, UnexpectedAlertBehaviour.IGNORE);
                 return firefoxOptions.merge(desiredCapabilities);
             case "edge":
+                WebDriverManager.edgedriver().setup();
                 EdgeOptions edgeOptions = new EdgeOptions();
                 edgeOptions.setCapability(CapabilityType.UNHANDLED_PROMPT_BEHAVIOUR, UnexpectedAlertBehaviour.IGNORE);
                 return edgeOptions.merge(desiredCapabilities);
@@ -110,20 +108,21 @@ public class TestBase {
     }
 
     public WebDriver initialization(String browserName) throws MalformedURLException {
-        WebDriver driver = new RemoteWebDriver(new URL(prop.getProperty("urlServer")), chooseBrowser(browserName));
+        WebDriver driver = (new RemoteWebDriver(new URL(prop.getProperty("urlServer")), chooseBrowser(browserName)));
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
         driver.manage().deleteAllCookies();
         driver.get(prop.getProperty("url"));
 
-        webDriverThreadLocal.set(driver);// Set the driver in ThreadLocal
+        webDriverThreadLocal.set(driver);
         return driver;
     }
 
     @Parameters("browserName")
     @BeforeMethod(groups = {"UI","Smoke","Integration","Functional"})
     public void setUp(String browserName) throws MalformedURLException {
-        WebDriver driver = getDriver();
+        WebDriver driver = initialization(browserName);
+
         if (driver == null) {
             webDriverThreadLocal.set(initialization(browserName));
             driver = getDriver();

@@ -50,4 +50,5 @@ public class HomePage extends PageBase {
         clickOnSection(sections,5);
         return new BookStorePage(driver);
     }
+
 }

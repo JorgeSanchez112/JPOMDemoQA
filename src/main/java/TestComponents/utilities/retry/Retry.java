@@ -5,7 +5,7 @@ import org.testng.ITestResult;
 
 public class Retry implements IRetryAnalyzer {
     private final int maxRetries = 3;
-    private final int retryDelaySeconds = 1;
+    private final int retryDelaySeconds = 5;
     private int retryCount = 0;
 
     @Override
@@ -22,7 +22,7 @@ public class Retry implements IRetryAnalyzer {
 
     private void sleep() {
         try {
-            Thread.sleep(retryDelaySeconds * 1000L);
+            Thread.sleep(retryDelaySeconds * 1000);
         } catch (InterruptedException ignored) {
         }
     }
