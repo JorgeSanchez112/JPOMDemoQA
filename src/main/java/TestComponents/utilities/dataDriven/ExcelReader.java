@@ -9,8 +9,8 @@ import java.util.List;
 
 public class ExcelReader {
     public Object[][] readTestData(String sheetName) throws IOException {
-        FileInputStream file = new FileInputStream("src/main/java/TestComponents/utilities/dataDriven/DDTDemoQA.xlsx");
 
+        FileInputStream file = new FileInputStream("src/main/java/TestComponents/utilities/dataDriven/DDTDemoQA.xlsx");
         Workbook workbook = WorkbookFactory.create(file);
         Sheet sheet = workbook.getSheet(sheetName);
 

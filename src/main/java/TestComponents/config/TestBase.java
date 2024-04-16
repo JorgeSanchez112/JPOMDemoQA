@@ -78,9 +78,27 @@ public class TestBase {
         }
     }
 
-    public WebDriver getDriver(){
-       return webDriverThreadLocal.get();
+    public void hideFooterAd(WebDriver driver){
+        try{
+            try {
+                logger.info("Hiding publicity: " + prop.getProperty("publicityLocator"));
+                homePage.hidePublicity(driver.findElement(By.cssSelector(prop.getProperty("publicityLocator"))));
+            }catch (TimeoutException e){
+                e.printStackTrace();
+            }
+        }catch (NoSuchElementException e){
+            e.printStackTrace();
+        }
     }
+
+    public void setDriver(WebDriver driver){
+        webDriverThreadLocal.set(driver);
+    }
+
+    public WebDriver getDriver(){
+        return webDriverThreadLocal.get();
+    }
+
 
     public MutableCapabilities chooseBrowser(String browserName){
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
@@ -114,32 +132,21 @@ public class TestBase {
         driver.manage().deleteAllCookies();
         driver.get(prop.getProperty("url"));
 
-        webDriverThreadLocal.set(driver);
+        setDriver(driver);
         return driver;
     }
 
     @Parameters("browserName")
     @BeforeMethod(groups = {"UI","Smoke","Integration","Functional"})
     public void setUp(String browserName) throws MalformedURLException {
-        WebDriver driver = initialization(browserName);
-
+        WebDriver driver = getDriver();
         if (driver == null) {
-            webDriverThreadLocal.set(initialization(browserName));
-            driver = getDriver();
+            driver = initialization(browserName);
+            setDriver(driver);
         }
-
         homePage = new HomePage(driver);
         logger.info("Initializing homePage Class");
-        try{
-            try {
-                logger.info("Hiding publicity: " + prop.getProperty("publicityLocator"));
-                homePage.hidePublicity(driver.findElement(By.cssSelector(prop.getProperty("publicityLocator"))));
-            }catch (TimeoutException e){
-                e.printStackTrace();
-            }
-        }catch (NoSuchElementException e){
-            e.printStackTrace();
-        }
+        hideFooterAd(driver);
     }
 
     @AfterMethod(groups = {"UI","Smoke","Integration","Functional"})

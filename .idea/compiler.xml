@@ -12,6 +12,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="JPOMDemoQA" target="11" />
+      <module name="PracticeDemoQA" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
