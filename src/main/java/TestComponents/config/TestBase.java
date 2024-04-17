@@ -1,31 +1,22 @@
 package TestComponents.config;
 
 import Pages.*;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.edge.EdgeOptions;
-import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.*;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.net.URL;
-import java.time.Duration;
-import java.util.Objects;
 import java.util.Properties;
 
 public class TestBase {
 
-    protected static ThreadLocal<WebDriver> webDriverThreadLocal = new ThreadLocal<>();
     protected Logger logger = LogManager.getLogger(TestBase.class);
-    protected Properties prop;
+    protected static ThreadLocal<WebDriver> webDriverThreadLocal = new ThreadLocal<>();
+    public static Properties prop;
+
     protected HomePage homePage;
     protected ElementsPage elementsPage;
     protected FormsPage formsPage;
@@ -68,6 +59,12 @@ public class TestBase {
     protected BSIBookPage bsiBookPage;
     protected BSAPIPage bsapiPage;
 
+    //Draggable
+    //DatePicker
+    //DynamicProperties
+    //BrowserWindows
+    //WebTables
+
     public TestBase() {
         try {
             prop = new Properties();
@@ -91,6 +88,7 @@ public class TestBase {
         }
     }
 
+
     public void setDriver(WebDriver driver){
         webDriverThreadLocal.set(driver);
     }
@@ -99,67 +97,29 @@ public class TestBase {
         return webDriverThreadLocal.get();
     }
 
-
-    public MutableCapabilities chooseBrowser(String browserName){
-        DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-
-        switch (Objects.requireNonNull(browserName).toLowerCase()){
-            case "chrome":
-                WebDriverManager.chromedriver().setup();
-                ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.setCapability(CapabilityType.UNHANDLED_PROMPT_BEHAVIOUR, UnexpectedAlertBehaviour.IGNORE);
-                return chromeOptions.merge(desiredCapabilities);
-            case "firefox":
-                WebDriverManager.firefoxdriver().setup();
-                FirefoxOptions firefoxOptions= new FirefoxOptions();
-                firefoxOptions.setCapability(CapabilityType.UNHANDLED_PROMPT_BEHAVIOUR, UnexpectedAlertBehaviour.IGNORE);
-                return firefoxOptions.merge(desiredCapabilities);
-            case "edge":
-                WebDriverManager.edgedriver().setup();
-                EdgeOptions edgeOptions = new EdgeOptions();
-                edgeOptions.setCapability(CapabilityType.UNHANDLED_PROMPT_BEHAVIOUR, UnexpectedAlertBehaviour.IGNORE);
-                return edgeOptions.merge(desiredCapabilities);
-            default:
-                System.out.println("selected browser is not available");
-                return null;
-        }
-    }
-
-    public WebDriver initialization(String browserName) throws MalformedURLException {
-        WebDriver driver = (new RemoteWebDriver(new URL(prop.getProperty("urlServer")), chooseBrowser(browserName)));
-        driver.manage().window().maximize();
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
-        driver.manage().deleteAllCookies();
-        driver.get(prop.getProperty("url"));
-
-        setDriver(driver);
-        return driver;
-    }
-
     @Parameters("browserName")
     @BeforeMethod(groups = {"UI","Smoke","Integration","Functional"})
     public void setUp(String browserName) throws MalformedURLException {
-        WebDriver driver = getDriver();
-        if (driver == null) {
-            driver = initialization(browserName);
-            setDriver(driver);
-        }
-        homePage = new HomePage(driver);
+        WebDriver driver = BrowserManager.initialization(browserName);
+        setDriver(driver);
+        logger.info("Before Test Thread ID: "+Thread.currentThread().getId());
+        homePage = new HomePage(getDriver());
         logger.info("Initializing homePage Class");
-        hideFooterAd(driver);
+        hideFooterAd(getDriver());
     }
 
     @AfterMethod(groups = {"UI","Smoke","Integration","Functional"})
     public void tearDown(){
         try {
-            WebDriver driver = getDriver();
-            if (driver != null) {
-                logger.info("Close Test Case and driver: " + driver);
-                driver.quit();
-                webDriverThreadLocal.remove();
-            }
+            getDriver().quit();
+            logger.info("After Test Thread ID: "+Thread.currentThread().getId());
+            webDriverThreadLocal.remove();
+            Thread.sleep(2000);
+            logger.info("Close Test Case and driver");
         } catch (WebDriverException e) {
-            e.getMessage();
+            logger.error("has happened an error with the tearDown method: " + e.getMessage());
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 }

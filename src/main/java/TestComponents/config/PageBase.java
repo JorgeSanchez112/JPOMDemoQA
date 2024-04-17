@@ -28,7 +28,7 @@ public class PageBase {
     protected WebElement pageTitle;
     @FindBy(id = "RightSide_Advertisement")
     protected WebElement rightSidePublicity;
-    protected WebDriver driver ;
+    protected final WebDriver driver ;
 
     private final String MESSAGE_TO_NO_ALERT_PRESENT_EXCEPTION = "NoAlertPresentException: No alert present to accept";
     private final String MESSAGE_TO_NO_SUCH_ELEMENT_EXCEPTION = "NoSuchElementException: Element can not be found";
