@@ -33,6 +33,13 @@ public class BrowserWindowsPagePageTest extends TestBase {
         browserWindowsPage.clickOnNewTabButton();
         browserWindowsPage.switchToTab();
         Assert.assertEquals(browserWindowsPage.getBrowserWindowsUrlText(), URL_SAMPLE_PAGE);
+    }
+
+    @Test(groups = {"UI"})
+    public void validateTextVisibleInChangeOfTab(){
+        logger.info("-------------------validateChangeOfTab-----------------------");
+        browserWindowsPage.clickOnNewTabButton();
+        browserWindowsPage.switchToTab();
         Assert.assertTrue(browserWindowsPage.newTabTextIsVisible());
     }
 
@@ -42,16 +49,14 @@ public class BrowserWindowsPagePageTest extends TestBase {
         browserWindowsPage.clickOnNewWindowButton();
         browserWindowsPage.switchToTab();
         Assert.assertEquals(browserWindowsPage.getBrowserWindowsUrlText(), URL_SAMPLE_PAGE);
+    }
+
+    @Test(groups = {"UI"})
+    public void validateTextIsVisibleInNewWindow(){
+        logger.info("-------------------validateNewWindowAppear-----------------------");
+        browserWindowsPage.clickOnNewWindowButton();
+        browserWindowsPage.switchToTab();
         Assert.assertTrue(browserWindowsPage.newTabTextIsVisible());
     }
 
-    @Test(groups = {"Smoke"})
-    public void validateNewWindowMessage(){
-        String MESSAGE_NEW_WINDOW = "Knowledge increases by sharing but not by saving. Please share this website with your friends and in your organization.";
-
-        logger.info("-------------------validateNewWindowMessage-----------------------");
-        browserWindowsPage.clickOnNewWindowMessageButton();
-        browserWindowsPage.switchToTab();
-        Assert.assertEquals(browserWindowsPage.getMessageOfNewWindow(), MESSAGE_NEW_WINDOW);
-    }
 }

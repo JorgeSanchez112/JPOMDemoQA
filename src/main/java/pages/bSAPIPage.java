@@ -20,6 +20,7 @@ public class BSAPIPage extends PageBase {
     }
 
     public boolean isTitleVisible(){
+        waitForVisibleElement(title);
         return isElementDisplayedWithWait(title);
     }
 
@@ -28,6 +29,7 @@ public class BSAPIPage extends PageBase {
     }
 
     public boolean isBookstoreSubtitleVisible(){
+        waitForVisibleElement(bookStoreSubtitle);
         return isElementDisplayedWithWait(bookStoreSubtitle);
     }
 }

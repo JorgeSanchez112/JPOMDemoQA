@@ -87,6 +87,7 @@ public class BSRegisterPage extends PageBase {
     public String registerAnUserAndReturnAlertMessage(String firstNameValue, String lastNameValue, String userNameValue, String passwordValue){
         fillOutAllFormFields(firstNameValue,lastNameValue,userNameValue,passwordValue);
         clickOnRecaptcha();
+        isRecaptchaClicked();
         driver.switchTo().parentFrame();
         clickOnRegisterButton();
         try {

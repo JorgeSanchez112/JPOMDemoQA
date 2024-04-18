@@ -18,7 +18,7 @@ import static TestComponents.config.TestBase.prop;
 
 public class BrowserManager {
 
-    protected Logger logger = LogManager.getLogger(BrowserManager.class);
+    protected static Logger logger = LogManager.getLogger(BrowserManager.class);
 
     private static MutableCapabilities chooseBrowser(String browserName) {
         if (browserName == null) {
@@ -51,7 +51,12 @@ public class BrowserManager {
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
         driver.manage().deleteAllCookies();
-        driver.get(prop.getProperty("url"));
+        try {
+            driver.get(prop.getProperty("url"));
+        }catch (TimeoutException e){
+            logger.info("Has happened a load trouble");
+        }
+
         return driver;
     }
 

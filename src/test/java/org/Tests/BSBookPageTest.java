@@ -212,6 +212,7 @@ public class BSBookPageTest extends TestBase {
         initializeClass(bookTitle);
         logger.info("-------------------validateUserNameValue-----------------------");
         bsiBookPage.clickOnLogin().userLogin(userName,password);
+        bsiBookPage.usernameLabelIsVisible();
         Assert.assertEquals(bsiBookPage.getUsernameValueText(),userName);
     }
 

@@ -60,10 +60,7 @@ public class TestBase {
     protected BSAPIPage bsapiPage;
 
     //Draggable
-    //DatePicker
     //DynamicProperties
-    //BrowserWindows
-    //WebTables
 
     public TestBase() {
         try {
@@ -114,12 +111,9 @@ public class TestBase {
             getDriver().quit();
             logger.info("After Test Thread ID: "+Thread.currentThread().getId());
             webDriverThreadLocal.remove();
-            Thread.sleep(2000);
             logger.info("Close Test Case and driver");
         } catch (WebDriverException e) {
             logger.error("has happened an error with the tearDown method: " + e.getMessage());
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
         }
     }
 }

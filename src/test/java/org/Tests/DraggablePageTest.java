@@ -7,7 +7,6 @@ import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -66,7 +65,7 @@ public class DraggablePageTest extends TestBase {
         Assert.assertEquals(draggablePage.getSimpleBoxYPosition(), simpleBoxYPositionExpected + PX_MEASURER);
     }
 
-    @Test(groups = {"Functional"})
+    @Test(groups = {"Functional"},dataProvider = "data")
     public void isElementXOfTabAxisDroppedToCoordinates(Object... data){
         String restrictedXBoxPositionExpected = (String) data[2];
 
@@ -76,7 +75,7 @@ public class DraggablePageTest extends TestBase {
         Assert.assertEquals(draggablePage.getRestrictedXBoxPosition(), restrictedXBoxPositionExpected + PX_MEASURER);
     }
 
-    @Test(groups = {"Functional"})
+    @Test(groups = {"Functional"},dataProvider = "data")
     public void isElementYOfTabAxisDroppedToCoordinates(Object... data){
         String restrictedYBoxPositionExpected = (String) data[3];
 
@@ -86,8 +85,7 @@ public class DraggablePageTest extends TestBase {
         Assert.assertEquals(draggablePage.getRestrictedYBoxPosition(), restrictedYBoxPositionExpected + PX_MEASURER);
     }
 
-    @Parameters({"containedBoxXPositionExpected","containedBoxYPositionExpected"})
-    @Test(groups = {"Functional"})
+    @Test(groups = {"Functional"},dataProvider = "data")
     public void isElementContainedInBoxDroppedToCoordinates(Object... data){
         String containedBoxXPositionExpected = (String) data[4];
         String containedBoxYPositionExpected = (String) data[5];
@@ -99,7 +97,7 @@ public class DraggablePageTest extends TestBase {
         Assert.assertEquals(draggablePage.getContainedBoxYPosition(), containedBoxYPositionExpected + PX_MEASURER);
     }
 
-    @Test(groups = {"Functional"})
+    @Test(groups = {"Functional"},dataProvider = "data")
     public void isTextContainedInBoxDroppedToCoordinates(Object... data){
         String containedTextXPositionExpected = (String) data[6];
         String containedTextYPositionExpected = (String) data[7];
@@ -111,7 +109,7 @@ public class DraggablePageTest extends TestBase {
         Assert.assertEquals(draggablePage.getContainedTextYPosition(), containedTextYPositionExpected + PX_MEASURER);
     }
 
-    @Test(groups = {"Functional"})
+    @Test(groups = {"Functional"},dataProvider = "data")
     public void isCenterCursorElementDroppedToCoordinates(Object... data){
         String elementOfCenterCursorXPositionExpected = (String) data[8];
         String elementOfCenterCursorYPositionExpected = (String) data[9];
@@ -124,7 +122,7 @@ public class DraggablePageTest extends TestBase {
     }
 
 
-    @Test(groups = {"Functional"})
+    @Test(groups = {"Functional"},dataProvider = "data")
     public void isTopCursorElementDroppedToCoordinates(Object... data){
         String elementOfTopCursorXPositionExpected = (String) data[10];
         String elementOfTopCursorYPositionExpected = (String) data[11];
@@ -136,8 +134,7 @@ public class DraggablePageTest extends TestBase {
         Assert.assertEquals(draggablePage.getElementOfTopCursorYPosition(), elementOfTopCursorYPositionExpected + PX_MEASURER);
     }
 
-    @Parameters({"elementOfBottomCursorXPositionExpected","elementOfBottomCursorYPositionExpected"})
-    @Test(groups = {"Functional"})
+    @Test(groups = {"Functional"},dataProvider = "data")
     public void isBottomCursorElementDroppedToCoordinates(Object... data){
         String elementOfBottomCursorXPositionExpected = (String) data[12];
         String elementOfBottomCursorYPositionExpected = (String) data[13];

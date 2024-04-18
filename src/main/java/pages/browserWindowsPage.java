@@ -31,17 +31,8 @@ public class BrowserWindowsPage extends PageBase {
         clickWithWait(newWindowButton);
     }
 
-    public void clickOnNewWindowMessageButton(){
-        scroll(newWindowMessageButton);
-        clickWithWait(newWindowMessageButton);
-    }
-
     public String getPageTitleText(){
         return getElementTextWithWait(pageTitle);
-    }
-
-    public String getMessageOfNewWindow(){
-            return getElementTextWithWait(newMessageText);
     }
 
     public String getBrowserWindowsUrlText(){

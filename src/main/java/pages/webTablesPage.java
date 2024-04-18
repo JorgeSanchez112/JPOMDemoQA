@@ -46,6 +46,7 @@ public class WebTablesPage extends PageBase {
     }
 
     public void clickOnAddButton(){
+        scroll(addButton);
         clickWithWait(addButton);
     }
 
