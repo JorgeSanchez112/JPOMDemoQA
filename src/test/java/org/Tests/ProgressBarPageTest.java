@@ -14,7 +14,7 @@ public class ProgressBarPageTest extends TestBase {
     @BeforeMethod(groups = {"UI","Smoke","Functional"})
     public void initializeClass(){
         logger.info("-------------------Initializing ProgressBarPageTest Class------------------");
-        progressBarPage = homePage.clickOnSectionWidgets().clickOnProgressBar();
+        progressBarPage = homePage.clickOnSectionWidgets(getDriver()).clickOnProgressBar(getDriver());
         logger.info("-------------------Starting Test-----------------------");
     }
 

@@ -148,23 +148,23 @@ public class BookStorePage extends PageBase {
         return deployed_form_exercise.size();
     }
 
-    public BSIBookPage searchAndClickOnATitle(String bookTitle){
+    public BSIBookPage searchAndClickOnATitle(String bookTitle,WebDriver driver1){
         clickElementByLinkText(bookTitle);
-        return new BSIBookPage(driver);
+        return new BSIBookPage(driver1);
     }
 
-    public BSLoginPage clickOnLoginTab(){
+    public BSLoginPage clickOnLoginTab(WebDriver driver1){
         clickOnSection(deployed_form_exercise,ZERO);
-        return new BSLoginPage(driver);
+        return new BSLoginPage(driver1);
     }
 
-    public BSProfilePage clickOnProfile(){
+    public BSProfilePage clickOnProfile(WebDriver driver1){
         clickOnSection(deployed_form_exercise,TWO);
-        return new BSProfilePage(driver);
+        return new BSProfilePage(driver1);
     }
 
-    public BSAPIPage clickOnBookstoreApi(){
+    public BSAPIPage clickOnBookstoreApi(WebDriver driver1){
         clickOnSection(deployed_form_exercise,THREE);
-        return new BSAPIPage(driver);
+        return new BSAPIPage(driver1);
     }
 }

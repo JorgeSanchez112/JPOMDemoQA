@@ -17,7 +17,7 @@ public class AlertsPageTest extends TestBase {
     @BeforeMethod(groups = {"UI","Smoke","Functional"})
     public void initializeClass(){
         logger.info("-------------------Initializing AlertsPageTest Class------------------");
-        alertsPage = homePage.clickOnSectionAlerts_Frame_Windows().clickOnAlerts();
+        alertsPage = homePage.clickOnSectionAlerts_Frame_Windows(getDriver()).clickOnAlerts(getDriver());
         logger.info("-------------------Starting Test-----------------------");
     }
 

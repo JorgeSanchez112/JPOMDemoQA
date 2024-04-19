@@ -25,7 +25,7 @@ public class PracticeFormPageTest extends TestBase {
     @BeforeMethod(groups = {"UI","Functional","Smoke"})
     public void initializeClass(){
         logger.info("-------------------Initializing PracticeFormPageTest Class------------------");
-        practiceFormPage = homePage.clickOnSectionForms().clickOnPracticeFormSection();
+        practiceFormPage = homePage.clickOnSectionForms(getDriver()).clickOnPracticeFormSection(getDriver());
         logger.info("-------------------Starting Test-----------------------");
     }
 

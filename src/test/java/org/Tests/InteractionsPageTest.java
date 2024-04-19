@@ -13,7 +13,7 @@ public class InteractionsPageTest extends TestBase {
     @BeforeMethod(groups = {"Functional"})
     public void initializeClass(){
         logger.info("-------------------Initializing FramesPageTest Class------------------");
-        interactionsPage = homePage.clickOnSectionInteractions();
+        interactionsPage = homePage.clickOnSectionInteractions(getDriver());
         logger.info("-------------------Starting Test-----------------------");
     }
 

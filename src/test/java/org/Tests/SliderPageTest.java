@@ -13,7 +13,7 @@ public class SliderPageTest extends TestBase {
     @BeforeMethod(groups = {"UI","Smoke"})
     public void initializeClass(){
         logger.info("-------------------Initializing SliderPageTest Class------------------");
-        sliderPage = homePage.clickOnSectionWidgets().clickOnSlider();
+        sliderPage = homePage.clickOnSectionWidgets(getDriver()).clickOnSlider(getDriver());
         logger.info("-------------------Starting Test-----------------------");
     }
 

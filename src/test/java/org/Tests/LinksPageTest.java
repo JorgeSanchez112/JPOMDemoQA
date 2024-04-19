@@ -15,7 +15,7 @@ public class LinksPageTest extends TestBase {
     @BeforeMethod(groups = {"UI","Smoke","Functional"})
     public void initializeClass(){
         logger.info("-------------------Initializing LinksPageTest Class------------------");
-        linksPage = homePage.clickOnSectionElements().clickOnLinksSection();
+        linksPage = homePage.clickOnSectionElements(getDriver()).clickOnLinksSection(getDriver());
         logger.info("-------------------Starting Test-----------------------");
     }
 

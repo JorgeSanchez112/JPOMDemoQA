@@ -13,7 +13,7 @@ public class FormsPageTest extends TestBase {
     @BeforeMethod(groups = {"UI"})
     public void initializeClass(){
         logger.info("-------------------Initializing FormsPageTest Class------------------");
-        formsPage = homePage.clickOnSectionForms();
+        formsPage = homePage.clickOnSectionForms(getDriver());
         logger.info("-------------------Starting Test-----------------------");
     }
 

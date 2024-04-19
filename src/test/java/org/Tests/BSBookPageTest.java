@@ -18,7 +18,7 @@ public class BSBookPageTest extends TestBase {
     public void initializeClass(String bookTitle){
         try{
             logger.info("-------------------Initializing BSBookPageTest Class------------------");
-            bsiBookPage = homePage.clickOnSectionBookStoreApplication().searchAndClickOnATitle(bookTitle);
+            bsiBookPage = homePage.clickOnSectionBookStoreApplication(getDriver()).searchAndClickOnATitle(bookTitle,getDriver());
             logger.info("-------------------Starting Test-----------------------");
         }catch (WebDriverException e){
             e.printStackTrace();
@@ -211,7 +211,7 @@ public class BSBookPageTest extends TestBase {
         String password = (String) data[8];
         initializeClass(bookTitle);
         logger.info("-------------------validateUserNameValue-----------------------");
-        bsiBookPage.clickOnLogin().userLogin(userName,password);
+        bsiBookPage.clickOnLogin().userLogin(userName,password,getDriver());
         bsiBookPage.usernameLabelIsVisible();
         Assert.assertEquals(bsiBookPage.getUsernameValueText(),userName);
     }
@@ -223,7 +223,7 @@ public class BSBookPageTest extends TestBase {
         String password = (String) data[8];
         initializeClass(bookTitle);
         logger.info("-------------------validateLogOutButtonIsFunctional-----------------------");
-        bsiBookPage.clickOnLogin().userLogin(userName,password);
+        bsiBookPage.clickOnLogin().userLogin(userName,password,getDriver());
         Assert.assertEquals(bsiBookPage.clickOnLogOutButton().getCurrentUrl(),URL_LOGIN);
     }
 

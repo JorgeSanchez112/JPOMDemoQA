@@ -18,7 +18,7 @@ public class SortablePageTest extends TestBase {
     @BeforeMethod(groups = {"UI","Functional"})
     public void initializeClassAndHidePublicity(){
         logger.info("-------------------Initializing SortablePageTest Class------------------");
-        sortablePage = homePage.clickOnSectionInteractions().clickOnSortable();
+        sortablePage = homePage.clickOnSectionInteractions(getDriver()).clickOnSortable(getDriver());
         logger.info("-------------------Starting Test-----------------------");
     }
 

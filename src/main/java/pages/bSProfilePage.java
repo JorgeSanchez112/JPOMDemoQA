@@ -121,9 +121,9 @@ public class BSProfilePage extends PageBase {
 
     public void addBookToTableOfBooksCollection(String bookTitle){
         clickOnGoToBookStoreButton().
-                searchAndClickOnATitle(bookTitle).
+                searchAndClickOnATitle(bookTitle,driver).
                 addBookAndReturnToBookStore().
-                clickOnProfile();
+                clickOnProfile(driver);
     }
 
     public void deleteABook(String titleBook){

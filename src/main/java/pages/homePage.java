@@ -21,34 +21,34 @@ public class HomePage extends PageBase {
         return driver.getCurrentUrl();
     }
 
-    public ElementsPage clickOnSectionElements(){
+    public ElementsPage clickOnSectionElements(WebDriver driver1){
         clickOnSection(sections,0);
-        return new ElementsPage(driver);
+        return new ElementsPage(driver1);
     }
 
-    public FormsPage clickOnSectionForms(){
+    public FormsPage clickOnSectionForms(WebDriver driver1){
         clickOnSection(sections,1);
-        return new FormsPage(driver);
+        return new FormsPage(driver1);
     }
 
-    public AlertsFrameWindowsPage clickOnSectionAlerts_Frame_Windows(){
+    public AlertsFrameWindowsPage clickOnSectionAlerts_Frame_Windows(WebDriver driver1){
         clickOnSection(sections,2);
-        return new AlertsFrameWindowsPage(driver);
+        return new AlertsFrameWindowsPage(driver1);
     }
 
-    public WidgetsPage clickOnSectionWidgets(){
+    public WidgetsPage clickOnSectionWidgets(WebDriver driver1){
         clickOnSection(sections,3);
-        return new WidgetsPage(driver);
+        return new WidgetsPage(driver1);
     }
 
-    public InteractionsPage clickOnSectionInteractions(){
+    public InteractionsPage clickOnSectionInteractions(WebDriver driver1){
         clickOnSection(sections,4);
-        return new InteractionsPage(driver);
+        return new InteractionsPage(driver1);
     }
 
-    public BookStorePage clickOnSectionBookStoreApplication(){
+    public BookStorePage clickOnSectionBookStoreApplication(WebDriver driver1){
         clickOnSection(sections,5);
-        return new BookStorePage(driver);
+        return new BookStorePage(driver1);
     }
 
 }

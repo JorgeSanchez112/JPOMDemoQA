@@ -13,7 +13,7 @@ public class SelectablePageTest extends TestBase {
     @BeforeMethod(groups = {"UI","Smoke"})
     public void initializeClass(){
         logger.info("-------------------Initializing SelectablePageTest Class------------------");
-        selectablePage = homePage.clickOnSectionInteractions().clickOnSelectable();
+        selectablePage = homePage.clickOnSectionInteractions(getDriver()).clickOnSelectable(getDriver());
         logger.info("-------------------Starting Test-----------------------");
     }
 

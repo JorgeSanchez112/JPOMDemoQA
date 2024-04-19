@@ -25,48 +25,48 @@ public class ElementsPage extends PageBase {
         return deployed_element_exercises.size();
     }
 
-    public TextBoxPage clickOnTextBoxSection(){
+    public TextBoxPage clickOnTextBoxSection(WebDriver driver1){
         clickOnSection(deployed_element_exercises,0);
-        return new TextBoxPage(driver);
+        return new TextBoxPage(driver1);
     }
 
-    public CheckBoxPage clickOnCheckBoxSection(){
+    public CheckBoxPage clickOnCheckBoxSection(WebDriver driver1){
         clickOnSection(deployed_element_exercises,1);
-        return new CheckBoxPage(driver);
+        return new CheckBoxPage(driver1);
     }
 
-    public RadioButtonPage clickOnRadioButtonSection(){
+    public RadioButtonPage clickOnRadioButtonSection(WebDriver driver1){
         clickOnSection(deployed_element_exercises,2);
-        return new RadioButtonPage(driver);
+        return new RadioButtonPage(driver1);
     }
 
-    public WebTablesPage clickOnWebTablesSection(){
+    public WebTablesPage clickOnWebTablesSection(WebDriver driver1){
         clickOnSection(deployed_element_exercises,3);
-        return new WebTablesPage(driver);
+        return new WebTablesPage(driver1);
     }
 
-    public ButtonsPage clickOnButtonsSection(){
+    public ButtonsPage clickOnButtonsSection(WebDriver driver1){
         clickOnSection(deployed_element_exercises,4);
-        return new ButtonsPage(driver);
+        return new ButtonsPage(driver1);
     }
 
-    public LinksPage clickOnLinksSection(){
+    public LinksPage clickOnLinksSection(WebDriver driver1){
         clickOnSection(deployed_element_exercises,5);
-        return new LinksPage(driver);
+        return new LinksPage(driver1);
     }
 
-    public BrokenLinksPage clickOnBrokenLinksImageSection(){
+    public BrokenLinksPage clickOnBrokenLinksImageSection(WebDriver driver1){
         clickOnSection(deployed_element_exercises,6);
-        return new BrokenLinksPage(driver);
+        return new BrokenLinksPage(driver1);
     }
 
-    public UploadDownloadPage clickOnUploadDownloadSection(){
+    public UploadDownloadPage clickOnUploadDownloadSection(WebDriver driver1){
         clickOnSection(deployed_element_exercises,7);
-        return new UploadDownloadPage(driver);
+        return new UploadDownloadPage(driver1);
     }
 
-    public DynamicPropertiesPage clickOnDynamicPropertiesSection() {
+    public DynamicPropertiesPage clickOnDynamicPropertiesSection(WebDriver driver1) {
         clickOnSection(deployed_element_exercises, 8);
-        return new DynamicPropertiesPage(driver);
+        return new DynamicPropertiesPage(driver1);
     }
 }

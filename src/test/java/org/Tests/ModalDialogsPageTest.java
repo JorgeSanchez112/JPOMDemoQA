@@ -13,7 +13,7 @@ public class ModalDialogsPageTest extends TestBase {
     @BeforeMethod(groups = {"UI","Functional"})
     public void initializeClass(){
         logger.info("-------------------Initializing ModalDialogsPageTest Class------------------");
-        modalDialogsPage = homePage.clickOnSectionAlerts_Frame_Windows().clickOnModalDialogs();
+        modalDialogsPage = homePage.clickOnSectionAlerts_Frame_Windows(getDriver()).clickOnModalDialogs(getDriver());
         logger.info("-------------------Starting Test-----------------------");
     }
 

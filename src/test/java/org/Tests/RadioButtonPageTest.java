@@ -15,7 +15,7 @@ public class RadioButtonPageTest extends TestBase {
     @BeforeMethod(groups = {"UI","Functional"})
     public void initializeClass(){
         logger.info("-------------------Initializing RadioButtonPageTest Class------------------");
-        radioButtonPage = homePage.clickOnSectionElements().clickOnRadioButtonSection();
+        radioButtonPage = homePage.clickOnSectionElements(getDriver()).clickOnRadioButtonSection(getDriver());
         logger.info("-------------------Starting Test-----------------------");
     }
 

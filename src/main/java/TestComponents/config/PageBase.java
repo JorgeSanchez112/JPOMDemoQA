@@ -352,6 +352,8 @@ public class PageBase {
             clickWithWait(sections.get(index));
         }catch (IndexOutOfBoundsException e){
             handleException(MESSAGE_TO_INDEX_OUT_OF_BOUNDS_EXCEPTION,e);
+        }catch (NoSuchSessionException e){
+            handleException(MESSAGE_TO_NO_SUCH_ELEMENT_EXCEPTION,e);
         }
     }
 

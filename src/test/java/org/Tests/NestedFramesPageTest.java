@@ -13,7 +13,7 @@ public class NestedFramesPageTest extends TestBase {
     @BeforeMethod(groups = {"UI","Functional"})
     public void initializeClass(){
         logger.info("-------------------Initializing NestedFramesPageTest Class------------------");
-        nestedFramesPage = homePage.clickOnSectionAlerts_Frame_Windows().clickOnNestedFrames();
+        nestedFramesPage = homePage.clickOnSectionAlerts_Frame_Windows(getDriver()).clickOnNestedFrames(getDriver());
         logger.info("-------------------Starting Test-----------------------");
     }
 

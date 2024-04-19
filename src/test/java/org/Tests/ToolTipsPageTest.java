@@ -13,7 +13,7 @@ public class ToolTipsPageTest extends TestBase {
     @BeforeMethod(groups = {"UI","Functional"})
     public void initializeClass(){
         logger.info("-------------------Initializing ToolTipsPageTest Class------------------");
-        toolTipsPage = homePage.clickOnSectionWidgets().clickOnToolTips();
+        toolTipsPage = homePage.clickOnSectionWidgets(getDriver()).clickOnToolTips(getDriver());
         logger.info("-------------------Starting Test-----------------------");
     }
 

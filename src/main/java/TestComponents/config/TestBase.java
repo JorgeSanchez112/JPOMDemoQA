@@ -59,9 +59,6 @@ public class TestBase {
     protected BSIBookPage bsiBookPage;
     protected BSAPIPage bsapiPage;
 
-    //Draggable
-    //DynamicProperties
-
     public TestBase() {
         try {
             prop = new Properties();
@@ -100,9 +97,8 @@ public class TestBase {
         WebDriver driver = BrowserManager.initialization(browserName);
         setDriver(driver);
         logger.info("Before Test Thread ID: "+Thread.currentThread().getId());
-        homePage = new HomePage(getDriver());
         logger.info("Initializing homePage Class");
-        hideFooterAd(getDriver());
+        homePage = new HomePage(getDriver());
     }
 
     @AfterMethod(groups = {"UI","Smoke","Integration","Functional"})
@@ -110,10 +106,13 @@ public class TestBase {
         try {
             getDriver().quit();
             logger.info("After Test Thread ID: "+Thread.currentThread().getId());
-            webDriverThreadLocal.remove();
             logger.info("Close Test Case and driver");
+            webDriverThreadLocal.remove();
+            Thread.sleep(2000);
         } catch (WebDriverException e) {
             logger.error("has happened an error with the tearDown method: " + e.getMessage());
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 }

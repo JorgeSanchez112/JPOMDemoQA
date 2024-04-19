@@ -13,7 +13,7 @@ public class TabsPageTest extends TestBase {
     @BeforeMethod(groups = {"UI","Functional"})
     public void initializeClass(){
         logger.info("-------------------Initializing TabsPageTest Class------------------");
-        tabsPage = homePage.clickOnSectionWidgets().clickOnTabs();
+        tabsPage = homePage.clickOnSectionWidgets(getDriver()).clickOnTabs(getDriver());
         logger.info("-------------------Starting Test-----------------------");
     }
 

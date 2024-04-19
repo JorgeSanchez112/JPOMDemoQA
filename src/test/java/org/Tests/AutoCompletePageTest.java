@@ -17,7 +17,7 @@ public class AutoCompletePageTest extends TestBase {
     @BeforeMethod(groups = {"UI","Smoke"})
     public void initializeClass(){
         logger.info("-------------------Initializing AutoCompletePageTest Class------------------");
-        autoCompletePage = homePage.clickOnSectionWidgets().clickOnAutoComplete();
+        autoCompletePage = homePage.clickOnSectionWidgets(getDriver()).clickOnAutoComplete(getDriver());
         logger.info("-------------------Starting Test-----------------------");
     }
 

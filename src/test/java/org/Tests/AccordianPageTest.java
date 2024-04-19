@@ -13,7 +13,7 @@ public class AccordianPageTest extends TestBase {
     @BeforeMethod(groups = {"UI", "Smoke"})
     public void initializeClass(){
         logger.info("-------------------Initializing AccordianPageTest Class------------------");
-        accordianPage = homePage.clickOnSectionWidgets().clickOnAccordian();
+        accordianPage = homePage.clickOnSectionWidgets(getDriver()).clickOnAccordian(getDriver());
         logger.info("-------------------Starting Test-----------------------");
     }
 
