@@ -13,7 +13,7 @@ public class MenuPageTest extends TestBase {
     @BeforeMethod(groups = {"UI"})
     public void initializeClassAndHideAdvertising(){
         logger.info("-------------------Initializing MenuPageTest Class------------------");
-        menuPage = homePage.clickOnSectionWidgets(getDriver()).clickOnMenu(getDriver());
+        menuPage = homePage.clickOnSectionWidgets().clickOnMenu();
         logger.info("-------------------Starting Test-----------------------");
     }
 

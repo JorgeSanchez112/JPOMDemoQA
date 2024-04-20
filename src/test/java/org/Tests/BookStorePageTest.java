@@ -17,7 +17,7 @@ public class BookStorePageTest extends TestBase {
     @BeforeMethod(groups = {"UI","Smoke","Functional"})
     public void initializeClass(){
         logger.info("-------------------Initializing BookStorePageTest Class------------------");
-        bookStorePage = homePage.clickOnSectionBookStoreApplication(getDriver());
+        bookStorePage = homePage.clickOnSectionBookStoreApplication();
         logger.info("-------------------Starting Test-----------------------");
     }
 

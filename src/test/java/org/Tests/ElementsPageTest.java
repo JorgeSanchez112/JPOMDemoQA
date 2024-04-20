@@ -13,7 +13,7 @@ public class ElementsPageTest extends TestBase {
     @BeforeMethod(groups = {"UI","Functional"})
     public void initializeClass(){
         logger.info("-------------------Initializing ElementsPageTest Class------------------");
-        elementsPage = homePage.clickOnSectionElements(getDriver());
+        elementsPage = homePage.clickOnSectionElements();
         logger.info("-------------------Starting Test-----------------------");
     }
 

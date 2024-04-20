@@ -164,24 +164,24 @@ public class BSIBookPage extends PageBase {
         return isElementDisplayedWithWait(websiteLink);
     }
 
-    public BSLoginPage clickOnLogin(){
+    public synchronized BSLoginPage clickOnLogin(){
         scroll(loginButton);
         clickWithWait(loginButton);
         return new BSLoginPage(driver);
     }
 
-    public BSLoginPage clickOnLogOutButton(){
+    public synchronized BSLoginPage clickOnLogOutButton(){
         clickWithWait(logOutButton);
         return new BSLoginPage(driver);
     }
 
-    public BookStorePage clickOnBackToBookStoreBookButton(){
+    public synchronized BookStorePage clickOnBackToBookStoreBookButton(){
         scroll(backToBookStoreButton);
         clickWithWait(backToBookStoreButton);
         return new BookStorePage(driver);
     }
 
-    public BookStorePage addBookAndReturnToBookStore(){
+    public synchronized BookStorePage addBookAndReturnToBookStore(){
         clickOnAddToYourCollectionButton();
         return clickOnBackToBookStoreBookButton();
     }

@@ -18,7 +18,7 @@ public class ResizablePageTest extends TestBase {
     @BeforeMethod(groups = {"UI","Functional"})
     public void initializeClass(){
         logger.info("-------------------Initializing ResizablePageTest Class------------------");
-        resizablePage = homePage.clickOnSectionInteractions(getDriver()).clickOnResizable(getDriver());
+        resizablePage = homePage.clickOnSectionInteractions().clickOnResizable();
         logger.info("-------------------Starting Test-----------------------");
     }
 

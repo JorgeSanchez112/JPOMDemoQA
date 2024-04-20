@@ -13,7 +13,7 @@ public class BSAPITest extends TestBase {
     @BeforeMethod(groups = {"UI"})
     public void initializeClass(){
         logger.info("-------------------Initializing BSAPITest Class------------------");
-        bsapiPage = homePage.clickOnSectionBookStoreApplication(getDriver()).clickOnBookstoreApi(getDriver());
+        bsapiPage = homePage.clickOnSectionBookStoreApplication().clickOnBookstoreApi();
         logger.info("-------------------Starting Test-----------------------");
     }
 

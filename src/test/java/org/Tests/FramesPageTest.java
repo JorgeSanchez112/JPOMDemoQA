@@ -14,7 +14,7 @@ public class FramesPageTest extends TestBase {
     @BeforeMethod(groups = {"UI","Functional"})
     public void initializeClass(){
         logger.info("-------------------Initializing FramesPageTest Class------------------");
-        framesPage = homePage.clickOnSectionAlerts_Frame_Windows(getDriver()).clickOnFrames(getDriver());
+        framesPage = homePage.clickOnSectionAlerts_Frame_Windows().clickOnFrames();
         logger.info("-------------------Starting Test-----------------------");
     }
 

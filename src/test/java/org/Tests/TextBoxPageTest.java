@@ -21,7 +21,7 @@ public class TextBoxPageTest extends TestBase {
     @BeforeMethod(groups = {"UI","Smoke","Functional"})
     public void initializeClass(){
         logger.info("-------------------Initializing TextBoxPageTest Class------------------");
-        textBoxPage = homePage.clickOnSectionElements(getDriver()).clickOnTextBoxSection(getDriver());
+        textBoxPage = homePage.clickOnSectionElements().clickOnTextBoxSection();
         logger.info("-------------------Starting Test-----------------------");
     }
 

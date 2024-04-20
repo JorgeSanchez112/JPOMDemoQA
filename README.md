@@ -84,11 +84,15 @@ This project is a QA automation framework designed to test the functionality of 
          java -jar selenium-server-<version>.jar standalone --selenium manager
 6. Update the config.properties. For example changing the urlServer.
 7. Update the testSuites change the thread-count according Selenium Grid indicate.
-   ![This is example about the interface of Selenium Grid and the max thread-accounts available](https://drive.google.com/file/d/1SIsvrgxZNkN2y5VG8sbXIU1TIayYHRwf/view?usp=sharing)
+   ![This is example about the interface of Selenium Grid and the max thread-accounts available](https://www.testim.io/wp-content/uploads/2021/03/grid.png)
    <sub> If you want to know what thread-counts you have available you should copy the URL Server gave by selenium grid before and look it up in a browser.</sub>
    
 8. Download the [DDTDemoQA.xlsx](https://docs.google.com/spreadsheets/d/1uIJr8EnyRxK1L54hbn02WYHdgHQuLIjr/edit?usp=sharing&ouid=112046374903426947430&rtpof=true&sd=true) ExcelFIle, then store it in DataDriven directory.
 9. Run tests using Maven:
+   >[!NOTE]
+   >First clean the project dependencies contain in POM, You can do it using the next command.
+
+       mvn clean
 
    <sub> Run all the test one by one </sub>
 
@@ -101,7 +105,7 @@ This project is a QA automation framework designed to test the functionality of 
          mvn test -P=UIFunctionalTest
    <sub> Run all the Integration Tests. </sub>
 
-         mvn test -P=IntegrationTest
+         mvn test -P=integrationTest
 
 # Test Execution
 - Tests are executed using TestNG test runner.

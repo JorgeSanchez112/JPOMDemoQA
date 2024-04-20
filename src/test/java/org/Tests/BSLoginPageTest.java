@@ -17,7 +17,7 @@ public class BSLoginPageTest extends TestBase {
     @BeforeMethod(groups = {"UI","Smoke","Integration","Functional"})
     public void initializeClass(){
         logger.info("-------------------Initializing BSLoginPageTest Class------------------");
-        bsLoginPage = homePage.clickOnSectionBookStoreApplication(getDriver()).clickOnLoginTab(getDriver());
+        bsLoginPage = homePage.clickOnSectionBookStoreApplication().clickOnLoginTab();
         logger.info("-------------------Starting Test-----------------------");
     }
 
@@ -105,13 +105,13 @@ public class BSLoginPageTest extends TestBase {
         String usernameValue = (String) data[0];
         String passwordValue = (String) data[1];
 
-        Assert.assertTrue(bsLoginPage.userLogin(usernameValue,passwordValue,getDriver()).isTitleVisible());
+        Assert.assertTrue(bsLoginPage.userLogin(usernameValue,passwordValue).isTitleVisible());
     }
 
     @Test(groups = {"Functional"})
     public void newUserButtonIsDirectedToRegister(){
         logger.info("-------------------newUserButtonIsDirectedToRegister-----------------------");
-        Assert.assertNotEquals(bsLoginPage.getCurrentUrl(),bsLoginPage.clickOnNewUserButton(getDriver()).getCurrentUrl());
+        Assert.assertNotEquals(bsLoginPage.getCurrentUrl(),bsLoginPage.clickOnNewUserButton().getCurrentUrl());
     }
 
     @DataProvider

@@ -15,7 +15,7 @@ public class BrowserWindowsPagePageTest extends TestBase {
     @BeforeMethod(groups = {"UI","Smoke"})
     public void InitializeClass(){
         logger.info("-------------------Initializing BrowserWindowsPagePageTest Class------------------");
-        browserWindowsPage = homePage.clickOnSectionAlerts_Frame_Windows(getDriver()).clickOnBrowserWindows(getDriver());
+        browserWindowsPage = homePage.clickOnSectionAlerts_Frame_Windows().clickOnBrowserWindows();
         logger.info("-------------------Starting Test-----------------------");
     }
 

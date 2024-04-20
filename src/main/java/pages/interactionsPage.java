@@ -25,28 +25,28 @@ public class InteractionsPage extends PageBase {
         return deployed_form_exercise.size();
     }
 
-    public SortablePage clickOnSortable(WebDriver driver1){
+    public synchronized SortablePage clickOnSortable(){
         clickOnSection(deployed_form_exercise,0);
-        return new SortablePage(driver1);
+        return new SortablePage(driver);
     }
 
-    public SelectablePage clickOnSelectable(WebDriver driver1){
+    public synchronized SelectablePage clickOnSelectable(){
         clickOnSection(deployed_form_exercise,0);
-        return new SelectablePage(driver1);
+        return new SelectablePage(driver);
     }
 
-    public ResizablePage clickOnResizable(WebDriver driver1){
+    public synchronized ResizablePage clickOnResizable(){
         clickOnSection(deployed_form_exercise,0);
-        return new ResizablePage(driver1);
+        return new ResizablePage(driver);
     }
 
-    public DroppablePage clickOnDroppable(WebDriver driver1){
+    public synchronized DroppablePage clickOnDroppable(){
         clickOnSection(deployed_form_exercise,0);
-        return new DroppablePage(driver1);
+        return new DroppablePage(driver);
     }
 
-    public DraggablePage clickOnDragabble(WebDriver driver1){
+    public synchronized DraggablePage clickOnDragabble(){
         clickOnSection(deployed_form_exercise,0);
-        return new DraggablePage(driver1);
+        return new DraggablePage(driver);
     }
 }

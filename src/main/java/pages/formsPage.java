@@ -23,10 +23,10 @@ public class FormsPage extends PageBase {
         return getElementTextWithWait(deployed_form_exercise);
     }
 
-    public PracticeFormPage clickOnPracticeFormSection(WebDriver driver1){
+    public synchronized PracticeFormPage clickOnPracticeFormSection(){
         scroll(deployed_form_exercise);
         clickWithWait(deployed_form_exercise);
-        return new PracticeFormPage(driver1);
+        return new PracticeFormPage(driver);
     }
 
 }

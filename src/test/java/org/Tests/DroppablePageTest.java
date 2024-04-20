@@ -13,7 +13,7 @@ public class DroppablePageTest extends TestBase {
     @BeforeMethod(groups = {"UI","Functional"})
     public void initializeClass(){
         logger.info("-------------------Initializing DroppablePageTest Class------------------");
-        droppablePage = homePage.clickOnSectionInteractions(getDriver()).clickOnDroppable(getDriver());
+        droppablePage = homePage.clickOnSectionInteractions().clickOnDroppable();
         logger.info("-------------------Starting Test-----------------------");
     }
 

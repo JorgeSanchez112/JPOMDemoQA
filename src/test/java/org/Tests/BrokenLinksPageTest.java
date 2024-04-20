@@ -15,7 +15,7 @@ public class BrokenLinksPageTest extends TestBase {
     @BeforeMethod(groups = {"UI","Smoke","Functional"})
     public void initializeClass(){
         logger.info("-------------------Initializing BrokenLinksPageTest Class------------------");
-        brokenLinksPage = homePage.clickOnSectionElements(getDriver()).clickOnBrokenLinksImageSection(getDriver());
+        brokenLinksPage = homePage.clickOnSectionElements().clickOnBrokenLinksImageSection();
         logger.info("-------------------Starting Test-----------------------");
     }
 

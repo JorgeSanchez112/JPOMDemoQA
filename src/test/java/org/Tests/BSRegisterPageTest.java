@@ -18,7 +18,7 @@ public class BSRegisterPageTest extends TestBase {
     @BeforeMethod(groups = {"UI","Smoke","Functional"})
     public void initializeClass(){
         logger.info("-------------------Initializing BSRegisterPageTest Class------------------");
-        bsRegisterPage = homePage.clickOnSectionBookStoreApplication(getDriver()).clickOnLoginTab(getDriver()).clickOnNewUserButton(getDriver());
+        bsRegisterPage = homePage.clickOnSectionBookStoreApplication().clickOnLoginTab().clickOnNewUserButton();
         logger.info("-------------------Starting Test-----------------------");
     }
 
@@ -135,7 +135,7 @@ public class BSRegisterPageTest extends TestBase {
         String userNameValue = (String) data[2];
         String passwordValue = (String) data[3];
 
-        bsRegisterPage.clickOnBackToLogin().userLogin(userNameValue,passwordValue,getDriver()).deleteAccount();
+        bsRegisterPage.clickOnBackToLogin().userLogin(userNameValue,passwordValue).deleteAccount();
     }
 
     @Test(groups = {"Smoke","Functional"})

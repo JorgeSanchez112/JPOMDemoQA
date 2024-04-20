@@ -13,7 +13,7 @@ public class UploadDownloadPageTest extends TestBase {
     @BeforeMethod(groups = {"UI","Functional"})
     public void initializeClass(){
         logger.info("-------------------Initializing UploadDownloadPageTest Class------------------");
-        uploadDownloadPage = homePage.clickOnSectionElements(getDriver()).clickOnUploadDownloadSection(getDriver());
+        uploadDownloadPage = homePage.clickOnSectionElements().clickOnUploadDownloadSection();
         logger.info("-------------------Starting Test-----------------------");
     }
 

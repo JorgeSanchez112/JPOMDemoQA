@@ -13,7 +13,7 @@ public class DynamicPropertiesPagePageTest extends TestBase {
     @BeforeMethod(groups = {"UI","Functional"})
     public void initializeClass(){
         logger.info("-------------------Initializing DynamicPropertiesPagePageTest Class------------------");
-        dynamicPropertiesPage = homePage.clickOnSectionElements(getDriver()).clickOnDynamicPropertiesSection(getDriver());
+        dynamicPropertiesPage = homePage.clickOnSectionElements().clickOnDynamicPropertiesSection();
         logger.info("-------------------Starting Test-----------------------");
     }
 

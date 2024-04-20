@@ -13,7 +13,7 @@ public class CheckBoxPageTest extends TestBase {
     @BeforeMethod(groups = {"UI","Functional"})
     public void initializeClass(){
         logger.info("-------------------Initializing CheckBoxPageTest Class------------------");
-        checkBoxPage = homePage.clickOnSectionElements(getDriver()).clickOnCheckBoxSection(getDriver());
+        checkBoxPage = homePage.clickOnSectionElements().clickOnCheckBoxSection();
         logger.info("-------------------Starting Test-----------------------");
     }
 

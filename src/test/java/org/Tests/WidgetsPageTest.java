@@ -13,7 +13,7 @@ public class WidgetsPageTest extends TestBase {
     @BeforeMethod(groups = {"Functional"})
     public void initializeClass(){
         logger.info("-------------------Initializing WidgetsPageTest Class------------------");
-        widgetsPage = homePage.clickOnSectionWidgets(getDriver());
+        widgetsPage = homePage.clickOnSectionWidgets();
         logger.info("-------------------Starting Test-----------------------");
     }
 

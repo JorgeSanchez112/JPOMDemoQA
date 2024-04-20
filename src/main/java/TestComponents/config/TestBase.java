@@ -99,6 +99,7 @@ public class TestBase {
         logger.info("Before Test Thread ID: "+Thread.currentThread().getId());
         logger.info("Initializing homePage Class");
         homePage = new HomePage(getDriver());
+        hideFooterAd(getDriver());
     }
 
     @AfterMethod(groups = {"UI","Smoke","Integration","Functional"})

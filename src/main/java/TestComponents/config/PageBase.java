@@ -38,6 +38,7 @@ public class PageBase {
     private final String MESSAGE_ELEMENT_NOT_INTERACTABLE_EXCEPTION = "ElementNotInteractableException: Possible causes include elements being hidden, disabled, overlapped by other elements, or located outside the viewport.";
     private final String MESSAGE_MOVE_TARGET_OUT_OF_BOUNDS_EXCEPTION = "MoveTargetOutOfBoundsException: MoveTargetOutOfBoundsException occurred, indicating that the target element cannot be moved to the specified coordinates.";
     private final String MESSAGE_TO_TIME_OUT_EXCEPTION = "TimeOutException: The presence of a web element or the completion of an action, does not occur within the specified time frame.";
+    private final String NO_SUCH_SESSION_EXCEPTION = "NoSuchSessionException: You're trying to interact with a WebDriver session that has already been invalidated or no longer exists.";
 
     public PageBase(WebDriver driver) {
         this.driver = driver;
@@ -55,7 +56,7 @@ public class PageBase {
     /**
      * Description: This function wait to appear or detect an alert and then accept it.
      * */
-    public void acceptAlertWithWait(){
+    public synchronized void acceptAlertWithWait(){
         waitAlert();
         try {
             driver.switchTo().alert().accept();
@@ -69,7 +70,7 @@ public class PageBase {
      * Description: This function wait to appear or detect an alert and then dismiss it.
      * @exception NoAlertPresentException: it is a common exception that appear when the alert doesn't appear.
      * */
-    public void dismissAlertWithWait(){
+    public synchronized void dismissAlertWithWait(){
         waitAlert();
         try{
             driver.switchTo().alert().dismiss();
@@ -84,12 +85,14 @@ public class PageBase {
      * @param driver WebElement to send the Enter Action.
      * @exception NoSuchElementException: It points out that element can't be found, likely an irregular locator or delay charge.
      * */
-    public void pressEnterKey(WebElement driver){
+    public synchronized void pressEnterKey(WebElement driver){
         try {
             driver.sendKeys(Keys.ENTER);
             logger.info("Enter key pressed");
         }catch (NoSuchElementException e){
             handleException(MESSAGE_TO_NO_SUCH_ELEMENT_EXCEPTION,e);
+        }catch (NoSuchSessionException e){
+            handleException(NO_SUCH_SESSION_EXCEPTION,e);
         }
     }
 
@@ -100,7 +103,7 @@ public class PageBase {
      * @exception IndexOutOfBoundsException: it points out an attempt to access or manipulate an element at an invalid index position within a collection or array.
      * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
      * */
-    public void scroll(WebElement element){
+    public synchronized void scroll(WebElement element){
         try{
             try {
                 try{
@@ -123,7 +126,7 @@ public class PageBase {
      * @param element WebElement target to hide from the Page Web.
      * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
      * */
-    public void hidePublicity(WebElement element){
+    public synchronized void hidePublicity(WebElement element){
         waitForVisibleElement(element);
         try {
             logger.info("Hide element: " + element);
@@ -139,7 +142,7 @@ public class PageBase {
      * @param text Value desired to send to the input.
      * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
      * */
-    public void sendKeysToElement(WebElement input,String text){
+    public synchronized void sendKeysToElement(WebElement input,String text){
         try {
             logger.info("Send keys to: " + input);
             logger.info("value sent: " + text);
@@ -154,7 +157,7 @@ public class PageBase {
      * @param element WebElement target that waits until it is clickable.
      * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
      * */
-    public void waitForClick(WebElement element){
+    public synchronized void waitForClick(WebElement element){
         try{
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             wait.until(ExpectedConditions.elementToBeClickable(element));
@@ -171,11 +174,15 @@ public class PageBase {
      * @param expectedValue It is the expected value contained in the attribute.
      * @exception TimeoutException: it refers the action does not accomplish during to the wait expected.
      * */
-    public void waitForElementAttributeToContain(WebElement element, String attribute, String expectedValue) {
+    public synchronized void waitForElementAttributeToContain(WebElement element, String attribute, String expectedValue) {
         try {
-            logger.info("Wait for element: " + element + " attribute: " + attribute + "contain: " + expectedValue);
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            wait.until(ExpectedConditions.attributeContains(element, attribute, expectedValue));
+            try {
+                logger.info("Wait for element: " + element + " attribute: " + attribute + "contain: " + expectedValue);
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+                wait.until(ExpectedConditions.attributeContains(element, attribute, expectedValue));
+            }catch (NoSuchSessionException e){
+                handleException(NO_SUCH_SESSION_EXCEPTION,e);
+            }
         } catch (TimeoutException e) {
             handleException(MESSAGE_TO_TIME_OUT_EXCEPTION,e);
         }
@@ -187,7 +194,7 @@ public class PageBase {
      * @exception NoSuchElementException: it points out that element can't be found, likely an irregular locator or delay charge.
      * @exception TimeoutException: it refers the element was not visible during the wait expected.
      * */
-    public void waitForVisibleElement(WebElement element){
+    public synchronized void waitForVisibleElement(WebElement element){
         try{
             try {
                 logger.info("wait for visible Element: " + element);
@@ -195,9 +202,13 @@ public class PageBase {
                 wait.until(ExpectedConditions.visibilityOf(element));
             }catch (NoSuchElementException e){
                 handleException(MESSAGE_TO_NO_SUCH_ELEMENT_EXCEPTION,e);
+            }catch (NoSuchSessionException e){
+                handleException(NO_SUCH_SESSION_EXCEPTION,e);
             }
         }catch (TimeoutException e){
             handleException(MESSAGE_TO_TIME_OUT_EXCEPTION,e);
+        }catch (WebDriverException e){
+            handleException(MESSAGE_TO_WEB_DRIVER_EXCEPTION,e);
         }
     }
 
@@ -208,7 +219,7 @@ public class PageBase {
      * @exception NoSuchElementException: it points out that element can't be found, likely an irregular locator or delay charge.
 
      * */
-    public void selectOneElementAccordingToText(WebElement options,String elementText){
+    public synchronized void selectOneElementAccordingToText(WebElement options,String elementText){
         Select select = new Select(options);
         try{
             select.selectByVisibleText(elementText);
@@ -227,7 +238,7 @@ public class PageBase {
      * @exception IndexOutOfBoundsException: it points out an attempt to access or manipulate an element at an invalid index position within a collection or array.
      * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
      * */
-    public void waitForChargedElementsOfAWebElementList(List<WebElement> elementsList){
+    public synchronized void waitForChargedElementsOfAWebElementList(List<WebElement> elementsList){
         String MESSAGE_TO_REJECTED_EXECUTION_EXCEPTION = "RejectedExecutionException occurred, indicating that a task submission to an executor has been rejected for execution.";
 
         try {
@@ -258,7 +269,7 @@ public class PageBase {
      * @exception NoSuchElementException: It points out that element can't be found, likely an irregular locator or delay charge.
      * @exception TimeoutException: It refers the action does not accomplish during to the wait expected.
      * */
-    public void waitAlert(){
+    public synchronized void waitAlert(){
         try {
             try {
                 logger.info("Wait for alert");
@@ -269,6 +280,8 @@ public class PageBase {
             }
         }catch (TimeoutException e){
             handleException(MESSAGE_TO_TIME_OUT_EXCEPTION,e);
+        }catch (WebDriverException e){
+            handleException(MESSAGE_TO_WEB_DRIVER_EXCEPTION,e);
         }
 
     }
@@ -279,7 +292,7 @@ public class PageBase {
      * @exception ElementClickInterceptedException: Element has been intercepted, possibly other element no allowed the correct click.
      * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
      * */
-    public void clickWithWait(WebElement element){
+    public synchronized void clickWithWait(WebElement element){
         String MESSAGE_TO_ELEMENT_CLICK_INTERCEPTED_EXCEPTION = "Element has been intercepted, possibly other element no allowed the correct click";
 
         try {
@@ -298,7 +311,7 @@ public class PageBase {
     /**
      * Description: Switch from main tab to another tab.
      */
-    public void switchToTab(){
+    public synchronized void switchToTab(){
         String mainWindowHandle = driver.getWindowHandle();
         for (String windowHandle : driver.getWindowHandles()) {
             if (!windowHandle.equals(mainWindowHandle)) {
@@ -316,7 +329,7 @@ public class PageBase {
      * @param valueToSearch Text value of the WebElement to search.
      * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
      * */
-    public void selectListValue(List<WebElement> list, String valueToSearch){
+    public synchronized void selectListValue(List<WebElement> list, String valueToSearch){
         int sizeList = list.size();
         int x = 0;
 
@@ -345,7 +358,7 @@ public class PageBase {
      * @param index It indicates the position of the web element.
      * @exception IndexOutOfBoundsException: The operation encountered an IndexOutOfBoundsException, indicating an attempt to access or manipulate an element at an invalid index position within a collection or array.
      * */
-    public void clickOnSection(List<WebElement> sections,int index){
+    public synchronized void clickOnSection(List<WebElement> sections,int index){
         try {
             waitForChargedElementsOfAWebElementList(sections);
             scroll(sections.get(index));
@@ -354,6 +367,8 @@ public class PageBase {
             handleException(MESSAGE_TO_INDEX_OUT_OF_BOUNDS_EXCEPTION,e);
         }catch (NoSuchSessionException e){
             handleException(MESSAGE_TO_NO_SUCH_ELEMENT_EXCEPTION,e);
+        }catch (WebDriverException e){
+            handleException(MESSAGE_TO_WEB_DRIVER_EXCEPTION,e);
         }
     }
 
@@ -363,7 +378,7 @@ public class PageBase {
      * @param day number of day searched.
      * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
      * */
-    public void selectDay(List<WebElement> daysList, String day){
+    public synchronized void selectDay(List<WebElement> daysList, String day){
         int sizeList = daysList.size();
         int x = 0;
         logger.info("Searching day");
@@ -390,7 +405,7 @@ public class PageBase {
      * Description: It does double-click on an element.
      * @param element WebElement target to do double-click.
      * */
-    public void doubleClick(WebElement element){
+    public synchronized void doubleClick(WebElement element){
         Actions actions = new Actions(driver);
         actions.moveToElement(element)
                 .doubleClick()
@@ -403,7 +418,7 @@ public class PageBase {
      * Description: It does right-click on an element.
      * @param element WebElement target to do right-click.
      * */
-    public void rightClick(WebElement element){
+    public synchronized void rightClick(WebElement element){
         Actions actions = new Actions(driver);
         actions.moveToElement(element)
                 .contextClick()
@@ -419,7 +434,7 @@ public class PageBase {
      * @exception MoveTargetOutOfBoundsException: It is indicating that the target element cannot be moved to the specified coordinates.
      * @exception ElementNotInteractableException: Its possibles causes include elements being hidden, disabled, overlapped by other elements, or located outside the viewport.
      * */
-    public void moveElementToCoordinates(WebElement element, float xCoordinate, float yCoordinate){
+    public synchronized void moveElementToCoordinates(WebElement element, float xCoordinate, float yCoordinate){
         Actions actions = new Actions(driver);
         try {
             try {
@@ -445,7 +460,7 @@ public class PageBase {
      * @exception ElementNotInteractableException: Its possibles causes include elements being hidden, disabled, overlapped by other elements, or located outside the viewport.
      * @exception IndexOutOfBoundsException: The operation encountered an IndexOutOfBoundsException, indicating an attempt to access or manipulate an element at an invalid index position within a collection or array.
      * */
-    public void moveClickerToElement(WebElement element){
+    public synchronized void moveClickerToElement(WebElement element){
         try {
             try {
                 Actions actions = new Actions(driver);
@@ -467,7 +482,7 @@ public class PageBase {
      * @param targetElement WebElement target to drop sourceElement.
      * @exception ElementNotInteractableException: Its possibles causes include elements being hidden, disabled, overlapped by other elements, or located outside the viewport.
      * */
-    public void dragDropMoveElementToTarget(WebElement sourceElement, WebElement targetElement){
+    public synchronized void dragDropMoveElementToTarget(WebElement sourceElement, WebElement targetElement){
         Actions actions = new Actions(driver);
         try {
             logger.info("Drag and Drop element to element: " + targetElement);
@@ -486,7 +501,7 @@ public class PageBase {
      * @param sizeY It obtains the desired Y value.
      * @exception MoveTargetOutOfBoundsException: It is indicating that the target element cannot be moved or resize to the specified coordinates.
      * */
-    public void resizeElement(WebElement element, int sizeX, int sizeY){
+    public synchronized void resizeElement(WebElement element, int sizeX, int sizeY){
         Actions actions = new Actions(driver);
         try {
             logger.info("Resize element: " + element + " size X: " + sizeX + " size Y: " + sizeY);
@@ -508,7 +523,7 @@ public class PageBase {
      * @return The text obtain of element.
      * @exception IndexOutOfBoundsException: it points out an attempt to access or manipulate an element at an invalid index position within a collection or array.
      * */
-    public String getElementTextAccordingToPositionReceived(List<WebElement> elements,int position){
+    public synchronized String getElementTextAccordingToPositionReceived(List<WebElement> elements,int position){
         if (elements.size() != 0){
             try{
                 WebElement element = elements.get(position);
@@ -529,7 +544,7 @@ public class PageBase {
      * @return The text obtain of element.
      * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
      * */
-    public String getElementTextWithWait(WebElement element){
+    public synchronized String getElementTextWithWait(WebElement element){
         try {
             String elementText = element.getText();
 
@@ -548,7 +563,7 @@ public class PageBase {
      * @return Attribute text.
      * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
      * */
-    public String getElementAttribute(WebElement element, String attribute){
+    public synchronized String getElementAttribute(WebElement element, String attribute){
         try {
             String elementAttribute = element.getAttribute(attribute);
             logger.info("Attribute obtained: " + elementAttribute + "of element: " + element);
@@ -564,7 +579,7 @@ public class PageBase {
      * @param textWithLetters Text that its letters will be deleted.
      * @return a new string but without the letters.
      * */
-    public String deleteAllLetters(String textWithLetters){
+    public synchronized String deleteAllLetters(String textWithLetters){
         logger.info("All the letters in this string: " + textWithLetters + "were deleted");
         return textWithLetters.replaceAll("[a-zA-Z]","");
     }
@@ -575,7 +590,7 @@ public class PageBase {
      * @return a new string without a value type float or double.
      * @exception NumberFormatException: Method expects a string representation of a numeric value.
      * */
-    public String changeFormatOfStringToReturnTextWithoutValueTypeFloat(String textToChangeFormat){
+    public synchronized String changeFormatOfStringToReturnTextWithoutValueTypeFloat(String textToChangeFormat){
         try {
             logger.info("String format was changed to return value: " + textToChangeFormat + " without value tpe float");
             return String.format("%.0f", Double.parseDouble(deleteAllLetters(textToChangeFormat)));
@@ -592,7 +607,7 @@ public class PageBase {
      * @return The CSS property name value as text.
      * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
      * */
-    public String getElementCssValue(WebElement element, String propertyName){
+    public synchronized String getElementCssValue(WebElement element, String propertyName){
         try {
             String elementCSS = element.getCssValue(propertyName);
             logger.info("Css value: " + elementCSS + " obtain with this property name: " + propertyName + " suing this element: " + element);
@@ -609,7 +624,7 @@ public class PageBase {
      * @exception IndexOutOfBoundsException: it points out an attempt to access or manipulate an element at an invalid index position within a collection or array.
      * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
      * */
-    public boolean hasElementBeenSelected(WebElement element){
+    public synchronized boolean hasElementBeenSelected(WebElement element){
         try {
             try{
                 boolean elementSelected = element.isSelected();
@@ -630,7 +645,7 @@ public class PageBase {
      * @return true if the element is enabled.
      * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
      * */
-    public boolean isElementEnabled(WebElement element){
+    public synchronized boolean isElementEnabled(WebElement element){
         try {
             boolean elementEnabled = element.isEnabled();
             logger.info("Is element: " + element + "enabled: " + elementEnabled);
@@ -647,7 +662,7 @@ public class PageBase {
      * @return true if the element is displayed.
      * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
      * */
-    public boolean isElementDisplayedWithWait(WebElement element){
+    public synchronized boolean isElementDisplayedWithWait(WebElement element){
         try {
             boolean elementDisplayed = element.isDisplayed();
             waitForVisibleElement(element);
@@ -666,7 +681,7 @@ public class PageBase {
      * @return true if the desired Element is visible.
      * @exception IndexOutOfBoundsException: it points out an attempt to access or manipulate an element at an invalid index position within a collection or array.
      * */
-    public boolean isElementVisibleAccordingToPositionReceivedOfList(List<WebElement> elements, int position){
+    public synchronized boolean isElementVisibleAccordingToPositionReceivedOfList(List<WebElement> elements, int position){
         if (elements.size() != 0){
             try{
                 WebElement element = elements.get(position);
@@ -692,7 +707,7 @@ public class PageBase {
      * @exception IndexOutOfBoundsException: it points out an attempt to access or manipulate an element at an invalid index position within a collection or array.
      * @exception WebDriverException: it points out when an unexpected error occurred while interacting with the WebDriver.
      * */
-    public boolean doesElementContainExpectedClass(WebElement listItem, String expectedClass) {
+    public synchronized boolean doesElementContainExpectedClass(WebElement listItem, String expectedClass) {
         String actualClass = listItem.getAttribute("class");
         boolean elementContainsExpectedClass = actualClass.contains(expectedClass);
 
@@ -708,18 +723,22 @@ public class PageBase {
      * @exception StaleElementReferenceException: Element could have been located and referenced, but then changes state.
      * @exception TimeoutException: It refers the action does not accomplish during to the wait expected.
      * */
-    public boolean searchForVisibleElement(List<WebElement> elementsList, String value){
+    public synchronized boolean searchForVisibleElement(List<WebElement> elementsList, String value){
         String MESSAGE_TO_STALE_ELEMENT_REFERENCE_EXCEPTION = "Element could have been located and referenced, but then changes state or is removed from the DOM before an action is performed on it.";
 
         try{
             try{
-                for (WebElement element: elementsList) {
-                    logger.info("Element: " + element);
-                    if (Objects.equals(element.getText(), value)){
-                        logger.info("is visible");
-                        return true;
+                try {
+                    for (WebElement element: elementsList) {
+                        logger.info("Element: " + element);
+                        if (Objects.equals(element.getText(), value)){
+                            logger.info("is visible");
+                            return true;
+                        }
+                        logger.info("is not visible");
                     }
-                    logger.info("is not visible");
+                }catch (NoSuchSessionException e){
+                    handleException(NO_SUCH_SESSION_EXCEPTION,e);
                 }
             }catch (StaleElementReferenceException e){
                 handleException(MESSAGE_TO_STALE_ELEMENT_REFERENCE_EXCEPTION,e);
@@ -736,7 +755,7 @@ public class PageBase {
      * @return True if the elements are visible.
      * @exception TimeoutException: It refers the action does not accomplish during to the wait expected.
      * */
-    public boolean validateAllListItemsAreVisible(List<WebElement> elementList){
+    public synchronized boolean validateAllListItemsAreVisible(List<WebElement> elementList){
         logger.info("Method: Validate all items are visible ----------Starting----------");
         int c = 0;
         try {
@@ -759,7 +778,7 @@ public class PageBase {
      * @return Return true if the HTTP response code is 200.
      * @exception MalformedURLException: it indicates the URL is incorrect.
      * */
-    public boolean validateHTTPS_Response(String src) throws IOException {
+    public synchronized boolean validateHTTPS_Response(String src) throws IOException {
         String MESSAGE_MALFORMED_URL_EXCEPTION = "URL is incorrect";
         try {
             HttpURLConnection http = (HttpURLConnection) (new URL(src).openConnection());
@@ -779,17 +798,26 @@ public class PageBase {
      * @param elementList List of WebElements.
      * @return true if the HTTP WebElements response is 200.
      * */
-    public boolean validateResponseCodeIs200inAllAList(List<WebElement> elementList) throws IOException {
+    public synchronized boolean validateResponseCodeIs200inAllAList(List<WebElement> elementList) throws IOException {
         logger.info("Method: Validate response code is 200 in all a list ----------Starting----------");
-        int c = 0;
-        for (WebElement element : elementList){
-            scroll(element);
-            if (validateHTTPS_Response(element.getAttribute("src"))){
-                logger.info("HTTP Code of element: " + element + " is 200: True");
-                c++;
+        try{
+            try {
+                int c = 0;
+                for (WebElement element : elementList){
+                    scroll(element);
+                    if (validateHTTPS_Response(element.getAttribute("src"))){
+                        logger.info("HTTP Code of element: " + element + " is 200: True");
+                        c++;
+                    }
+                }
+                return c == elementList.size();
+            }catch (NoSuchSessionException e){
+                handleException(NO_SUCH_SESSION_EXCEPTION,e);
             }
+        }catch (WebDriverException e){
+            handleException(MESSAGE_TO_WEB_DRIVER_EXCEPTION,e);
         }
-        return c == elementList.size();
+        return false;
     }
 
     /**
@@ -797,7 +825,7 @@ public class PageBase {
      * @param elementsList List of WebElements.
      * @return Return the position of the desired element as a number.
      * */
-    public int getPositionOfOneElementInAList(List<WebElement> elementsList, String value){
+    public synchronized int getPositionOfOneElementInAList(List<WebElement> elementsList, String value){
         int count = 0;
         for (WebElement element: elementsList) {
             if (Objects.equals(element.getText(), value)){
@@ -815,7 +843,7 @@ public class PageBase {
      * @return Return the position of the WebElement where it found the value 1.
      * @exception IndexOutOfBoundsException: it points out an attempt to access or manipulate an element at an invalid index position within a collection or array.
      * */
-    public int searchNumberOne(List<WebElement> dateOfDaysList){
+    public synchronized int searchNumberOne(List<WebElement> dateOfDaysList){
         try {
             for (int i = 0; i<= dateOfDaysList.size(); i++){
                 if (Objects.equals(dateOfDaysList.get(i).getText(), "1")){
@@ -835,7 +863,7 @@ public class PageBase {
      * @param valueToDeduct It is the value desired to deduct.
      * @return Return the result subtracted Between the targetParameter and ValueToDeduct as a float.
      * */
-    public float subtractQuantityToParameter(float targetParameter,float valueToDeduct){
+    public synchronized float subtractQuantityToParameter(float targetParameter,float valueToDeduct){
         float result = targetParameter - valueToDeduct;
         logger.info("Subtract: " + targetParameter + " with: " + valueToDeduct + " = " + result);
         return result;
@@ -846,7 +874,7 @@ public class PageBase {
      * @param daysList List of WebElement that contains the days of a month.
      * @return Return a new list beginning since the number one value of a month days.
      * */
-    public List<WebElement> addElementsToList(List<WebElement> daysList){
+    public synchronized List<WebElement> addElementsToList(List<WebElement> daysList){
         int index = searchNumberOne(daysList);
 
         logger.info("Creating a new WebElement List");

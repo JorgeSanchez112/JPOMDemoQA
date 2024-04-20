@@ -17,7 +17,7 @@ public class DatePickerPageTest extends TestBase {
     @BeforeMethod(groups = {"UI","Smoke"})
     public void initializeClass(){
         logger.info("-------------------Initializing DatePickerPageTest Class------------------");
-        datePickerPage = homePage.clickOnSectionWidgets(getDriver()).clickOnDatePicker(getDriver());
+        datePickerPage = homePage.clickOnSectionWidgets().clickOnDatePicker();
         logger.info("-------------------Starting Test-----------------------");
     }
 

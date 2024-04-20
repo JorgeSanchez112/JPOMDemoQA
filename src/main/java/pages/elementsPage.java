@@ -25,48 +25,48 @@ public class ElementsPage extends PageBase {
         return deployed_element_exercises.size();
     }
 
-    public TextBoxPage clickOnTextBoxSection(WebDriver driver1){
+    public synchronized TextBoxPage clickOnTextBoxSection(){
         clickOnSection(deployed_element_exercises,0);
-        return new TextBoxPage(driver1);
+        return new TextBoxPage(driver);
     }
 
-    public CheckBoxPage clickOnCheckBoxSection(WebDriver driver1){
+    public synchronized CheckBoxPage clickOnCheckBoxSection(){
         clickOnSection(deployed_element_exercises,1);
-        return new CheckBoxPage(driver1);
+        return new CheckBoxPage(driver);
     }
 
-    public RadioButtonPage clickOnRadioButtonSection(WebDriver driver1){
+    public synchronized RadioButtonPage clickOnRadioButtonSection(){
         clickOnSection(deployed_element_exercises,2);
-        return new RadioButtonPage(driver1);
+        return new RadioButtonPage(driver);
     }
 
-    public WebTablesPage clickOnWebTablesSection(WebDriver driver1){
+    public synchronized WebTablesPage clickOnWebTablesSection(){
         clickOnSection(deployed_element_exercises,3);
-        return new WebTablesPage(driver1);
+        return new WebTablesPage(driver);
     }
 
-    public ButtonsPage clickOnButtonsSection(WebDriver driver1){
+    public synchronized ButtonsPage clickOnButtonsSection(){
         clickOnSection(deployed_element_exercises,4);
-        return new ButtonsPage(driver1);
+        return new ButtonsPage(driver);
     }
 
-    public LinksPage clickOnLinksSection(WebDriver driver1){
+    public synchronized LinksPage clickOnLinksSection(){
         clickOnSection(deployed_element_exercises,5);
-        return new LinksPage(driver1);
+        return new LinksPage(driver);
     }
 
-    public BrokenLinksPage clickOnBrokenLinksImageSection(WebDriver driver1){
+    public synchronized BrokenLinksPage clickOnBrokenLinksImageSection(){
         clickOnSection(deployed_element_exercises,6);
-        return new BrokenLinksPage(driver1);
+        return new BrokenLinksPage(driver);
     }
 
-    public UploadDownloadPage clickOnUploadDownloadSection(WebDriver driver1){
+    public synchronized UploadDownloadPage clickOnUploadDownloadSection(){
         clickOnSection(deployed_element_exercises,7);
-        return new UploadDownloadPage(driver1);
+        return new UploadDownloadPage(driver);
     }
 
-    public DynamicPropertiesPage clickOnDynamicPropertiesSection(WebDriver driver1) {
+    public synchronized DynamicPropertiesPage clickOnDynamicPropertiesSection() {
         clickOnSection(deployed_element_exercises, 8);
-        return new DynamicPropertiesPage(driver1);
+        return new DynamicPropertiesPage(driver);
     }
 }

@@ -18,7 +18,7 @@ public class DraggablePageTest extends TestBase {
     @BeforeMethod(groups = {"UI","Functional"})
     public void initializeClass(){
         logger.info("-------------------Initializing DraggablePageTest Class------------------");
-        draggablePage = homePage.clickOnSectionInteractions(getDriver()).clickOnDragabble(getDriver());
+        draggablePage = homePage.clickOnSectionInteractions().clickOnDragabble();
         logger.info("-------------------Starting Test-----------------------");
     }
 

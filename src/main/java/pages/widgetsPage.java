@@ -25,48 +25,48 @@ public class WidgetsPage extends PageBase {
         return deployed_form_exercise.size();
     }
 
-    public AccordianPage clickOnAccordian(WebDriver driver1){
+    public synchronized AccordianPage clickOnAccordian(){
         clickOnSection(deployed_form_exercise,0);
-        return new AccordianPage(driver1);
+        return new AccordianPage(driver);
     }
 
-    public AutoCompletePage clickOnAutoComplete(WebDriver driver1){
+    public synchronized AutoCompletePage clickOnAutoComplete(){
         clickOnSection(deployed_form_exercise,1);
-        return new AutoCompletePage(driver1);
+        return new AutoCompletePage(driver);
     }
 
-    public DatePickerPage clickOnDatePicker(WebDriver driver1){
+    public synchronized DatePickerPage clickOnDatePicker(){
         clickOnSection(deployed_form_exercise,2);
-        return new DatePickerPage(driver1);
+        return new DatePickerPage(driver);
     }
 
-    public SliderPage clickOnSlider(WebDriver driver1){
+    public synchronized SliderPage clickOnSlider(){
         clickOnSection(deployed_form_exercise,3);
-        return new SliderPage(driver1);
+        return new SliderPage(driver);
     }
 
-    public ProgressBarPage clickOnProgressBar(WebDriver driver1){
+    public synchronized ProgressBarPage clickOnProgressBar(){
         clickOnSection(deployed_form_exercise,4);
-        return new ProgressBarPage(driver1);
+        return new ProgressBarPage(driver);
     }
 
-    public TabsPage clickOnTabs(WebDriver driver1){
+    public synchronized TabsPage clickOnTabs(){
         clickOnSection(deployed_form_exercise,5);
-        return new TabsPage(driver1);
+        return new TabsPage(driver);
     }
 
-    public ToolTipsPage clickOnToolTips(WebDriver driver1){
+    public synchronized ToolTipsPage clickOnToolTips(){
         clickOnSection(deployed_form_exercise,6);
-        return new ToolTipsPage(driver1);
+        return new ToolTipsPage(driver);
     }
 
-    public MenuPage clickOnMenu(WebDriver driver1){
+    public synchronized MenuPage clickOnMenu(){
         clickOnSection(deployed_form_exercise,7);
-        return new MenuPage(driver1);
+        return new MenuPage(driver);
     }
 
-    public SelectMenuPage clickOnSelectMenu(WebDriver driver1){
+    public synchronized SelectMenuPage clickOnSelectMenu(){
         clickOnSection(deployed_form_exercise,8);
-        return new SelectMenuPage(driver1);
+        return new SelectMenuPage(driver);
     }
 }

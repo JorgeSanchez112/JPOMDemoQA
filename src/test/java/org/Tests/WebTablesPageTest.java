@@ -17,7 +17,7 @@ public class WebTablesPageTest extends TestBase {
     @BeforeMethod(groups = {"UI","Smoke"})
     public void initializeClass(){
         logger.info("-------------------Initializing WebTablesPageTest Class------------------");
-        webTablesPage = homePage.clickOnSectionElements(getDriver()).clickOnWebTablesSection(getDriver());
+        webTablesPage = homePage.clickOnSectionElements().clickOnWebTablesSection();
         logger.info("-------------------Starting Test-----------------------");
     }
 
