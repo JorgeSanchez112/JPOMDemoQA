@@ -101,13 +101,13 @@ public class BSLoginPage extends PageBase {
         return isElementDisplayedWithWait(errorCredentialsMessage);
     }
 
-    public BSRegisterPage clickOnNewUserButton(){
+    public synchronized BSRegisterPage clickOnNewUserButton(){
         scroll(newUserButton);
         clickWithWait(newUserButton);
         return new BSRegisterPage(driver);
     }
 
-    public BSProfilePage userLogin(String username,String password){
+    public synchronized BSProfilePage userLogin(String username,String password){
         waitForVisibleElement(pageTitle);
         typeOnUsernameInput(username);
         typeOnPasswordInput(password);

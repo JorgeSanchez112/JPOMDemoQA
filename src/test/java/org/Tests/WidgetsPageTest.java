@@ -11,7 +11,7 @@ public class WidgetsPageTest extends TestBase {
     private final Logger logger = LogManager.getLogger(WidgetsPageTest.class);
 
     @BeforeMethod(groups = {"Functional"})
-    public void initializeClass(){
+    public synchronized void initializeClass(){
         logger.info("-------------------Initializing WidgetsPageTest Class------------------");
         widgetsPage = homePage.clickOnSectionWidgets();
         logger.info("-------------------Starting Test-----------------------");

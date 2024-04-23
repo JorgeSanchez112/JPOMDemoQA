@@ -13,7 +13,7 @@ public class LinksPageTest extends TestBase {
     private final String URL_HOME = "https://demoqa.com/";
 
     @BeforeMethod(groups = {"UI","Smoke","Functional"})
-    public void initializeClass(){
+    public synchronized void initializeClass(){
         logger.info("-------------------Initializing LinksPageTest Class------------------");
         linksPage = homePage.clickOnSectionElements().clickOnLinksSection();
         logger.info("-------------------Starting Test-----------------------");

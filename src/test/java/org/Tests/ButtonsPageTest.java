@@ -11,7 +11,7 @@ public class ButtonsPageTest extends TestBase {
     private final Logger logger = LogManager.getLogger(ButtonsPageTest.class);
 
     @BeforeMethod(groups = {"UI","Functional"})
-    public void initializeClass(){
+    public synchronized void initializeClass(){
         logger.info("-------------------Initializing ButtonsPageTest Class------------------");
         buttonsPage = homePage.clickOnSectionElements().clickOnButtonsSection();
         logger.info("-------------------Starting Test-----------------------");

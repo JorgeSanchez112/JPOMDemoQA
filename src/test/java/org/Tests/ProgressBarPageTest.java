@@ -12,7 +12,7 @@ public class ProgressBarPageTest extends TestBase {
     private final String PAGE_TITLE = "Progress Bar";
 
     @BeforeMethod(groups = {"UI","Smoke","Functional"})
-    public void initializeClass(){
+    public synchronized void initializeClass(){
         logger.info("-------------------Initializing ProgressBarPageTest Class------------------");
         progressBarPage = homePage.clickOnSectionWidgets().clickOnProgressBar();
         logger.info("-------------------Starting Test-----------------------");

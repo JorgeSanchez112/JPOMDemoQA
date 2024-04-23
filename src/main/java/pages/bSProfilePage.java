@@ -280,31 +280,31 @@ public class BSProfilePage extends PageBase {
         return isElementEnabled(nextButton);
     }
 
-    public BSLoginPage clickOnLoginLink(){
+    public synchronized BSLoginPage clickOnLoginLink(){
         clickOnSection(linkRegisterAndLogin,0);
         return new BSLoginPage(driver);
     }
 
-    public BSRegisterPage clickOnRegisterLink(){
+    public synchronized BSRegisterPage clickOnRegisterLink(){
         clickOnSection(linkRegisterAndLogin,1);
         return new BSRegisterPage(driver);
     }
 
-    public BSLoginPage clickOnLogOutButton(){
+    public synchronized BSLoginPage clickOnLogOutButton(){
         waitForVisibleElement(logOutButton);
         scroll(logOutButton);
         clickWithWait(logOutButton);
         return new BSLoginPage(driver);
     }
 
-    public BookStorePage clickOnGoToBookStoreButton(){
+    public synchronized BookStorePage clickOnGoToBookStoreButton(){
         waitForVisibleElement(goToBookStoreButton);
         scroll(goToBookStoreButton);
         clickWithWait(goToBookStoreButton);
         return new BookStorePage(driver);
     }
 
-    public BSLoginPage deleteAccount(){
+    public synchronized BSLoginPage deleteAccount(){
         clickOnDeleteAccountButton();
         acceptAlertWithWait();
         return new BSLoginPage(driver);

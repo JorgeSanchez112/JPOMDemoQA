@@ -11,7 +11,7 @@ public class CheckBoxPageTest extends TestBase {
     private final Logger logger = LogManager.getLogger(CheckBoxPageTest.class);
 
     @BeforeMethod(groups = {"UI","Functional"})
-    public void initializeClass(){
+    public synchronized void initializeClass(){
         logger.info("-------------------Initializing CheckBoxPageTest Class------------------");
         checkBoxPage = homePage.clickOnSectionElements().clickOnCheckBoxSection();
         logger.info("-------------------Starting Test-----------------------");

@@ -24,27 +24,27 @@ public class AlertsFrameWindowsPage extends PageBase {
         return driver.getCurrentUrl();
     }
 
-    public BrowserWindowsPage clickOnBrowserWindows(){
+    public synchronized BrowserWindowsPage clickOnBrowserWindows(){
         clickOnSection(deployed_form_exercise,0);
         return new BrowserWindowsPage(driver);
     }
 
-    public AlertsPage clickOnAlerts(){
+    public synchronized AlertsPage clickOnAlerts(){
         clickOnSection(deployed_form_exercise,1);
         return new AlertsPage(driver);
     }
 
-    public FramesPage clickOnFrames(){
+    public synchronized FramesPage clickOnFrames(){
         clickOnSection(deployed_form_exercise,2);
         return new FramesPage(driver);
     }
 
-    public NestedFramesPage clickOnNestedFrames(){
+    public synchronized NestedFramesPage clickOnNestedFrames(){
         clickOnSection(deployed_form_exercise,3);
         return new NestedFramesPage(driver);
     }
 
-    public ModalDialogsPage clickOnModalDialogs(){
+    public synchronized ModalDialogsPage clickOnModalDialogs(){
         clickOnSection(deployed_form_exercise,4);
         return new ModalDialogsPage(driver);
     }

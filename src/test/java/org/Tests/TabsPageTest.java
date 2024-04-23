@@ -11,7 +11,7 @@ public class TabsPageTest extends TestBase {
     private final Logger logger = LogManager.getLogger(TabsPageTest.class);
 
     @BeforeMethod(groups = {"UI","Functional"})
-    public void initializeClass(){
+    public synchronized void initializeClass(){
         logger.info("-------------------Initializing TabsPageTest Class------------------");
         tabsPage = homePage.clickOnSectionWidgets().clickOnTabs();
         logger.info("-------------------Starting Test-----------------------");

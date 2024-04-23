@@ -12,7 +12,7 @@ public class FramesPageTest extends TestBase {
     private final String FRAME_TEXT = "This is a sample page";
 
     @BeforeMethod(groups = {"UI","Functional"})
-    public void initializeClass(){
+    public synchronized void initializeClass(){
         logger.info("-------------------Initializing FramesPageTest Class------------------");
         framesPage = homePage.clickOnSectionAlerts_Frame_Windows().clickOnFrames();
         logger.info("-------------------Starting Test-----------------------");

@@ -11,7 +11,7 @@ public class NestedFramesPageTest extends TestBase {
     private final Logger logger = LogManager.getLogger(NestedFramesPageTest.class);
 
     @BeforeMethod(groups = {"UI","Functional"})
-    public void initializeClass(){
+    public synchronized void initializeClass(){
         logger.info("-------------------Initializing NestedFramesPageTest Class------------------");
         nestedFramesPage = homePage.clickOnSectionAlerts_Frame_Windows().clickOnNestedFrames();
         logger.info("-------------------Starting Test-----------------------");

@@ -23,7 +23,7 @@ public class PracticeFormPageTest extends TestBase {
 
 
     @BeforeMethod(groups = {"UI","Functional","Smoke"})
-    public void initializeClass(){
+    public synchronized void initializeClass(){
         logger.info("-------------------Initializing PracticeFormPageTest Class------------------");
         practiceFormPage = homePage.clickOnSectionForms().clickOnPracticeFormSection();
         logger.info("-------------------Starting Test-----------------------");

@@ -18,7 +18,7 @@ public class BSProfilePageTest extends TestBase {
     private final String PASSWORD = "P@ssw0rd";
 
     @BeforeMethod(groups = {"UI","Smoke","Integration","Functional"})
-    public void initializeClass(){
+    public synchronized void initializeClass(){
         logger.info("-------------------Initializing BSProfilePageTest Class------------------");
         bsProfilePage = homePage.clickOnSectionBookStoreApplication().clickOnProfile();
         logger.info("-------------------Starting Test-----------------------");

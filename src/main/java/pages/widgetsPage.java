@@ -25,47 +25,47 @@ public class WidgetsPage extends PageBase {
         return deployed_form_exercise.size();
     }
 
-    public AccordianPage clickOnAccordian(){
+    public synchronized AccordianPage clickOnAccordian(){
         clickOnSection(deployed_form_exercise,0);
         return new AccordianPage(driver);
     }
 
-    public AutoCompletePage clickOnAutoComplete(){
+    public synchronized AutoCompletePage clickOnAutoComplete(){
         clickOnSection(deployed_form_exercise,1);
         return new AutoCompletePage(driver);
     }
 
-    public DatePickerPage clickOnDatePicker(){
+    public synchronized DatePickerPage clickOnDatePicker(){
         clickOnSection(deployed_form_exercise,2);
         return new DatePickerPage(driver);
     }
 
-    public SliderPage clickOnSlider(){
+    public synchronized SliderPage clickOnSlider(){
         clickOnSection(deployed_form_exercise,3);
         return new SliderPage(driver);
     }
 
-    public ProgressBarPage clickOnProgressBar(){
+    public synchronized ProgressBarPage clickOnProgressBar(){
         clickOnSection(deployed_form_exercise,4);
         return new ProgressBarPage(driver);
     }
 
-    public TabsPage clickOnTabs(){
+    public synchronized TabsPage clickOnTabs(){
         clickOnSection(deployed_form_exercise,5);
         return new TabsPage(driver);
     }
 
-    public ToolTipsPage clickOnToolTips(){
+    public synchronized ToolTipsPage clickOnToolTips(){
         clickOnSection(deployed_form_exercise,6);
         return new ToolTipsPage(driver);
     }
 
-    public MenuPage clickOnMenu(){
+    public synchronized MenuPage clickOnMenu(){
         clickOnSection(deployed_form_exercise,7);
         return new MenuPage(driver);
     }
 
-    public SelectMenuPage clickOnSelectMenu(){
+    public synchronized SelectMenuPage clickOnSelectMenu(){
         clickOnSection(deployed_form_exercise,8);
         return new SelectMenuPage(driver);
     }

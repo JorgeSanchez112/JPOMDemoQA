@@ -161,7 +161,7 @@ public class BSRegisterPage extends PageBase {
         return  isElementDisplayedWithWait(recaptchaValidationIcon);
     }
 
-    public BSLoginPage clickOnBackToLogin(){
+    public synchronized BSLoginPage clickOnBackToLogin(){
         scroll(loginButton);
         clickWithWait(loginButton);
         return new BSLoginPage(driver);

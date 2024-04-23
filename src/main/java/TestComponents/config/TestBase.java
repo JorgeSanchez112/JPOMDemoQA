@@ -14,7 +14,7 @@ import java.util.Properties;
 public class TestBase {
 
     protected Logger logger = LogManager.getLogger(TestBase.class);
-    protected static ThreadLocal<WebDriver> webDriverThreadLocal = new ThreadLocal<>();
+    private final ThreadLocal<WebDriver> webDriverThreadLocal = new ThreadLocal<>();
     public static Properties prop;
 
     protected HomePage homePage;
@@ -59,9 +59,6 @@ public class TestBase {
     protected BSIBookPage bsiBookPage;
     protected BSAPIPage bsapiPage;
 
-    //Draggable
-    //DynamicProperties
-
     public TestBase() {
         try {
             prop = new Properties();
@@ -100,18 +97,18 @@ public class TestBase {
         WebDriver driver = BrowserManager.initialization(browserName);
         setDriver(driver);
         logger.info("Before Test Thread ID: "+Thread.currentThread().getId());
-        homePage = new HomePage(getDriver());
         logger.info("Initializing homePage Class");
+        homePage = new HomePage(getDriver());
         hideFooterAd(getDriver());
     }
 
     @AfterMethod(groups = {"UI","Smoke","Integration","Functional"})
-    public void tearDown(){
+    public synchronized void tearDown(){
         try {
             getDriver().quit();
             logger.info("After Test Thread ID: "+Thread.currentThread().getId());
-            webDriverThreadLocal.remove();
             logger.info("Close Test Case and driver");
+            webDriverThreadLocal.remove();
         } catch (WebDriverException e) {
             logger.error("has happened an error with the tearDown method: " + e.getMessage());
         }

@@ -13,7 +13,7 @@ public class RadioButtonPageTest extends TestBase {
     private final String IMPRESSIVE_RADIO_BUTTON = "Impressive";
 
     @BeforeMethod(groups = {"UI","Functional"})
-    public void initializeClass(){
+    public synchronized void initializeClass(){
         logger.info("-------------------Initializing RadioButtonPageTest Class------------------");
         radioButtonPage = homePage.clickOnSectionElements().clickOnRadioButtonSection();
         logger.info("-------------------Starting Test-----------------------");

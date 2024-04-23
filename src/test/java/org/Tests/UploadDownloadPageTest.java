@@ -11,7 +11,7 @@ public class UploadDownloadPageTest extends TestBase {
     private final Logger logger = LogManager.getLogger(UploadDownloadPageTest.class);
 
     @BeforeMethod(groups = {"UI","Functional"})
-    public void initializeClass(){
+    public synchronized void initializeClass(){
         logger.info("-------------------Initializing UploadDownloadPageTest Class------------------");
         uploadDownloadPage = homePage.clickOnSectionElements().clickOnUploadDownloadSection();
         logger.info("-------------------Starting Test-----------------------");

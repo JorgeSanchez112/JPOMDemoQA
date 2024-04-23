@@ -25,47 +25,47 @@ public class ElementsPage extends PageBase {
         return deployed_element_exercises.size();
     }
 
-    public TextBoxPage clickOnTextBoxSection(){
+    public synchronized TextBoxPage clickOnTextBoxSection(){
         clickOnSection(deployed_element_exercises,0);
         return new TextBoxPage(driver);
     }
 
-    public CheckBoxPage clickOnCheckBoxSection(){
+    public synchronized CheckBoxPage clickOnCheckBoxSection(){
         clickOnSection(deployed_element_exercises,1);
         return new CheckBoxPage(driver);
     }
 
-    public RadioButtonPage clickOnRadioButtonSection(){
+    public synchronized RadioButtonPage clickOnRadioButtonSection(){
         clickOnSection(deployed_element_exercises,2);
         return new RadioButtonPage(driver);
     }
 
-    public WebTablesPage clickOnWebTablesSection(){
+    public synchronized WebTablesPage clickOnWebTablesSection(){
         clickOnSection(deployed_element_exercises,3);
         return new WebTablesPage(driver);
     }
 
-    public ButtonsPage clickOnButtonsSection(){
+    public synchronized ButtonsPage clickOnButtonsSection(){
         clickOnSection(deployed_element_exercises,4);
         return new ButtonsPage(driver);
     }
 
-    public LinksPage clickOnLinksSection(){
+    public synchronized LinksPage clickOnLinksSection(){
         clickOnSection(deployed_element_exercises,5);
         return new LinksPage(driver);
     }
 
-    public BrokenLinksPage clickOnBrokenLinksImageSection(){
+    public synchronized BrokenLinksPage clickOnBrokenLinksImageSection(){
         clickOnSection(deployed_element_exercises,6);
         return new BrokenLinksPage(driver);
     }
 
-    public UploadDownloadPage clickOnUploadDownloadSection(){
+    public synchronized UploadDownloadPage clickOnUploadDownloadSection(){
         clickOnSection(deployed_element_exercises,7);
         return new UploadDownloadPage(driver);
     }
 
-    public DynamicPropertiesPage clickOnDynamicPropertiesSection() {
+    public synchronized DynamicPropertiesPage clickOnDynamicPropertiesSection() {
         clickOnSection(deployed_element_exercises, 8);
         return new DynamicPropertiesPage(driver);
     }

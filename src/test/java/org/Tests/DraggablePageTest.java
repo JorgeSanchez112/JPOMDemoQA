@@ -16,7 +16,7 @@ public class DraggablePageTest extends TestBase {
     private final String PX_MEASURER = "px";
 
     @BeforeMethod(groups = {"UI","Functional"})
-    public void initializeClass(){
+    public synchronized void initializeClass(){
         logger.info("-------------------Initializing DraggablePageTest Class------------------");
         draggablePage = homePage.clickOnSectionInteractions().clickOnDragabble();
         logger.info("-------------------Starting Test-----------------------");

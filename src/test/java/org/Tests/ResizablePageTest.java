@@ -16,7 +16,7 @@ public class ResizablePageTest extends TestBase {
     private final String PX_MEASURER = "px";
 
     @BeforeMethod(groups = {"UI","Functional"})
-    public void initializeClass(){
+    public synchronized void initializeClass(){
         logger.info("-------------------Initializing ResizablePageTest Class------------------");
         resizablePage = homePage.clickOnSectionInteractions().clickOnResizable();
         logger.info("-------------------Starting Test-----------------------");

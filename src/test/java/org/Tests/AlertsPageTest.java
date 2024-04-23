@@ -15,7 +15,7 @@ public class AlertsPageTest extends TestBase {
     private final Logger logger = LogManager.getLogger(AlertsPageTest.class);
 
     @BeforeMethod(groups = {"UI","Smoke","Functional"})
-    public void initializeClass(){
+    public synchronized void initializeClass(){
         logger.info("-------------------Initializing AlertsPageTest Class------------------");
         alertsPage = homePage.clickOnSectionAlerts_Frame_Windows().clickOnAlerts();
         logger.info("-------------------Starting Test-----------------------");

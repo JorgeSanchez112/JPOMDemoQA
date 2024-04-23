@@ -11,7 +11,7 @@ public class BSAPITest extends TestBase {
     private final Logger logger = LogManager.getLogger(BSAPITest.class);
 
     @BeforeMethod(groups = {"UI"})
-    public void initializeClass(){
+    public synchronized void initializeClass(){
         logger.info("-------------------Initializing BSAPITest Class------------------");
         bsapiPage = homePage.clickOnSectionBookStoreApplication().clickOnBookstoreApi();
         logger.info("-------------------Starting Test-----------------------");

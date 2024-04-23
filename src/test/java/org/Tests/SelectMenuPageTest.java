@@ -15,7 +15,7 @@ public class SelectMenuPageTest extends TestBase {
     private final Logger logger = LogManager.getLogger(SelectMenuPageTest.class);
 
     @BeforeMethod(groups = {"UI","Smoke"})
-    public void initializeClass(){
+    public synchronized void initializeClass(){
         logger.info("-------------------Initializing SelectMenuPageTest Class------------------");
         selectMenuPage = homePage.clickOnSectionWidgets().clickOnSelectMenu();
         logger.info("-------------------Starting Test-----------------------");

@@ -16,7 +16,7 @@ public class BSRegisterPageTest extends TestBase {
     private final String RGB_RED_COLOR = "rgb(220, 53, 69)";
 
     @BeforeMethod(groups = {"UI","Smoke","Functional"})
-    public void initializeClass(){
+    public synchronized void initializeClass(){
         logger.info("-------------------Initializing BSRegisterPageTest Class------------------");
         bsRegisterPage = homePage.clickOnSectionBookStoreApplication().clickOnLoginTab().clickOnNewUserButton();
         logger.info("-------------------Starting Test-----------------------");

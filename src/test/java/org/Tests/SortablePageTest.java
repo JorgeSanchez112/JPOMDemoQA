@@ -16,7 +16,7 @@ public class SortablePageTest extends TestBase {
     private final String FOUR = "Four";
 
     @BeforeMethod(groups = {"UI","Functional"})
-    public void initializeClassAndHidePublicity(){
+    public synchronized void initializeClassAndHidePublicity(){
         logger.info("-------------------Initializing SortablePageTest Class------------------");
         sortablePage = homePage.clickOnSectionInteractions().clickOnSortable();
         logger.info("-------------------Starting Test-----------------------");

@@ -10,8 +10,8 @@ import org.testng.annotations.Test;
 public class AlertsPageFrameWindowsPageTest extends TestBase {
     private final Logger logger = LogManager.getLogger(AlertsPageFrameWindowsPageTest.class);
 
-    @BeforeMethod(groups = {"Functional"})
-    public void initializeClass(){
+    @BeforeMethod
+    public synchronized void initializeClass(){
         logger.info("-------------------Initializing AccordianPageTest Class------------------");
         alertsFrameWindowsPage = homePage.clickOnSectionAlerts_Frame_Windows();
         logger.info("-------------------Starting Test-----------------------");
