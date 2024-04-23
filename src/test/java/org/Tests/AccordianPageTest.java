@@ -11,7 +11,7 @@ public class AccordianPageTest extends TestBase {
     private final Logger logger = LogManager.getLogger(AccordianPageTest.class);
 
     @BeforeMethod(groups = {"UI", "Smoke"})
-    public void initializeClass(){
+    public synchronized void initializeClass(){
         logger.info("-------------------Initializing AccordianPageTest Class------------------");
         accordianPage = homePage.clickOnSectionWidgets().clickOnAccordian();
         logger.info("-------------------Starting Test-----------------------");

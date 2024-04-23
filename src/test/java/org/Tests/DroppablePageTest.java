@@ -11,7 +11,7 @@ public class DroppablePageTest extends TestBase {
     private final Logger logger = LogManager.getLogger(DroppablePageTest.class);
 
     @BeforeMethod(groups = {"UI","Functional"})
-    public void initializeClass(){
+    public synchronized void initializeClass(){
         logger.info("-------------------Initializing DroppablePageTest Class------------------");
         droppablePage = homePage.clickOnSectionInteractions().clickOnDroppable();
         logger.info("-------------------Starting Test-----------------------");

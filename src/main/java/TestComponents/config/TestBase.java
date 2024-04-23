@@ -14,7 +14,7 @@ import java.util.Properties;
 public class TestBase {
 
     protected Logger logger = LogManager.getLogger(TestBase.class);
-    protected static ThreadLocal<WebDriver> webDriverThreadLocal = new ThreadLocal<>();
+    private final ThreadLocal<WebDriver> webDriverThreadLocal = new ThreadLocal<>();
     public static Properties prop;
 
     protected HomePage homePage;
@@ -103,17 +103,14 @@ public class TestBase {
     }
 
     @AfterMethod(groups = {"UI","Smoke","Integration","Functional"})
-    public void tearDown(){
+    public synchronized void tearDown(){
         try {
             getDriver().quit();
             logger.info("After Test Thread ID: "+Thread.currentThread().getId());
             logger.info("Close Test Case and driver");
             webDriverThreadLocal.remove();
-            Thread.sleep(2000);
         } catch (WebDriverException e) {
             logger.error("has happened an error with the tearDown method: " + e.getMessage());
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
         }
     }
 }

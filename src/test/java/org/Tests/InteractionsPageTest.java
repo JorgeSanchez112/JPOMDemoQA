@@ -11,7 +11,7 @@ public class InteractionsPageTest extends TestBase {
     private final Logger logger = LogManager.getLogger(InteractionsPageTest.class);
 
     @BeforeMethod(groups = {"Functional"})
-    public void initializeClass(){
+    public synchronized void initializeClass(){
         logger.info("-------------------Initializing FramesPageTest Class------------------");
         interactionsPage = homePage.clickOnSectionInteractions();
         logger.info("-------------------Starting Test-----------------------");

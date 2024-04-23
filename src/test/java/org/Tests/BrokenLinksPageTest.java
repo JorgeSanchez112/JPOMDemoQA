@@ -13,7 +13,7 @@ public class BrokenLinksPageTest extends TestBase {
     private final Logger logger = LogManager.getLogger(BrokenLinksPageTest.class);
 
     @BeforeMethod(groups = {"UI","Smoke","Functional"})
-    public void initializeClass(){
+    public synchronized void initializeClass(){
         logger.info("-------------------Initializing BrokenLinksPageTest Class------------------");
         brokenLinksPage = homePage.clickOnSectionElements().clickOnBrokenLinksImageSection();
         logger.info("-------------------Starting Test-----------------------");

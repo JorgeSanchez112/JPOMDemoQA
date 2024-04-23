@@ -31,22 +31,22 @@ public class InteractionsPage extends PageBase {
     }
 
     public synchronized SelectablePage clickOnSelectable(){
-        clickOnSection(deployed_form_exercise,0);
+        clickOnSection(deployed_form_exercise,1);
         return new SelectablePage(driver);
     }
 
     public synchronized ResizablePage clickOnResizable(){
-        clickOnSection(deployed_form_exercise,0);
+        clickOnSection(deployed_form_exercise,2);
         return new ResizablePage(driver);
     }
 
     public synchronized DroppablePage clickOnDroppable(){
-        clickOnSection(deployed_form_exercise,0);
+        clickOnSection(deployed_form_exercise,3);
         return new DroppablePage(driver);
     }
 
     public synchronized DraggablePage clickOnDragabble(){
-        clickOnSection(deployed_form_exercise,0);
+        clickOnSection(deployed_form_exercise,4);
         return new DraggablePage(driver);
     }
 }

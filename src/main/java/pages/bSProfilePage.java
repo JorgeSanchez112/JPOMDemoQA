@@ -280,7 +280,7 @@ public class BSProfilePage extends PageBase {
         return isElementEnabled(nextButton);
     }
 
-    public BSLoginPage clickOnLoginLink(){
+    public synchronized BSLoginPage clickOnLoginLink(){
         clickOnSection(linkRegisterAndLogin,0);
         return new BSLoginPage(driver);
     }

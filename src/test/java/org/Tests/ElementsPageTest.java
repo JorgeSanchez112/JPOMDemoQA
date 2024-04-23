@@ -11,7 +11,7 @@ public class ElementsPageTest extends TestBase {
     private final Logger logger = LogManager.getLogger(ElementsPageTest.class);
 
     @BeforeMethod(groups = {"UI","Functional"})
-    public void initializeClass(){
+    public synchronized void initializeClass(){
         logger.info("-------------------Initializing ElementsPageTest Class------------------");
         elementsPage = homePage.clickOnSectionElements();
         logger.info("-------------------Starting Test-----------------------");

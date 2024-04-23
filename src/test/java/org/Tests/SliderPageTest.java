@@ -11,7 +11,7 @@ public class SliderPageTest extends TestBase {
     private final Logger logger = LogManager.getLogger(SliderPageTest.class);
 
     @BeforeMethod(groups = {"UI","Smoke"})
-    public void initializeClass(){
+    public synchronized void initializeClass(){
         logger.info("-------------------Initializing SliderPageTest Class------------------");
         sliderPage = homePage.clickOnSectionWidgets().clickOnSlider();
         logger.info("-------------------Starting Test-----------------------");

@@ -13,7 +13,7 @@ public class BrowserWindowsPagePageTest extends TestBase {
     private final String URL_SAMPLE_PAGE = "https://demoqa.com/sample";
 
     @BeforeMethod(groups = {"UI","Smoke"})
-    public void InitializeClass(){
+    public synchronized void InitializeClass(){
         logger.info("-------------------Initializing BrowserWindowsPagePageTest Class------------------");
         browserWindowsPage = homePage.clickOnSectionAlerts_Frame_Windows().clickOnBrowserWindows();
         logger.info("-------------------Starting Test-----------------------");

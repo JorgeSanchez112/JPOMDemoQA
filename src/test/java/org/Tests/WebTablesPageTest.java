@@ -15,7 +15,7 @@ public class WebTablesPageTest extends TestBase {
     private final Logger logger = LogManager.getLogger(AccordianPageTest.class);
 
     @BeforeMethod(groups = {"UI","Smoke"})
-    public void initializeClass(){
+    public synchronized void initializeClass(){
         logger.info("-------------------Initializing WebTablesPageTest Class------------------");
         webTablesPage = homePage.clickOnSectionElements().clickOnWebTablesSection();
         logger.info("-------------------Starting Test-----------------------");

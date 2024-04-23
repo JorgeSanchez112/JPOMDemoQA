@@ -11,7 +11,7 @@ public class ModalDialogsPageTest extends TestBase {
     private final Logger logger = LogManager.getLogger(ModalDialogsPageTest.class);
 
     @BeforeMethod(groups = {"UI","Functional"})
-    public void initializeClass(){
+    public synchronized void initializeClass(){
         logger.info("-------------------Initializing ModalDialogsPageTest Class------------------");
         modalDialogsPage = homePage.clickOnSectionAlerts_Frame_Windows().clickOnModalDialogs();
         logger.info("-------------------Starting Test-----------------------");

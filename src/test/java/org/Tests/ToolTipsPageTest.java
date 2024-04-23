@@ -11,7 +11,7 @@ public class ToolTipsPageTest extends TestBase {
     private final Logger logger = LogManager.getLogger(ToolTipsPageTest.class);
 
     @BeforeMethod(groups = {"UI","Functional"})
-    public void initializeClass(){
+    public synchronized void initializeClass(){
         logger.info("-------------------Initializing ToolTipsPageTest Class------------------");
         toolTipsPage = homePage.clickOnSectionWidgets().clickOnToolTips();
         logger.info("-------------------Starting Test-----------------------");

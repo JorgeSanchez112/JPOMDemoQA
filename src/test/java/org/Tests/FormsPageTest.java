@@ -11,7 +11,7 @@ public class FormsPageTest extends TestBase {
     private final Logger logger = LogManager.getLogger(FormsPageTest.class);
 
     @BeforeMethod(groups = {"UI"})
-    public void initializeClass(){
+    public synchronized void initializeClass(){
         logger.info("-------------------Initializing FormsPageTest Class------------------");
         formsPage = homePage.clickOnSectionForms();
         logger.info("-------------------Starting Test-----------------------");

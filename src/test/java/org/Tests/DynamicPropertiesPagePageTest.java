@@ -11,7 +11,7 @@ public class DynamicPropertiesPagePageTest extends TestBase {
     private final Logger logger = LogManager.getLogger(DynamicPropertiesPagePageTest.class);
 
     @BeforeMethod(groups = {"UI","Functional"})
-    public void initializeClass(){
+    public synchronized void initializeClass(){
         logger.info("-------------------Initializing DynamicPropertiesPagePageTest Class------------------");
         dynamicPropertiesPage = homePage.clickOnSectionElements().clickOnDynamicPropertiesSection();
         logger.info("-------------------Starting Test-----------------------");

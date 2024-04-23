@@ -15,7 +15,7 @@ public class BSLoginPageTest extends TestBase {
     private final Logger logger = LogManager.getLogger(BSLoginPageTest.class);
 
     @BeforeMethod(groups = {"UI","Smoke","Integration","Functional"})
-    public void initializeClass(){
+    public synchronized void initializeClass(){
         logger.info("-------------------Initializing BSLoginPageTest Class------------------");
         bsLoginPage = homePage.clickOnSectionBookStoreApplication().clickOnLoginTab();
         logger.info("-------------------Starting Test-----------------------");
