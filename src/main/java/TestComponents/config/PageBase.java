@@ -668,8 +668,8 @@ public class PageBase {
      * */
     public synchronized boolean isElementDisplayedWithWait(WebElement element){
         try {
-            boolean elementDisplayed = element.isDisplayed();
             waitForVisibleElement(element);
+            boolean elementDisplayed = element.isDisplayed();
             logger.info("Is element: " + element + "displayed: " + elementDisplayed);
             return elementDisplayed;
         }catch (WebDriverException e){
