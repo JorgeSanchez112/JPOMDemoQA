@@ -27,7 +27,7 @@ public class AutoCompletePage extends PageBase {
         PageFactory.initElements(driver,this);
     }
 
-    public void typeInMultipleContainer(String text){
+    public synchronized void typeInMultipleContainer(String text){
         sendKeysToElement(multipleContainer,text);
         pressEnterKey(multipleContainer);
     }
@@ -49,7 +49,7 @@ public class AutoCompletePage extends PageBase {
         return getElementTextWithWait(singleContainerLabel);
     }
 
-    public boolean isTheValueContained(String value){
+    public synchronized boolean isTheValueContained(String value){
         for (WebElement valueColors : valuesOfMultipleContainer) {
             if (valueColors.getText().contains(value)){
                 return true;

@@ -57,7 +57,7 @@ public class AccordianPage extends PageBase {
         return getElementTextWithWait(card3);
     }
 
-    public boolean firstContentIsVisible(){
+    public synchronized boolean firstContentIsVisible(){
         return isElementDisplayedWithWait(firstCardContent);
     }
 

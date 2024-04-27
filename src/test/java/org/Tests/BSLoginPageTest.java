@@ -115,7 +115,7 @@ public class BSLoginPageTest extends TestBase {
     }
 
     @DataProvider
-    private Object[][] dataTest() throws IOException {
+    private synchronized Object[][] dataTest() throws IOException {
         String sheetName = "BSLogin";
         logger.info("Accessing to: " + sheetName + " data");
         ExcelReader excelReader = new ExcelReader();

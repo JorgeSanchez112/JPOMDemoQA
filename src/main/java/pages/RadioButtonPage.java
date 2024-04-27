@@ -51,7 +51,7 @@ public class RadioButtonPage extends PageBase {
         return getElementTextWithWait(noRadioButtonLabel);
     }
 
-    public String response(){
+    public synchronized String response(){
         return getElementTextWithWait(responseText);
     }
 

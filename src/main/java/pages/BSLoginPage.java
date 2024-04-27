@@ -37,19 +37,19 @@ public class BSLoginPage extends PageBase {
         PageFactory.initElements(driver,this);
     }
 
-    public void typeOnUsernameInput(String name){
+    public synchronized void typeOnUsernameInput(String name){
         waitForVisibleElement(usernameInput);
         scroll(usernameInput);
         sendKeysToElement(usernameInput,name);
     }
 
-    public void typeOnPasswordInput(String password){
+    public synchronized void typeOnPasswordInput(String password){
         waitForVisibleElement(passwordInput);
         scroll(passwordInput);
         sendKeysToElement(passwordInput,password);
     }
 
-    public void clickOnLoginButton(){
+    public synchronized void clickOnLoginButton(){
         scroll(loginButton);
         clickWithWait(loginButton);
     }

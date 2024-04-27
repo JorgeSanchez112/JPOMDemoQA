@@ -94,12 +94,21 @@ public class TestBase {
     @Parameters("browserName")
     @BeforeMethod(groups = {"UI","Smoke","Integration","Functional"})
     public void setUp(String browserName) throws MalformedURLException {
-        WebDriver driver = BrowserManager.initialization(browserName);
-        setDriver(driver);
-        logger.info("Before Test Thread ID: "+Thread.currentThread().getId());
-        logger.info("Initializing homePage Class");
-        homePage = new HomePage(getDriver());
-        hideFooterAd(getDriver());
+        WebDriver driver = null;
+        try {
+            driver = BrowserManager.initialization(browserName);
+            setDriver(driver);
+            logger.info("Before Test Thread ID: " + Thread.currentThread().getId());
+            logger.info("Initializing homePage Class");
+            homePage = new HomePage(getDriver());
+            hideFooterAd(getDriver());
+        } catch (Exception e) {
+            logger.error("Error initializing WebDriver: " + e.getMessage());
+            if (driver != null) {
+                driver.quit();
+            }
+            throw e;
+        }
     }
 
     @AfterMethod(groups = {"UI","Smoke","Integration","Functional"})

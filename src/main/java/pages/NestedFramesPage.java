@@ -21,7 +21,7 @@ public class NestedFramesPage extends PageBase {
         PageFactory.initElements(driver,this);
     }
 
-    public void switchToParentFrame(){
+    public synchronized void switchToParentFrame(){
         driver.switchTo().frame(parentFrame);
     }
 

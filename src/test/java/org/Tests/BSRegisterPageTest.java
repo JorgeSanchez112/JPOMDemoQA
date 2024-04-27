@@ -145,7 +145,7 @@ public class BSRegisterPageTest extends TestBase {
     }
 
     @DataProvider
-    private Object[][] dataTest() throws IOException {
+    private synchronized Object[][] dataTest() throws IOException {
         String sheetName = "BSRegister";
         logger.info("Accessing to: " + sheetName + " data");
         ExcelReader excelReader = new ExcelReader();

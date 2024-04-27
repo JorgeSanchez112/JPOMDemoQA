@@ -33,7 +33,7 @@ public class FramesPage extends PageBase {
         return getElementTextWithWait(pageTitle);
     }
 
-    public String getFrameText(){
+    public synchronized String getFrameText(){
         return getElementTextWithWait(text);
     }
 

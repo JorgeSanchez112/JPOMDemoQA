@@ -23,11 +23,11 @@ public class BrowserWindowsPage extends PageBase {
         PageFactory.initElements(driver,this);
     }
 
-    public void clickOnNewTabButton(){
+    public synchronized void clickOnNewTabButton(){
         clickWithWait(newTabButton);
     }
 
-    public void clickOnNewWindowButton(){
+    public synchronized void clickOnNewWindowButton(){
         clickWithWait(newWindowButton);
     }
 
@@ -35,11 +35,11 @@ public class BrowserWindowsPage extends PageBase {
         return getElementTextWithWait(pageTitle);
     }
 
-    public String getBrowserWindowsUrlText(){
+    public synchronized String getBrowserWindowsUrlText(){
         return driver.getCurrentUrl();
     }
 
-    public boolean newTabTextIsVisible(){
+    public synchronized boolean newTabTextIsVisible(){
         return isElementDisplayedWithWait(textTab);
     }
 }

@@ -115,7 +115,7 @@ public class SelectMenuPageTest extends TestBase {
     }
 
     @DataProvider(name = "testData0")
-    public Object[][] testData0() throws IOException {
+    private synchronized Object[][] testData0() throws IOException {
         String sheetName = "selectMenu0";
         logger.info("Accessing to: " + sheetName + " data");
         ExcelReader excelReader = new ExcelReader();
@@ -123,7 +123,7 @@ public class SelectMenuPageTest extends TestBase {
     }
 
     @DataProvider(name = "testData1")
-    public Object[][] testDataColors() throws IOException {
+    private synchronized Object[][] testDataColors() throws IOException {
         String sheetName = "selectMenu1";
         logger.info("Accessing to: " + sheetName + " data");
         ExcelReader excelReader = new ExcelReader();

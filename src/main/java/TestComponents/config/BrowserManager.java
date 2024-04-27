@@ -47,14 +47,17 @@ public class BrowserManager {
     }
 
     public static WebDriver initialization(String browserName) throws MalformedURLException {
-        WebDriver driver = (new RemoteWebDriver(new URL(prop.getProperty("urlServer")), chooseBrowser(browserName)));
-        driver.manage().window().maximize();
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
-        driver.manage().deleteAllCookies();
+        WebDriver driver = null;
         try {
+            driver = (new RemoteWebDriver(new URL(prop.getProperty("urlServer")), chooseBrowser(browserName)));
+            driver.manage().window().maximize();
+            driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
+            driver.manage().deleteAllCookies();
             driver.get(prop.getProperty("url"));
+        }catch (SessionNotCreatedException e){
+            logger.error("A new session could be able to start",e);
         }catch (TimeoutException e){
-            logger.info("Has happened a load trouble");
+            logger.error("Failed to load the page in 60 seconds",e);
         }
 
         return driver;

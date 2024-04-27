@@ -65,7 +65,7 @@ public class ResizablePageTest extends TestBase {
     }
 
     @DataProvider(name = "testData")
-    public Object[][] testData() throws IOException {
+    private synchronized Object[][] testData() throws IOException {
         String sheetName = "resizable";
         logger.info("Accessing to: " + sheetName + " data");
         ExcelReader excelReader = new ExcelReader();

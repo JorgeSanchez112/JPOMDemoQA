@@ -102,7 +102,7 @@ public class BSIBookPage extends PageBase {
         return getElementTextWithWait(descriptionValue);
     }
 
-    public boolean usernameLabelIsVisible(){
+    public synchronized boolean usernameLabelIsVisible(){
         waitForVisibleElement(userNameLabel);
         return isElementDisplayedWithWait(userNameValue);
     }

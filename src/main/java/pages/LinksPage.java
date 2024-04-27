@@ -37,37 +37,37 @@ public class LinksPage extends PageBase {
         PageFactory.initElements(driver,this);
     }
 
-    public void clickOnCreatedLink(){
+    public synchronized void clickOnCreatedLink(){
         scroll(http201);
         clickWithWait(http201);
     }
 
-    public void clickOnNoContentLink(){
+    public synchronized void clickOnNoContentLink(){
         scroll(http204);
         clickWithWait(http204);
     }
 
-    public void clickOnMovedLink(){
+    public synchronized void clickOnMovedLink(){
         scroll(http301);
         clickWithWait(http301);
     }
 
-    public void clickOnBadRequestLink(){
+    public synchronized void clickOnBadRequestLink(){
         scroll(http400);
         clickWithWait(http400);
     }
 
-    public void clickOnUnauthorizedLink(){
+    public synchronized void clickOnUnauthorizedLink(){
         scroll(http401);
         clickWithWait(http401);
     }
 
-    public void clickOnForbiddenLink(){
+    public synchronized void clickOnForbiddenLink(){
         scroll(http403);
         clickWithWait(http403);
     }
 
-    public void clickOnNotFoundLink(){
+    public synchronized void clickOnNotFoundLink(){
         scroll(http404);
         clickWithWait(http404);
     }
@@ -85,12 +85,12 @@ public class LinksPage extends PageBase {
         return getElementAttribute(secondLinkToHomePage,HREF_ATTRIBUTE);
     }
 
-    public String getHttpMessage() {
+    public synchronized String getHttpMessage() {
         scroll(httpMessage);
         return getElementTextWithWait(httpMessage);
     }
 
-    public String getNameLinkMessage(){
+    public synchronized String getNameLinkMessage(){
         scroll(linkMessage);
         return getElementTextWithWait(linkMessage);
     }

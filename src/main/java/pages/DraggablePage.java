@@ -41,17 +41,17 @@ public class DraggablePage extends PageBase {
         PageFactory.initElements(driver,this);
     }
 
-    public void clickOnTabAxisRestricted(){
+    public synchronized void clickOnTabAxisRestricted(){
         scroll(tabAxisRestricted);
         clickWithWait(tabAxisRestricted);
     }
 
-    public void clickOnTabContainerRestricted(){
+    public synchronized void clickOnTabContainerRestricted(){
         scroll(tabContainerRestricted);
         clickWithWait(tabContainerRestricted);
     }
 
-    public void clickOnTabCursorStyle(){
+    public synchronized void clickOnTabCursorStyle(){
         scroll(tabCursorStyle);
         clickWithWait(tabCursorStyle);
     }

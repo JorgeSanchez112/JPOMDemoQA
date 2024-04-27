@@ -64,20 +64,20 @@ public class BSRegisterPage extends PageBase {
         sendKeysToElement(passwordInput,password);
     }
 
-    public void clickOnRecaptcha(){
+    public synchronized void clickOnRecaptcha(){
         waitForVisibleElement(registerButton);
         scroll(registerButton);
         driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@title='reCAPTCHA']")));
         clickWithWait(recaptcha);
     }
 
-    public void clickOnRegisterButton(){
+    public synchronized void clickOnRegisterButton(){
         waitForVisibleElement(registerButton);
         scroll(registerButton);
         clickWithWait(registerButton);
     }
 
-    public void fillOutAllFormFields(String firstNameValue, String lastNameValue, String userNameValue, String passwordValue){
+    public synchronized void fillOutAllFormFields(String firstNameValue, String lastNameValue, String userNameValue, String passwordValue){
         typeOnFirstnameInput(firstNameValue);
         typeOnLastNameInput(lastNameValue);
         typeOnUsernameInput(userNameValue);

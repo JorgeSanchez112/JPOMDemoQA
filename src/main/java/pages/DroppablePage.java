@@ -51,15 +51,15 @@ public class DroppablePage extends PageBase {
         PageFactory.initElements(driver,this);
     }
 
-    public void clickOnTabAccept(){
+    public synchronized void clickOnTabAccept(){
         clickWithWait(tabAccept);
     }
 
-    public void clickOnTabPrevent(){
+    public synchronized void clickOnTabPrevent(){
         clickWithWait(tabPreventPropogation);
     }
 
-    public void clickOnTabRevert(){
+    public synchronized void clickOnTabRevert(){
         clickWithWait(tabRevert);
     }
 
@@ -162,7 +162,7 @@ public class DroppablePage extends PageBase {
         return doesElementContainExpectedClass(greedyInnerTarget,EXPECTED_CLASS);
     }
 
-    public boolean isNotRevertDraggableDropped(){
+    public synchronized boolean isNotRevertDraggableDropped(){
         return doesElementContainExpectedClass(revertTarget,EXPECTED_CLASS);
     }
 

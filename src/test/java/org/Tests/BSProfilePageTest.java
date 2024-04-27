@@ -294,7 +294,7 @@ public class BSProfilePageTest extends TestBase {
     }
 
     @DataProvider
-    private Object[][] books() throws IOException {
+    private synchronized Object[][] books() throws IOException {
         String sheetName = "bookStore";
         logger.info("Accessing to: " + sheetName + " data");
         ExcelReader excelReader = new ExcelReader();

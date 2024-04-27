@@ -23,7 +23,7 @@ public class SelectablePage extends PageBase {
         PageFactory.initElements(driver,this);
     }
 
-    public void clickOnTabGrid(){
+    public synchronized void clickOnTabGrid(){
         scroll(tabGrid);
         clickWithWait(tabGrid);
     }

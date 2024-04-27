@@ -147,7 +147,7 @@ public class DraggablePageTest extends TestBase {
     }
 
     @DataProvider(name = "data")
-    private Object[][] testData() throws IOException {
+    private synchronized Object[][] testData() throws IOException {
         String sheetName = "draggable";
 
         ExcelReader excelReader = new ExcelReader();

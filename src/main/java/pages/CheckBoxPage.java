@@ -22,7 +22,7 @@ public class CheckBoxPage extends PageBase {
         PageFactory.initElements(driver, this);
     }
 
-    public void clickOnExpandButton(){
+    public synchronized void clickOnExpandButton(){
         scroll(expandTree);
         clickWithWait(expandTree);
     }

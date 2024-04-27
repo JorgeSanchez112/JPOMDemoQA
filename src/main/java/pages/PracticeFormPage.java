@@ -169,7 +169,7 @@ public class PracticeFormPage extends PageBase {
         pressEnterKey(listCitiesBox);
     }
 
-    public void enterToSubmitButton(){
+    public synchronized void enterToSubmitButton(){
         pressEnterKey(submitButton);
     }
 

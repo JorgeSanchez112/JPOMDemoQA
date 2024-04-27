@@ -31,7 +31,7 @@ public class TabsPage extends PageBase {
         PageFactory.initElements(driver,this);
     }
 
-    public void clickOnTabOrigin(){
+    public synchronized void clickOnTabOrigin(){
         scroll(tabOrigin);
         clickWithWait(tabOrigin);
     }

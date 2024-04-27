@@ -35,11 +35,11 @@ public class BookStorePage extends PageBase {
         PageFactory.initElements(driver,this);
     }
 
-    public void scrollToSearchBar() {
+    public synchronized void scrollToSearchBar() {
         scroll(searchBox);
     }
 
-    public void scrollToRow(int rowIndex){
+    public synchronized void scrollToRow(int rowIndex){
         waitForChargedElementsOfAWebElementList(bookRow);
         if (bookRow.size() >= rowIndex) {
             try {
@@ -94,7 +94,7 @@ public class BookStorePage extends PageBase {
         return getElementTextAccordingToPositionReceived(tableTitles,THREE);
     }
 
-    public String getTitleBookText(String title) {
+    public synchronized String getTitleBookText(String title) {
         scrollToRow(ZERO);
         waitForChargedElementsOfAWebElementList(columnTitle);
         return getElementTextAccordingToPositionReceived(columnTitle,getPositionOfOneElementInAList(columnTitle,title));
@@ -112,7 +112,7 @@ public class BookStorePage extends PageBase {
         return getElementTextAccordingToPositionReceived(columnPublisher,getPositionOfOneElementInAList(columnTitle,title));
     }
 
-    public String getBookStoreUrlText(){
+    public synchronized String getBookStoreUrlText(){
         return driver.getCurrentUrl();
     }
 

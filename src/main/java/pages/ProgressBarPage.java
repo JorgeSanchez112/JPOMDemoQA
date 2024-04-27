@@ -21,7 +21,7 @@ public class ProgressBarPage extends PageBase {
         PageFactory.initElements(driver,this);
     }
 
-    public void clickOnStartButton(){
+    public synchronized void clickOnStartButton(){
         scroll(startButton);
         clickWithWait(startButton);
     }
@@ -31,7 +31,7 @@ public class ProgressBarPage extends PageBase {
         clickWithWait(resetButton);
     }
 
-    public void waitForResetButton(){
+    public synchronized void waitForResetButton(){
         waitForVisibleElement(resetButton);
     }
 
@@ -54,7 +54,7 @@ public class ProgressBarPage extends PageBase {
         return getElementTextWithWait(label);
     }
 
-    public String getPercentText(){
+    public synchronized String getPercentText(){
         return getElementTextWithWait(progressBar);
     }
 

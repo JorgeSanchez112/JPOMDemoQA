@@ -64,7 +64,7 @@ public class AutoCompletePageTest extends TestBase {
     }
 
     @DataProvider(name = "testData")
-    public Object[][] testData() throws IOException {
+    private synchronized Object[][] testData() throws IOException {
         String sheetName = "autoComplete";
         logger.info("Accessing to: " + sheetName + " data");
         ExcelReader excelReader = new ExcelReader();

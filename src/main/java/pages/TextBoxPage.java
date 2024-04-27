@@ -31,23 +31,23 @@ public class TextBoxPage extends PageBase {
         PageFactory.initElements(driver, this);
     }
 
-    public void typeOnUsernameField(String name){
+    public synchronized void typeOnUsernameField(String name){
         sendKeysToElement(fullNameField,name);
     }
 
-    public void typeOnEmailField(String email){
+    public synchronized void typeOnEmailField(String email){
         sendKeysToElement(emailField,email);
     }
 
-    public void typeOnAddressField(String address){
+    public synchronized void typeOnAddressField(String address){
         sendKeysToElement(addressField,address);
     }
 
-    public void typeOnPermanentAddressField(String pAddress){
+    public synchronized void typeOnPermanentAddressField(String pAddress){
         sendKeysToElement(permanentAddressField,pAddress);
     }
 
-    public void clickOnSubmitButton(){
+    public synchronized void clickOnSubmitButton(){
         scroll(submitButton);
         clickWithWait(submitButton);
     }
@@ -64,22 +64,22 @@ public class TextBoxPage extends PageBase {
         return getElementTextWithWait(pageTitle);
     }
 
-    public String getTextNameAnswer(){
+    public synchronized String getTextNameAnswer(){
         scroll(nameTextAnswer);
         return getElementTextWithWait(nameTextAnswer);
     }
 
-    public String getTextEmailAnswer(){
+    public synchronized String getTextEmailAnswer(){
         scroll(emailTextAnswer);
         return getElementTextWithWait(emailTextAnswer);
     }
 
-    public String getTextAddressAnswer(){
+    public synchronized String getTextAddressAnswer(){
         scroll(addressTextAnswer);
         return getElementTextWithWait(addressTextAnswer);
     }
 
-    public String getTextPermanentAddressAnswer(){
+    public synchronized String getTextPermanentAddressAnswer(){
         scroll(permanentAddressTextAnswer);
         return getElementTextWithWait(permanentAddressTextAnswer);
     }

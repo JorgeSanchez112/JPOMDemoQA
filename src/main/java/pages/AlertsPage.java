@@ -38,7 +38,7 @@ public class AlertsPage extends PageBase {
         clickWithWait(afterFiveSecButton);
     }
 
-    public void clickOnThirdButton(){
+    public synchronized void clickOnThirdButton(){
         scroll(confirmAlertButton);
         clickWithWait(confirmAlertButton);
     }
@@ -49,7 +49,7 @@ public class AlertsPage extends PageBase {
 
     }
 
-    public void confirmAlert(){
+    public synchronized void confirmAlert(){
         acceptAlertWithWait();
     }
 
@@ -61,7 +61,7 @@ public class AlertsPage extends PageBase {
         try{
             driver.switchTo().alert().sendKeys(text);
             confirmAlert();
-        }catch (NoAlertPresentException e){
+        }catch (NoAlertPresentException | NoSuchSessionException e){
             e.printStackTrace();
         }
     }
@@ -70,7 +70,7 @@ public class AlertsPage extends PageBase {
         return getElementTextWithWait(pageTitle);
     }
 
-    public String getConfirmResultText(){
+    public synchronized String getConfirmResultText(){
         return getElementTextWithWait(confirmAlertButtonResult);
     }
 

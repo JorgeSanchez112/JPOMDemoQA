@@ -27,12 +27,12 @@ public class ModalDialogsPage extends PageBase {
         PageFactory.initElements(driver,this);
     }
 
-    public void clickOnSmallModalButton(){
+    public synchronized void clickOnSmallModalButton(){
         scroll(smallModalButton);
         clickWithWait(smallModalButton);
     }
 
-    public void clickOnLargeModalButton(){
+    public synchronized void clickOnLargeModalButton(){
         scroll(largeModalButton);
         clickWithWait(largeModalButton);
     }

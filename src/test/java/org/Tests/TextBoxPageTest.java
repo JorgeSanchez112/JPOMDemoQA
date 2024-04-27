@@ -89,7 +89,7 @@ public class TextBoxPageTest extends TestBase {
     }
 
     @DataProvider(name = "testData")
-    public Object[][] testData() throws IOException {
+    public synchronized Object[][] testData() throws IOException {
         String sheetName = "textBox";
         logger.info("Accessing to: " + sheetName + " data");
         ExcelReader excelReader = new ExcelReader();

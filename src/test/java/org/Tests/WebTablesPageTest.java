@@ -70,7 +70,7 @@ public class WebTablesPageTest extends TestBase {
     }
 
     @DataProvider
-    private Object[][] dataTest() throws IOException {
+    private synchronized Object[][] dataTest() throws IOException {
         String sheetName = "webTables";
         logger.info("Accessing to: " + sheetName + " data");
         ExcelReader excelReader = new ExcelReader();

@@ -32,11 +32,11 @@ public class SliderPage extends PageBase {
         return getElementTextWithWait(pageTitle);
     }
 
-    public String getContainerValueText(){
+    public synchronized String getContainerValueText(){
         return getElementAttribute(containerValue,VALUE_ATTRIBUTE);
     }
 
-    public String getValueTextOfInputRange(){
+    public synchronized String getValueTextOfInputRange(){
         return getElementAttribute(inputRange,VALUE_ATTRIBUTE);
     }
 

@@ -74,12 +74,12 @@ public class BSProfilePage extends PageBase {
         clickWithWait(previousButton);
     }
 
-    public void clickOnNextButton(){
+    public synchronized void clickOnNextButton(){
         scroll(nextButton);
         clickWithWait(nextButton);
     }
 
-    public void clickOnDeleteAccountButton(){
+    public synchronized void clickOnDeleteAccountButton(){
         scroll(deleteAccountButton);
         clickWithWait(deleteAccountButton);
     }
@@ -89,7 +89,7 @@ public class BSProfilePage extends PageBase {
         cancelDeleteAccountOrBooks();
     }
 
-    public void clickOnDeleteAllBooksButton(){
+    public synchronized void clickOnDeleteAllBooksButton(){
         scroll(deleteAllBooksButton);
         clickWithWait(deleteAllBooksButton);
     }
@@ -111,15 +111,15 @@ public class BSProfilePage extends PageBase {
     }
 
 
-    public void acceptDeleteAccountOrBooks(){
+    public synchronized void acceptDeleteAccountOrBooks(){
         clickWithWait(okButtonOfAlertDeleteAccountAndBooks);
     }
 
-    public void cancelDeleteAccountOrBooks(){
+    public synchronized void cancelDeleteAccountOrBooks(){
         clickWithWait(cancelButtonOfAlertDeleteAccountAndBooks);
     }
 
-    public void addBookToTableOfBooksCollection(String bookTitle){
+    public synchronized void addBookToTableOfBooksCollection(String bookTitle){
         clickOnGoToBookStoreButton().
                 searchAndClickOnATitle(bookTitle).
                 addBookAndReturnToBookStore().
@@ -136,7 +136,7 @@ public class BSProfilePage extends PageBase {
         }
     }
 
-    public void addAllBooksToTableOfBooksCollection(){
+    public synchronized void addAllBooksToTableOfBooksCollection(){
         String SPEAKING_JAVASCRIPT_TITLE_BOOK = "Speaking JavaScript";
         addBookToTableOfBooksCollection(SPEAKING_JAVASCRIPT_TITLE_BOOK);
         String YOU_NOT_KNOW_JS_TITLE_BOOK = "You Don't Know JS";
@@ -166,7 +166,7 @@ public class BSProfilePage extends PageBase {
         return getElementTextWithWait(usernameLabel);
     }
 
-    public String getUserNameValueText(){
+    public synchronized String getUserNameValueText(){
         waitForVisibleElement(usernameValue);
         return getElementTextWithWait(usernameValue);
     }
@@ -227,12 +227,12 @@ public class BSProfilePage extends PageBase {
         return getElementTextWithWait(totalPagesNumber);
     }
 
-    public int getPositionOfBookWithTheTitle(String titleBook){
+    public synchronized int getPositionOfBookWithTheTitle(String titleBook){
         waitForChargedElementsOfAWebElementList(columnTitles);
         return getPositionOfOneElementInAList(columnTitles,titleBook);
     }
 
-    public boolean isTitleVisible(){
+    public synchronized boolean isTitleVisible(){
         return isElementDisplayedWithWait(pageTitle);
     }
 
@@ -250,7 +250,7 @@ public class BSProfilePage extends PageBase {
         return false;
     }
 
-    public boolean isTitleInTableOfBooksCollection(String value){
+    public synchronized boolean isTitleInTableOfBooksCollection(String value){
         waitForChargedElementsOfAWebElementList(columnTitles);
         return searchForVisibleElement(columnTitles,value);
     }
@@ -265,7 +265,7 @@ public class BSProfilePage extends PageBase {
         return getElementTextWithWait(columnPublishers.get(getPositionOfBookWithTheTitle(title)));
     }
 
-    public boolean isMessageNoDataVisible(){
+    public synchronized boolean isMessageNoDataVisible(){
         return isElementDisplayedWithWait(messageNoData);
     }
 
