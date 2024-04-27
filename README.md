@@ -21,6 +21,7 @@ This project is a QA automation framework designed to test the functionality of 
     │   │       │
     │   │       ├── testComponents
     │   │       │    ├── config/
+    │   │       │    │   ├── BrowserManager.java
     │   │       │    │   ├── PageBase.java
     │   │       │    │   └── TestBase.java
     │   │       │    │      
