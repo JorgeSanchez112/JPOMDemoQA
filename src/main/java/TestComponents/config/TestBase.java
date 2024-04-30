@@ -6,12 +6,10 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
 import org.testng.annotations.*;
 
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.Properties;
 
-public class TestBase {
+public class TestBase extends BrowserManager{
 
     protected Logger logger = LogManager.getLogger(TestBase.class);
     private final ThreadLocal<WebDriver> webDriverThreadLocal = new ThreadLocal<>();
@@ -59,26 +57,18 @@ public class TestBase {
     protected BSIBookPage bsiBookPage;
     protected BSAPIPage bsapiPage;
 
-    public TestBase() {
-        try {
-            prop = new Properties();
-            FileInputStream ip = new FileInputStream(System.getProperty("user.dir") + "\\src\\main\\resources\\config.properties");
-            prop.load(ip);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public void hideFooterAd(WebDriver driver){
         try{
             try {
                 logger.info("Hiding publicity: " + prop.getProperty("publicityLocator"));
                 homePage.hidePublicity(driver.findElement(By.cssSelector(prop.getProperty("publicityLocator"))));
             }catch (TimeoutException e){
-                e.printStackTrace();
+                logger.error("Failed to hide the publicity in 10 seconds");
+            }catch (NullPointerException e){
+                logger.error("driver is null",e);
             }
         }catch (NoSuchElementException e){
-            e.printStackTrace();
+            logger.error("Element was no found");
         }
     }
 
@@ -96,7 +86,7 @@ public class TestBase {
     public void setUp(String browserName) throws MalformedURLException {
         WebDriver driver = null;
         try {
-            driver = BrowserManager.initialization(browserName);
+            driver = initialization(browserName);
             setDriver(driver);
             logger.info("Before Test Thread ID: " + Thread.currentThread().getId());
             logger.info("Initializing homePage Class");
@@ -119,7 +109,9 @@ public class TestBase {
             logger.info("Close Test Case and driver");
             webDriverThreadLocal.remove();
         } catch (WebDriverException e) {
-            logger.error("has happened an error with the tearDown method: " + e.getMessage());
+            logger.error("has happened an error with the tearDown method: " + e);
+        }catch (NullPointerException e){
+            logger.error("" + e);
         }
     }
 }

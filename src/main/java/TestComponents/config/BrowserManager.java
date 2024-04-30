@@ -10,17 +10,29 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
-
-import static TestComponents.config.TestBase.prop;
+import java.util.Properties;
 
 public class BrowserManager {
 
-    protected static Logger logger = LogManager.getLogger(BrowserManager.class);
+    protected Logger logger = LogManager.getLogger(BrowserManager.class);
+    public Properties prop;
 
-    private static MutableCapabilities chooseBrowser(String browserName) {
+    public BrowserManager(){
+        try {
+            prop = new Properties();
+            FileInputStream ip = new FileInputStream(System.getProperty("user.dir") + "\\src\\main\\resources\\config.properties");
+            prop.load(ip);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private MutableCapabilities chooseBrowser(String browserName) {
         if (browserName == null) {
             throw new IllegalArgumentException("browserName cannot be null");
         }
@@ -46,7 +58,7 @@ public class BrowserManager {
         }
     }
 
-    public static WebDriver initialization(String browserName) throws MalformedURLException {
+    public WebDriver initialization(String browserName) throws MalformedURLException {
         WebDriver driver = null;
         try {
             driver = (new RemoteWebDriver(new URL(prop.getProperty("urlServer")), chooseBrowser(browserName)));
@@ -58,6 +70,8 @@ public class BrowserManager {
             logger.error("A new session could be able to start",e);
         }catch (TimeoutException e){
             logger.error("Failed to load the page in 60 seconds",e);
+        }catch (WebDriverException e){
+            logger.error("Error with WebDriver");
         }
 
         return driver;

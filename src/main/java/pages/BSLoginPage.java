@@ -1,10 +1,16 @@
 package Pages;
 
 import TestComponents.config.PageBase;
+import org.openqa.selenium.NoSuchSessionException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.testng.Assert;
+
+import java.time.Duration;
 
 public class BSLoginPage extends PageBase {
     @FindBy(tagName = "h2")
@@ -108,10 +114,22 @@ public class BSLoginPage extends PageBase {
     }
 
     public synchronized BSProfilePage userLogin(String username,String password){
-        waitForVisibleElement(pageTitle);
+        waitWithFluentForTitleLoginVisible();
         typeOnUsernameInput(username);
         typeOnPasswordInput(password);
         clickOnLoginButton();
         return new BSProfilePage(driver);
+    }
+
+    public synchronized void waitWithFluentForTitleLoginVisible(){
+        try {
+            FluentWait wait = new FluentWait(driver);
+            wait.withTimeout(Duration.ofSeconds(10));
+            wait.pollingEvery(Duration.ofMillis(250));
+            wait.until(ExpectedConditions.visibilityOf(pageTitle));
+        }catch (NoSuchSessionException e){
+            e.printStackTrace();
+        }
+
     }
 }

@@ -11,7 +11,6 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -22,6 +21,7 @@ import java.util.Objects;
 import java.util.concurrent.RejectedExecutionException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.testng.Assert;
 
 public class PageBase {
     Logger logger = LogManager.getLogger(PageBase.class);
@@ -33,7 +33,7 @@ public class PageBase {
     protected final WebDriver driver ;
 
     private final String MESSAGE_TO_NO_ALERT_PRESENT_EXCEPTION = "NoAlertPresentException: No alert present to accept";
-    private final String MESSAGE_TO_NO_SUCH_ELEMENT_EXCEPTION = "NoSuchElementException: Element can not be found";
+    private final String MESSAGE_TO_NO_SUCH_ELEMENT_EXCEPTION = "NoSuchElementException: Element can not be found ";
     private final String MESSAGE_TO_WEB_DRIVER_EXCEPTION = "WebDriverException: An unexpected error occurred while interacting with the WebDriver. This could be due to various reasons such as network issues, browser compatibility issues, or invalid WebDriver configurations.";
     private final String MESSAGE_TO_INDEX_OUT_OF_BOUNDS_EXCEPTION = "IndexOutOfBoundsException: The operation encountered an IndexOutOfBoundsException, indicating an attempt to access or manipulate an element at an invalid index position within a collection or array.";
     private final String MESSAGE_NUMBER_FORMAT_EXCEPTION = "NumberFormatException: Method expects a string representation of a numeric value, but the provided string is not formatted as a valid number.";
@@ -113,7 +113,7 @@ public class PageBase {
                     logger.info("Scroll to: " + element);
                     ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
                 }catch (NoSuchElementException e){
-                    handleException(MESSAGE_TO_NO_SUCH_ELEMENT_EXCEPTION,e);
+                    Assert.fail(MESSAGE_TO_NO_SUCH_ELEMENT_EXCEPTION + e);
                 }
             }catch (IndexOutOfBoundsException e){
                 handleException(MESSAGE_TO_INDEX_OUT_OF_BOUNDS_EXCEPTION,e);
@@ -197,20 +197,21 @@ public class PageBase {
      * @exception TimeoutException: it refers the element was not visible during the wait expected.
      * */
     public synchronized void waitForVisibleElement(WebElement element){
-        try{
-            try {
-                logger.info("wait for visible Element: " + element);
-                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-                wait.until(ExpectedConditions.visibilityOf(element));
-            }catch (NoSuchElementException e){
-                handleException(MESSAGE_TO_NO_SUCH_ELEMENT_EXCEPTION,e);
-            }catch (NoSuchSessionException e){
-                handleException(NO_SUCH_SESSION_EXCEPTION,e);
-            }
-        }catch (TimeoutException e){
-            handleException(MESSAGE_TO_TIME_OUT_EXCEPTION,e);
-        }catch (WebDriverException e){
-            handleException(MESSAGE_TO_WEB_DRIVER_EXCEPTION,e);
+        try {
+            logger.info("Wait for visible Element: " + element);
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            wait.until(ExpectedConditions.visibilityOf(element));
+        } catch (NoSuchSessionException e) {
+            handleException(NO_SUCH_SESSION_EXCEPTION, e);
+        } catch (NoSuchElementException e) {
+            String errorMessage = MESSAGE_TO_NO_SUCH_ELEMENT_EXCEPTION + e.getMessage();
+            logger.error(errorMessage);
+            Assert.fail(errorMessage);
+            throw new RuntimeException("Test failed due to NoSuchElementException");
+        } catch (TimeoutException e) {
+            handleException(MESSAGE_TO_TIME_OUT_EXCEPTION, e);
+        } catch (WebDriverException e) {
+            handleException(MESSAGE_TO_WEB_DRIVER_EXCEPTION, e);
         }
     }
 
@@ -254,6 +255,8 @@ public class PageBase {
                         wait.until(ExpectedConditions.visibilityOfAllElements(elementsList));
                     }catch (RejectedExecutionException e){
                         handleException(MESSAGE_TO_REJECTED_EXECUTION_EXCEPTION,e);
+                    }catch (NullPointerException e){
+                        handleException("One NullPointer Exception has happened",e);
                     }
                 }catch (IndexOutOfBoundsException e){
                     handleException(MESSAGE_TO_INDEX_OUT_OF_BOUNDS_EXCEPTION,e);
@@ -278,7 +281,7 @@ public class PageBase {
                 WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
                 wait.until(ExpectedConditions.alertIsPresent());
             }catch (NoSuchElementException e){
-                handleException(MESSAGE_TO_NO_SUCH_ELEMENT_EXCEPTION,e);
+                Assert.fail(MESSAGE_TO_NO_SUCH_ELEMENT_EXCEPTION + e);
             }
         }catch (TimeoutException e){
             handleException(MESSAGE_TO_TIME_OUT_EXCEPTION,e);
@@ -306,7 +309,7 @@ public class PageBase {
                 handleException(MESSAGE_TO_ELEMENT_CLICK_INTERCEPTED_EXCEPTION,e);
             }
         }catch (WebDriverException e){
-            handleException(MESSAGE_TO_WEB_DRIVER_EXCEPTION,e);
+            Assert.fail(MESSAGE_TO_WEB_DRIVER_EXCEPTION + e);
         }
     }
 
@@ -362,15 +365,18 @@ public class PageBase {
      * */
     public synchronized void clickOnSection(List<WebElement> sections,int index){
         try {
+            logger.info("It is Waiting for all elements are visible");
             waitForChargedElementsOfAWebElementList(sections);
             scroll(sections.get(index));
             clickWithWait(sections.get(index));
         }catch (IndexOutOfBoundsException e){
             handleException(MESSAGE_TO_INDEX_OUT_OF_BOUNDS_EXCEPTION,e);
         }catch (NoSuchSessionException e){
-            handleException(MESSAGE_TO_NO_SUCH_ELEMENT_EXCEPTION,e);
+            Assert.fail(MESSAGE_TO_NO_SUCH_ELEMENT_EXCEPTION + e); //This closes test case.
         }catch (WebDriverException e){
-            handleException(MESSAGE_TO_WEB_DRIVER_EXCEPTION,e);
+            Assert.fail(MESSAGE_TO_WEB_DRIVER_EXCEPTION,e);
+        }catch (NullPointerException e){
+            handleException("One NullPointer Exception has happened",e);
         }
     }
 
@@ -447,6 +453,8 @@ public class PageBase {
                             .perform();
                 }catch (NumberFormatException e){
                     handleException(MESSAGE_NUMBER_FORMAT_EXCEPTION,e);
+                }catch (JsonException e){
+                    handleException("A Json exception Error at move an element to coordinates",e);
                 }
             }catch (MoveTargetOutOfBoundsException e){
                 handleException(MESSAGE_MOVE_TARGET_OUT_OF_BOUNDS_EXCEPTION,e);
